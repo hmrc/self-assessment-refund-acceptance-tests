@@ -1,8 +1,23 @@
 
 # self-assessment-refund-acceptance-tests
 
-This is a placeholder README.md for a new repository
+### This is the acceptance test suite for online payments Income Tax Self-Assessment (self-assessment-refund) service.
 
-### License
+System properties can be used to specify the browser type and environment against which the tests should be run.
+The following options are currently supported:
 
-This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
+```
+browser = chrome / headless-chrome
+environment = local / dev / qa / staging
+```
+
+To test the service locally, use the following service manager profile to run the required services
+```
+sm --start TBC -r
+```
+
+As an example, to run tests locally using chrome, the following can be run from a shell script
+```
+driver_path=/usr/local/bin/chromedriver
+sbt -Denvironment=local -Dbrowser=chrome -Dwebdriver.chrome.driver=${driver_path} 'testOnly self-assessment-refund-acceptance-tests.runner.Runner'
+```
