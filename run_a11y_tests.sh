@@ -9,4 +9,4 @@ sm --start BANK_ACCOUNT_VERIFICATION_FRONTEND -r --appendArgs '{
       ]
     }'
 sleep 10
-sbt -Denvironment=local -Dbrowser=remote-chrome clean 'testOnly uk.gov.hmrc.test.ui.runner.Runner'
+sbt -Denvironment=local -Dbrowser=remote-chrome clean 'testOnly uk.gov.hmrc.test.ui.runner.A11yRunner'
