@@ -38,7 +38,7 @@ object EnglishContent {
        |${bankDetails.sortcode}
        |${bankDetails.accNumber}
        |${bankDetails.roll}	Changeprevious application number
-       |Amount to be refunded
+       |Amount to be repaid
        |£$amount	Changeprevious application number
        |Continue
        |Is this page not working properly? (opens in new tab)""".stripMargin
