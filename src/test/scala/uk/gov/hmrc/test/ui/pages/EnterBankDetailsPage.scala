@@ -37,10 +37,7 @@ object EnterBankDetailsPage extends BasePage {
   }
 
   def assertNoDetailsError(): Unit = {
-    personalAccountName.clear()
-    sortCode.clear()
-    accountNumber.clear()
-    buildingRollNumber.clear()
+    clearFields()
     continue()
     assertCurrentPageTitleError()
     errorSummaryTitle.getText should be("There is a problem")
@@ -53,7 +50,11 @@ object EnterBankDetailsPage extends BasePage {
   }
 
   def assertSortCodeCorrectFormatError(validAccount: BankDetails = validAccountPersonal): Unit = {
-    personalAccountName.sendKeys(validAccount.accName)
+    clearFields()
+    accType match {
+      case "personal" => personalAccountName.sendKeys(validAccount.accName)
+      case "business" => businessAccountName.sendKeys(validAccount.accName)
+    }
     sortCode.sendKeys("!12312")
     accountNumber.sendKeys(validAccount.accNumber)
     continue()
@@ -64,7 +65,11 @@ object EnterBankDetailsPage extends BasePage {
   }
 
   def assertAccountNumberCorrectFormatError(validAccount: BankDetails = validAccountPersonal): Unit = {
-    personalAccountName.sendKeys(validAccount.accName)
+    clearFields()
+    accType match {
+      case "personal" => personalAccountName.sendKeys(validAccount.accName)
+      case "business" => businessAccountName.sendKeys(validAccount.accName)
+    }
     sortCode.sendKeys(validAccount.sortcode)
     accountNumber.sendKeys("!1234567")
     continue()
@@ -75,7 +80,11 @@ object EnterBankDetailsPage extends BasePage {
   }
 
   def assertAccountNumberCorrectLengthError(validAccount: BankDetails = validAccountPersonal): Unit = {
-    personalAccountName.sendKeys(validAccount.accName)
+    clearFields()
+    accType match {
+      case "personal" => personalAccountName.sendKeys(validAccount.accName)
+      case "business" => businessAccountName.sendKeys(validAccount.accName)
+    }
     sortCode.sendKeys(validAccount.sortcode)
     accountNumber.sendKeys("12345")
     continue()
@@ -111,6 +120,16 @@ object EnterBankDetailsPage extends BasePage {
   def enterPersonalBankDetailsWithRoll () {
     enterPersonalBankDetails()
     enterRollNumber()
+  }
+
+  def clearFields() {
+    accType match {
+      case "personal" => personalAccountName.clear()
+      case "business" => businessAccountName.clear()
+    }
+    sortCode.clear()
+    accountNumber.clear()
+    buildingRollNumber.clear()
   }
 
   def enterBusinessBankDetailsWithRoll () {
