@@ -47,9 +47,11 @@ object SelectAmountPage extends BasePage {
     assertCurrentPageTitleError()
     errorSummaryTitle.getText should be("There is a problem")
     error match {
-      case "enter amount" => errorSummaryAmount.getText should be("Enter payment amount")
-      case "choice required" => errorSummaryChoice.getText should be("Choice is required")
-      case "invalid amount" => errorSummaryAmount.getText should be(s"Payment amount must be between £0.01 and £$amount")
+      case "enter amount" => errorSummaryAmount.getText should be("Enter an amount to be refunded")
+      case "choice required" => errorSummaryChoice.getText should be("Select how much you want to be refunded")
+      case "invalid amount" => errorSummaryAmount.getText should be(s"Amount to be refunded must be an amount of money, like 11.50 or 12")
+      case "amount of 0" => errorSummaryAmount.getText should be(s"Amount must be one pence or more")
+      case "exceeded maximum amount" => errorSummaryAmount.getText should be(s"Amount to be refunded must be £$amount or less")
     }
   }
 
@@ -58,9 +60,11 @@ object SelectAmountPage extends BasePage {
     //TODO - Link this to test data values
     val amount: String = TestData.maxRefundAmount
     error match {
-      case "enter amount" => errorMessageAmount.getText should be("Error:\nEnter payment amount")
-//      case "choice required" => errorMessageChoice.getText should be("Error:\nChoice is required")
-      case "invalid amount" => errorMessageAmount.getText should be(s"Error:\nPayment amount must be between £0.01 and £$amount")
+      case "enter amount" => errorMessageAmount.getText should be("Error:\nEnter an amount to be refunded")
+      case "choice required" => errorMessageChoice.getText should be("Error:\nSelect how much you want to be refunded")
+      case "invalid amount" => errorMessageAmount.getText should be(s"Error:\nAmount to be refunded must be an amount of money, like 11.50 or 12")
+      case "amount of 0" => errorMessageAmount.getText should be(s"Error:\nAmount must be one pence or more")
+      case "exceeded maximum amount" => errorMessageAmount.getText should be(s"Error:\nAmount to be refunded must be £$amount or less")
     }
   }
 

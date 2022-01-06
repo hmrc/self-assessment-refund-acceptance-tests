@@ -16,6 +16,9 @@ object TypeOfAccountPage extends BasePage {
   def businessAccountRadio: WebElement = id("accountType").webElement
   def personalAccountRadio: WebElement = id("accountType-2").webElement
   def pageContent: String = id("main-content").webElement.getText
+  def errorSummaryTitle: WebElement = id("error-summary-title").webElement
+  def errorSummary: WebElement = id("TBC").webElement
+  def errorMessage: WebElement = id("TBC").webElement
 
   override def assertCurrentUrl(): Assertion = {
     currentUrl should fullyMatch regex s"""$url/[a-z0-9]{24}""".r
@@ -29,7 +32,17 @@ object TypeOfAccountPage extends BasePage {
     radio match {
       case "business" => click on businessAccountRadio
       case "personal" => click on personalAccountRadio
+      case "none" => continue()
     }
   }
+
+  def assertError(): Assertion =  {
+    assertCurrentPageTitleError()
+    errorSummaryTitle.getText should be("There is a problem")
+    errorSummary.getText should be("Select a type of account")
+    errorMessage.getText should be("Select a type of account")
+
+  }
+
 
 }
