@@ -10,7 +10,7 @@ object EnglishContent {
     //TODO - Link this to test data values
     val amount: String = TestData.refundAmount
     s"""Your refund of £$amount
-       |If you paid your tax by credit or debit card, we’ll try to repay back to your card. You need to tell us your bank details in case we cannot pay you to your card.
+       |If you paid your Self Assessment by credit or debit card, we’ll try to refund back to your card. We need your bank details in case we can not do this.
        |Select ’continue’ to provide your bank details.
        |Continue
        |Is this page not working properly? (opens in new tab)""".stripMargin
@@ -38,14 +38,15 @@ object EnglishContent {
        |${bankDetails.sortcode}
        |${bankDetails.accNumber}
        |${bankDetails.roll}	Changeprevious application number
-       |Amount to be repaid
+       |Amount to be refunded
        |£$amount	Changeprevious application number
        |Continue
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
   def enterBankDetailsPageText(): String = {
-    s"""Bank or building society account details
+    s"""Enter the bank or building society account details
+       |We'll only use these details to pay your refund.
        |Name on the account
        |Sort code
        |Must be 6 digits long
@@ -68,13 +69,12 @@ object EnglishContent {
        |$reference
        |Tax $refundType
        |Date $date
-       |Amount to be repaid £$amount
+       |Amount to be refunded £$amount
        |What happens next
-       |We will pay your refund to the card you last used to pay your Self Assessment tax bill.
-       |HMRC aims to issue your refund within 2 weeks. However to protect you against fraud, HMRC has security measures in place which may cause a delay. Please allow 30 days before contacting us about your request.
-       |You can check the status of your refund on your Self Assessment tax account.
+       |We will send your refund to the bank details you provided or the card you used to pay your last bill.
+       |HMRC aims to issue refunds within 2 weeks. However to protect you against fraud, HMRC has security measures in place which may cause a delay. Please allow 30 days before contacting us about your request.
+       |You can check the status of your refund on your HMRC online account.
        |You can print or download a copy of your refund request (PDF)
-       |
        |Help us improve our services
        |We use your feedback to make our services better.
        |Tell us what you think of this service (takes 30 seconds)
@@ -84,9 +84,9 @@ object EnglishContent {
   def selectAmountPageText(): String = {
     //TODO - Link this to test data values
     val amount: String = TestData.maxRefundAmount
-    s"""How much do you want to be repaid?
-       |Repay full amount, £$amount
-       |Repay a different amount
+    s"""How much do you want to be refunded?
+       |Refund full amount, £$amount
+       |Refund a different amount
        |Continue
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
@@ -177,7 +177,7 @@ object EnglishContent {
     //TODO Test Data object
     val rejectedAmountValue: String = TestData.rejectedAmount1
     s"""Your refund of £$rejectedAmountValue has been rejected
-       |We cannot make your refund of £$rejectedAmountValue because your refund request has been rejected.
+       |We cannot pay your refund of £$rejectedAmountValue because your refund request has been rejected.
        |Back to tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
