@@ -11,12 +11,12 @@ object SelectAmountPage extends BasePage {
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/select-amount"
 
   def expectedPageTitle = "Your payment details - Request a Self Assessment Refund - GOV.UK"
-  def expectedPageHeader = "How much do you want to be repaid?"
+  def expectedPageHeader = "How much do you want to be refunded?"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
   def pageContent: String = id("main-content").webElement.getText
-  def repayFullRadio: WebElement = id("choice-full").webElement
-  def repayDiffRadio: WebElement = id("choice-different").webElement
+  def refundFullRadio: WebElement = id("choice-full").webElement
+  def refundDiffRadio: WebElement = id("choice-different").webElement
   def enterAmountInput: WebElement = id("different-amount").webElement
   def errorSummaryTitle: WebElement = id("error-summary-title").webElement
   def errorSummaryAmount: WebElement = id("error-amount").webElement
@@ -30,8 +30,8 @@ object SelectAmountPage extends BasePage {
 
   def selectRadio(radio: String, amount: String) {
     radio match {
-      case "full" => click on repayFullRadio
-      case "other" => click on repayDiffRadio
+      case "full" => click on refundFullRadio
+      case "other" => click on refundDiffRadio
                       enterAmount(amount)
     }
   }
