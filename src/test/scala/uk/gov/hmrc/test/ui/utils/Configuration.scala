@@ -2,7 +2,6 @@ package uk.gov.hmrc.test.ui.utils
 
 case class TestConfig(authLoginStubUrl: String,
                       selfAssessmentRefundFrontendUrl: String,
-                      bankAccountVerificationUrl: String,
                       paymentsSurveyUrl: String
                      )
 
@@ -13,8 +12,7 @@ object Configuration {
     case "local" =>
       TestConfig(
         authLoginStubUrl = "http://localhost:9949",
-        selfAssessmentRefundFrontendUrl = "http://localhost:9171/self-assessment-refund-frontend",
-        bankAccountVerificationUrl = "http://localhost:9903/bank-account-verification",
+        selfAssessmentRefundFrontendUrl = "http://localhost:9171/self-assessment-refund",
         paymentsSurveyUrl = "http://localhost:9966/payments-survey"
       )
 
@@ -22,7 +20,6 @@ object Configuration {
       TestConfig(
         authLoginStubUrl = "https://www.development.tax.service.gov.uk",
         selfAssessmentRefundFrontendUrl = "https://www.development.tax.service.gov.uk/self-assessment-refund",
-        bankAccountVerificationUrl = "https://www.development.tax.service.gov.uk/bank-account-verification",
         paymentsSurveyUrl = "https://www.development.tax.service.gov.uk/payments-survey"
       )
 
@@ -30,7 +27,6 @@ object Configuration {
       TestConfig(
         authLoginStubUrl = "https://www.qa.tax.service.gov.uk",
         selfAssessmentRefundFrontendUrl = "https://www.qa.tax.service.gov.uk/self-assessment-refund",
-        bankAccountVerificationUrl = "https://www.qa.tax.service.gov.uk/bank-account-verification",
         paymentsSurveyUrl = "https://www.qa.tax.service.gov.uk/payments-survey"
       )
 
