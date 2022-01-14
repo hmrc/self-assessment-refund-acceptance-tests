@@ -7,13 +7,13 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object RequestReceivedPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-confirmation"
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-request-confirmation"
   val selfAssessmentTaxAccountLinkText = "Self Assessment tax account"
   val printPreviewLinkText = "print or download"
   val tellUsLinkText = "Tell us what you think of this service."
   val problemWithPageLinkText = "div.govuk-\\!-display-none-print > a"
 
-  def expectedPageTitle = "Payment request received - Request a Self Assessment Refund - GOV.UK"
+  def expectedPageTitle = "Refund request received - Request a Self Assessment Refund - GOV.UK"
   def expectedPageHeader = "Refund request received"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 

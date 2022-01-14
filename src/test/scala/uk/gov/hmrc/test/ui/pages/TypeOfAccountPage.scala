@@ -7,7 +7,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object TypeOfAccountPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/start"
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/your-account-type"
 
   def expectedPageTitle = "What type of account details are you providing? - Request a Self Assessment Refund - GOV.UK"
   def expectedPageHeader = "What type of account details are you providing?"
