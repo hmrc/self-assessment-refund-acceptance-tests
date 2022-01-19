@@ -7,11 +7,9 @@ import uk.gov.hmrc.test.ui.testdata.{BankDetails, TestData}
 object EnglishContent {
 
   def accountOnFilePageText(): String = {
-    //TODO - Link this to test data values
-    val amount: String = TestData.refundAmount
-    s"""Your refund of £$amount
-       |If you paid your Self Assessment by credit or debit card, we’ll try to refund back to your card. We need your bank details in case we can not do this.
-       |Select ’continue’ to provide your bank details.
+    s"""We need to get your bank details
+       |If you paid your Self Assessment by credit or debit card, we'll try to refund you back to your card. We need your bank details in case we can not do this.
+       |Select 'continue' to provide your bank details.
        |Continue
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
@@ -40,7 +38,8 @@ object EnglishContent {
        |${bankDetails.roll}	Changeprevious application number
        |Amount to be repaid
        |£$amount	Changeprevious application number
-       |Continue
+       |Confirm your details to complete your refund request.
+       |Confirm and continue
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
