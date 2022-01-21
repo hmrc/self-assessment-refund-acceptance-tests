@@ -13,12 +13,14 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
     nino match {
         //TODO When various users set up, set up Nino links etc.
       case "AA111111A" => TestOnlyStartPage.clickRadio(TestData.nino)
+      case "AC111111A" => TestOnlyStartPage.clickRadio(TestData.nino2)
       case _ => TestOnlyStartPage.clickRadio(TestData.nino)
     }
     AuthWizardPage.clickSubmit()
     nino match {
       //TODO When various users set up, set up Nino links etc.
       case "AA111111A" => TestOnlyStartPage.clickRadio(TestData.nino)
+      case "AC111111A" => TestOnlyStartPage.clickRadio(TestData.nino2)
       case _ => TestOnlyStartPage.clickRadio(TestData.nino)
     }
   }

@@ -60,4 +60,6 @@ object TestData {
   val completedAmount3 = "80.00"
 
 
+  val nino2 = "AC111111A"
+
 }

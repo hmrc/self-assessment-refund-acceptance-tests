@@ -105,12 +105,6 @@ object EnglishContent {
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
-  def viewChangeAccountPageText(): String = {
-    s"""
-       |
-       |""".stripMargin
-  }
-
   def refundHistoryCompletedPageText(): String = {
     val completedReceived2: String = TestData.receivedOnDate2
     val completedReceived3: String = TestData.receivedOnDate4
