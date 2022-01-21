@@ -4,7 +4,7 @@ Feature: Happy Path
   Scenario Outline: V&C with card on file
     Given The user starts a <type> journey with Nino AA111111A
     And the user is on the SelectAmountPage
-    And the user click on the full amount .
+    And the user click on the <amount> amount <value>
     And the user click continue
     And the user is on the AccountOnFilePage
     And the user click continue
@@ -26,26 +26,28 @@ Feature: Happy Path
 #      | business | other  | 50.00    |
 
 
-#  Scenario Outline: V&C with no card on file, enter bank details
-#    Given The user begins their <type> journey without card on file
-#    And the user is on the ViewChangeAccountPage
-#    And the user click on Claim a Refund
-#    And the user is on the SelectAmountPage
-#    When the user click on the <amount> amount <value>
-#    And the user click continue
-#    And the user is on the TypeOfAccountPage
-#    And the user select <type> account
-#    And the user click continue
-#    And the user is on the EnterBankDetailsPage
-#    And the user enter valid <type> bank details
-#    And the user click continue
-#
-#    Examples:
-#      | type     | amount | value |
-#      | personal | full   | N/A   |
+  Scenario Outline: V&C with no card on file, enter bank details
+    Given The user starts a <type> journey with Nino AC111111A
+    And the user is on the SelectAmountPage
+    And the user click on the <amount> amount <value>
+    And the user click continue
+    And the user is on the TypeOfAccountPage
+    And the user select <type> account
+    And the user click continue
+    And the user is on the EnterBankDetailsPage
+    And the user enter valid <type> bank details
+    And the user click continue
+    And the user is on the CheckDetailsPage
+    And the user click continue
+    And the user is on the RequestReceivedPage
+
+    Examples:
+      | type     | amount | value |
+      | personal | full   | N/A   |
 #      | personal | other  | 50.00    |
 #      | business | full   | N/A   |
 #      | business | other  | 50.00    |
+
 
   @a11y
   Scenario: Refund History

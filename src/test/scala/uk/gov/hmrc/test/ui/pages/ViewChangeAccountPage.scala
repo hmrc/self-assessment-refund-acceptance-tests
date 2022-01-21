@@ -19,9 +19,9 @@ object ViewChangeAccountPage extends BasePage {
   def creditAmount: WebElement = xpath("//*[@id=\"main-content\"]/div/div/div[1]/div[2]/p[2]").webElement
   def pageContent: String = id("main-content").webElement.getText
 
-  def assertContent(): Assertion =  {
-    pageContent should be(EnglishContent.viewChangeAccountPageText())
-  }
+//  def assertContent(): Assertion =  {
+//    pageContent should be(EnglishContent.viewChangeAccountPageText())
+//  }
 
   def clickClaimRefund(): Unit = {
     click on claimRefund
