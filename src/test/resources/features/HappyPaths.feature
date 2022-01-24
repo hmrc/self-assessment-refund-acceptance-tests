@@ -2,7 +2,7 @@ Feature: Happy Path
 
   @a11y
   Scenario Outline: V&C with card on file
-    Given The user starts a <type> journey with Nino AA111111A
+    Given The user starts a <type> journey with Nino AC111111A
     And the user is on the SelectAmountPage
     And the user click on the <amount> amount <value>
     And the user click continue
@@ -27,7 +27,7 @@ Feature: Happy Path
 
 
   Scenario Outline: V&C with no card on file, enter bank details
-    Given The user starts a <type> journey with Nino AC111111A
+    Given The user starts a <type> journey with Nino AA111111A
     And the user is on the SelectAmountPage
     And the user click on the <amount> amount <value>
     And the user click continue

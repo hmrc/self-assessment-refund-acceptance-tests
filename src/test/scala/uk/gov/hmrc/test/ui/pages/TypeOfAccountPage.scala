@@ -9,7 +9,7 @@ object TypeOfAccountPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/your-account-type"
 
-  def expectedPageTitle = "What type of account details are you providing? - Request a Self Assessment Refund - GOV.UK"
+  def expectedPageTitle = "What type of account details are you providing? - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = "What type of account details are you providing?"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 

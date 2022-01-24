@@ -11,7 +11,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 object EnterBankDetailsPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/enter-bank-details"
-  def expectedPageTitle = "Enter the bank or building society account details - Request a Self Assessment Refund - GOV.UK"
+  def expectedPageTitle = "Enter the bank or building society account details - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = "Enter the bank or building society account details"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
   def accType: String = ScenarioVariables.personalOrBusiness

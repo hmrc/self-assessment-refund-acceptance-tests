@@ -13,7 +13,7 @@ object RequestReceivedPage extends BasePage {
   val tellUsLinkText = "Tell us what you think of this service."
   val problemWithPageLinkText = "div.govuk-\\!-display-none-print > a"
 
-  def expectedPageTitle = "Refund request received - Request a Self Assessment Refund - GOV.UK"
+  def expectedPageTitle = "Refund request received - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = "Refund request received"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 

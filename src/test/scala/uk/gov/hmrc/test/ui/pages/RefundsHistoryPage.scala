@@ -13,7 +13,7 @@ object RefundsHistoryPage extends BasePage {
   val urlOrigin: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-history/$nino"
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-history/$nino#in-progress"
 
-  def expectedPageTitle = "Your refunds history - Request a Self Assessment Refund - GOV.UK"
+  def expectedPageTitle = "Your refunds history - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = "Your refunds history"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 

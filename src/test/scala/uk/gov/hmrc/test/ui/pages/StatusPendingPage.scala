@@ -11,7 +11,7 @@ object StatusPendingPage extends BasePage {
 
   val inProgressAmount1: String = TestData.inProgessAmount1
 
-  def expectedPageTitle = s"Your refund of £$inProgressAmount1 is in progress - Request a Self Assessment Refund - GOV.UK"
+  def expectedPageTitle = s"Your refund of £$inProgressAmount1 is in progress - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = s"Your refund of £$inProgressAmount1 is in progress"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 

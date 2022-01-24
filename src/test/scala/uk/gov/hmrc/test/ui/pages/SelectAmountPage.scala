@@ -10,7 +10,7 @@ object SelectAmountPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-amount"
 
-  def expectedPageTitle = "How much do you want to be refunded? - Request a Self Assessment Refund - GOV.UK"
+  def expectedPageTitle = "How much do you want to be refunded? - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = "How much do you want to be refunded?"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 

@@ -11,7 +11,7 @@ object AccountOnFilePage extends BasePage {
   //TODO - Link this to test data values
   val amount: String = TestData.refundAmount
 
-  def expectedPageTitle = "We need to get your bank details - Request a Self Assessment Refund - GOV.UK"
+  def expectedPageTitle = "We need to get your bank details - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = s"We need to get your bank details"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
