@@ -2,8 +2,9 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.EnglishContent
-import uk.gov.hmrc.test.ui.testdata.TestData
+import uk.gov.hmrc.test.ui.pages.CheckDetailsPage.langToggle
+import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
+import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object RefundsHistoryPage extends BasePage {
@@ -13,8 +14,15 @@ object RefundsHistoryPage extends BasePage {
   val urlOrigin: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-history/$nino"
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-history/$nino#in-progress"
 
-  def expectedPageTitle = "Your refunds history - Request a Self Assessment refund - GOV.UK"
-  def expectedPageHeader = "Your refunds history"
+  def expectedPageTitle = {
+    if (langToggle == Language.welsh) "Hanes eich ad-daliadau - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    else "Your refunds history - Request a Self Assessment refund - GOV.UK"
+  }
+  def expectedPageHeader = {
+    if (langToggle == Language.welsh) "Hanes eich ad-daliadau"
+    else "Your refunds history"
+  }
+
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
   def pageContent: String = id("main-content").webElement.getText
@@ -35,8 +43,10 @@ object RefundsHistoryPage extends BasePage {
 
   def assertContent(tab: String): Assertion = {
     tab match {
-      case "In Progress" => pageContent should be(EnglishContent.refundHistoryInProgressPageText())
-      case "Completed" => pageContent should be(EnglishContent.refundHistoryCompletedPageText())
+      case "In Progress" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryInProgressPageText()) else pageContent should be(EnglishContent.refundHistoryInProgressPageText())
+      case "Completed" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryCompletedPageText()) else pageContent should be(EnglishContent.refundHistoryCompletedPageText())
+
+
     }
   }
 

@@ -121,16 +121,16 @@ object WelshContent {
 
     //TODO Get Welsh Translation!
     //TODO Should th > 6 Years date show here - Frontend Validation?
-    s"""Your refunds history
-       |In progress
-       |Completed
-       |Received on Completed on Amount claimed
-       |$completedReceived1 $completedCompletedOn1 £$completedAmount1 Completed
-       |$completedReceived2 $completedCompletedOn2 £$completedAmount2 Completed
-       |$rejectedReceived1 $rejectedCompletedOn1 £$rejectedAmount1 Rejected
-       |$completedReceived3 $completedCompletedOn3 £$completedAmount3 Completed
-       |13 June 2015 16 June 2015 £80.00 Completed
-       |Is this page not working properly? (opens in new tab)""".stripMargin
+    s"""Hanes eich ad-daliadau
+       |Ar waith
+       |Wedi’i gwblhau
+       |Cafwyd ar Wedi’i gwblhau ar Swm a hawliwyd
+       |$completedReceived1 $completedCompletedOn1 £$completedAmount1 Wedi’i gwblhau
+       |$completedReceived2 $completedCompletedOn2 £$completedAmount2 Wedi’i gwblhau
+       |$rejectedReceived1 $rejectedCompletedOn1 £$rejectedAmount1 Wedi’i wrthod
+       |$completedReceived3 $completedCompletedOn3 £$completedAmount3 Wedi’i gwblhau
+       |13 Mehefin 2015 16 Mehefin 2015 £80.00 Wedi’i gwblhau
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
   def refundHistoryInProgressPageText(): String = {
@@ -139,13 +139,13 @@ object WelshContent {
     val inProgressAmount1: String = TestData.inProgessAmount1
     val inProgressAmount2: String = TestData.inProgessAmount2
     //TODO Get Welsh Translation!
-    s"""Your refunds history
-       |In progress
-       |Completed
-       |Received on Amount claimed
-       |$inProgressDate1 £$inProgressAmount1 View progress
-       |$inProgressDate2 £$inProgressAmount2 View progress
-       |Is this page not working properly? (opens in new tab)""".stripMargin
+    s"""Hanes eich ad-daliadau
+       |Ar waith
+       |Wedi’i gwblhau
+       |Cafwyd ar Swm a hawliwyd
+       |$inProgressDate1 £$inProgressAmount1 Bwrw golwg dros y cynnydd
+       |$inProgressDate2 £$inProgressAmount2 Bwrw golwg dros y cynnydd
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
   def statusCompletedPageText(): String = {

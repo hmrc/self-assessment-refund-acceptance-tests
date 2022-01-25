@@ -54,6 +54,7 @@ Feature: Happy Path
   @a11y
   Scenario: Welsh - Refund History
     Given The user begins their personal journey with RefundHistoryPage
+    When the User toggles on Welsh language
     And the user is on the RefundHistoryPage
     And the user clicks on View Progress for result number 1
     And the user is on the StatusPendingPage
