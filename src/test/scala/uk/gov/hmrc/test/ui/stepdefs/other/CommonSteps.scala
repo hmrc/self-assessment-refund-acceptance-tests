@@ -31,7 +31,7 @@ class CommonSteps extends Steps with DriverActions {
     go to (AuthWizardPage.url)
     page match {
       //Test purposes to go to any page with this function
-      case "SelectAmountPage" => AuthWizardPage.enterRedirectUrl(SelectAmountPage.url)
+      case "RefundAmountPage" => AuthWizardPage.enterRedirectUrl(RefundAmountPage.url)
       case "AccountOnFilePage" => AuthWizardPage.enterRedirectUrl(AccountOnFilePage.url)
       case "CheckDetailsPage" => AuthWizardPage.enterRedirectUrl(CheckDetailsPage.url)
       case "AuthenticationPage" => AuthWizardPage.enterRedirectUrl(AuthenticationPage.url)
@@ -52,10 +52,9 @@ class CommonSteps extends Steps with DriverActions {
 
   And("""^the user is on the (.*)$""") { page: String =>
     page match {
-      case "SelectAmountPage" =>
-        //TODO Put back in when url content is agreed
-        SelectAmountPage.shouldBeLoaded()
-//        SelectAmountPage.assertContent()
+      case "RefundAmountPage" =>
+        RefundAmountPage.shouldBeLoaded()
+        RefundAmountPage.assertContent()
       case "AccountOnFilePage" =>
         AccountOnFilePage.shouldBeLoaded()
         AccountOnFilePage.assertContent()

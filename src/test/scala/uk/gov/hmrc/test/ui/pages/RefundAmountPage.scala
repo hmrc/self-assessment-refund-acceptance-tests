@@ -6,7 +6,7 @@ import uk.gov.hmrc.test.ui.pages.content.EnglishContent
 import uk.gov.hmrc.test.ui.testdata.TestData
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object SelectAmountPage extends BasePage {
+object RefundAmountPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-amount"
 
@@ -25,7 +25,7 @@ object SelectAmountPage extends BasePage {
   def errorMessageAmount: WebElement = id("different-amount-error").webElement
 
   def assertContent(): Assertion =  {
-    pageContent should be(EnglishContent.selectAmountPageText())
+    pageContent should be(EnglishContent.refundAmountPageText())
   }
 
   def selectRadio(radio: String, amount: String) {

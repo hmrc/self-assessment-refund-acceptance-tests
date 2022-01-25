@@ -16,7 +16,7 @@ object EnterBankDetailsPage extends BasePage {
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
   def accType: String = ScenarioVariables.personalOrBusiness
 
-  def personalAccountName: WebElement = id("accountName").webElement
+  def personalAccountName: WebElement = id("companyName").webElement
   def businessAccountName: WebElement = id("companyName").webElement
   def sortCode: WebElement = id("sortCode").webElement
   def accountNumber: WebElement = id("accountNumber").webElement

@@ -1,6 +1,6 @@
 package uk.gov.hmrc.test.ui.pages.testonly
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, SelectAmountPage}
+import uk.gov.hmrc.test.ui.pages.{BasePage, RefundAmountPage}
 
 object SharedFunctions extends BasePage {
 
@@ -15,7 +15,7 @@ object SharedFunctions extends BasePage {
       case "Return URL"          => ReturnUrlPage.shouldBeLoaded()
       case "Back URL"            => BackUrlPage.shouldBeLoaded()
       case "Convenience URL"     => ConvenienceUrlPage.shouldBeLoaded()
-      case "Select Amount"     => SelectAmountPage.shouldBeLoaded()
+      case "Select Amount"     => RefundAmountPage.shouldBeLoaded()
 
     }
   }

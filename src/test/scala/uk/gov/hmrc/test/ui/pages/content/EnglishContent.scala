@@ -80,7 +80,7 @@ object EnglishContent {
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
-  def selectAmountPageText(): String = {
+  def refundAmountPageText(): String = {
     //TODO - Link this to test data values
     val amount: String = TestData.maxRefundAmount
     s"""How much do you want to be refunded?

@@ -1,6 +1,6 @@
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
-import uk.gov.hmrc.test.ui.pages.{SelectAmountPage, ViewChangeAccountPage}
+import uk.gov.hmrc.test.ui.pages.{RefundAmountPage, ViewChangeAccountPage}
 import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
 
 class ChangeAmountStepDef extends Steps with DriverActions {

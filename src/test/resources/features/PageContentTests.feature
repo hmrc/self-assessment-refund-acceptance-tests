@@ -4,10 +4,10 @@
 #  for each page following the shouldBeLoaded().
 #
 #
-#  Scenario: SelectAmountPage Content
+#  Scenario: RefundAmountPage Content
 #    Given The user starts a personal journey with Nino AA111111A
-##    Given The user begins their personal journey with SelectAmountPage
-#    Then the user is on the SelectAmountPage
+##    Given The user begins their personal journey with RefundAmountPage
+#    Then the user is on the RefundAmountPage
 #
 #
 #  Scenario: AccountOnFilePage Content
@@ -30,7 +30,7 @@
 #
 #  Scenario: EnterBankDetailsPage Content
 #    Given The user starts a personal journey with Nino AA111111A
-##    And The user begins their personal journey with SelectAmountPage
+##    And The user begins their personal journey with RefundAmountPage
 #    When the user click on the full amount .
 #    And the user click continue
 #    And the user click continue
@@ -41,7 +41,7 @@
 #
 #  Scenario: TypeOfAccountPage Content
 #    Given The user starts a personal journey with Nino AA111111A
-##    Given The user begins their personal journey with SelectAmountPage
+##    Given The user begins their personal journey with RefundAmountPage
 #    When the user click on the full amount .
 #    And the user click continue
 #    And the user click continue
