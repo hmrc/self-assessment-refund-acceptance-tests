@@ -8,16 +8,16 @@ Feature: Happy Path
     And the user click on the <amount> amount <value>
     And the user click continue
     And the user is on the AccountOnFilePage
-#    And the user click continue
-#    And the user is on the TypeOfAccountPage
-#    And the user select <type> account
-#    And the user click continue
-#    And the user is on the EnterBankDetailsPage
-#    And the user enter valid <type> bank details
-#    And the user click continue
-#    And the user is on the CheckDetailsPage
-#    And the user click continue
-#    And the user is on the RequestReceivedPage
+    And the user click continue
+    And the user is on the TypeOfAccountPage
+    And the user select <type> account
+    And the user click continue
+    And the user is on the EnterBankDetailsPage
+    And the user enter valid <type> bank details
+    And the user click continue
+    And the user is on the CheckDetailsPage
+    And the user click continue
+    And the user is on the RequestReceivedPage
 
     Examples:
       | type     | amount | value |
@@ -29,18 +29,19 @@ Feature: Happy Path
 
   Scenario Outline: Welsh - V&C with no card on file, enter bank details
     Given The user starts a <type> journey with Nino AA111111A
+    When the User toggles on Welsh language
     And the user is on the RefundAmountPage
     And the user click on the <amount> amount <value>
     And the user click continue
     And the user is on the TypeOfAccountPage
-    And the user select <type> account
-    And the user click continue
-    And the user is on the EnterBankDetailsPage
-    And the user enter valid <type> bank details
-    And the user click continue
-    And the user is on the CheckDetailsPage
-    And the user click continue
-    And the user is on the RequestReceivedPage
+#    And the user select <type> account
+#    And the user click continue
+#    And the user is on the EnterBankDetailsPage
+#    And the user enter valid <type> bank details
+#    And the user click continue
+#    And the user is on the CheckDetailsPage
+#    And the user click continue
+#    And the user is on the RequestReceivedPage
 
     Examples:
       | type     | amount | value |

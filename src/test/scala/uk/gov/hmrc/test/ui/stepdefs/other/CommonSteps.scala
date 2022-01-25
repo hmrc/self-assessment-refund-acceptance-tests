@@ -69,9 +69,10 @@ class CommonSteps extends Steps with DriverActions {
 //        RefundAmountPage.assertContent()
       case "AccountOnFilePage" =>
         AccountOnFilePage.shouldBeLoaded()
-        AccountOnFilePage.assertContent()
+//        AccountOnFilePage.assertContent()
       case "CheckDetailsPage" =>
         CheckDetailsPage.shouldBeLoaded()
+//        CheckDetailsPage.assertContent()
       case "AuthenticationPage" =>
         AuthenticationPage.shouldBeLoaded()
       case "RequestReceivedPage" =>
@@ -80,7 +81,7 @@ class CommonSteps extends Steps with DriverActions {
         RequestReceivedPage.setReferenceNumber()
         RequestReceivedPage.assertContent()
       case "EnterBankDetailsPage" =>
-        EnterBankDetailsPage.shouldBeLoaded()
+//        EnterBankDetailsPage.shouldBeLoaded()
 //        EnterBankDetailsPage.assertContent()
       case "TypeOfAccountPage" =>
         TypeOfAccountPage.shouldBeLoaded()
