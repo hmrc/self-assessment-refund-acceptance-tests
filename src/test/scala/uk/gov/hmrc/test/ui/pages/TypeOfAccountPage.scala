@@ -2,15 +2,24 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.EnglishContent
+import uk.gov.hmrc.test.ui.pages.EnterBankDetailsPage.{be, langToggle, pageContent}
+import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
+import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object TypeOfAccountPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/your-account-type"
 
-  def expectedPageTitle = "What type of account details are you providing? - Request a Self Assessment Refund - GOV.UK"
-  def expectedPageHeader = "What type of account details are you providing?"
+  def expectedPageTitle = {
+    if (langToggle == Language.welsh) "Manylion pa fath o gyfrif yr ydych yn eu rhoi? - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    else "What type of account details are you providing? - Request a Self Assessment refund - GOV.UK"
+  }
+  def expectedPageHeader = {
+    if (langToggle == Language.welsh) "Manylion pa fath o gyfrif yr ydych yn eu rhoi?"
+    else "What type of account details are you providing?"
+  }
+
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
   def businessAccountRadio: WebElement = id("accountType").webElement
@@ -25,7 +34,8 @@ object TypeOfAccountPage extends BasePage {
   }
 
   def assertContent(): Assertion =  {
-    pageContent should be(EnglishContent.typeOfAccountPageText())
+    if (langToggle == Language.welsh) pageContent should be(WelshContent.typeOfAccountPageText())
+    else pageContent should be(EnglishContent.typeOfAccountPageText())
   }
 
   def selectRadio(radio: String) {

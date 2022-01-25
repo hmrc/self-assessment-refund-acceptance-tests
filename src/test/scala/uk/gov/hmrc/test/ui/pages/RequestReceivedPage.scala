@@ -1,8 +1,10 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.EnglishContent
-import uk.gov.hmrc.test.ui.testdata.{BankDetails, TestData}
+import uk.gov.hmrc.test.ui.pages.CheckDetailsPage.{be, langToggle}
+import uk.gov.hmrc.test.ui.pages.EnterBankDetailsPage.pageContent
+import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object RequestReceivedPage extends BasePage {
@@ -13,8 +15,14 @@ object RequestReceivedPage extends BasePage {
   val tellUsLinkText = "Tell us what you think of this service."
   val problemWithPageLinkText = "div.govuk-\\!-display-none-print > a"
 
-  def expectedPageTitle = "Refund request received - Request a Self Assessment Refund - GOV.UK"
-  def expectedPageHeader = "Refund request received"
+  def expectedPageTitle =  {
+    if (langToggle == Language.welsh) "Cais am ad-daliad wedi dod i law - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    else "Refund request received - Request a Self Assessment refund - GOV.UK"
+  }
+  def expectedPageHeader = {
+    if (langToggle == Language.welsh) "Cais am ad-daliad wedi dod i law"
+    else "Refund request received"
+  }
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
   def referenceNumber: String = cssSelector("span.line-break > strong").webElement.getText
@@ -29,7 +37,8 @@ object RequestReceivedPage extends BasePage {
   }
 
   def assertContent(): Assertion =  {
-    pageContent should be(EnglishContent.requestReceivedPageText())
+    if (langToggle == Language.welsh) pageContent should be(WelshContent.requestReceivedPageText())
+    else pageContent should be(EnglishContent.requestReceivedPageText())
   }
 
   def referenceNumberDisplayed(): Assertion = {

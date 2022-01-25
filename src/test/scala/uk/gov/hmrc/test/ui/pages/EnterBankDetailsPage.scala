@@ -2,21 +2,29 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.EnglishContent
+import uk.gov.hmrc.test.ui.pages.AccountOnFilePage.{be, langToggle, pageContent}
+import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.stepdefs.other.ScenarioVariables
-import uk.gov.hmrc.test.ui.testdata.BankDetails
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language}
 import uk.gov.hmrc.test.ui.testdata.BankDetails._
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object EnterBankDetailsPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/enter-bank-details"
-  def expectedPageTitle = "Enter the bank or building society account details - Request a Self Assessment Refund - GOV.UK"
-  def expectedPageHeader = "Enter the bank or building society account details"
+  def expectedPageTitle = {
+    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    else "Enter the bank or building society account details - Request a Self Assessment refund - GOV.UK"
+  }
+  def expectedPageHeader = {
+    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu"
+    else "Enter the bank or building society account details"
+  }
+
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
   def accType: String = ScenarioVariables.personalOrBusiness
 
-  def personalAccountName: WebElement = id("accountName").webElement
+  def personalAccountName: WebElement = id("companyName").webElement
   def businessAccountName: WebElement = id("companyName").webElement
   def sortCode: WebElement = id("sortCode").webElement
   def accountNumber: WebElement = id("accountNumber").webElement
@@ -33,7 +41,8 @@ object EnterBankDetailsPage extends BasePage {
   }
 
   def assertContent(): Assertion =  {
-    pageContent should be(EnglishContent.enterBankDetailsPageText())
+    if (langToggle == Language.welsh) pageContent should be(WelshContent.enterBankDetailsPageText())
+    else pageContent should be(EnglishContent.enterBankDetailsPageText())
   }
 
   def assertNoDetailsError(): Unit = {

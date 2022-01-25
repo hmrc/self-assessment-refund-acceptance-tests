@@ -9,7 +9,7 @@ object EnglishContent {
   def accountOnFilePageText(): String = {
     s"""We need to get your bank details
        |If you paid your Self Assessment by credit or debit card, we'll try to refund you back to your card. We need your bank details in case we can not do this.
-       |Select 'continue' to provide your bank details.
+       |Select ’continue’ to provide your bank details.
        |Continue
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
@@ -80,11 +80,11 @@ object EnglishContent {
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
-  def selectAmountPageText(): String = {
+  def refundAmountPageText(): String = {
     //TODO - Link this to test data values
     val amount: String = TestData.maxRefundAmount
     s"""How much do you want to be refunded?
-       |Refund full amount, £$amount
+       |Refund the full amount, £$amount
        |Refund a different amount
        |Continue
        |Is this page not working properly? (opens in new tab)""".stripMargin

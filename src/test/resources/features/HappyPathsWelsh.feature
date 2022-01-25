@@ -1,22 +1,23 @@
 Feature: Happy Path
 
   @a11y
-  Scenario Outline: V&C with card on file
+  Scenario Outline: Welsh - V&C with card on file
     Given The user starts a <type> journey with Nino AC111111A
+    When the User toggles on Welsh language
     And the user is on the RefundAmountPage
     And the user click on the <amount> amount <value>
     And the user click continue
     And the user is on the AccountOnFilePage
-#    And the user click continue
-#    And the user is on the TypeOfAccountPage
-#    And the user select <type> account
-#    And the user click continue
-#    And the user is on the EnterBankDetailsPage
-#    And the user enter valid <type> bank details
-#    And the user click continue
-#    And the user is on the CheckDetailsPage
-#    And the user click continue
-#    And the user is on the RequestReceivedPage
+    And the user click continue
+    And the user is on the TypeOfAccountPage
+    And the user select <type> account
+    And the user click continue
+    And the user is on the EnterBankDetailsPage
+    And the user enter valid <type> bank details
+    And the user click continue
+    And the user is on the CheckDetailsPage
+    And the user click continue
+    And the user is on the RequestReceivedPage
 
     Examples:
       | type     | amount | value |
@@ -26,8 +27,9 @@ Feature: Happy Path
 #      | business | other  | 50.00    |
 
 
-  Scenario Outline: V&C with no card on file, enter bank details
+  Scenario Outline: Welsh - V&C with no card on file, enter bank details
     Given The user starts a <type> journey with Nino AA111111A
+    When the User toggles on Welsh language
     And the user is on the RefundAmountPage
     And the user click on the <amount> amount <value>
     And the user click continue
@@ -50,7 +52,7 @@ Feature: Happy Path
 
 
   @a11y
-  Scenario: Refund History
+  Scenario: Welsh - Refund History
     Given The user begins their personal journey with RefundHistoryPage
     And the user is on the RefundHistoryPage
     And the user clicks on View Progress for result number 1

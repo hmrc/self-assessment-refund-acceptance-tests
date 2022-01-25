@@ -11,7 +11,7 @@ object StatusCompletedPage extends BasePage {
 
   val completedAmount1: String = TestData.completedAmount1
 
-  def expectedPageTitle = s"Your refund of £$completedAmount1 is complete - Request a Self Assessment Refund - GOV.UK"
+  def expectedPageTitle = s"Your refund of £$completedAmount1 is complete - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = s"Your refund of £$completedAmount1 is complete"
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
