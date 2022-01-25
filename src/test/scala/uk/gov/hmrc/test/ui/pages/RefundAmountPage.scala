@@ -2,16 +2,22 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.EnglishContent
-import uk.gov.hmrc.test.ui.testdata.TestData
+import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
+import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object RefundAmountPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-amount"
 
-  def expectedPageTitle = "How much do you want to be refunded? - Request a Self Assessment refund - GOV.UK"
-  def expectedPageHeader = "How much do you want to be refunded?"
+  def expectedPageTitle = {
+    if (langToggle == Language.welsh) "Faint o ad-daliad yr hoffech ei gael? - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    else "How much do you want to be refunded? - Request a Self Assessment refund - GOV.UK"
+  }
+  def expectedPageHeader = {
+    if (langToggle == Language.welsh) "Faint o ad-daliad yr hoffech ei gael?"
+    else "How much do you want to be refunded?"
+  }
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
   def pageContent: String = id("main-content").webElement.getText
@@ -25,7 +31,8 @@ object RefundAmountPage extends BasePage {
   def errorMessageAmount: WebElement = id("different-amount-error").webElement
 
   def assertContent(): Assertion =  {
-    pageContent should be(EnglishContent.refundAmountPageText())
+    if (langToggle == Language.welsh) pageContent should be(WelshContent.refundAmountPageText())
+    else pageContent should be(EnglishContent.refundAmountPageText())
   }
 
   def selectRadio(radio: String, amount: String) {
