@@ -66,7 +66,7 @@ class CommonSteps extends Steps with DriverActions {
     page match {
       case "RefundAmountPage" =>
         RefundAmountPage.shouldBeLoaded()
-//        RefundAmountPage.assertContent()
+        RefundAmountPage.assertContent()
       case "AccountOnFilePage" =>
         AccountOnFilePage.shouldBeLoaded()
 //        AccountOnFilePage.assertContent()

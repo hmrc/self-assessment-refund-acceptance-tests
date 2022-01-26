@@ -82,10 +82,8 @@ object WelshContent {
     //TODO - Link this to test data values
     val amount: String = TestData.maxRefundAmount
     s"""Faint o ad-daliad yr hoffech ei gael?
-       |Ad-daliad o’r swm llawn
+       |Ad-daliad o’r swm llawn, £$amount
        |Ad-daliad am swm gwahanol
-       |Nodwch swm
-       |Nodwch swm hyd at £$amount
        |Yn eich blaen
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
