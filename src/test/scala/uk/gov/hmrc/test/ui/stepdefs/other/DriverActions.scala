@@ -9,9 +9,7 @@ trait DriverActions extends WebBrowser {
 
   implicit def driver: WebDriver = SingletonDriver.getInstance()
 
-  def clickBack(): Unit = click on cssSelector("body > div.govuk-width-container > a")
-//  id("back")
-
+  def clickBack(): Unit = click on id("back")
 
   def continue(): Unit = click on id("continue")
 

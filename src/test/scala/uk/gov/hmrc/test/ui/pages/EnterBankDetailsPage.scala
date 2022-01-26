@@ -12,35 +12,48 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 object EnterBankDetailsPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/enter-bank-details"
+
   def expectedPageTitle = {
     if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else "Enter the bank or building society account details - Request a Self Assessment refund - GOV.UK"
   }
+
   def expectedPageHeader = {
     if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu"
     else "Enter the bank or building society account details"
   }
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
+
   def accType: String = ScenarioVariables.personalOrBusiness
 
-  def personalAccountName: WebElement = id("companyName").webElement
-  def businessAccountName: WebElement = id("companyName").webElement
+  def personalAccountName: WebElement = id("accountName").webElement
+
+  def businessAccountName: WebElement = id("accountName").webElement
+
   def sortCode: WebElement = id("sortCode").webElement
+
   def accountNumber: WebElement = id("accountNumber").webElement
+
   def buildingRollNumber: WebElement = id("rollNumber").webElement
+
   def pageContent: String = id("main-content").webElement.getText
+
   def sortCodeHint: WebElement = id("TBC").webElement
+
   def accountNumberHint: WebElement = id("TBC").webElement
+
   def errorSummaryTitle: WebElement = id("error-summary-title").webElement
-  def errorSummary(number: String): WebElement = id("TBC_"+ number).webElement
-  def errorMessage(number: String): WebElement = id("TBC_"+ number).webElement
+
+  def errorSummary(number: String): WebElement = id("TBC_" + number).webElement
+
+  def errorMessage(number: String): WebElement = id("TBC_" + number).webElement
 
   override def assertCurrentUrl(): Assertion = {
     currentUrl should fullyMatch regex s"""$url/$accType/[a-z0-9]{24}""".r
   }
 
-  def assertContent(): Assertion =  {
+  def assertContent(): Assertion = {
     if (langToggle == Language.welsh) pageContent should be(WelshContent.enterBankDetailsPageText())
     else pageContent should be(EnglishContent.enterBankDetailsPageText())
   }
@@ -49,13 +62,24 @@ object EnterBankDetailsPage extends BasePage {
     clearFields()
     continue()
     assertCurrentPageTitleError()
-    errorSummaryTitle.getText should be("There is a problem")
-    errorSummary("1").getText should be("Enter the name on the account")
-    errorSummary("2").getText should be("Enter an account number")
-    errorSummary("3").getText should be("Enter a sort code")
-    errorMessage("1").getText should be("Enter the name on the account")
-    errorMessage("2").getText should be("Enter an account number")
-    errorMessage("3").getText should be("Enter a sort code")
+    if (langToggle == Language.welsh) {
+      errorSummaryTitle.getText should be("There is a problem")
+      errorSummary("1").getText should be("Enter the name on the account")
+      errorSummary("2").getText should be("Enter an account number")
+      errorSummary("3").getText should be("Enter a sort code")
+      errorMessage("1").getText should be("Enter the name on the account")
+      errorMessage("2").getText should be("Enter an account number")
+      errorMessage("3").getText should be("Enter a sort code")
+    }
+    else {
+      errorSummaryTitle.getText should be("There is a problem")
+      errorSummary("1").getText should be("Enter the name on the account")
+      errorSummary("2").getText should be("Enter an account number")
+      errorSummary("3").getText should be("Enter a sort code")
+      errorMessage("1").getText should be("Enter the name on the account")
+      errorMessage("2").getText should be("Enter an account number")
+      errorMessage("3").getText should be("Enter a sort code")
+    }
   }
 
   def assertSortCodeCorrectFormatError(validAccount: BankDetails = validAccountPersonal): Unit = {
@@ -126,7 +150,7 @@ object EnterBankDetailsPage extends BasePage {
     buildingRollNumber.sendKeys(rollNumber1.roll)
   }
 
-  def enterPersonalBankDetailsWithRoll () {
+  def enterPersonalBankDetailsWithRoll() {
     enterPersonalBankDetails()
     enterRollNumber()
   }
@@ -141,7 +165,7 @@ object EnterBankDetailsPage extends BasePage {
     buildingRollNumber.clear()
   }
 
-  def enterBusinessBankDetailsWithRoll () {
+  def enterBusinessBankDetailsWithRoll() {
     enterBusinessBankDetails()
     enterRollNumber()
   }
