@@ -9,5 +9,9 @@ class TypeOfAccountStepDef extends Steps with DriverActions {
     TypeOfAccountPage.selectRadio(radio)
   }
 
+  And("""^the no type of account selected error is displayed$"""){ () =>
+    TypeOfAccountPage.assertError()
+  }
+
 
 }

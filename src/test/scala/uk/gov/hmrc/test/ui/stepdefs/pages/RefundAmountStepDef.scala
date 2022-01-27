@@ -31,15 +31,7 @@ class RefundAmountStepDef extends Steps with DriverActions {
   }
 
   Then("""^the (.*) error shows$""") { error: String =>
-    //TODO no error messages yet - to be added
-    error match {
-      case "choice required" => RefundAmountPage.errorSummaryValidation(error)
-      case _ => RefundAmountPage.errorSummaryValidation(error)
-        RefundAmountPage.errorMessageValidation(error)
-    }
-
-
+    RefundAmountPage.errorSummaryValidation(error)
+    RefundAmountPage.errorMessageValidation(error)
   }
-
-
 }

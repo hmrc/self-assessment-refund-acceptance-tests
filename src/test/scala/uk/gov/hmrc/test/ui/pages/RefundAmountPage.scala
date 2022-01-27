@@ -36,7 +36,7 @@ object RefundAmountPage extends BasePage {
 
   def errorSummaryChoice: WebElement = id("error-choice").webElement
 
-  def errorMessageChoice: WebElement = id("").webElement
+  def errorMessageChoice: WebElement = id("choice-error").webElement
 
   def errorMessageAmount: WebElement = id("different-amount-error").webElement
 

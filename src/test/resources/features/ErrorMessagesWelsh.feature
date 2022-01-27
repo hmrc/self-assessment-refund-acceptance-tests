@@ -36,7 +36,27 @@ Feature: Error Messages Welsh
 
 #  TYPE OF ACCOUNT PAGE
 
+  Scenario: Welsh - Type of Account Page - None Selected
+    And the user clicks other amount
+    And the user enter an amount of 1
+    And the user click continue
+    And the user click continue
+    And the no type of account selected error is displayed
+
 #  ENTER BANK ACCOUNT DETAILS PAGE
 
+  Scenario Outline: Welsh - Enter Bank Details Page - Error Scenarios
+    And the user clicks other amount
+    And the user enter an amount of 1
+    And the user click continue
+    And the user select personal account
+    And the user click continue
+    And the user enters <error> <value> and the correct error message is shown
 
-
+    Examples:
+      | error                    | value     |
+      | no details entered       | N/A       |
+      | invalid sortcode         | 12345!    |
+      | invalid account number   | 1234567!  |
+      | account number too short | 12345     |
+      | account number too long  | 123456789 |

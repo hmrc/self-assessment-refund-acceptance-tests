@@ -19,4 +19,14 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
     }
   }
 
+  Then("""^the user enters (.*) (.*) and the correct error message is shown$""") { (error: String, value: String) =>
+    error match {
+      case "no details entered"  => EnterBankDetailsPage.assertNoDetailsError()
+      case "invalid sortcode" => EnterBankDetailsPage.assertSortCodeCorrectFormatError(value)
+      case "invalid account number" => EnterBankDetailsPage.assertAccountNumberCorrectFormatError(value)
+      case "account number too short" => EnterBankDetailsPage.assertAccountNumberCorrectLengthError(value)
+      case "account number too long" => EnterBankDetailsPage.assertAccountNumberCorrectLengthError(value)
+    }
+  }
+
 }
