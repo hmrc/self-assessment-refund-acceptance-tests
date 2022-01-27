@@ -5,7 +5,7 @@ import org.scalatest.Assertion
 import uk.gov.hmrc.test.ui.pages.AccountOnFilePage.{be, langToggle, pageContent}
 import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.stepdefs.other.ScenarioVariables
-import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language}
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
 import uk.gov.hmrc.test.ui.testdata.BankDetails._
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -25,7 +25,7 @@ object EnterBankDetailsPage extends BasePage {
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
-  def accType: String = ScenarioVariables.personalOrBusiness
+  def accType: String = ScenarioContext.get("personalOrBusiness")
 
   def personalAccountName: WebElement = id("accountName").webElement
 

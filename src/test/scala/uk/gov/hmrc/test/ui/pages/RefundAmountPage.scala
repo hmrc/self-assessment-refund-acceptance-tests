@@ -20,7 +20,7 @@ object RefundAmountPage extends BasePage {
     else "How much do you want to be refunded?"
   }
 
-  def expectedPageTitleError = if (langToggle == Language.welsh) "Error: " + expectedPageTitle else "Error: " + expectedPageTitle
+  def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
 
   def pageContent: String = id("main-content").webElement.getText
 

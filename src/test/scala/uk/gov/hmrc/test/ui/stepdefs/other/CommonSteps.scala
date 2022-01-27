@@ -15,7 +15,7 @@ class CommonSteps extends Steps with DriverActions {
   }
 
   And("""^The user begins their (personal|business) journey (and has|without) card on file$""") { (accType: String, card: String) =>
-    ScenarioVariables.personalOrBusiness = accType
+    ScenarioContext.set("personalOrBusiness", accType)
     go to (AuthWizardPage.url)
     AuthWizardPage.enterRedirectUrl(ViewChangeAccountPage.url)
     //TODO Sort out test user creds / stubs
@@ -39,7 +39,7 @@ class CommonSteps extends Steps with DriverActions {
   }
 
   Given("""^The user begins their (personal|business) journey with (.*)$""") { (accType: String, page: String) =>
-    ScenarioVariables.personalOrBusiness = accType
+    ScenarioContext.set("personalOrBusiness", accType)
     go to (AuthWizardPage.url)
     page match {
       //Test purposes to go to any page with this function
@@ -69,10 +69,10 @@ class CommonSteps extends Steps with DriverActions {
         RefundAmountPage.assertContent()
       case "AccountOnFilePage" =>
         AccountOnFilePage.shouldBeLoaded()
-//        AccountOnFilePage.assertContent()
+        AccountOnFilePage.assertContent()
       case "CheckDetailsPage" =>
         CheckDetailsPage.shouldBeLoaded()
-//        CheckDetailsPage.assertContent()
+        CheckDetailsPage.assertContent()
       case "AuthenticationPage" =>
         AuthenticationPage.shouldBeLoaded()
       case "RequestReceivedPage" =>
@@ -81,8 +81,8 @@ class CommonSteps extends Steps with DriverActions {
         RequestReceivedPage.setReferenceNumber()
         RequestReceivedPage.assertContent()
       case "EnterBankDetailsPage" =>
-//        EnterBankDetailsPage.shouldBeLoaded()
-//        EnterBankDetailsPage.assertContent()
+        EnterBankDetailsPage.shouldBeLoaded()
+        EnterBankDetailsPage.assertContent()
       case "TypeOfAccountPage" =>
         TypeOfAccountPage.shouldBeLoaded()
         TypeOfAccountPage.assertContent()

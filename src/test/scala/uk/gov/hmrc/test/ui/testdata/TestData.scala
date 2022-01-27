@@ -63,5 +63,6 @@ object TestData {
 
 
   val nino2 = "AC111111A"
+  val maxRefundAmount2 = "987.65"
 
 }

@@ -2,7 +2,8 @@ package uk.gov.hmrc.test.ui.pages.content
 
 import uk.gov.hmrc.test.ui.stepdefs.other.ScenarioVariables
 import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccountBusiness, validAccountPersonal}
-import uk.gov.hmrc.test.ui.testdata.{BankDetails, TestData}
+import uk.gov.hmrc.test.ui.testdata.TestData.maxRefundAmount
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
 
 object WelshContent {
 
@@ -16,7 +17,7 @@ object WelshContent {
 
   def checkDetailsPageText(): String = {
     //TODO - Link this to test data values
-    val accType: String = ScenarioVariables.personalOrBusiness
+    val accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = TestData.maxRefundAmount
     var bankDetails: BankDetails = null
 
@@ -80,7 +81,11 @@ object WelshContent {
 
   def refundAmountPageText(): String = {
     //TODO - Link this to test data values
-    val amount: String = TestData.maxRefundAmount
+    def amount: String = if(ScenarioContext.get[String]("nino") == TestData.nino)
+      TestData.maxRefundAmount
+    else
+      TestData.maxRefundAmount2
+
     s"""Faint o ad-daliad yr hoffech ei gael?
        |Ad-daliad o’r swm llawn, £$amount
        |Ad-daliad am swm gwahanol

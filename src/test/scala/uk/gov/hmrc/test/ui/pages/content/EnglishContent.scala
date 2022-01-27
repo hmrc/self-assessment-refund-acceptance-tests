@@ -2,7 +2,7 @@ package uk.gov.hmrc.test.ui.pages.content
 
 import uk.gov.hmrc.test.ui.stepdefs.other.ScenarioVariables
 import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccountBusiness, validAccountPersonal}
-import uk.gov.hmrc.test.ui.testdata.{BankDetails, TestData}
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
 
 object EnglishContent {
 
@@ -16,7 +16,7 @@ object EnglishContent {
 
   def checkDetailsPageText(): String = {
     //TODO - Link this to test data values
-    val accType: String = ScenarioVariables.personalOrBusiness
+    val accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = TestData.maxRefundAmount
     var bankDetails: BankDetails = null
 
