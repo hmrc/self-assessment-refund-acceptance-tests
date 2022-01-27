@@ -20,7 +20,7 @@ object RefundAmountPage extends BasePage {
     else "How much do you want to be refunded?"
   }
 
-  def expectedPageTitleError: String = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
+  def expectedPageTitleError = if (langToggle == Language.welsh) "Error: " + expectedPageTitle else "Error: " + expectedPageTitle
 
   def pageContent: String = id("main-content").webElement.getText
 
@@ -92,11 +92,11 @@ object RefundAmountPage extends BasePage {
 
       if (langToggle == Language.welsh) {
         error match {
-          case "enter amount" => errorSummaryAmount.getText should be("Gwall:\nNodwch y swm i’w ad-dalu")
-          case "choice required" => errorSummaryChoice.getText should be("Gwall:\nDewiswch faint o ad-daliad yr hoffech ei gael")
-          case "invalid amount" => errorSummaryAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23")
-          case "amount of 0" => errorSummaryAmount.getText should be(s"Gwall:\nRhaid i’r swm fod yn un geiniog neu’n fwy")
-          case "exceeded maximum amount" => errorSummaryAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
+          case "enter amount" => errorMessageAmount.getText should be("Gwall:\nNodwch y swm i’w ad-dalu")
+          case "choice required" => errorMessageChoice.getText should be("Gwall:\nDewiswch faint o ad-daliad yr hoffech ei gael")
+          case "invalid amount" => errorMessageAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23")
+          case "amount of 0" => errorMessageAmount.getText should be(s"Gwall:\nRhaid i’r swm fod yn un geiniog neu’n fwy")
+          case "exceeded maximum amount" => errorMessageAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
         }
       }
       else {
