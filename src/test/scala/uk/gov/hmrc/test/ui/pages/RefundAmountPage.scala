@@ -22,69 +22,73 @@ object RefundAmountPage extends BasePage {
 
   def expectedPageTitleError: String = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
 
-    def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement.getText
 
-    def refundFullRadio: WebElement = id("choice-full").webElement
+  def refundFullRadio: WebElement = id("choice-full").webElement
 
-    def refundDiffRadio: WebElement = id("choice-different").webElement
+  def refundDiffRadio: WebElement = id("choice-different").webElement
 
-    def enterAmountInput: WebElement = id("different-amount").webElement
+  def enterAmountInput: WebElement = id("different-amount").webElement
 
-    def errorSummaryTitle: WebElement = id("error-summary-title").webElement
+  def errorSummaryTitle: WebElement = id("error-summary-title").webElement
 
-    def errorSummaryAmount: WebElement = id("error-amount").webElement
+  def errorSummaryAmount: WebElement = id("error-amount").webElement
 
-    def errorSummaryChoice: WebElement = id("error-choice").webElement
+  def errorSummaryChoice: WebElement = id("error-choice").webElement
 
-    def errorMessageChoice: WebElement = id("").webElement
+  def errorMessageChoice: WebElement = id("").webElement
 
-    def errorMessageAmount: WebElement = id("different-amount-error").webElement
+  def errorMessageAmount: WebElement = id("different-amount-error").webElement
 
-    def assertContent(): Assertion = {
-      if (langToggle == Language.welsh) pageContent should be(WelshContent.refundAmountPageText())
-      else pageContent should be(EnglishContent.refundAmountPageText())
+  def assertContent(): Assertion = {
+    if (langToggle == Language.welsh) pageContent should be(WelshContent.refundAmountPageText())
+    else pageContent should be(EnglishContent.refundAmountPageText())
+  }
+
+  def selectRadio(radio: String, amount: String) {
+    radio match {
+      case "full" => click on refundFullRadio
+      case "other" => click on refundDiffRadio
+        enterAmount(amount)
     }
+  }
 
-    def selectRadio(radio: String, amount: String) {
-      radio match {
-        case "full" => click on refundFullRadio
-        case "other" => click on refundDiffRadio
-          enterAmount(amount)
+  def selectOtherAmountRadio() {
+    click on refundDiffRadio
+  }
+
+  def enterAmount(amount: String) {
+    enterAmountInput.sendKeys(amount)
+  }
+
+  def errorSummaryValidation(error: String) {
+    val amount: String = TestData.maxRefundAmount
+
+    assertCurrentPageTitleError()
+    if (langToggle == Language.welsh) {
+      errorSummaryTitle.getText should be("Mae problem wedi codi")
+      error match {
+        case "enter amount" => errorSummaryAmount.getText should be("Nodwch y swm i’w ad-dalu")
+        case "choice required" => errorSummaryChoice.getText should be("Dewiswch faint o ad-daliad yr hoffech ei gael")
+        case "invalid amount" => errorSummaryAmount.getText should be(s"Mae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23")
+        case "amount of 0" => errorSummaryAmount.getText should be(s"Rhaid i’r swm fod yn un geiniog neu’n fwy")
+        case "exceeded maximum amount" => errorSummaryAmount.getText should be(s"Mae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
       }
     }
-
-    def enterAmount(amount: String) {
-      enterAmountInput.sendKeys(amount)
-    }
-
-    def errorSummaryValidation(error: String) {
-      val amount: String = TestData.maxRefundAmount
-
-      assertCurrentPageTitleError()
-      if (langToggle == Language.welsh) {
-        errorSummaryTitle.getText should be("Mae problem wedi codi")
-        error match {
-          case "enter amount" => errorSummaryAmount.getText should be("Nodwch y swm i’w ad-dalu")
-          case "choice required" => errorSummaryChoice.getText should be("Dewiswch faint o ad-daliad yr hoffech ei gael")
-          case "invalid amount" => errorSummaryAmount.getText should be(s"Mae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23")
-          case "amount of 0" => errorSummaryAmount.getText should be(s"Rhaid i’r swm fod yn un geiniog neu’n fwy")
-          case "exceeded maximum amount" => errorSummaryAmount.getText should be(s"Mae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
-        }
-      }
-      else {
-        errorSummaryTitle.getText should be("There is a problem")
-        error match {
-          case "enter amount" => errorSummaryAmount.getText should be("Enter an amount to be refunded")
-          case "choice required" => errorSummaryChoice.getText should be("Select how much you want to be refunded")
-          case "invalid amount" => errorSummaryAmount.getText should be(s"Amount to be refunded must be an amount of money, like 11.50 or 12")
-          case "amount of 0" => errorSummaryAmount.getText should be(s"Amount must be one pence or more")
-          case "exceeded maximum amount" => errorSummaryAmount.getText should be(s"Amount to be refunded must be £$amount or less")
-        }
+    else {
+      errorSummaryTitle.getText should be("There is a problem")
+      error match {
+        case "enter amount" => errorSummaryAmount.getText should be("Enter an amount to be refunded")
+        case "choice required" => errorSummaryChoice.getText should be("Select how much you want to be refunded")
+        case "invalid amount" => errorSummaryAmount.getText should be(s"Amount to be refunded must be an amount of money, like 11.50 or 12")
+        case "amount of 0" => errorSummaryAmount.getText should be(s"Amount must be one pence or more")
+        case "exceeded maximum amount" => errorSummaryAmount.getText should be(s"Amount to be refunded must be £$amount or less")
       }
     }
+  }
 
-    def errorMessageValidation(error: String) {
-      val amount: String = TestData.maxRefundAmount
+  def errorMessageValidation(error: String) {
+    val amount: String = TestData.maxRefundAmount
 
       if (langToggle == Language.welsh) {
         error match {

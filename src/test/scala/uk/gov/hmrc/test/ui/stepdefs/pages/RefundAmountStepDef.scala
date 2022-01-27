@@ -16,10 +16,15 @@ class RefundAmountStepDef extends Steps with DriverActions {
       case "N/A" =>
         RefundAmountPage.selectRadio(radio, amount)
       case _ =>
-//        TestData.refundAmount = amount
+        //        TestData.refundAmount = amount
         RefundAmountPage.selectRadio(radio, amount)
     }
   }
+
+  And("""^the user clicks other amount$""") { () =>
+    RefundAmountPage.selectOtherAmountRadio()
+  }
+
 
   And("""^the user enter an amount of (.*)$""") { amount: String =>
     RefundAmountPage.enterAmount(amount)
@@ -30,7 +35,7 @@ class RefundAmountStepDef extends Steps with DriverActions {
     error match {
       case "choice required" => RefundAmountPage.errorSummaryValidation(error)
       case _ => RefundAmountPage.errorSummaryValidation(error)
-                RefundAmountPage.errorMessageValidation(error)
+        RefundAmountPage.errorMessageValidation(error)
     }
 
 
