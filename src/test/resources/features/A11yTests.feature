@@ -1,6 +1,6 @@
 Feature: A11y tests (Temp)
 
-  @a11y @zap
+  @a11y
   Scenario: A11y - Refund Journey
     Given The user starts a personal journey with Nino AA111111A
     When the User toggles on English language
@@ -14,7 +14,7 @@ Feature: A11y tests (Temp)
     And the user click continue
     And the user click continue
 
-  @a11y @zap
+  @a11y
   Scenario: A11y - History Pages
     Given The user begins their personal journey with RefundHistoryPage
     And the user is on the RefundHistoryPage

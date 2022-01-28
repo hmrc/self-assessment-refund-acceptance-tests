@@ -60,7 +60,7 @@ object EnglishContent {
 
   def enterBankDetailsPageText(): String = {
     s"""Enter the bank or building society account details
-       |We'll only use these details to pay your refund.
+       |We’ll only use these details to pay your refund.
        |Name on the account
        |Sort code
        |Must be 6 digits long
