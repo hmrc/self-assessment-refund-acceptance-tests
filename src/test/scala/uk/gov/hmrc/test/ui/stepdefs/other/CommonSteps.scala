@@ -52,7 +52,6 @@ class CommonSteps extends Steps with DriverActions {
       case "RequestReceivedPage" => AuthWizardPage.enterRedirectUrl(RequestReceivedPage.url)
       case "EnterBankDetailsPage" => AuthWizardPage.enterRedirectUrl(EnterBankDetailsPage.url)
       case "TypeOfAccountPage" => AuthWizardPage.enterRedirectUrl(TypeOfAccountPage.url)
-      case "ViewChangeAccountPage" => AuthWizardPage.enterRedirectUrl(ViewChangeAccountPage.url)
       case "RefundHistoryPage" => AuthWizardPage.enterRedirectUrl(RefundsHistoryPage.urlOrigin)
       case "StatusCompletedPage" => AuthWizardPage.enterRedirectUrl(StatusCompletedPage.url)
       case "StatusPendingPage" => AuthWizardPage.enterRedirectUrl(StatusPendingPage.url)
@@ -88,9 +87,6 @@ class CommonSteps extends Steps with DriverActions {
       case "TypeOfAccountPage" =>
         TypeOfAccountPage.shouldBeLoaded()
         TypeOfAccountPage.assertContent()
-      case "ViewChangeAccountPage" =>
-        ViewChangeAccountPage.shouldBeLoaded()
-        ViewChangeAccountPage.refundCreditAmount()
       case "RefundHistoryPage" =>
         RefundsHistoryPage.shouldBeLoaded()
         RefundsHistoryPage.assertContent("In Progress")

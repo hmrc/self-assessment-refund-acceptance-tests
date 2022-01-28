@@ -70,7 +70,6 @@ object RequestReceivedPage extends BasePage {
 
   def clickSelfAssessmentTaxAccountLinkText(): Unit = {
     click on linkText(selfAssessmentTaxAccountLinkText)
-    ViewChangeAccountPage.shouldBeLoaded()
   }
 
   def clickTellUsLinkText(): Unit = {
