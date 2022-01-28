@@ -1,3 +1,19 @@
+/*
+ * Copyright 2022 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package uk.gov.hmrc.test.ui.stepdefs.other
 
 import uk.gov.hmrc.test.ui.pages._
@@ -15,7 +31,7 @@ class CommonSteps extends Steps with DriverActions {
   }
 
   And("""^The user begins their (personal|business) journey (and has|without) card on file$""") { (accType: String, card: String) =>
-    ScenarioVariables.personalOrBusiness = accType
+    ScenarioContext.set("personalOrBusiness", accType)
     go to (AuthWizardPage.url)
     AuthWizardPage.enterRedirectUrl(ViewChangeAccountPage.url)
     //TODO Sort out test user creds / stubs
@@ -39,7 +55,7 @@ class CommonSteps extends Steps with DriverActions {
   }
 
   Given("""^The user begins their (personal|business) journey with (.*)$""") { (accType: String, page: String) =>
-    ScenarioVariables.personalOrBusiness = accType
+    ScenarioContext.set("personalOrBusiness", accType)
     go to (AuthWizardPage.url)
     page match {
       //Test purposes to go to any page with this function
@@ -66,13 +82,13 @@ class CommonSteps extends Steps with DriverActions {
     page match {
       case "RefundAmountPage" =>
         RefundAmountPage.shouldBeLoaded()
-//        RefundAmountPage.assertContent()
+        RefundAmountPage.assertContent()
       case "AccountOnFilePage" =>
         AccountOnFilePage.shouldBeLoaded()
-//        AccountOnFilePage.assertContent()
+        AccountOnFilePage.assertContent()
       case "CheckDetailsPage" =>
         CheckDetailsPage.shouldBeLoaded()
-//        CheckDetailsPage.assertContent()
+        CheckDetailsPage.assertContent()
       case "AuthenticationPage" =>
         AuthenticationPage.shouldBeLoaded()
       case "RequestReceivedPage" =>
@@ -81,8 +97,8 @@ class CommonSteps extends Steps with DriverActions {
         RequestReceivedPage.setReferenceNumber()
         RequestReceivedPage.assertContent()
       case "EnterBankDetailsPage" =>
-//        EnterBankDetailsPage.shouldBeLoaded()
-//        EnterBankDetailsPage.assertContent()
+        EnterBankDetailsPage.shouldBeLoaded()
+        EnterBankDetailsPage.assertContent()
       case "TypeOfAccountPage" =>
         TypeOfAccountPage.shouldBeLoaded()
         TypeOfAccountPage.assertContent()

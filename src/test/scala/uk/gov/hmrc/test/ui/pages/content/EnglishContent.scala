@@ -1,8 +1,23 @@
+/*
+ * Copyright 2022 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package uk.gov.hmrc.test.ui.pages.content
 
-import uk.gov.hmrc.test.ui.stepdefs.other.ScenarioVariables
 import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccountBusiness, validAccountPersonal}
-import uk.gov.hmrc.test.ui.testdata.{BankDetails, TestData}
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
 
 object EnglishContent {
 
@@ -16,7 +31,7 @@ object EnglishContent {
 
   def checkDetailsPageText(): String = {
     //TODO - Link this to test data values
-    val accType: String = ScenarioVariables.personalOrBusiness
+    val accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = TestData.maxRefundAmount
     var bankDetails: BankDetails = null
 
@@ -45,7 +60,7 @@ object EnglishContent {
 
   def enterBankDetailsPageText(): String = {
     s"""Enter the bank or building society account details
-       |We'll only use these details to pay your refund.
+       |We’ll only use these details to pay your refund.
        |Name on the account
        |Sort code
        |Must be 6 digits long
@@ -170,7 +185,7 @@ object EnglishContent {
     //TODO Test Data object
     val rejectedAmountValue: String = TestData.rejectedAmount1
     s"""Your refund of £$rejectedAmountValue has been rejected
-       |We cannot pay your refund of £$rejectedAmountValue because your refund request has been rejected.
+       |We cannot pay your refund of £$rejectedAmountValue because your request has been rejected.
        |Back to tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }

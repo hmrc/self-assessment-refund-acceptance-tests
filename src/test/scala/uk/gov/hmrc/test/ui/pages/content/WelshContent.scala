@@ -1,8 +1,23 @@
+/*
+ * Copyright 2022 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package uk.gov.hmrc.test.ui.pages.content
 
-import uk.gov.hmrc.test.ui.stepdefs.other.ScenarioVariables
 import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccountBusiness, validAccountPersonal}
-import uk.gov.hmrc.test.ui.testdata.{BankDetails, TestData}
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
 
 object WelshContent {
 
@@ -16,7 +31,7 @@ object WelshContent {
 
   def checkDetailsPageText(): String = {
     //TODO - Link this to test data values
-    val accType: String = ScenarioVariables.personalOrBusiness
+    val accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = TestData.maxRefundAmount
     var bankDetails: BankDetails = null
 
@@ -80,12 +95,14 @@ object WelshContent {
 
   def refundAmountPageText(): String = {
     //TODO - Link this to test data values
-    val amount: String = TestData.maxRefundAmount
+    def amount: String = if(ScenarioContext.get[String]("nino") == TestData.nino)
+      TestData.maxRefundAmount
+    else
+      TestData.maxRefundAmount2
+
     s"""Faint o ad-daliad yr hoffech ei gael?
-       |Ad-daliad o’r swm llawn
+       |Ad-daliad o’r swm llawn, £$amount
        |Ad-daliad am swm gwahanol
-       |Nodwch swm
-       |Nodwch swm hyd at £$amount
        |Yn eich blaen
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
@@ -121,16 +138,16 @@ object WelshContent {
 
     //TODO Get Welsh Translation!
     //TODO Should th > 6 Years date show here - Frontend Validation?
-    s"""Your refunds history
-       |In progress
-       |Completed
-       |Received on Completed on Amount claimed
-       |$completedReceived1 $completedCompletedOn1 £$completedAmount1 Completed
-       |$completedReceived2 $completedCompletedOn2 £$completedAmount2 Completed
-       |$rejectedReceived1 $rejectedCompletedOn1 £$rejectedAmount1 Rejected
-       |$completedReceived3 $completedCompletedOn3 £$completedAmount3 Completed
-       |13 June 2015 16 June 2015 £80.00 Completed
-       |Is this page not working properly? (opens in new tab)""".stripMargin
+    s"""Hanes eich ad-daliadau
+       |Ar waith
+       |Wedi’i gwblhau
+       |Cafwyd ar Wedi’i gwblhau ar Swm a hawliwyd
+       |$completedReceived1 $completedCompletedOn1 £$completedAmount1 Wedi’i gwblhau
+       |$completedReceived2 $completedCompletedOn2 £$completedAmount2 Wedi’i gwblhau
+       |$rejectedReceived1 $rejectedCompletedOn1 £$rejectedAmount1 Wedi’i wrthod
+       |$completedReceived3 $completedCompletedOn3 £$completedAmount3 Wedi’i gwblhau
+       |13 Mehefin 2015 16 Mehefin 2015 £80.00 Wedi’i gwblhau
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
   def refundHistoryInProgressPageText(): String = {
@@ -139,13 +156,13 @@ object WelshContent {
     val inProgressAmount1: String = TestData.inProgessAmount1
     val inProgressAmount2: String = TestData.inProgessAmount2
     //TODO Get Welsh Translation!
-    s"""Your refunds history
-       |In progress
-       |Completed
-       |Received on Amount claimed
-       |$inProgressDate1 £$inProgressAmount1 View progress
-       |$inProgressDate2 £$inProgressAmount2 View progress
-       |Is this page not working properly? (opens in new tab)""".stripMargin
+    s"""Hanes eich ad-daliadau
+       |Ar waith
+       |Wedi’i gwblhau
+       |Cafwyd ar Swm a hawliwyd
+       |$inProgressDate1 £$inProgressAmount1 Bwrw golwg dros y cynnydd
+       |$inProgressDate2 £$inProgressAmount2 Bwrw golwg dros y cynnydd
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
   def statusCompletedPageText(): String = {

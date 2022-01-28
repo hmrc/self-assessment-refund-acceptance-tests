@@ -1,7 +1,22 @@
+/*
+ * Copyright 2022 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package uk.gov.hmrc.test.ui.testdata
 
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import uk.gov.hmrc.test.ui.pages.SurveyPage.langToggle
 
 case class TestData (nino: String,
                      totalRefunds: String,
@@ -40,20 +55,20 @@ object TestData {
 //  val dateValue: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
 
   //In Progress Tab
-  val inProgessDate1 = "21 May 2021"
-  val inProgessDate2 = "05 July 2021"
+  def inProgessDate1 = if (langToggle == Language.welsh) "21 Mai 2021" else "21 May 2021"
+  def inProgessDate2 = if (langToggle == Language.welsh) "5 Gorffennaf 2021" else "5 July 2021"
   val inProgessAmount1 = "300.00"
   val inProgessAmount2 = "200.00"
 
   //Completed Tab
-  val receivedOnDate1 = "21 July 2020"
-  val receivedOnDate2 = "01 May 2019"
-  val receivedOnDate3 = "01 April 2019"
-  val receivedOnDate4 = "13 September 2018"
-  val completedOnDate1 = "29 July 2020"
-  val completedOnDate2 = "29 May 2020"
-  val completedOnDate3 = "04 April 2019"
-  val completedOnDate4 = "16 September 2018"
+  def receivedOnDate1 = if (langToggle == Language.welsh) "21 Gorffennaf 2020" else "21 July 2020"
+  def receivedOnDate2 = if (langToggle == Language.welsh) "1 Mai 2019" else "1 May 2019"
+  def receivedOnDate3 = if (langToggle == Language.welsh) "1 Ebrill 2019" else "1 April 2019"
+  def receivedOnDate4 = if (langToggle == Language.welsh) "13 Medi 2018" else "13 September 2018"
+  def completedOnDate1 = if (langToggle == Language.welsh) "29 Gorffennaf 2020" else "29 July 2020"
+  def completedOnDate2 = if (langToggle == Language.welsh) "29 Mai 2020" else "29 May 2020"
+  def completedOnDate3 = if (langToggle == Language.welsh) "4 Ebrill 2019" else "4 April 2019"
+  def completedOnDate4 = if (langToggle == Language.welsh) "16 Medi 2018" else "16 September 2018"
   val completedAmount1 = "120.00"
   val completedAmount2 = "40.00"
   val rejectedAmount1 = "40.00"
@@ -61,5 +76,6 @@ object TestData {
 
 
   val nino2 = "AC111111A"
+  val maxRefundAmount2 = "987.65"
 
 }
