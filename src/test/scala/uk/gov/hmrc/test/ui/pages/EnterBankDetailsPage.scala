@@ -1,11 +1,24 @@
+/*
+ * Copyright 2022 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.AccountOnFilePage.{be, langToggle, pageContent}
-import uk.gov.hmrc.test.ui.pages.RefundAmountPage.langToggle
 import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
-import uk.gov.hmrc.test.ui.stepdefs.other.ScenarioVariables
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
 import uk.gov.hmrc.test.ui.testdata.BankDetails._
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
@@ -15,12 +28,14 @@ object EnterBankDetailsPage extends BasePage {
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/enter-bank-details"
 
   def expectedPageTitle = {
-    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    //TODO Add apostrophe to neur
+    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neur cyfrif cymdeithas adeiladu - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else "Enter the bank or building society account details - Request a Self Assessment refund - GOV.UK"
   }
 
   def expectedPageHeader = {
-    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu"
+    //TODO Add apostrophe to neur
+    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neur cyfrif cymdeithas adeiladu"
     else "Enter the bank or building society account details"
   }
 
@@ -28,9 +43,9 @@ object EnterBankDetailsPage extends BasePage {
 
   def accType: String = ScenarioContext.get("personalOrBusiness")
 
-  def personalAccountName: WebElement = id("companyName").webElement
+  def personalAccountName: WebElement = id("accountName").webElement
 
-  def businessAccountName: WebElement = id("companyName").webElement
+  def businessAccountName: WebElement = id("accountName").webElement
 
   def sortCode: WebElement = id("sortCode").webElement
 
@@ -48,9 +63,11 @@ object EnterBankDetailsPage extends BasePage {
 
   def errorSummaryTitle: WebElement = id("error-summary-title").webElement
 
-  def errorSummary(number: String): WebElement = id("TBC_" + number).webElement
+  def errorSummary(number: String): WebElement = cssSelector("div > ul > li:nth-child("+number+") > a").webElement
 
-  def errorMessage(number: String): WebElement = id("TBC_" + number).webElement
+  def errorMessageAccountName: WebElement = cssSelector("div:nth-child(2) > span").webElement
+  def errorMessageSortCode: WebElement = cssSelector("div:nth-child(3) > span").webElement
+  def errorMessageAccountNumber: WebElement = cssSelector("div:nth-child(4) > span").webElement
 
   override def assertCurrentUrl(): Assertion = {
     currentUrl should fullyMatch regex s"""$url/$accType/[a-z0-9]{24}""".r
@@ -104,20 +121,22 @@ object EnterBankDetailsPage extends BasePage {
     if (langToggle == Language.welsh) {
       errorSummaryTitle.getText should be("Mae problem wedi codi")
       errorSummary("1").getText should be("Nodwch yr enw sydd ar y cyfrif")
-      errorSummary("2").getText should be("Nodwch rif cyfrif")
-      errorSummary("3").getText should be("Nodwch god didoli")
-      errorMessage("1").getText should be("Gwall:\nNodwch yr enw sydd ar y cyfrif")
-      errorMessage("2").getText should be("Gwall:\nNodwch rif cyfrif")
-      errorMessage("3").getText should be("Gwall:\nNodwch god didoli")
+      errorSummary("2").getText should be("Nodwch god didoli")
+      errorSummary("3").getText should be("Nodwch rif cyfrif")
+      errorMessageAccountName.getText should be("Gwall:\nNodwch yr enw sydd ar y cyfrif")
+      errorMessageSortCode.getText should be("Gwall:\nNodwch god didoli")
+      errorMessageAccountNumber.getText should be("Gwall:\nNodwch rif cyfrif")
+
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
       errorSummary("1").getText should be("Enter the name on the account")
-      errorSummary("2").getText should be("Enter an account number")
-      errorSummary("3").getText should be("Enter a sort code")
-      errorMessage("1").getText should be("Error:\nEnter the name on the account")
-      errorMessage("2").getText should be("Error:\nEnter an account number")
-      errorMessage("3").getText should be("Error:\nEnter a sort code")
+      errorSummary("2").getText should be("Enter a sort code")
+      errorSummary("3").getText should be("Enter an account number")
+      errorMessageAccountName.getText should be("Error:\nEnter the name on the account")
+      errorMessageSortCode.getText should be("Error:\nEnter a sort code")
+      errorMessageAccountNumber.getText should be("Error:\nEnter an account number")
+
     }
   }
 
@@ -134,12 +153,12 @@ object EnterBankDetailsPage extends BasePage {
     if (langToggle == Language.welsh) {
       errorSummaryTitle.getText should be("Mae problem wedi codi")
       errorSummary("1").getText should be("Nodwch god didoli dilys, megis 309430")
-      errorMessage("1").getText should be("Gwall:\nNodwch god didoli dilys, megis 309430")
+      errorMessageSortCode.getText should be("Gwall:\nNodwch god didoli dilys, megis 309430")
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
       errorSummary("1").getText should be("Enter a valid sort code like 309430")
-      errorMessage("1").getText should be("Error:\nEnter a valid sort code like 309430")
+      errorMessageSortCode.getText should be("Error:\nEnter a valid sort code like 309430")
     }
   }
 
@@ -156,12 +175,12 @@ object EnterBankDetailsPage extends BasePage {
     if (langToggle == Language.welsh) {
       errorSummaryTitle.getText should be("Mae problem wedi codi")
       errorSummary("1").getText should be("Nodwch rif cyfrif dilys, megis 00733445")
-      errorMessage("1").getText should be("Gwall:\nNodwch rif cyfrif dilys, megis 00733445")
+      errorMessageAccountNumber.getText should be("Gwall:\nNodwch rif cyfrif dilys, megis 00733445")
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
       errorSummary("1").getText should be("Enter a valid account number like 00733445")
-      errorMessage("1").getText should be("Error:\nEnter a valid account number like 00733445")
+      errorMessageAccountNumber.getText should be("Error:\nEnter a valid account number like 00733445")
 
     }
   }
@@ -179,12 +198,12 @@ object EnterBankDetailsPage extends BasePage {
       if (langToggle == Language.welsh) {
         errorSummaryTitle.getText should be("Mae problem wedi codi")
         errorSummary("1").getText should be("Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
-        errorMessage("1").getText should be("Gwall:\nMae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
+        errorMessageAccountNumber.getText should be("Gwall:\nMae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
       }
       else {
         errorSummaryTitle.getText should be("There is a problem")
         errorSummary("1").getText should be("Account number must be between 6 and 8 digits")
-        errorMessage("1").getText should be("Error:\nAccount number must be between 6 and 8 digits")
+        errorMessageAccountNumber.getText should be("Error:\nAccount number must be between 6 and 8 digits")
       }
     }
 

@@ -1,6 +1,6 @@
-Feature: Happy Path
+Feature: Happy Path - Welsh
 
-  @a11y
+  @wip
   Scenario Outline: Welsh - V&C with card on file
     Given The user starts a <type> journey with Nino AC111111A
     When the User toggles on Welsh language
@@ -26,7 +26,7 @@ Feature: Happy Path
 #      | business | full   | N/A   |
 #      | business | other  | 50.00    |
 
-
+  @wip
   Scenario Outline: Welsh - V&C with no card on file, enter bank details
     Given The user starts a <type> journey with Nino AA111111A
     When the User toggles on Welsh language
@@ -51,7 +51,7 @@ Feature: Happy Path
 #      | business | other  | 50.00    |
 
 
-  @a11y
+
   Scenario: Welsh - Refund History
     Given The user begins their personal journey with RefundHistoryPage
     When the User toggles on Welsh language
