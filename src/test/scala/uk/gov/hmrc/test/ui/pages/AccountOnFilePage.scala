@@ -24,8 +24,6 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 object AccountOnFilePage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/we-need-to-get-your-bank-details"
-  //TODO - Link this to test data values
-  val amount: String = TestData.refundAmount
 
   def expectedPageTitle = {
     if (langToggle == Language.welsh) "Mae angen i ni gael eich manylion banc - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"

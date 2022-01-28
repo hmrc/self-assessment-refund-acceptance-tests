@@ -27,14 +27,7 @@ class RefundAmountStepDef extends Steps with DriverActions {
   }
 
   And("""^the user click on the (.*) amount (.*)$""") { (radio: String, amount: String) =>
-    //TODO Other amount journey to be determined
-    amount match {
-      case "N/A" =>
         RefundAmountPage.selectRadio(radio, amount)
-      case _ =>
-        //        TestData.refundAmount = amount
-        RefundAmountPage.selectRadio(radio, amount)
-    }
   }
 
   And("""^the user clicks other amount$""") { () =>

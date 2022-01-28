@@ -30,7 +30,6 @@ object EnglishContent {
   }
 
   def checkDetailsPageText(): String = {
-    //TODO - Link this to test data values
     val accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = TestData.maxRefundAmount
     var bankDetails: BankDetails = null
@@ -73,7 +72,6 @@ object EnglishContent {
   }
 
   def requestReceivedPageText(): String = {
-    //TODO - Link this to test data values
     val reference: String = TestData.referenceNumber
     val refundType: String = TestData.refundType
     val date: String = TestData.dateValue
@@ -96,7 +94,6 @@ object EnglishContent {
   }
 
   def refundAmountPageText(): String = {
-    //TODO - Link this to test data values
     val amount: String = TestData.maxRefundAmount
     s"""How much do you want to be refunded?
        |Refund the full amount, £$amount
@@ -162,7 +159,6 @@ object EnglishContent {
   }
 
   def statusCompletedPageText(): String = {
-    //TODO Test Data object
     val completedAmountValue: String = TestData.completedAmount1
     s"""Your refund of £$completedAmountValue is complete
        |We will send £$completedAmountValue to the bank details you provided or the card you used to pay your last bill.
@@ -172,7 +168,6 @@ object EnglishContent {
   }
 
   def statusPendingPageText(): String = {
-    //TODO Test Data object
     val pendingAmountValue: String = TestData.inProgessAmount1
     s"""Your refund of £$pendingAmountValue is in progress
        |We have received your refund request. HMRC aims to issue refunds within 2 weeks, however there are security measures in place which may cause a delay.
@@ -182,7 +177,6 @@ object EnglishContent {
   }
 
   def statusRejectedPageText(): String = {
-    //TODO Test Data object
     val rejectedAmountValue: String = TestData.rejectedAmount1
     s"""Your refund of £$rejectedAmountValue has been rejected
        |We cannot pay your refund of £$rejectedAmountValue because your request has been rejected.
