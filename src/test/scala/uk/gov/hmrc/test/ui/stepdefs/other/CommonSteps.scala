@@ -30,20 +30,6 @@ class CommonSteps extends Steps with DriverActions {
     clickBack()
   }
 
-  And("""^The user begins their (personal|business) journey (and has|without) card on file$""") { (accType: String, card: String) =>
-    ScenarioContext.set("personalOrBusiness", accType)
-    go to (AuthWizardPage.url)
-    AuthWizardPage.enterRedirectUrl(ViewChangeAccountPage.url)
-    //TODO Sort out test user creds / stubs
-    card match {
-//      case "and has" => AuthWizardPage.enterValidNinoWithCardOnFile()
-      case "and has" => AuthWizardPage.enterValidNino()
-//      case "without" => AuthWizardPage.enterValidNinoWithoutCardOnFile()
-      case "without" => AuthWizardPage.enterValidNino()
-    }
-    AuthWizardPage.clickSubmit()
-  }
-
   When("""^the User toggles on (Welsh|English) language$""") { option: String =>
     if (option == "Welsh") {
       HelperFunctions.toggleLangOn(Language.welsh)

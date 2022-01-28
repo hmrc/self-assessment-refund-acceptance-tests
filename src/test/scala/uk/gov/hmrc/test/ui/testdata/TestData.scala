@@ -18,6 +18,9 @@ package uk.gov.hmrc.test.ui.testdata
 
 import uk.gov.hmrc.test.ui.pages.SurveyPage.langToggle
 
+//import java.time.LocalDate
+//import java.time.format.DateTimeFormatter
+
 case class TestData (nino: String,
                      totalRefunds: String,
                      maxRefundAmount: String,
@@ -52,7 +55,7 @@ object TestData {
   val amountValue = "545.80"
   //TODO placeholder as code for the page currently pulls today's date
   val dateValue: String = "TODO-DATE"
-//  val dateValue: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+//  val dateValue: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
 
   //In Progress Tab
   def inProgessDate1 = if (langToggle == Language.welsh) "21 Mai 2021" else "21 May 2021"

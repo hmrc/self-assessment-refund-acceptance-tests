@@ -30,7 +30,6 @@ object WelshContent {
   }
 
   def checkDetailsPageText(): String = {
-    //TODO - Link this to test data values
     val accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = TestData.maxRefundAmount
     var bankDetails: BankDetails = null
@@ -71,7 +70,6 @@ object WelshContent {
   }
 
   def requestReceivedPageText(): String = {
-    //TODO - Link this to test data values
     val reference: String = TestData.referenceNumber
     val refundType: String = TestData.refundType
     val date: String = TestData.dateValue
@@ -94,7 +92,6 @@ object WelshContent {
   }
 
   def refundAmountPageText(): String = {
-    //TODO - Link this to test data values
     def amount: String = if(ScenarioContext.get[String]("nino") == TestData.nino)
       TestData.maxRefundAmount
     else
@@ -136,7 +133,6 @@ object WelshContent {
     val rejectedAmount1: String = TestData.rejectedAmount1
     val completedAmount3: String = TestData.completedAmount3
 
-    //TODO Get Welsh Translation!
     //TODO Should th > 6 Years date show here - Frontend Validation?
     s"""Hanes eich ad-daliadau
        |Ar waith
@@ -155,7 +151,6 @@ object WelshContent {
     val inProgressDate2: String = TestData.inProgessDate2
     val inProgressAmount1: String = TestData.inProgessAmount1
     val inProgressAmount2: String = TestData.inProgessAmount2
-    //TODO Get Welsh Translation!
     s"""Hanes eich ad-daliadau
        |Ar waith
        |Wedi’i gwblhau
@@ -166,7 +161,6 @@ object WelshContent {
   }
 
   def statusCompletedPageText(): String = {
-    //TODO Test Data object
     val completedAmountValue: String = TestData.completedAmount1
     s"""Mae’ch ad-daliad o £$completedAmountValue wedi’i gwblhau
        |Byddwn yn anfon eich ad-daliad i’r cyfrif banc a nodwyd gennych neu i’r cerdyn a ddefnyddiwyd gennych i dalu’ch bil diwethaf.
@@ -176,7 +170,6 @@ object WelshContent {
   }
 
   def statusPendingPageText(): String = {
-    //TODO Test Data object
     val pendingAmountValue: String = TestData.inProgessAmount1
     s"""Mae’ch ad-daliad o £$pendingAmountValue ar y gweill
        |Mae’ch cais am ad-daliad wedi dod i law. Bwriad CThEM yw anfon ad-daliadau cyn pen pythefnos, ond mae mesurau diogelwch ar waith a allai achosi oedi.
@@ -186,7 +179,6 @@ object WelshContent {
   }
 
   def statusRejectedPageText(): String = {
-    //TODO Test Data object
     val rejectedAmountValue: String = TestData.rejectedAmount1
     s"""Mae’ch ad-daliad o £$rejectedAmountValue wedi’i wrthod
        |Ni allwn ad-dalu’r £$rejectedAmountValue oherwydd bod eich cais am ad-daliad wedi’i wrthod.
