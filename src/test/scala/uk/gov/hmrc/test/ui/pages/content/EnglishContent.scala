@@ -30,7 +30,7 @@ object EnglishContent {
   }
 
   def checkDetailsPageText(): String = {
-    val accType: String = ScenarioContext.get("personalOrBusiness")
+    var accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = TestData.maxRefundAmount
     var bankDetails: BankDetails = null
 
@@ -39,9 +39,12 @@ object EnglishContent {
       case "business" => bankDetails = validAccountBusiness
     }
 
+    accType = accType.capitalize
+
     s"""Check your details
        |Account type
-       |$accType	Changeprevious application number
+       |$accType Change
+       |account type
        |Name on the account
        |Sort code
        |Account number
@@ -49,9 +52,11 @@ object EnglishContent {
        |${bankDetails.accName}
        |${bankDetails.sortcode}
        |${bankDetails.accNumber}
-       |${bankDetails.roll}	Changeprevious application number
+       |${bankDetails.roll} Change
+       |bank details
        |Amount to be repaid
-       |£$amount	Changeprevious application number
+       |£$amount Change
+       |refund amount
        |Confirm your details to complete your refund request.
        |Confirm and continue
        |Is this page not working properly? (opens in new tab)""".stripMargin

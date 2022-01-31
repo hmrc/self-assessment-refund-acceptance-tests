@@ -16,8 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages.content
 
+import uk.gov.hmrc.test.ui.pages.SurveyPage.langToggle
 import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccountBusiness, validAccountPersonal}
-import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext, TestData}
 
 object WelshContent {
 
@@ -30,16 +31,21 @@ object WelshContent {
   }
 
   def checkDetailsPageText(): String = {
-    val accType: String = ScenarioContext.get("personalOrBusiness")
+    var accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = TestData.maxRefundAmount
     var bankDetails: BankDetails = null
 
     accType match {
       case "personal" => bankDetails = validAccountPersonal
+        accType = "Personol"
       case "business" => bankDetails = validAccountBusiness
+        accType = "Busnes"
     }
 
     s"""Gwiriwch eich manylion
+       |Math o Gyfrif
+       |$accType Newid
+       |y math o gyfrif
        |Enw ar y cyfrif
        |Cod didoli
        |Rhif y cyfrif
@@ -47,9 +53,11 @@ object WelshContent {
        |${bankDetails.accName}
        |${bankDetails.sortcode}
        |${bankDetails.accNumber}
-       |${bankDetails.roll} Newidrhif cais blaenorol
+       |${bankDetails.roll} Newid
+       |y manylion banc
        |Swm i’w ad-dalu
-       |£$amount Newidrhif cais blaenorol
+       |£$amount Newid
+       |swm yr ad-daliad
        |Cadarnhewch eich manylion er mwyn cwblhau’ch cais am ad-daliad.
        |Cadarnhau ac yn eich blaen
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
@@ -60,9 +68,9 @@ object WelshContent {
        |Dim ond er mwyn talu’ch ad-daliad y byddwn yn defnyddio’r manylion hyn.
        |Enw ar y cyfrif
        |Cod didoli
-       |Mae’n rhaid iddo fod yn 6 digid
+       |Mae’n rhaid iddo fod yn 6 digid o hyd
        |Rhif y cyfrif
-       |Mae’n rhaid iddo fod rhwng 6 ac 8 digid
+       |Mae’n rhaid iddo fod rhwng 6 ac 8 digid o hyd
        |Rhif rôl y gymdeithas adeiladu (os oes gennych un)
        |Gallwch ddod o hyd iddo ar eich cerdyn, cyfriflen neu baslyfr
        |Yn eich blaen
@@ -92,7 +100,7 @@ object WelshContent {
   }
 
   def refundAmountPageText(): String = {
-    def amount: String = if(ScenarioContext.get[String]("nino") == TestData.nino)
+    def amount: String = if (ScenarioContext.get[String]("nino") == TestData.nino)
       TestData.maxRefundAmount
     else
       TestData.maxRefundAmount2
@@ -105,11 +113,11 @@ object WelshContent {
   }
 
   //Redirects to Payments Survey Service so content assertion not needed.
-    def surveyPageText(): String = {
-      s"""
-         |
-         |""".stripMargin
-    }
+  def surveyPageText(): String = {
+    s"""
+       |
+       |""".stripMargin
+  }
 
   def typeOfAccountPageText(): String = {
     s"""Manylion pa fath o gyfrif yr ydych yn eu rhoi?
