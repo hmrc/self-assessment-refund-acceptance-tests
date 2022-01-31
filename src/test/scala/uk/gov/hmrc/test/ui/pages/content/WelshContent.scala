@@ -32,7 +32,10 @@ object WelshContent {
 
   def checkDetailsPageText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
-    val amount: String = TestData.maxRefundAmount
+    def amount: String = if (ScenarioContext.get[String]("nino") == TestData.nino)
+      TestData.maxRefundAmount
+    else
+      TestData.maxRefundAmount2
     var bankDetails: BankDetails = null
 
     accType match {

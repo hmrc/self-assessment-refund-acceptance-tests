@@ -31,7 +31,10 @@ object EnglishContent {
 
   def checkDetailsPageText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
-    val amount: String = TestData.maxRefundAmount
+    def amount: String = if (ScenarioContext.get[String]("nino") == TestData.nino)
+      TestData.maxRefundAmount
+    else
+      TestData.maxRefundAmount2
     var bankDetails: BankDetails = null
 
     accType match {
@@ -99,7 +102,10 @@ object EnglishContent {
   }
 
   def refundAmountPageText(): String = {
-    val amount: String = TestData.maxRefundAmount
+    def amount: String = if (ScenarioContext.get[String]("nino") == TestData.nino)
+      TestData.maxRefundAmount
+    else
+      TestData.maxRefundAmount2
     s"""How much do you want to be refunded?
        |Refund the full amount, £$amount
        |Refund a different amount
