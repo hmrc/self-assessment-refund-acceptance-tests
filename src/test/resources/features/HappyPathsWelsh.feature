@@ -13,7 +13,7 @@ Feature: Happy Path - Welsh
     And the user select <type> account
     And the user click continue
     And the user is on the EnterBankDetailsPage
-    And the user enter valid <type> bank details
+    And the user enter valid <type> bank details with roll number
     And the user click continue
     And the user is on the CheckDetailsPage
     And the user click continue
@@ -37,7 +37,7 @@ Feature: Happy Path - Welsh
     And the user select <type> account
     And the user click continue
     And the user is on the EnterBankDetailsPage
-    And the user enter valid <type> bank details
+    And the user enter valid <type> bank details with roll number
     And the user click continue
     And the user is on the CheckDetailsPage
     And the user click continue

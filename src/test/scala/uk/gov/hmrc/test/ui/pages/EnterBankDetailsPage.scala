@@ -28,14 +28,12 @@ object EnterBankDetailsPage extends BasePage {
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/enter-bank-details"
 
   def expectedPageTitle = {
-    //TODO Add apostrophe to neur
-    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neur cyfrif cymdeithas adeiladu - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else "Enter the bank or building society account details - Request a Self Assessment refund - GOV.UK"
   }
 
   def expectedPageHeader = {
-    //TODO Add apostrophe to neur
-    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neur cyfrif cymdeithas adeiladu"
+    if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu"
     else "Enter the bank or building society account details"
   }
 
