@@ -59,9 +59,7 @@ object RefundsHistoryPage extends BasePage {
   def assertContent(tab: String): Assertion = {
     tab match {
       case "In Progress" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryInProgressPageText()) else pageContent should be(EnglishContent.refundHistoryInProgressPageText())
-      case "Approved" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryApprovedPageText()) else pageContent should be(EnglishContent.refundHistoryApprovedPageText())
-
-
+      case "History" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryHistoryPageText()) else pageContent should be(EnglishContent.refundHistoryHistoryPageText())
     }
   }
 

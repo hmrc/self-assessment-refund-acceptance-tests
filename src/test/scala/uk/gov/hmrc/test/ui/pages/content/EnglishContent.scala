@@ -128,7 +128,7 @@ object EnglishContent {
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
-  def refundHistoryApprovedPageText(): String = {
+  def refundHistoryHistoryPageText(): String = {
     val completedReceived2: String = TestData.receivedOnDate2
     val completedReceived3: String = TestData.receivedOnDate4
     val completedReceived1: String = TestData.receivedOnDate1

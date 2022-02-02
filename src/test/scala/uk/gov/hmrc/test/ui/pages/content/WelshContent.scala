@@ -130,7 +130,7 @@ object WelshContent {
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
-  def refundHistoryApprovedPageText(): String = {
+  def refundHistoryHistoryPageText(): String = {
     //TODO Confirmed Welsh translation
     val completedReceived2: String = TestData.receivedOnDate2
     val completedReceived3: String = TestData.receivedOnDate4
