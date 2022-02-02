@@ -56,12 +56,15 @@ Feature: Happy Path - Welsh
     Given The user begins their personal journey with RefundHistoryPage
     When the User toggles on Welsh language
     And the user is on the RefundHistoryPage
-    And the user clicks on View Progress for result number 1
+    And the user clicks on Processing for result number 1
     And the user is on the StatusPendingPage
     And the user click back
-    And the user clicks on the Completed tab
-    And the user clicks on Completed for result number 1
-    And the user is on the StatusCompletedPage
+    And the user clicks on Approved for result number 1
+    And the user is on the StatusApprovedPage
+    And the user click back
+    And the user clicks on the History tab
+    And the user clicks on Paid for result number 1
+    And the user is on the StatusPaidPage
     And the user click back
     And the user clicks on Rejected for result number 3
     And the user is on the StatusRejectedPage

@@ -21,19 +21,19 @@ import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object StatusCompletedPage extends BasePage {
+object StatusPaidPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status/2"
 
-  val completedAmount1: String = TestData.completedAmount1
+  val paidAmount: String = TestData.completedAmount1
 
  def expectedPageTitle =  {
-    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$completedAmount1 wedi’i gwblhau - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else s"Your refund of £$completedAmount1 is complete - Request a Self Assessment refund - GOV.UK"
+    if (langToggle == Language.welsh) s"TBC - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    else s"Your refund of £$paidAmount has been paid - Request a Self Assessment refund - GOV.UK"
   }
   def expectedPageHeader = {
-    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$completedAmount1 wedi’i gwblhau"
-    else s"Your refund of £$completedAmount1 is complete"
+    if (langToggle == Language.welsh) s"TBC"
+    else s"Your refund has been paid"
   }
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
@@ -42,7 +42,7 @@ object StatusCompletedPage extends BasePage {
 
 
   def assertContent(): Assertion =  {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.statusCompletedPageText())
-    else pageContent should be(EnglishContent.statusCompletedPageText())
+    if (langToggle == Language.welsh) pageContent should be(WelshContent.statusPaidPageText())
+    else pageContent should be(EnglishContent.statusPaidPageText())
   }
 }
