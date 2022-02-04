@@ -44,41 +44,39 @@ object RefundsHistoryPage extends BasePage {
 
   //In Progress
   def inProgressTab: WebElement = id("tab_in-progress").webElement
-  def inProgressReceivedOnDate(num: String): WebElement = cssSelector(s"#in-progress > table > tbody > tr:nth-child($num) > th").webElement
+  def inProgressRequestedOnDate(num: String): WebElement = cssSelector(s"#in-progress > table > tbody > tr:nth-child($num) > th").webElement
   def inProgressAmountClaimed(num: String): WebElement = cssSelector(s"#in-progress > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement
-  def viewProgress(num: String): WebElement = cssSelector(s"#in-progress > table > tbody > tr:nth-child($num) > td:nth-child(3) > a").webElement
+  def viewProcessing(num: String): WebElement = cssSelector(s"#in-progress > table > tbody > tr:nth-child($num) > td:nth-child(3) > a").webElement
 
-  // Completed
-  def completedTab: WebElement = id("tab_completed").webElement
-  def completedReceivedOnDate(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > th").webElement
-  def completedCompletedOnDate(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > td:nth-child(2)").webElement
-  def completedAmountClaimed(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement
-  def completedRejected(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > td:nth-child(4) > a").webElement
+  // History
+  def historyTab: WebElement = id("tab_completed").webElement
+  def historyRequestedOnDate(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > th").webElement
+  def history(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > td:nth-child(2)").webElement
+  def historyAmountClaimed(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement
+  def historyRejected(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > td:nth-child(4) > a").webElement
 
 
   def assertContent(tab: String): Assertion = {
     tab match {
       case "In Progress" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryInProgressPageText()) else pageContent should be(EnglishContent.refundHistoryInProgressPageText())
-      case "Completed" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryCompletedPageText()) else pageContent should be(EnglishContent.refundHistoryCompletedPageText())
-
-
+      case "History" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryHistoryPageText()) else pageContent should be(EnglishContent.refundHistoryHistoryPageText())
     }
   }
 
   def clickTab(tab: String): Unit ={
     tab match {
       case "In Progress" => click on inProgressTab
-      case "Completed" => click on completedTab
+      case "History" => click on historyTab
     }
   }
 
-  def clickViewProgress(num: String): Unit ={
+  def clickProcessingOrApproved(num: String): Unit ={
     click on inProgressTab
-    click on viewProgress(num)
+    click on viewProcessing(num)
   }
 
-  def clickCompletedOrRejected(num: String): Unit ={
-    click on completedTab
-    click on completedRejected(num)
+  def clickPaidOrRejected(num: String): Unit ={
+    click on historyTab
+    click on historyRejected(num)
   }
 }

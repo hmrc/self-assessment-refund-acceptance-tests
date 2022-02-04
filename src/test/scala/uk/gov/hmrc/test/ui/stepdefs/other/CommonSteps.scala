@@ -53,8 +53,8 @@ class CommonSteps extends Steps with DriverActions {
       case "EnterBankDetailsPage" => AuthWizardPage.enterRedirectUrl(EnterBankDetailsPage.url)
       case "TypeOfAccountPage" => AuthWizardPage.enterRedirectUrl(TypeOfAccountPage.url)
       case "RefundHistoryPage" => AuthWizardPage.enterRedirectUrl(RefundsHistoryPage.urlOrigin)
-      case "StatusCompletedPage" => AuthWizardPage.enterRedirectUrl(StatusCompletedPage.url)
-      case "StatusPendingPage" => AuthWizardPage.enterRedirectUrl(StatusPendingPage.url)
+      case "StatusApprovedPage" => AuthWizardPage.enterRedirectUrl(StatusApprovedPage.url)
+      case "StatusPendingPage" => AuthWizardPage.enterRedirectUrl(StatusProcessingPage.url)
       case "StatusRejectedPage" => AuthWizardPage.enterRedirectUrl(StatusRejectedPage.url)
       case "SurveyPage" => AuthWizardPage.enterRedirectUrl(SurveyPage.urlRedirect)
       case _ => AuthWizardPage.clickSubmit()
@@ -90,19 +90,22 @@ class CommonSteps extends Steps with DriverActions {
       case "RefundHistoryPage" =>
         RefundsHistoryPage.shouldBeLoaded()
         RefundsHistoryPage.assertContent("In Progress")
-        RefundsHistoryPage.clickTab("Completed")
-        RefundsHistoryPage.assertContent("Completed")
+        RefundsHistoryPage.clickTab("History")
+        RefundsHistoryPage.assertContent("History")
       case "SurveyPage" =>
         SurveyPage.shouldBeLoaded()
-      case "StatusCompletedPage" =>
-        StatusCompletedPage.shouldBeLoaded()
-        StatusCompletedPage.assertContent()
-      case "StatusPendingPage" =>
-        StatusPendingPage.shouldBeLoaded()
-        StatusPendingPage.assertContent()
+      case "StatusApprovedPage" =>
+        StatusApprovedPage.shouldBeLoaded()
+        StatusApprovedPage.assertContent()
+      case "StatusProcessingPage" =>
+        StatusProcessingPage.shouldBeLoaded()
+        StatusProcessingPage.assertContent()
       case "StatusRejectedPage" =>
         StatusRejectedPage.shouldBeLoaded()
         StatusRejectedPage.assertContent()
+      case "StatusPaidPage" =>
+        StatusPaidPage.shouldBeLoaded()
+        StatusPaidPage.assertContent()
     }
   }
 }

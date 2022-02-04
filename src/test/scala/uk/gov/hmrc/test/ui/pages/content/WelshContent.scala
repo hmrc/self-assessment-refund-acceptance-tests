@@ -130,7 +130,8 @@ object WelshContent {
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
-  def refundHistoryCompletedPageText(): String = {
+  def refundHistoryHistoryPageText(): String = {
+    //TODO Confirmed Welsh translation
     val completedReceived2: String = TestData.receivedOnDate2
     val completedReceived3: String = TestData.receivedOnDate4
     val completedReceived1: String = TestData.receivedOnDate1
@@ -158,6 +159,7 @@ object WelshContent {
   }
 
   def refundHistoryInProgressPageText(): String = {
+    //TODO Confirmed Welsh translation
     val inProgressDate1: String = TestData.inProgessDate1
     val inProgressDate2: String = TestData.inProgessDate2
     val inProgressAmount1: String = TestData.inProgessAmount1
@@ -171,16 +173,17 @@ object WelshContent {
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
-  def statusCompletedPageText(): String = {
-    val completedAmountValue: String = TestData.completedAmount1
-    s"""Mae’ch ad-daliad o £$completedAmountValue wedi’i gwblhau
+  def statusApprovedPageText(): String = {
+    //TODO Confirmed Welsh translation
+    val approvedAmountValue: String = TestData.completedAmount1
+    s"""Mae’ch ad-daliad o £$approvedAmountValue wedi’i gwblhau
        |Byddwn yn anfon eich ad-daliad i’r cyfrif banc a nodwyd gennych neu i’r cerdyn a ddefnyddiwyd gennych i dalu’ch bil diwethaf.
        |Dylech aros 3 i 5 diwrnod i’r arian gyrraedd eich cyfrif banc neu’ch cerdyn.
        |Yn ôl i’r cyfrif treth
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
-  def statusPendingPageText(): String = {
+  def statusProcessingPageText(): String = {
     val pendingAmountValue: String = TestData.inProgessAmount1
     s"""Mae’ch ad-daliad o £$pendingAmountValue ar y gweill
        |Mae’ch cais am ad-daliad wedi dod i law. Bwriad CThEM yw anfon ad-daliadau cyn pen pythefnos, ond mae mesurau diogelwch ar waith a allai achosi oedi.
@@ -195,6 +198,17 @@ object WelshContent {
        |Ni allwn ad-dalu’r £$rejectedAmountValue oherwydd bod eich cais am ad-daliad wedi’i wrthod.
        |Yn ôl i’r cyfrif treth
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+  }
+
+  def statusPaidPageText(): String = {
+    //TODO Welsh Translation
+    val paidAmountValue: String = TestData.completedAmount1
+    val paidOnDate: String = TestData.inProgessDate1
+    s"""Your refund has been paid
+       |We sent you a payment of £$paidAmountValue on $paidOnDate.
+       |It can take 3 to 5 days for the money to reach your bank account or your card.
+       |Back to tax account
+       |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
 

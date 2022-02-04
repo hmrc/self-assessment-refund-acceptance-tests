@@ -128,7 +128,7 @@ object EnglishContent {
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
-  def refundHistoryCompletedPageText(): String = {
+  def refundHistoryHistoryPageText(): String = {
     val completedReceived2: String = TestData.receivedOnDate2
     val completedReceived3: String = TestData.receivedOnDate4
     val completedReceived1: String = TestData.receivedOnDate1
@@ -145,13 +145,13 @@ object EnglishContent {
     //TODO Should th > 6 Years date show here - Frontend Validation?
     s"""Your refunds history
        |In progress
-       |Completed
-       |Received on Completed on Amount claimed
-       |$completedReceived1 $completedCompletedOn1 £$completedAmount1 Completed
-       |$completedReceived2 $completedCompletedOn2 £$completedAmount2 Completed
+       |History
+       |Requested on Completed on Amount claimed
+       |$completedReceived1 $completedCompletedOn1 £$completedAmount1 Paid
+       |$completedReceived2 $completedCompletedOn2 £$completedAmount2 Paid
        |$rejectedReceived1 $rejectedCompletedOn1 £$rejectedAmount1 Rejected
-       |$completedReceived3 $completedCompletedOn3 £$completedAmount3 Completed
-       |13 June 2015 16 June 2015 £80.00 Completed
+       |$completedReceived3 $completedCompletedOn3 £$completedAmount3 Paid
+       |13 June 2015 16 June 2015 £80.00 Paid
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
@@ -162,25 +162,25 @@ object EnglishContent {
     val inProgressAmount2: String = TestData.inProgessAmount2
     s"""Your refunds history
        |In progress
-       |Completed
-       |Received on Amount claimed
-       |$inProgressDate1 £$inProgressAmount1 View progress
-       |$inProgressDate2 £$inProgressAmount2 View progress
+       |History
+       |Requested on Amount claimed
+       |$inProgressDate1 £$inProgressAmount1 Processing
+       |$inProgressDate2 £$inProgressAmount2 Processing
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
-  def statusCompletedPageText(): String = {
-    val completedAmountValue: String = TestData.completedAmount1
-    s"""Your refund of £$completedAmountValue is complete
-       |We will send £$completedAmountValue to the bank details you provided or the card you used to pay your last bill.
+  def statusApprovedPageText(): String = {
+    val approvedAmountValue: String = TestData.completedAmount1
+    s"""Your refund of £$approvedAmountValue has been approved
+       |We have approved your refund.
        |Please allow 3 to 5 days for the money to reach your bank account or your card.
        |Back to tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
-  def statusPendingPageText(): String = {
-    val pendingAmountValue: String = TestData.inProgessAmount1
-    s"""Your refund of £$pendingAmountValue is in progress
+  def statusProcessingPageText(): String = {
+    val inProgressAmountValue: String = TestData.inProgessAmount1
+    s"""Your refund of £$inProgressAmountValue is in progress
        |We have received your refund request. HMRC aims to issue refunds within 2 weeks, however there are security measures in place which may cause a delay.
        |Please allow 30 days before contacting us about your request.
        |Back to tax account
@@ -191,6 +191,16 @@ object EnglishContent {
     val rejectedAmountValue: String = TestData.rejectedAmount1
     s"""Your refund of £$rejectedAmountValue has been rejected
        |We cannot pay your refund of £$rejectedAmountValue because your request has been rejected.
+       |Back to tax account
+       |Is this page not working properly? (opens in new tab)""".stripMargin
+  }
+
+  def statusPaidPageText(): String = {
+    val paidAmountValue: String = TestData.completedAmount1
+    val paidOnDate: String = TestData.inProgessDate1
+    s"""Your refund has been paid
+       |We sent you a payment of £$paidAmountValue on $paidOnDate.
+       |It can take 3 to 5 days for the money to reach your bank account or your card.
        |Back to tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }

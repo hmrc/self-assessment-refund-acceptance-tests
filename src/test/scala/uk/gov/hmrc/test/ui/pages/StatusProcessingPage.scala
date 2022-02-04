@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object StatusPendingPage extends BasePage {
+object StatusProcessingPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status/0"
 
@@ -43,7 +43,7 @@ object StatusPendingPage extends BasePage {
 
 
   def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.statusPendingPageText())
-    else pageContent should be(EnglishContent.statusPendingPageText())
+    if (langToggle == Language.welsh) pageContent should be(WelshContent.statusProcessingPageText())
+    else pageContent should be(EnglishContent.statusProcessingPageText())
   }
 }
