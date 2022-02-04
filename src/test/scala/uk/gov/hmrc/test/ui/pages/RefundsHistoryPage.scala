@@ -49,11 +49,11 @@ object RefundsHistoryPage extends BasePage {
   def viewProcessing(num: String): WebElement = cssSelector(s"#in-progress > table > tbody > tr:nth-child($num) > td:nth-child(3) > a").webElement
 
   // History
-  def historyTab: WebElement = id("tab_completed").webElement
+  def historyTab: WebElement = id("tab_history").webElement
   def historyRequestedOnDate(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > th").webElement
   def history(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > td:nth-child(2)").webElement
-  def historyAmountClaimed(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement
-  def historyRejected(num: String): WebElement = cssSelector(s"#completed > table > tbody > tr:nth-child($num) > td:nth-child(4) > a").webElement
+  def historyAmountClaimed(num: String): WebElement = cssSelector(s"#history > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement
+  def historyRejected(num: String): WebElement = cssSelector(s"#history > table > tbody > tr:nth-child($num) > td:nth-child(4) > a").webElement
 
 
   def assertContent(tab: String): Assertion = {

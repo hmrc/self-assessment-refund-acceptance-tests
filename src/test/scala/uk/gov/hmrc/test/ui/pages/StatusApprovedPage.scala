@@ -25,15 +25,15 @@ object StatusApprovedPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status/2"
 
-  val completedAmount1: String = TestData.completedAmount1
+  val approvedAmount1: String = TestData.approvedAmount1
 
  def expectedPageTitle =  {
-    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$completedAmount1 wedi’i gwblhau - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else s"Your refund of £$completedAmount1 has been approved - Request a Self Assessment refund - GOV.UK"
+    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$approvedAmount1 wedi’i gwblhau - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    else s"Your refund of £$approvedAmount1 has been approved - Request a Self Assessment refund - GOV.UK"
   }
   def expectedPageHeader = {
-    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$completedAmount1 wedi’i gwblhau"
-    else s"Your refund of £$completedAmount1 has been approved"
+    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$approvedAmount1 wedi’i gwblhau"
+    else s"Your refund of £$approvedAmount1 has been approved"
   }
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
