@@ -31,10 +31,12 @@ object EnglishContent {
 
   def checkDetailsPageText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
+
     def amount: String = if (ScenarioContext.get[String]("nino") == TestData.nino)
       TestData.maxRefundAmount
     else
       TestData.maxRefundAmount2
+
     var bankDetails: BankDetails = null
 
     accType match {
@@ -114,11 +116,11 @@ object EnglishContent {
   }
 
   //Redirects to Payments Survey Service so content assertion not needed.
-    def surveyPageText(): String = {
-      s"""
-         |
-         |""".stripMargin
-    }
+  def surveyPageText(): String = {
+    s"""
+       |
+       |""".stripMargin
+  }
 
   def typeOfAccountPageText(): String = {
     s"""What type of account details are you providing?
@@ -129,29 +131,19 @@ object EnglishContent {
   }
 
   def refundHistoryHistoryPageText(): String = {
-    val completedReceived2: String = TestData.receivedOnDate2
-    val completedReceived3: String = TestData.receivedOnDate4
-    val completedReceived1: String = TestData.receivedOnDate1
-    val rejectedReceived1: String = TestData.receivedOnDate3
-    val completedCompletedOn2: String = TestData.completedOnDate2
-    val completedCompletedOn3: String = TestData.completedOnDate4
-    val completedCompletedOn1: String = TestData.completedOnDate1
-    val rejectedCompletedOn1: String = TestData.completedOnDate3
-    val completedAmount1: String = TestData.completedAmount1
-    val completedAmount2: String = TestData.completedAmount2
+    val requestedOnDate1: String = TestData.requestedOnDate1
+    val paidOnDate1: String = TestData.paidOnDate1
+    val paidAmount1: String = TestData.paidAmount1
+    val requestedOnDate2: String = TestData.requestedOnDate2
+    val rejectedDate2: String = TestData.rejectedDate2
     val rejectedAmount1: String = TestData.rejectedAmount1
-    val completedAmount3: String = TestData.completedAmount3
 
-    //TODO Should th > 6 Years date show here - Frontend Validation?
     s"""Your refunds history
        |In progress
        |History
        |Requested on Completed on Amount claimed
-       |$completedReceived1 $completedCompletedOn1 £$completedAmount1 Paid
-       |$completedReceived2 $completedCompletedOn2 £$completedAmount2 Paid
-       |$rejectedReceived1 $rejectedCompletedOn1 £$rejectedAmount1 Rejected
-       |$completedReceived3 $completedCompletedOn3 £$completedAmount3 Paid
-       |13 June 2015 16 June 2015 £80.00 Paid
+       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Paid
+       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Rejected
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
@@ -160,17 +152,30 @@ object EnglishContent {
     val inProgressDate2: String = TestData.inProgessDate2
     val inProgressAmount1: String = TestData.inProgessAmount1
     val inProgressAmount2: String = TestData.inProgessAmount2
+    val approvedDate1: String = TestData.approvedDate1
+    val approvedDate2: String = TestData.approvedDate2
+    val approvedDate3: String = TestData.approvedDate3
+    val approvedDate4: String = TestData.approvedDate4
+    val approvedAmount1: String = TestData.approvedAmount1
+    val approvedAmount2: String = TestData.approvedAmount2
+    val approvedAmount3: String = TestData.approvedAmount3
+    val approvedAmount4: String = TestData.approvedAmount4
+
     s"""Your refunds history
        |In progress
        |History
        |Requested on Amount claimed
        |$inProgressDate1 £$inProgressAmount1 Processing
        |$inProgressDate2 £$inProgressAmount2 Processing
+       |$approvedDate1 £$approvedAmount1 Approved
+       |$approvedDate2 £$approvedAmount2 Approved
+       |$approvedDate3 £$approvedAmount3 Approved
+       |$approvedDate4 £$approvedAmount4 Approved
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
   def statusApprovedPageText(): String = {
-    val approvedAmountValue: String = TestData.completedAmount1
+    val approvedAmountValue: String = TestData.approvedAmount1
     s"""Your refund of £$approvedAmountValue has been approved
        |We have approved your refund.
        |Please allow 3 to 5 days for the money to reach your bank account or your card.
@@ -196,16 +201,15 @@ object EnglishContent {
   }
 
   def statusPaidPageText(): String = {
-    val paidAmountValue: String = TestData.completedAmount1
-    val paidOnDate: String = TestData.inProgessDate1
+    val paidAmountValue: String = TestData.paidAmount1
+    val paidOnDate: String = TestData.paidOnDate1
     s"""Your refund has been paid
        |We sent you a payment of £$paidAmountValue on $paidOnDate.
        |It can take 3 to 5 days for the money to reach your bank account or your card.
        |Back to tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
-
-
+  
   // template function
   def templateText(): String = {
     s"""
