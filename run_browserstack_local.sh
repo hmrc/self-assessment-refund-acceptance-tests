@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Run BrowserStackLocal
 if ! sh run_dependencies.sh; then
     echo "Failed to start BrowserStack"
