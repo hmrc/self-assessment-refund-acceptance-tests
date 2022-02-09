@@ -177,7 +177,7 @@ object EnglishContent {
   def statusApprovedPageText(): String = {
     val approvedAmountValue: String = TestData.approvedAmount1
     s"""Your refund of £$approvedAmountValue has been approved
-       |We have approved your refund.
+       |We will send your refund to the bank details you provided or the card you used to pay your last bill.
        |Please allow 3 to 5 days for the money to reach your bank account or your card.
        |Back to tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin

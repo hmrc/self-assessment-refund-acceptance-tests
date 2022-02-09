@@ -144,8 +144,8 @@ object WelshContent {
        |Ar waith
        |Wedi’i gwblhau
        |Cafwyd ar Wedi’i gwblhau ar Swm a hawliwyd
-       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 TBC
-       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 TBC
+       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Talwyd
+       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Gwrthodwyd
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
@@ -167,13 +167,13 @@ object WelshContent {
     s"""Hanes eich ad-daliadau
        |Ar waith
        |Wedi’i gwblhau
-       |Cafwyd ar Swm a hawliwyd
-       |$inProgressDate1 £$inProgressAmount1 TBC
-       |$inProgressDate2 £$inProgressAmount2 TBC
-       |$approvedDate1 £$approvedAmount1 TBC
-       |$approvedDate2 £$approvedAmount2 TBC
-       |$approvedDate3 £$approvedAmount3 TBC
-       |$approvedDate4 £$approvedAmount4 TBC
+       |Gofyn ar Swm a hawliwyd
+       |$inProgressDate1 £$inProgressAmount1 Prosesu
+       |$inProgressDate2 £$inProgressAmount2 Prosesu
+       |$approvedDate1 £$approvedAmount1 Cymmeradwy
+       |$approvedDate2 £$approvedAmount2 Cymmeradwy
+       |$approvedDate3 £$approvedAmount3 Cymmeradwy
+       |$approvedDate4 £$approvedAmount4 Cymmeradwy
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
@@ -182,7 +182,7 @@ object WelshContent {
     val approvedAmountValue: String = TestData.approvedAmount1
     s"""Mae’ch ad-daliad o £$approvedAmountValue wedi’i gwblhau
        |Byddwn yn anfon eich ad-daliad i’r cyfrif banc a nodwyd gennych neu i’r cerdyn a ddefnyddiwyd gennych i dalu’ch bil diwethaf.
-       |Dylech aros 3 i 5 diwrnod i’r arian gyrraedd eich cyfrif banc neu’ch cerdyn.
+       |Dylech ganiatáu 3 i 5 diwrnod i’r arian gyrraedd eich cyfrif banc neu’ch cerdyn.
        |Yn ôl i’r cyfrif treth
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
@@ -208,11 +208,11 @@ object WelshContent {
     //TODO Welsh Translation
     val paidAmountValue: String = TestData.paidAmount1
     val paidOnDate: String = TestData.paidOnDate1
-    s"""Your refund has been paid
-       |We sent you a payment of £$paidAmountValue on $paidOnDate.
-       |It can take 3 to 5 days for the money to reach your bank account or your card.
-       |Back to tax account
-       |Is this page not working properly? (opens in new tab)""".stripMargin
+    s"""Mae’ch ad-daliad wedi’i dalu
+       |Gwnaethom anfon taliad o £$paidAmountValue atoch ar $paidOnDate.
+       |Mae’n gallu cymryd 3 i 5 diwrnod i’r arian gyrraedd eich cyfrif banc.
+       |Yn ôl i’r cyfrif treth
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
 }
