@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Run BrowserStackLocal
 if ! sh run_dependencies.sh; then
     echo "Failed to start BrowserStack"
@@ -8,7 +8,7 @@ fi
 browserStackUsername="hmrcteampayments1"
 browserStackAutomateKey="M9JhEVpAdz7tKazSJTLN"
 
-sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.browser_version="86" -Dbrowserstack.browser="Edge" 'testOnly uk.gov.hmrc.test.ui.runner.Runner'
+sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.browser_version="86" -Dbrowserstack.browser="Edge" 'testOnly uk.gov.hmrc.test.ui.runner.A11yRunner'
 #sbt -Dbrowser=browserstack -Dlanguage=english -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.browserName="android" -Dbrowserstack.device="Samsung Galaxy S20" -Dbrowserstack.realMobile="true" -Dbrowserstack.os_version="10.0" 'testOnly Suites.RunCrossBrowser'
 
 #sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.project="PAS" -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.browser_version="13.1" -Dbrowserstack.browser="Safari" -Dos="OS X" -Dos_version="Catalina" -Dbrowserstack.idleTimeout="120" -Dbrowserstack.selenium_version="3.14.0" 'testOnly Suites.RunWip'
