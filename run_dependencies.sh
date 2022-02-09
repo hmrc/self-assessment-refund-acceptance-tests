@@ -7,7 +7,6 @@ pidof BrowserStackLocal
 
 if pidof BrowserStackLocal; then
   echo "BrowserStackLocal running already"
-  fi
 else
     echo "None, starting BrowserStack"
     if [ ! -e BrowserStackLocal ]; then
