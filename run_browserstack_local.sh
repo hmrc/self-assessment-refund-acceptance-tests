@@ -1,10 +1,12 @@
 #!/bin/sh
-# Run BrowserStackLocal
-#if ! sh run_dependencies.sh; then
-#    echo "Failed to start BrowserStack"
-#    exit 1
-#fi
 
+platform=${1:-darwin}
+
+# Run BrowserStackLocal
+if ! sh run_dependencies.sh $platform; then
+    echo "Failed to start BrowserStack"
+    exit 1
+fi
 
 browserStackUsername="hmrcteampayments1"
 browserStackAutomateKey="M9JhEVpAdz7tKazSJTLN"
@@ -45,18 +47,18 @@ SAFARI_iOS_VERSION="latest"
 ### Windows ###
 
 #IE11
-sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${JOURNEY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version="7" -Dbrowserstack.browser="IE" -Dbrowserstack.browser_version="11" 'testOnly uk.gov.hmrc.test.ui.runner.SmokeJourneyRunner'
-sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${HISTORY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version="7" -Dbrowserstack.browser="IE" -Dbrowserstack.browser_version="11" 'testOnly uk.gov.hmrc.test.ui.runner.SmokeHistoryRunner'
-#Edge
-sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${JOURNEY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Edge" -Dbrowserstack.browser_version=${EDGE_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeJourneyRunner'
-sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${HISTORY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Edge" -Dbrowserstack.browser_version=${EDGE_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeHistoryRunner'
+#sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${JOURNEY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version="7" -Dbrowserstack.browser="IE" -Dbrowserstack.browser_version="11" 'testOnly uk.gov.hmrc.test.ui.runner.SmokeJourneyRunner'
+#sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${HISTORY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version="7" -Dbrowserstack.browser="IE" -Dbrowserstack.browser_version="11" 'testOnly uk.gov.hmrc.test.ui.runner.SmokeHistoryRunner'
+##Edge
+#sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${JOURNEY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Edge" -Dbrowserstack.browser_version=${EDGE_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeJourneyRunner'
+#sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${HISTORY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Edge" -Dbrowserstack.browser_version=${EDGE_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeHistoryRunner'
 ##Chrome
 sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${JOURNEY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Chrome" -Dbrowserstack.browser_version=${CHROME_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeJourneyRunner'
 sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${HISTORY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Chrome" -Dbrowserstack.browser_version=${CHROME_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeHistoryRunner'
-##Firefox
-sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${JOURNEY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Firefox" -Dbrowserstack.browser_version=${FIREFOX_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeJourneyRunner'
-sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${HISTORY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Firefox" -Dbrowserstack.browser_version=${FIREFOX_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeHistoryRunner'
-#
+###Firefox
+#sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${JOURNEY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Firefox" -Dbrowserstack.browser_version=${FIREFOX_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeJourneyRunner'
+#sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project=${PROJECT_NAME} -Dbrowserstack.build=${PROJECT_NAME}" "${DATE} -Dbrowserstack.name=${HISTORY} -Dbrowserstack.os=${WINDOWS} -Dbrowserstack.os_version=${WINDOWS_VERSION} -Dbrowserstack.browser="Firefox" -Dbrowserstack.browser_version=${FIREFOX_VERSION} 'testOnly uk.gov.hmrc.test.ui.runner.SmokeHistoryRunner'
+##
 
 ### OS X ###
 
@@ -65,10 +67,4 @@ sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browser
 ### Android ###
 
 
-
 killall BrowserStackLocal
-
-
-
-#Template
-# sbt -Dbrowser=browserstack -Denvironment=local -Dbrowserstack.username=${browserStackUsername} -Dbrowserstack.key=${browserStackAutomateKey} -Dbrowserstack.project="Self Assessment Refund" -Dbrowserstack.build="Windows/Mac/iOS/Android" -Dbrowserstack.os="Windows" -Dbrowserstack.os_version="7" -Dbrowserstack.browser_version="86" -Dbrowserstack.browser="Edge" 'testOnly uk.gov.hmrc.test.ui.runner.A11yRunner'
