@@ -1,5 +1,6 @@
 #!/bin/sh
 
+platform=${1:-darwin}
 echo $browserStackAutomateKey
 
 echo "BrowserStackLocal instances:"
@@ -7,14 +8,13 @@ pidof BrowserStackLocal
 
 if pidof BrowserStackLocal; then
   echo "BrowserStackLocal running already"
-  fi
 else
     echo "None, starting BrowserStack"
     if [ ! -e BrowserStackLocal ]; then
         echo "Downloading BrowserStackLocal"
-        curl -O https://www.browserstack.com/browserstack-local/BrowserStackLocal-darwin-x64.zip
-        unzip BrowserStackLocal-darwin-x64.zip
-        rm BrowserStackLocal-darwin-x64.zip
+        curl -O https://www.browserstack.com/browserstack-local/BrowserStackLocal-$platform-x64.zip
+        unzip BrowserStackLocal-$platform-x64.zip
+        rm BrowserStackLocal-$platform-x64.zip
     fi
     file="./src/test/resources/browserStackConfig.properties"
     if [ -f "$file" ]
@@ -22,7 +22,7 @@ else
         echo "***********File : $file found ***************."
         . ./src/test/resources/browserStackConfig.properties
         echo $browserStackAutomateKey
-       ./BrowserStackLocal --key $browserStackAutomateKey
+       ./BrowserStackLocal --key $browserStackAutomateKey --daemon start
         echo "BSServer started in local"
         if ! pidof BrowserStackLocal; then
             echo "Could not connect. Please check your automate key"
