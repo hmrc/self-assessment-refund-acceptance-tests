@@ -142,10 +142,10 @@ object WelshContent {
 
     s"""Hanes eich ad-daliadau
        |Ar waith
-       |Wedi’i gwblhau
-       |Cafwyd ar Wedi’i gwblhau ar Swm a hawliwyd
+       |Hanes
+       |Gofyn ar Wedi’i gwblhau ar Swm a hawliwyd
        |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Talwyd
-       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Gwrthodwyd
+       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Wedi’i wrthod
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
@@ -166,21 +166,21 @@ object WelshContent {
 
     s"""Hanes eich ad-daliadau
        |Ar waith
-       |Wedi’i gwblhau
+       |Hanes
        |Gofyn ar Swm a hawliwyd
-       |$inProgressDate1 £$inProgressAmount1 Prosesu
-       |$inProgressDate2 £$inProgressAmount2 Prosesu
-       |$approvedDate1 £$approvedAmount1 Cymmeradwy
-       |$approvedDate2 £$approvedAmount2 Cymmeradwy
-       |$approvedDate3 £$approvedAmount3 Cymmeradwy
-       |$approvedDate4 £$approvedAmount4 Cymmeradwy
+       |$inProgressDate1 £$inProgressAmount1 Wrthi’n prosesu
+       |$inProgressDate2 £$inProgressAmount2 Wrthi’n prosesu
+       |$approvedDate1 £$approvedAmount1 Cymeradwywyd
+       |$approvedDate2 £$approvedAmount2 Cymeradwywyd
+       |$approvedDate3 £$approvedAmount3 Cymeradwywyd
+       |$approvedDate4 £$approvedAmount4 Cymeradwywyd
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
   def statusApprovedPageText(): String = {
     //TODO Confirmed Welsh translation
     val approvedAmountValue: String = TestData.approvedAmount1
-    s"""Mae’ch ad-daliad o £$approvedAmountValue wedi’i gwblhau
+    s"""Mae’ch ad-daliad o £$approvedAmountValue wedi’i gymeradwyo
        |Byddwn yn anfon eich ad-daliad i’r cyfrif banc a nodwyd gennych neu i’r cerdyn a ddefnyddiwyd gennych i dalu’ch bil diwethaf.
        |Dylech ganiatáu 3 i 5 diwrnod i’r arian gyrraedd eich cyfrif banc neu’ch cerdyn.
        |Yn ôl i’r cyfrif treth

@@ -28,11 +28,11 @@ object StatusPaidPage extends BasePage {
   val paidAmount: String = TestData.paidAmount1
 
  def expectedPageTitle =  {
-    if (langToggle == Language.welsh) s"TBC - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    if (langToggle == Language.welsh) s"Mae’ch ad-daliad wedi’i dalu - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else s"Your refund has been paid - Request a Self Assessment refund - GOV.UK"
   }
   def expectedPageHeader = {
-    if (langToggle == Language.welsh) s"TBC"
+    if (langToggle == Language.welsh) s"Mae’ch ad-daliad wedi’i dalu"
     else s"Your refund has been paid"
   }
 
