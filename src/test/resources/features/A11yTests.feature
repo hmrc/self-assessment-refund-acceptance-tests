@@ -13,6 +13,7 @@ Feature: A11y tests (Temp)
     And the user enter valid personal bank details
     And the user click continue
     And the user click continue
+    And the user click continue
 
   @a11y @history
   Scenario: A11y - History Pages
