@@ -17,6 +17,7 @@ Feature: Happy Path - Welsh
     And the user click continue
     And the user is on the CheckDetailsPage
     And the user click continue
+    And the user click continue
     And the user is on the RequestReceivedPage
 
     Examples:
@@ -40,6 +41,7 @@ Feature: Happy Path - Welsh
     And the user enter valid <type> bank details with roll number
     And the user click continue
     And the user is on the CheckDetailsPage
+    And the user click continue
     And the user click continue
     And the user is on the RequestReceivedPage
 
