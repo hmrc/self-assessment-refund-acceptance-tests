@@ -35,6 +35,6 @@ object AuthWizardPage extends BasePage {
     name("nino").webElement.sendKeys(TestData.nino)
 
   def clickSubmit(): Unit = {
-    click on id("submit")
+    click on id("submit-top")
   }
 }
