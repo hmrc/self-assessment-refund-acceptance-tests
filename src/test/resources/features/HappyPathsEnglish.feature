@@ -54,7 +54,7 @@ Feature: Happy Path - English
 
 
   Scenario: English - Refund History
-    Given The user begins their personal journey with RefundHistoryPage
+    Given The user starts a history journey
     When the User toggles on English language
     And the user is on the RefundHistoryPage
     And the user clicks on Processing for result number 1
