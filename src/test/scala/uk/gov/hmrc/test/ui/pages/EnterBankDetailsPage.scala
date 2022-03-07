@@ -63,9 +63,9 @@ object EnterBankDetailsPage extends BasePage {
 
   def errorSummary(number: String): WebElement = cssSelector("div > ul > li:nth-child("+number+") > a").webElement
 
-  def errorMessageAccountName: WebElement = cssSelector("div:nth-child(2) > span").webElement
-  def errorMessageSortCode: WebElement = cssSelector("div:nth-child(3) > span").webElement
-  def errorMessageAccountNumber: WebElement = cssSelector("div:nth-child(4) > span").webElement
+  def errorMessageAccountName: WebElement = id("accountName-error").webElement
+  def errorMessageSortCode: WebElement = id("sortCode-error").webElement
+  def errorMessageAccountNumber: WebElement = id("accountNumber-error").webElement
 
   override def assertCurrentUrl(): Assertion = {
     currentUrl should fullyMatch regex s"""$url/$accType/[a-z0-9]{24}""".r
