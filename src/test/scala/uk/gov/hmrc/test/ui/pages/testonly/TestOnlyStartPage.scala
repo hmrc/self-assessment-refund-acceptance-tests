@@ -31,6 +31,7 @@ object TestOnlyStartPage extends BasePage {
     nino match {
       case "AC111111A" => click on id("0")
       case "AA111111A" => click on id("1")
+      case "history" => click on id("2")
     }
     continue()
   }

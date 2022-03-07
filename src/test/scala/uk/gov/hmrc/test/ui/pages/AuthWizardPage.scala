@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.testdata.TestData
+import uk.gov.hmrc.test.ui.testdata.{ScenarioContext, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object AuthWizardPage extends BasePage {
@@ -32,7 +32,10 @@ object AuthWizardPage extends BasePage {
   }
 
   def enterValidNino(): Unit =
-    name("nino").webElement.sendKeys(TestData.nino)
+    name("nino").webElement.sendKeys(ScenarioContext.getOrElse("nino","AA111111A"))
+
+  def setConfidenceLevel(cl: String): Unit =
+    singleSel(name("confidenceLevel")).value = cl
 
   def clickSubmit(): Unit = {
     click on id("submit-top")
