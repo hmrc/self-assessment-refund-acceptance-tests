@@ -17,7 +17,7 @@ Feature: A11y tests (Temp)
 
   @a11y @history
   Scenario: A11y - History Pages
-    Given The user begins their personal journey with RefundHistoryPage
+    Given The user starts a history journey
     And the user is on the RefundHistoryPage
     And the user clicks on Processing for result number 1
     And the user is on the StatusProcessingPage
