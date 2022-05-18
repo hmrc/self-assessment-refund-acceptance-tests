@@ -145,8 +145,10 @@ object WelshContent {
        |Hanes
        |Hanes
        |Gofyn ar Wedi’i gwblhau ar Swm a hawliwyd Statws Gweithredoedd
-       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Talwyd Gweld manylion yr hawliad dyddiedig $requestedOnDate1
-       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Wedi’i wrthod Gweld manylion yr hawliad dyddiedig $requestedOnDate2
+       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Talwyd Gweld
+       |manylion yr hawliad dyddiedig $requestedOnDate1
+       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Wedi’i wrthod Gweld
+       |manylion yr hawliad dyddiedig $requestedOnDate2
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
@@ -170,12 +172,18 @@ object WelshContent {
        |Hanes
        |Ar waith
        |Gofyn ar Swm a hawliwyd Statws Gweithredoedd
-       |$inProgressDate1 £$inProgressAmount1 Wrthi’n prosesu Gweld manylion yr hawliad dyddiedig $inProgressDate1
-       |$inProgressDate2 £$inProgressAmount2 Wrthi’n prosesu Gweld manylion yr hawliad dyddiedig $inProgressDate2
-       |$approvedDate1 £$approvedAmount1 Cymeradwywyd Gweld manylion yr hawliad dyddiedig $approvedDate1
-       |$approvedDate2 £$approvedAmount2 Cymeradwywyd Gweld manylion yr hawliad dyddiedig $approvedDate2
-       |$approvedDate3 £$approvedAmount3 Cymeradwywyd Gweld manylion yr hawliad dyddiedig $approvedDate3
-       |$approvedDate4 £$approvedAmount4 Cymeradwywyd Gweld manylion yr hawliad dyddiedig $approvedDate4
+       |$inProgressDate1 £$inProgressAmount1 Wrthi’n prosesu Gweld
+       |manylion yr hawliad dyddiedig $inProgressDate1
+       |$inProgressDate2 £$inProgressAmount2 Wrthi’n prosesu Gweld
+       |manylion yr hawliad dyddiedig $inProgressDate2
+       |$approvedDate1 £$approvedAmount1 Cymeradwywyd Gweld
+       |manylion yr hawliad dyddiedig $approvedDate1
+       |$approvedDate2 £$approvedAmount2 Cymeradwywyd Gweld
+       |manylion yr hawliad dyddiedig $approvedDate2
+       |$approvedDate3 £$approvedAmount3 Cymeradwywyd Gweld
+       |manylion yr hawliad dyddiedig $approvedDate3
+       |$approvedDate4 £$approvedAmount4 Cymeradwywyd Gweld
+       |manylion yr hawliad dyddiedig $approvedDate4
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
