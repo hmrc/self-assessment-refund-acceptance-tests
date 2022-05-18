@@ -143,8 +143,8 @@ object EnglishContent {
        |History
        |History
        |Requested on Completed on Amount claimed Status Actions
-       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Paid View
-       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Rejected View
+       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Paid View details of claim dated $requestedOnDate1
+       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Rejected View details of claim dated $requestedOnDate2
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
@@ -167,12 +167,12 @@ object EnglishContent {
        |History
        |In progress
        |Requested on Amount claimed Status Actions
-       |$inProgressDate1 £$inProgressAmount1 Processing View
-       |$inProgressDate2 £$inProgressAmount2 Processing View
-       |$approvedDate1 £$approvedAmount1 Approved View
-       |$approvedDate2 £$approvedAmount2 Approved View
-       |$approvedDate3 £$approvedAmount3 Approved View
-       |$approvedDate4 £$approvedAmount4 Approved View
+       |$inProgressDate1 £$inProgressAmount1 Processing View details of claim dated $inProgressDate1
+       |$inProgressDate2 £$inProgressAmount2 Processing View details of claim dated $inProgressDate2
+       |$approvedDate1 £$approvedAmount1 Approved View details of claim dated $approvedDate1
+       |$approvedDate2 £$approvedAmount2 Approved View details of claim dated $approvedDate2
+       |$approvedDate3 £$approvedAmount3 Approved View details of claim dated $approvedDate3
+       |$approvedDate4 £$approvedAmount4 Approved View details of claim dated $approvedDate4
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
