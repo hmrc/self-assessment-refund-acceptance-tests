@@ -141,7 +141,8 @@ object EnglishContent {
     s"""Your refunds history
        |In progress
        |History
-       |Requested on Completed on Amount claimed
+       |History
+       |Requested on Completed on Amount claimed Status
        |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Paid
        |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Rejected
        |Is this page not working properly? (opens in new tab)""".stripMargin
@@ -164,7 +165,8 @@ object EnglishContent {
     s"""Your refunds history
        |In progress
        |History
-       |Requested on Amount claimed
+       |In progress
+       |Requested on Amount claimed Status
        |$inProgressDate1 £$inProgressAmount1 Processing
        |$inProgressDate2 £$inProgressAmount2 Processing
        |$approvedDate1 £$approvedAmount1 Approved
