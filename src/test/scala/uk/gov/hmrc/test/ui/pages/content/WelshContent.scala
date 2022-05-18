@@ -143,7 +143,8 @@ object WelshContent {
     s"""Hanes eich ad-daliadau
        |Ar waith
        |Hanes
-       |Gofyn ar Wedi’i gwblhau ar Swm a hawliwyd
+       |Hanes
+       |Gofyn ar Wedi’i gwblhau ar Swm a hawliwyd Statws
        |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Talwyd
        |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Wedi’i wrthod
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
@@ -167,7 +168,8 @@ object WelshContent {
     s"""Hanes eich ad-daliadau
        |Ar waith
        |Hanes
-       |Gofyn ar Swm a hawliwyd
+       |Ar waith
+       |Gofyn ar Swm a hawliwyd Statws
        |$inProgressDate1 £$inProgressAmount1 Wrthi’n prosesu
        |$inProgressDate2 £$inProgressAmount2 Wrthi’n prosesu
        |$approvedDate1 £$approvedAmount1 Cymeradwywyd
