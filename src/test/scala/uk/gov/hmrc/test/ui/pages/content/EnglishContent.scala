@@ -142,9 +142,9 @@ object EnglishContent {
        |In progress
        |History
        |History
-       |Requested on Completed on Amount claimed Status
-       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Paid
-       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Rejected
+       |Requested on Completed on Amount claimed Status Actions
+       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Paid View
+       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Rejected View
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
@@ -166,13 +166,13 @@ object EnglishContent {
        |In progress
        |History
        |In progress
-       |Requested on Amount claimed Status
-       |$inProgressDate1 £$inProgressAmount1 Processing
-       |$inProgressDate2 £$inProgressAmount2 Processing
-       |$approvedDate1 £$approvedAmount1 Approved
-       |$approvedDate2 £$approvedAmount2 Approved
-       |$approvedDate3 £$approvedAmount3 Approved
-       |$approvedDate4 £$approvedAmount4 Approved
+       |Requested on Amount claimed Status Actions
+       |$inProgressDate1 £$inProgressAmount1 Processing View
+       |$inProgressDate2 £$inProgressAmount2 Processing View
+       |$approvedDate1 £$approvedAmount1 Approved View
+       |$approvedDate2 £$approvedAmount2 Approved View
+       |$approvedDate3 £$approvedAmount3 Approved View
+       |$approvedDate4 £$approvedAmount4 Approved View
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
