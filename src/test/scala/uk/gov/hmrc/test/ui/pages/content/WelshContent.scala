@@ -145,8 +145,8 @@ object WelshContent {
        |Hanes
        |Hanes
        |Gofyn ar Wedi’i gwblhau ar Swm a hawliwyd Statws Gweithredoedd
-       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Talwyd golwg
-       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Wedi’i wrthod golwg
+       |$requestedOnDate1 $paidOnDate1 £$paidAmount1 Talwyd Golwg
+       |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Wedi’i wrthod Golwg
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
@@ -170,12 +170,12 @@ object WelshContent {
        |Hanes
        |Ar waith
        |Gofyn ar Swm a hawliwyd Statws Gweithredoedd
-       |$inProgressDate1 £$inProgressAmount1 Wrthi’n prosesu golwg
-       |$inProgressDate2 £$inProgressAmount2 Wrthi’n prosesu golwg
-       |$approvedDate1 £$approvedAmount1 Cymeradwywyd golwg
-       |$approvedDate2 £$approvedAmount2 Cymeradwywyd golwg
-       |$approvedDate3 £$approvedAmount3 Cymeradwywyd golwg
-       |$approvedDate4 £$approvedAmount4 Cymeradwywyd golwg
+       |$inProgressDate1 £$inProgressAmount1 Wrthi’n prosesu Golwg
+       |$inProgressDate2 £$inProgressAmount2 Wrthi’n prosesu Golwg
+       |$approvedDate1 £$approvedAmount1 Cymeradwywyd Golwg
+       |$approvedDate2 £$approvedAmount2 Cymeradwywyd Golwg
+       |$approvedDate3 £$approvedAmount3 Cymeradwywyd Golwg
+       |$approvedDate4 £$approvedAmount4 Cymeradwywyd Golwg
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
