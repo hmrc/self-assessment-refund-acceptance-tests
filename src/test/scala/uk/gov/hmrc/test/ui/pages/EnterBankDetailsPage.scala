@@ -92,6 +92,7 @@ object EnterBankDetailsPage extends BasePage {
     accountNumber.sendKeys(validAccount.accNumber)
   }
 
+  //TODO get bank details that are suitable when all the BARS stuff is sorted.
   def enterInvalidBankDetails(invalidAccount: BankDetails = invalidAccount) {
     personalAccountName.sendKeys(invalidAccount.accName)
     sortCode.sendKeys(invalidAccount.sortcode)

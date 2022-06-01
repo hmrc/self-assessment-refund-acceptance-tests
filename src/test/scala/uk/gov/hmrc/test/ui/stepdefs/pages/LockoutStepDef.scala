@@ -14,16 +14,12 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.testonly
+package uk.gov.hmrc.test.ui.stepdefs.pages
 
-import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
+import uk.gov.hmrc.test.ui.pages.IvKickoutPage
+import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
 
-object BackUrlPage extends BasePage {
+class LockoutStepDef extends Steps with DriverActions {
 
-  val url = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/show-back-url"
-  def expectedPageTitle = "Back Page - Business tax account - GOV.UK"
-  def expectedPageHeader = "Back url page"
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
 }

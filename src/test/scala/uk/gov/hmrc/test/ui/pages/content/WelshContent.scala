@@ -123,6 +123,21 @@ object WelshContent {
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
+  def lockoutPageText(): String = {
+    s"""TBC
+       |Yn ôl i’ch cyfrif treth
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+  }
+
+  def doesNotAcceptPaymentsPageText(): String = {
+    s"""Nid yw’ch cyfrif banc yn derbyn taliadau
+       |Ni allwn gwblhau’ch cais am ad-daliad.
+       |
+       |Gallwch roi cynnig arall arni gan ddefnyddio cyfrif banc gwahanol.
+       |Rhoi cynnig arall arni
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+  }
+
   //Redirects to Payments Survey Service so content assertion not needed.
   def surveyPageText(): String = {
     s"""
