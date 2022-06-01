@@ -116,6 +116,13 @@ object WelshContent {
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
+  def ivKickoutPageText(): String = {
+    s"""Rydych wedi nodi gwybodaeth nad yw’n cyd-fynd â’n cofnodion gormod o weithiau.
+       |Am resymau diogelwch, mae’n rhaid i chi aros 24 awr ac yna fewngofnodi i roi cynnig arall arni.
+       |Yn ôl i’ch cyfrif treth
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
+  }
+
   //Redirects to Payments Survey Service so content assertion not needed.
   def surveyPageText(): String = {
     s"""

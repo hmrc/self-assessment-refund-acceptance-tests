@@ -14,22 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.stepdefs.other
+package uk.gov.hmrc.test.ui.stepdefs.pages
 
-import cucumber.api.scala.{EN, ScalaDsl}
-import org.scalatest.Matchers
-import uk.gov.hmrc.webdriver.SingletonDriver
+import uk.gov.hmrc.test.ui.pages.IvKickoutPage
+import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
 
-import scala.util.Try
+class IvKickoutStepDef extends Steps with DriverActions {
 
-trait Steps extends ScalaDsl with EN with Matchers {
-
-  Before { _ ⇒
-    ScenarioVariables.resetScenarioVariables()
-  }
-
-  After { _ ⇒
-//   Try(SingletonDriver.closeInstance)
+  And("""^the user (.*) IV Uplift$""") { (outcome: String) =>
+    IvKickoutPage.enterNino()
+    IvKickoutPage.selectIvOutcome(outcome)
   }
 
 }

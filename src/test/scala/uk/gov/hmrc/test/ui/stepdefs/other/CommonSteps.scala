@@ -106,6 +106,9 @@ class CommonSteps extends Steps with DriverActions {
       case "StatusPaidPage" =>
         StatusPaidPage.shouldBeLoaded()
         StatusPaidPage.assertContent()
+      case "IvKickoutPage" =>
+        IvKickoutPage.shouldBeLoaded()
+        IvKickoutPage.assertContent()
     }
   }
 }
