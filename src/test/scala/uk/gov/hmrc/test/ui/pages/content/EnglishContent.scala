@@ -116,8 +116,8 @@ object EnglishContent {
   }
 
   def ivKickoutPageText(): String = {
-    s"""You have entered information that does not match our records too many times.
-       |For security reasons, you must wait 24 hours and then sign in to try again.
+    s"""We could not confirm your identity
+       |You have entered information that does not match our records too many times. For security reasons, you must wait 24 hours and then sign in to try again.
        |Back to your tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }

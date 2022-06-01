@@ -40,9 +40,20 @@ object IvKickoutPage extends BasePage {
 
   def pageContent: String = id("main-content").webElement.getText
 
+  def assertContent(): Assertion = {
+    if (langToggle == Language.welsh) pageContent should be(WelshContent.ivKickoutPageText())
+    else pageContent should be(EnglishContent.ivKickoutPageText())
+  }
+
+
+
+
+
+  // IV Stub Page
+
   def ninoEntry: WebElement = id("forNino").webElement
 
-  def IvOutcome(outcome: String): WebElement ={
+  def IvOutcome(outcome: String): WebElement = {
     outcome match {
       case "Success" => id("Success").webElement
       case "Pre Condition Failed" => id("PreconditionFailed").webElement
@@ -56,17 +67,14 @@ object IvKickoutPage extends BasePage {
     }
   }
 
-  def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.ivKickoutPageText())
-    else pageContent should be(EnglishContent.ivKickoutPageText())
-  }
-
-  def enterNino (): Unit ={
+  def enterNino(): Unit = {
     ninoEntry.sendKeys(ScenarioContext.get("nino"))
   }
 
-  def selectIvOutcome (outcome: String): Unit ={
+  def selectIvOutcome(outcome: String): Unit = {
     IvOutcome(outcome).click()
   }
+
+  def clickSubmit(): Unit = clickOn(id("submit-continue"))
 
 }

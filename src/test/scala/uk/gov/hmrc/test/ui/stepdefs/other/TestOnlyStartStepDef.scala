@@ -44,7 +44,7 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
     }
   }
 
-  And("""^The user starts a (.*) journey with confidence level < 250$""") { (accType: String, nino: String) =>
+  And("""^The user starts a (.*) journey for (.*) with confidence level < 250$""") { (accType: String, nino: String) =>
     // Have to go through this twice as the first time takes you to Auth Login
     //    ScenarioVariables.personalOrBusiness = accType
     ScenarioContext.set("personalOrBusiness", accType)

@@ -22,8 +22,8 @@ import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
 class IvKickoutStepDef extends Steps with DriverActions {
 
   And("""^the user (.*) IV Uplift$""") { (outcome: String) =>
-    IvKickoutPage.enterNino()
     IvKickoutPage.selectIvOutcome(outcome)
+    IvKickoutPage.clickSubmit()
   }
 
 }
