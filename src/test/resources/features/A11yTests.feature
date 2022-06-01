@@ -15,6 +15,14 @@ Feature: A11y tests (Temp)
     And the user click continue
     And the user click continue
 
+  @a11y @journey
+  Scenario: A11y - IV Kickout Page
+    Given The user starts a personal journey for AA111111A with confidence level < 250
+    And the user Failed IV IV Uplift
+    Then the user is on the IvKickoutPage
+    When the User toggles on Welsh language
+    Then the user is on the IvKickoutPage
+
   @a11y @history
   Scenario: A11y - History Pages
     Given The user starts a history journey

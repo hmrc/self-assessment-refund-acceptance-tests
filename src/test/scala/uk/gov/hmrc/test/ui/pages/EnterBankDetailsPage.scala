@@ -92,6 +92,12 @@ object EnterBankDetailsPage extends BasePage {
     accountNumber.sendKeys(validAccount.accNumber)
   }
 
+  def enterInvalidBankDetails(invalidAccount: BankDetails = invalidAccount) {
+    personalAccountName.sendKeys(invalidAccount.accName)
+    sortCode.sendKeys(invalidAccount.sortcode)
+    accountNumber.sendKeys(invalidAccount.accNumber)
+  }
+
   def enterBusinessBankDetails(validAccount: BankDetails = validAccountBusiness) {
     businessAccountName.sendKeys(validAccount.accName)
     sortCode.sendKeys(validAccount.sortcode)
