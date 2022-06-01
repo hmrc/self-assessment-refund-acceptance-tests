@@ -122,6 +122,21 @@ object EnglishContent {
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
+  def lockoutPageText(): String = {
+    s"""TBC
+       |Back to your tax account
+       |Is this page not working properly? (opens in new tab)""".stripMargin
+  }
+
+  def doesNotAcceptPaymentsPageText(): String = {
+    s"""Your bank account does not accept payments
+       |We cannot complete your refund request.
+       |
+       |You can try again using a different bank account.
+       |Try Again
+       |Is this page not working properly? (opens in new tab)""".stripMargin
+  }
+
   //Redirects to Payments Survey Service so content assertion not needed.
   def surveyPageText(): String = {
     s"""
@@ -226,7 +241,7 @@ object EnglishContent {
        |Back to tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
-  
+
   // template function
   def templateText(): String = {
     s"""

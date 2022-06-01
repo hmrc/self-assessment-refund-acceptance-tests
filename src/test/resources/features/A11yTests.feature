@@ -23,6 +23,22 @@ Feature: A11y tests (Temp)
     When the User toggles on Welsh language
     Then the user is on the IvKickoutPage
 
+#  @a11y @journey
+#  Scenario: A11y - BARS Lockout Refund Journey
+#    Given The user starts a personal journey with Nino AA111111A
+#    When the User toggles on English language
+#    And the user is on the RefundAmountPage
+#    And the user clicks other amount
+#    And the user enter an amount of 1
+#    And the user click continue
+#    And the user select personal account
+#    And the user click continue
+#    And the user enter invalid personal bank details
+#    And the user click continue
+##    And the user click continue
+##    And the user click continue
+##    Then the user is on the LockoutPage
+
   @a11y @history
   Scenario: A11y - History Pages
     Given The user starts a history journey
