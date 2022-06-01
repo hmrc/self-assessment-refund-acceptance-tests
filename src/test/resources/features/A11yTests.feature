@@ -23,7 +23,6 @@ Feature: A11y tests (Temp)
     When the User toggles on Welsh language
     Then the user is on the IvKickoutPage
 
-
   @a11y @history
   Scenario: A11y - History Pages
     Given The user starts a history journey
