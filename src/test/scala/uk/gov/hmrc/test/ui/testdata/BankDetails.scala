@@ -23,8 +23,8 @@ object BankDetails {
   lazy val environment: String = Option(System.getProperty("environment")).getOrElse("local").toLowerCase
 
   lazy val validAccountPersonal: BankDetails = environment match {
-    case "local" | "dev" | "staging" => BankDetails("Tester", "207106", "44344677", "1234")
-    case "qa"                        => BankDetails("Tester", "404784", "70872490", "1234")
+    case "local" | "dev" | "staging" => BankDetails("Melvin Loper", "207106", "44311677", "1234")
+    case "qa"                        => BankDetails("Melvin Loper", "207106", "44311677", "1234")
   }
 
   lazy val validAccountBusiness: BankDetails = environment match {
