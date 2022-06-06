@@ -32,7 +32,7 @@ object AuthWizardPage extends BasePage {
   }
 
   def enterValidNino(): Unit =
-    name("nino").webElement.sendKeys(ScenarioContext.getOrElse("nino","AA111111A"))
+    id("nino").webElement.sendKeys(ScenarioContext.getOrElse("nino","AA111111A"))
 
   def setConfidenceLevel(cl: String): Unit =
     singleSel(name("confidenceLevel")).value = cl
