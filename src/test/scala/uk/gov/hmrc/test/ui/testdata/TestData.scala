@@ -40,18 +40,23 @@ object TestData {
 //  val dateValue: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
 
   //In Progress Tab
-  def inProgessDate1 = if (langToggle == Language.welsh) "5 Gorffennaf 2021" else "5 July 2021"
-  def inProgessDate2 = if (langToggle == Language.welsh) "21 Mai 2021" else "21 May 2021"
-  val inProgessAmount1 = "200.00"
-  val inProgessAmount2 = "300.00"
+  def inProgessDate1 = if (langToggle == Language.welsh) "7 Mehefin 2022" else "7 June 2022"
+  def inProgessDate2 = if (langToggle == Language.welsh) "7 Mehefin 2022" else "7 June 2022"
+  def inProgessDate3 = if (langToggle == Language.welsh) "5 Gorffennaf 2021" else "5 July 2021"
+  def inProgessDate4 = if (langToggle == Language.welsh) "21 Mai 2021" else "21 May 2021"
+  val inProgessAmount1 = "123.00"
+  val inProgessAmount2 = "123.00"
+  val inProgessAmount3 = "20,000.00"
+  val inProgessAmount4 = "30,000.00"
   def approvedDate1 = if (langToggle == Language.welsh) "21 Gorffennaf 2020" else "21 July 2020"
   def approvedDate2 = if (langToggle == Language.welsh) "1 Mai 2019" else "1 May 2019"
   def approvedDate3 = if (langToggle == Language.welsh) "13 Medi 2018" else "13 September 2018"
   def approvedDate4 = if (langToggle == Language.welsh) "13 Mehefin 2015" else "13 June 2015"
-  val approvedAmount1 = "120.00"
-  val approvedAmount2 = "40.00"
-  val approvedAmount3 = "80.00"
-  val approvedAmount4 = "80.00"
+  val approvedAmount1 = "12,000.00"
+  val approvedAmount2 = "4,000.00"
+  val approvedAmount3 = "8,000.00"
+  //TODO Shouldnt be there as over 6 years ago
+  val approvedAmount4 = "8,000.00"
 
 
   //History Tab
@@ -59,8 +64,8 @@ object TestData {
   def requestedOnDate2 = if (langToggle == Language.welsh) "1 Ebrill 2019" else "1 April 2019"
   def paidOnDate1 = if (langToggle == Language.welsh) "4 Hydref 2019" else "4 October 2019"
   def rejectedDate2 = if (langToggle == Language.welsh) "4 Ebrill 2019" else "4 April 2019"
-  val paidAmount1 = "40.00"
-  val rejectedAmount1 = "40.00"
+  val paidAmount1 = "4,000.00"
+  val rejectedAmount1 = "4,000.00"
 
 
 
