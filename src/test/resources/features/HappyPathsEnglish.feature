@@ -54,7 +54,7 @@ Feature: Happy Path - English
 
 
   Scenario: English - Refund History
-    Given The user starts a history journey
+    Given The user starts a history journey for AA111111A
     When the User toggles on English language
     And the user is on the RefundHistoryPage
     And the user clicks on Processing for result number 3

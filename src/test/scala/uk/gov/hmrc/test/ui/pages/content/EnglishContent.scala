@@ -50,15 +50,11 @@ object EnglishContent {
        |Account type
        |$accType Change
        |account type
-       |Name on the account
-       |Sort code
-       |Account number
-       |Building society number
-       |${bankDetails.accName}
-       |${bankDetails.sortcode}
-       |${bankDetails.accNumber}
-       |${bankDetails.roll} Change
+       |Name on the account ${bankDetails.accName} Change
        |bank details
+       |Sort code ${bankDetails.sortcode}
+       |Account number ${bankDetails.accNumber}
+       |Building society number ${bankDetails.roll}
        |Amount to be repaid
        |£$amount Change
        |refund amount
@@ -173,12 +169,8 @@ object EnglishContent {
   }
 
   def refundHistoryInProgressPageText(): String = {
-    val inProgressDate1: String = TestData.inProgessDate1
-    val inProgressDate2: String = TestData.inProgessDate2
     val inProgressDate3: String = TestData.inProgessDate3
     val inProgressDate4: String = TestData.inProgessDate4
-    val inProgressAmount1: String = TestData.inProgessAmount1
-    val inProgressAmount2: String = TestData.inProgessAmount2
     val inProgressAmount3: String = TestData.inProgessAmount3
     val inProgressAmount4: String = TestData.inProgessAmount4
     val approvedDate1: String = TestData.approvedDate1
@@ -196,10 +188,6 @@ object EnglishContent {
        |History
        |In progress
        |Requested on Amount claimed Status Actions
-       |$inProgressDate1 £$inProgressAmount1 Processing View
-       |details of claim dated $inProgressDate1
-       |$inProgressDate2 £$inProgressAmount2 Processing View
-       |details of claim dated $inProgressDate2
        |$inProgressDate3 £$inProgressAmount3 Processing View
        |details of claim dated $inProgressDate3
        |$inProgressDate4 £$inProgressAmount4 Processing View

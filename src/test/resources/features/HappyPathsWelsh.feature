@@ -2,7 +2,7 @@ Feature: Happy Path - Welsh
 
   @wip
   Scenario Outline: Welsh - V&C with card on file
-    Given The user starts a <type> journey with Nino AC111111A
+    Given The user starts a <type> journey with Nino AA111111A
     When the User toggles on Welsh language
     And the user is on the RefundAmountPage
     And the user click on the <amount> amount <value>
@@ -29,7 +29,7 @@ Feature: Happy Path - Welsh
 
   @wip
   Scenario Outline: Welsh - V&C with no card on file, enter bank details
-    Given The user starts a <type> journey with Nino AA111111A
+    Given The user starts a <type> journey with Nino AC111111A
     When the User toggles on Welsh language
     And the user is on the RefundAmountPage
     And the user click on the <amount> amount <value>

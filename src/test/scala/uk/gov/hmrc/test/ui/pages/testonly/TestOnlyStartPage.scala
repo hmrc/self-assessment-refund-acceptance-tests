@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object TestOnlyStartPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/boot"
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/start-journey"
 
   def expectedPageTitle = "TBC"
   def expectedPageHeader = "TBC"
@@ -29,11 +29,16 @@ object TestOnlyStartPage extends BasePage {
 
   def clickRadio(nino: String): Unit ={
     nino match {
-      case "AC111111A" => click on id("0")
-      case "AA111111A" => click on id("1")
-      case "history" => click on id("2")
+      case "AC111111A" => click on id("1")
+      case "AA111111A" => click on id("0")
+      case "AA111111A_history" => click on id("2")
+      case "AC111111A_history" => click on id("3")
     }
-    continue()
+    clickSelectPreset()
+  }
+
+  def clickSelectPreset(): Unit = {
+    click on cssSelector("#main-content > form:nth-child(5) > button")
   }
 
 }

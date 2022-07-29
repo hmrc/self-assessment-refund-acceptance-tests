@@ -1,7 +1,7 @@
 Feature: Error Messages English
 
   Background:
-    Given The user starts a personal journey with Nino AA111111A
+    Given The user starts a personal journey with Nino AC111111A
     When the User toggles on English language
     And the user is on the RefundAmountPage
 

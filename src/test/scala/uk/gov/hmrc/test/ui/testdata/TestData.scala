@@ -21,9 +21,12 @@ import uk.gov.hmrc.test.ui.pages.SurveyPage.langToggle
 //import java.time.LocalDate
 //import java.time.format.DateTimeFormatter
 
-object TestData {
+//case class TestData(nino: String, maxRefundAmount: String, inProgressDate1: String, inProgessAmount1: String, approvedDate1: String, approvedAmount1: String,
+//                    requestedOnDate1: String, requestedOnDate2: String, paidOnDate1: String, rejectedDate2: String, paidAmount1: String, rejectedAmount1: String)
 
-//  lazy val validTestUser1: TestData = TestData("AA111111A", )
+object TestData {
+//
+//  lazy val testUser1: TestData = TestData("AA111111A", "123.45",  )
 
   //TODO sort out test users and data when stubs are created - similar to the bank details class/object
 
@@ -33,7 +36,7 @@ object TestData {
   val totalRefunds = "13,029.68"
   val maxRefundAmount = "123.45"
   val refundType = "Self Assessment"
-  val refundAmount = "123.45"
+  val refundAmount = "987.65"
   val amountValue = "545.80"
   //TODO placeholder as code for the page currently pulls today's date
   val dateValue: String = "TODO-DATE"
@@ -68,10 +71,21 @@ object TestData {
   val rejectedAmount1 = "4,000.00"
 
 
-
-
-
   val nino2 = "AC111111A"
-  val maxRefundAmount2 = "987.65"
+  val maxRefundAmount2 = "123.45"
 
+
+  //NINO AA111111B
+
+  val nino3 = "AA111111B"
+  def inProgessDate1AA111111B = if (langToggle == Language.welsh) "3 Mawrth 2022" else "3 March 2022"
+  def approvedDate1AA111111B = if (langToggle == Language.welsh) "1 Ionawr 2022" else "1 January 2022"
+  val inProgessAmount1AA111111B = "3,000.00"
+  val approvedAmount1AA111111B = "1,000.00"
+  def requestedOnDate1AA111111B = if (langToggle == Language.welsh) "4 Ebrill 2022" else "4 April 2022"
+  def requestedOnDate2AA111111B = if (langToggle == Language.welsh) "2 Chwefror 2022" else "2 February 2022"
+  def paidOnDate1AA111111B = if (langToggle == Language.welsh) "14 Ebrill 2022" else "14 April 2022"
+  def rejectedDate2AA111111B = if (langToggle == Language.welsh) "12 Chwefror 2022" else "12 February 2022"
+  val paidAmount1AA111111B = "4,000.00"
+  val rejectedAmount1AA111111B = "2,000.00"
 }

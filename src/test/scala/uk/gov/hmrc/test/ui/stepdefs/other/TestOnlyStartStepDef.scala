@@ -23,7 +23,6 @@ import uk.gov.hmrc.test.ui.testdata.{ScenarioContext, TestData}
 class TestOnlyStartStepDef extends Steps with DriverActions {
 
   And("""^The user starts a (.*) journey with Nino (.*)$""") { (accType: String, nino: String) =>
-    // Have to go through this twice as the first time takes you to Auth Login
     //    ScenarioVariables.personalOrBusiness = accType
     ScenarioContext.set("personalOrBusiness", accType)
     go to TestOnlyStartPage.url
@@ -34,19 +33,14 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
         ScenarioContext.set("nino", TestData.nino2)
       case _ => TestOnlyStartPage.clickRadio(TestData.nino)
     }
+    continue()
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("250")
     AuthWizardPage.clickSubmit()
-    nino match {
-      case "AA111111A" => TestOnlyStartPage.clickRadio(TestData.nino)
-      case "AC111111A" => TestOnlyStartPage.clickRadio(TestData.nino2)
-      case _ => TestOnlyStartPage.clickRadio(TestData.nino)
-    }
+    continue()
   }
 
   And("""^The user starts a (.*) journey for (.*) with confidence level < 250$""") { (accType: String, nino: String) =>
-    // Have to go through this twice as the first time takes you to Auth Login
-    //    ScenarioVariables.personalOrBusiness = accType
     ScenarioContext.set("personalOrBusiness", accType)
     go to TestOnlyStartPage.url
     nino match {
@@ -56,25 +50,33 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
         ScenarioContext.set("nino", TestData.nino2)
       case _ => TestOnlyStartPage.clickRadio(TestData.nino)
     }
+    continue()
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("200")
     AuthWizardPage.clickSubmit()
-    nino match {
-      case "AA111111A" => TestOnlyStartPage.clickRadio(TestData.nino)
-      case "AC111111A" => TestOnlyStartPage.clickRadio(TestData.nino2)
-      case _ => TestOnlyStartPage.clickRadio(TestData.nino)
-    }
+    continue()
   }
 
-  And("""^The user starts a history journey""") { () =>
-    // Have to go through this twice as the first time takes you to Auth Login
-    //    ScenarioVariables.personalOrBusiness = accType
+  And("""^The user starts a history journey for (.*)""") { (nino: String) =>
     go to TestOnlyStartPage.url
-    TestOnlyStartPage.clickRadio("history")
+    nino match {
+      case "AA111111A" => TestOnlyStartPage.clickRadio("AA111111A_history")
+        ScenarioContext.set("nino", TestData.nino)
+      case "AC111111A" => TestOnlyStartPage.clickRadio("AC111111A_history")
+        ScenarioContext.set("nino", TestData.nino2)
+      case "AA111111B" => TestOnlyStartPage.clickRadio("AC111111A_history") //Click AC111111A to populate rest of field
+        ScenarioContext.set("nino", "AA111111B")
+    }
+    continue()
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("250")
     AuthWizardPage.clickSubmit()
-    TestOnlyStartPage.clickRadio("history")
+    nino match {
+      case "AA111111B" => id("nino").webElement.clear()
+                          id("nino").webElement.sendKeys(nino)
+      case _ =>
+    }
+    continue()
   }
 
 
