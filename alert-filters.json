@@ -10,6 +10,11 @@
       "urlIsRegex": "true"
     },
     {
+      "url": "http:\/\/localhost:9171\/self-assessment-refund\/test-only\/.*",
+      "ruleId": "10202",
+      "urlIsRegex": "true"
+    },
+    {
       "url": "http:\/\/localhost:9032\/.*",
       "ruleId": "10021",
       "urlIsRegex": "true"
