@@ -56,7 +56,8 @@ object RequestReceivedPage extends BasePage {
   }
 
   def referenceNumberDisplayed(): Assertion = {
-    referenceContent should fullyMatch regex s"""Your refund reference is [a-z0-9]{24}""".r
+    referenceContent should fullyMatch regex
+      s"""Your refund reference is [a-z0-9]{12}""".r
   }
 
   def refundDetailsCorrect(): Unit = {

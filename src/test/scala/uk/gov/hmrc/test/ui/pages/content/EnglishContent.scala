@@ -149,12 +149,12 @@ object EnglishContent {
   }
 
   def refundHistoryHistoryPageText(): String = {
-    val requestedOnDate1: String = TestData.requestedOnDate1
-    val paidOnDate1: String = TestData.paidOnDate1
-    val paidAmount1: String = TestData.paidAmount1
-    val requestedOnDate2: String = TestData.requestedOnDate2
-    val rejectedDate2: String = TestData.rejectedDate2
-    val rejectedAmount1: String = TestData.rejectedAmount1
+    val requestedOnDate1: String = TestData.requestedOnDate1AA111111B
+    val paidOnDate1: String = TestData.paidOnDate1AA111111B
+    val paidAmount1: String = TestData.paidAmount1AA111111B
+    val requestedOnDate2: String = TestData.requestedOnDate2AA111111B
+    val rejectedDate2: String = TestData.rejectedDate2AA111111B
+    val rejectedAmount1: String = TestData.rejectedAmount1AA111111B
 
     s"""Your refunds history
        |In progress
@@ -169,42 +169,25 @@ object EnglishContent {
   }
 
   def refundHistoryInProgressPageText(): String = {
-    val inProgressDate3: String = TestData.inProgessDate3
-    val inProgressDate4: String = TestData.inProgessDate4
-    val inProgressAmount3: String = TestData.inProgessAmount3
-    val inProgressAmount4: String = TestData.inProgessAmount4
-    val approvedDate1: String = TestData.approvedDate1
-    val approvedDate2: String = TestData.approvedDate2
-    val approvedDate3: String = TestData.approvedDate3
-    val approvedDate4: String = TestData.approvedDate4
-    val approvedAmount1: String = TestData.approvedAmount1
-    val approvedAmount2: String = TestData.approvedAmount2
-    val approvedAmount3: String = TestData.approvedAmount3
-    //TODO **BUG?** Shouldnt be there as over 6 years ago
-    val approvedAmount4: String = TestData.approvedAmount4
+    val inProgressDate1: String = TestData.inProgessDate1AA111111B
+    val inProgressAmount1: String = TestData.inProgessAmount1AA111111B
+    val approvedDate1: String = TestData.approvedDate1AA111111B
+    val approvedAmount1: String = TestData.approvedAmount1AA111111B
 
     s"""Your refunds history
        |In progress
        |History
        |In progress
        |Requested on Amount claimed Status Actions
-       |$inProgressDate3 £$inProgressAmount3 Processing View
-       |details of claim dated $inProgressDate3
-       |$inProgressDate4 £$inProgressAmount4 Processing View
-       |details of claim dated $inProgressDate4
+       |$inProgressDate1 £$inProgressAmount1 Processing View
+       |details of claim dated $inProgressDate1
        |$approvedDate1 £$approvedAmount1 Approved View
        |details of claim dated $approvedDate1
-       |$approvedDate2 £$approvedAmount2 Approved View
-       |details of claim dated $approvedDate2
-       |$approvedDate3 £$approvedAmount3 Approved View
-       |details of claim dated $approvedDate3
-       |$approvedDate4 £$approvedAmount4 Approved View
-       |details of claim dated $approvedDate4
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
   def statusApprovedPageText(): String = {
-    val approvedAmountValue: String = TestData.approvedAmount1
+    val approvedAmountValue: String = TestData.approvedAmount1AA111111B
     s"""Your refund of £$approvedAmountValue has been approved
        |We will send your refund to the bank details you provided or the card you used to pay your last bill.
        |Please allow 3 to 5 days for the money to reach your bank account or your card.
@@ -213,7 +196,7 @@ object EnglishContent {
   }
 
   def statusProcessingPageText(): String = {
-    val inProgressAmountValue: String = TestData.inProgessAmount1
+    val inProgressAmountValue: String = TestData.inProgessAmount1AA111111B
     s"""Your refund of £$inProgressAmountValue is in progress
        |We have received your refund request. HMRC aims to issue refunds within 2 weeks, however there are security measures in place which may cause a delay.
        |Please allow 30 days before contacting us about your request.
@@ -222,7 +205,7 @@ object EnglishContent {
   }
 
   def statusRejectedPageText(): String = {
-    val rejectedAmountValue: String = TestData.rejectedAmount1
+    val rejectedAmountValue: String = TestData.rejectedAmount1AA111111B
     s"""Your refund of £$rejectedAmountValue has been rejected
        |We cannot pay your refund of £$rejectedAmountValue because your request has been rejected.
        |Back to tax account
@@ -230,8 +213,8 @@ object EnglishContent {
   }
 
   def statusPaidPageText(): String = {
-    val paidAmountValue: String = TestData.paidAmount1
-    val paidOnDate: String = TestData.paidOnDate1
+    val paidAmountValue: String = TestData.paidAmount1AA111111B
+    val paidOnDate: String = TestData.paidOnDate1AA111111B
     s"""Your refund has been paid
        |We sent you a payment of £$paidAmountValue on $paidOnDate.
        |It can take 3 to 5 days for the money to reach your bank account or your card.
