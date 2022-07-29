@@ -24,7 +24,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 object StatusRejectedPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status/4"
-  val rejectedAmount1: String = TestData.rejectedAmount1
+  val rejectedAmount1: String = TestData.rejectedAmount1AA111111B
 
   def expectedPageTitle =  {
     if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$rejectedAmount1 wedi’i wrthod - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"

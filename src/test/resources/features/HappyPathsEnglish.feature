@@ -29,7 +29,7 @@ Feature: Happy Path - English
 
   @wip
   Scenario Outline: English - V&C with no card on file, enter bank details
-    Given The user starts a <type> journey with Nino AA111111A
+    Given The user starts a <type> journey with Nino AC111111A
     When the User toggles on English language
     And the user is on the RefundAmountPage
     And the user click on the <amount> amount <value>
@@ -53,14 +53,15 @@ Feature: Happy Path - English
 #      | business | other  | 50.00    |
 
 
+
   Scenario: English - Refund History
-    Given The user starts a history journey for AA111111A
+    Given The user starts a history journey for AA111111B
     When the User toggles on English language
     And the user is on the RefundHistoryPage
-    And the user clicks on Processing for result number 3
+    And the user clicks on Processing for result number 1
     And the user is on the StatusProcessingPage
     And the user click back
-    And the user clicks on Approved for result number 5
+    And the user clicks on Approved for result number 2
     And the user is on the StatusApprovedPage
     And the user click back
     And the user clicks on the History tab

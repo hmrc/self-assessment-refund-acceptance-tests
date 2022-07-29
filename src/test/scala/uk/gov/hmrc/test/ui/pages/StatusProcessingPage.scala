@@ -25,7 +25,7 @@ object StatusProcessingPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status/0"
 
-  val inProgressAmount1: String = TestData.inProgessAmount1
+  val inProgressAmount1: String = TestData.inProgessAmount1AA111111B
 
   def expectedPageTitle = {
     if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$inProgressAmount1 ar y gweill - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
