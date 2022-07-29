@@ -65,7 +65,7 @@ object RefundAmountPage extends BasePage {
     radio match {
       case "full" => click on refundFullRadio
       case "other" => click on refundDiffRadio
-        enterAmount(amount)
+                      enterAmount(amount)
     }
   }
 
@@ -106,24 +106,24 @@ object RefundAmountPage extends BasePage {
   def errorMessageValidation(error: String) {
     val amount: String = TestData.maxRefundAmount
 
-      if (langToggle == Language.welsh) {
-        error match {
-          case "enter amount" => errorMessageAmount.getText should be("Gwall:\nNodwch y swm i’w ad-dalu")
-          case "choice required" => errorMessageChoice.getText should be("Gwall:\nDewiswch faint o ad-daliad yr hoffech ei gael")
-          case "invalid amount" => errorMessageAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23")
-          case "amount of 0" => errorMessageAmount.getText should be(s"Gwall:\nRhaid i’r swm fod yn un geiniog neu’n fwy")
-          case "exceeded maximum amount" => errorMessageAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
-        }
+    if (langToggle == Language.welsh) {
+      error match {
+        case "enter amount" => errorMessageAmount.getText should be("Gwall:\nNodwch y swm i’w ad-dalu")
+        case "choice required" => errorMessageChoice.getText should be("Gwall:\nDewiswch faint o ad-daliad yr hoffech ei gael")
+        case "invalid amount" => errorMessageAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23")
+        case "amount of 0" => errorMessageAmount.getText should be(s"Gwall:\nRhaid i’r swm fod yn un geiniog neu’n fwy")
+        case "exceeded maximum amount" => errorMessageAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
       }
-      else {
-        error match {
-          case "enter amount" => errorMessageAmount.getText should be("Error:\nEnter an amount to be refunded")
-          case "choice required" => errorMessageChoice.getText should be("Error:\nSelect how much you want to be refunded")
-          case "invalid amount" => errorMessageAmount.getText should be(s"Error:\nAmount to be refunded must be an amount of money, like 11.50 or 12")
-          case "amount of 0" => errorMessageAmount.getText should be(s"Error:\nAmount must be one pence or more")
-          case "exceeded maximum amount" => errorMessageAmount.getText should be(s"Error:\nAmount to be refunded must be £$amount or less")
-        }
+    }
+    else {
+      error match {
+        case "enter amount" => errorMessageAmount.getText should be("Error:\nEnter an amount to be refunded")
+        case "choice required" => errorMessageChoice.getText should be("Error:\nSelect how much you want to be refunded")
+        case "invalid amount" => errorMessageAmount.getText should be(s"Error:\nAmount to be refunded must be an amount of money, like 11.50 or 12")
+        case "amount of 0" => errorMessageAmount.getText should be(s"Error:\nAmount must be one pence or more")
+        case "exceeded maximum amount" => errorMessageAmount.getText should be(s"Error:\nAmount to be refunded must be £$amount or less")
       }
     }
   }
+}
 

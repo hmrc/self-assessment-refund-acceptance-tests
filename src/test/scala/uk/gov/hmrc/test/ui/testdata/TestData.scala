@@ -21,9 +21,12 @@ import uk.gov.hmrc.test.ui.pages.SurveyPage.langToggle
 //import java.time.LocalDate
 //import java.time.format.DateTimeFormatter
 
-object TestData {
+//case class TestData(nino: String, maxRefundAmount: String, inProgressDate1: String, inProgessAmount1: String, approvedDate1: String, approvedAmount1: String,
+//                    requestedOnDate1: String, requestedOnDate2: String, paidOnDate1: String, rejectedDate2: String, paidAmount1: String, rejectedAmount1: String)
 
-//  lazy val validTestUser1: TestData = TestData("AA111111A", )
+object TestData {
+//
+//  lazy val testUser1: TestData = TestData("AA111111A", "123.45",  )
 
   //TODO sort out test users and data when stubs are created - similar to the bank details class/object
 
@@ -33,25 +36,30 @@ object TestData {
   val totalRefunds = "13,029.68"
   val maxRefundAmount = "123.45"
   val refundType = "Self Assessment"
-  val refundAmount = "123.45"
+  val refundAmount = "987.65"
   val amountValue = "545.80"
   //TODO placeholder as code for the page currently pulls today's date
   val dateValue: String = "TODO-DATE"
 //  val dateValue: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
 
   //In Progress Tab
-  def inProgessDate1 = if (langToggle == Language.welsh) "5 Gorffennaf 2021" else "5 July 2021"
-  def inProgessDate2 = if (langToggle == Language.welsh) "21 Mai 2021" else "21 May 2021"
-  val inProgessAmount1 = "200.00"
-  val inProgessAmount2 = "300.00"
+  def inProgessDate1 = if (langToggle == Language.welsh) "7 Mehefin 2022" else "7 June 2022"
+  def inProgessDate2 = if (langToggle == Language.welsh) "7 Mehefin 2022" else "7 June 2022"
+  def inProgessDate3 = if (langToggle == Language.welsh) "5 Gorffennaf 2021" else "5 July 2021"
+  def inProgessDate4 = if (langToggle == Language.welsh) "21 Mai 2021" else "21 May 2021"
+  val inProgessAmount1 = "123.00"
+  val inProgessAmount2 = "123.00"
+  val inProgessAmount3 = "20,000.00"
+  val inProgessAmount4 = "30,000.00"
   def approvedDate1 = if (langToggle == Language.welsh) "21 Gorffennaf 2020" else "21 July 2020"
   def approvedDate2 = if (langToggle == Language.welsh) "1 Mai 2019" else "1 May 2019"
   def approvedDate3 = if (langToggle == Language.welsh) "13 Medi 2018" else "13 September 2018"
   def approvedDate4 = if (langToggle == Language.welsh) "13 Mehefin 2015" else "13 June 2015"
-  val approvedAmount1 = "120.00"
-  val approvedAmount2 = "40.00"
-  val approvedAmount3 = "80.00"
-  val approvedAmount4 = "80.00"
+  val approvedAmount1 = "12,000.00"
+  val approvedAmount2 = "4,000.00"
+  val approvedAmount3 = "8,000.00"
+  //TODO Shouldnt be there as over 6 years ago
+  val approvedAmount4 = "8,000.00"
 
 
   //History Tab
@@ -59,14 +67,25 @@ object TestData {
   def requestedOnDate2 = if (langToggle == Language.welsh) "1 Ebrill 2019" else "1 April 2019"
   def paidOnDate1 = if (langToggle == Language.welsh) "4 Hydref 2019" else "4 October 2019"
   def rejectedDate2 = if (langToggle == Language.welsh) "4 Ebrill 2019" else "4 April 2019"
-  val paidAmount1 = "40.00"
-  val rejectedAmount1 = "40.00"
-
-
-
+  val paidAmount1 = "4,000.00"
+  val rejectedAmount1 = "4,000.00"
 
 
   val nino2 = "AC111111A"
-  val maxRefundAmount2 = "987.65"
+  val maxRefundAmount2 = "123.45"
 
+
+  //NINO AA111111B
+
+  val nino3 = "AA111111B"
+  def inProgessDate1AA111111B = if (langToggle == Language.welsh) "3 Mawrth 2022" else "3 March 2022"
+  def approvedDate1AA111111B = if (langToggle == Language.welsh) "1 Ionawr 2022" else "1 January 2022"
+  val inProgessAmount1AA111111B = "3,000.00"
+  val approvedAmount1AA111111B = "1,000.00"
+  def requestedOnDate1AA111111B = if (langToggle == Language.welsh) "4 Ebrill 2022" else "4 April 2022"
+  def requestedOnDate2AA111111B = if (langToggle == Language.welsh) "2 Chwefror 2022" else "2 February 2022"
+  def paidOnDate1AA111111B = if (langToggle == Language.welsh) "14 Ebrill 2022" else "14 April 2022"
+  def rejectedDate2AA111111B = if (langToggle == Language.welsh) "12 Chwefror 2022" else "12 February 2022"
+  val paidAmount1AA111111B = "4,000.00"
+  val rejectedAmount1AA111111B = "2,000.00"
 }

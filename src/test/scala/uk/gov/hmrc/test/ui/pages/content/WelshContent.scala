@@ -50,15 +50,11 @@ object WelshContent {
        |Math o Gyfrif
        |$accType Newid
        |y math o gyfrif
-       |Enw ar y cyfrif
-       |Cod didoli
-       |Rhif y cyfrif
-       |Rhif rôl y gymdeithas adeiladu
-       |${bankDetails.accName}
-       |${bankDetails.sortcode}
-       |${bankDetails.accNumber}
-       |${bankDetails.roll} Newid
+       |Enw ar y cyfrif ${bankDetails.accName} Newid
        |y manylion banc
+       |Cod didoli ${bankDetails.sortcode}
+       |Rhif y cyfrif ${bankDetails.accNumber}
+       |Rhif rôl y gymdeithas adeiladu ${bankDetails.roll}
        |Swm i’w ad-dalu
        |£$amount Newid
        |swm yr ad-daliad
