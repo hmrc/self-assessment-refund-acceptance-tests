@@ -31,11 +31,11 @@ object RefundsHistoryPage extends BasePage {
 
   def expectedPageTitle = {
     if (langToggle == Language.welsh) "Hanes eich ad-daliadau - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else "Your refunds history - Request a Self Assessment refund - GOV.UK"
+    else "Your refund history - Request a Self Assessment refund - GOV.UK"
   }
   def expectedPageHeader = {
     if (langToggle == Language.welsh) "Hanes eich ad-daliadau"
-    else "Your refunds history"
+    else "Your refund history"
   }
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
