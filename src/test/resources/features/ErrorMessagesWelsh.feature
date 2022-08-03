@@ -11,28 +11,18 @@ Feature: Error Messages Welsh
     And the user click continue
     And the choice required error shows
 
-  Scenario: Welsh - Refund Amount Page - Other Amount, no amount entered
+  Scenario Outline: Welsh - Refund Amount Page - Other Amount Value Errors
     And the user clicks other amount
+    And the user enter an amount of <amount>
     And the user click continue
-    And the enter amount error shows
+    And the <errorType> error shows
 
-  Scenario: Welsh - Refund Amount Page - Other Amount, invalid amount
-    And the user clicks other amount
-    And the user enter an amount of !123
-    And the user click continue
-    And the invalid amount error shows
-
-  Scenario: Welsh - Refund Amount Page - Other Amount, zero
-    And the user clicks other amount
-    And the user enter an amount of 0
-    And the user click continue
-    And the amount of 0 error shows
-
-  Scenario: Welsh - Refund Amount Page - Other Amount, More than maximum
-    And the user clicks other amount
-    And the user enter an amount of 123.46
-    And the user click continue
-    And the exceeded maximum amount error shows
+    Examples:
+      | errorType               | amount |
+      | enter amount            |        |
+      | invalid amount          | !123   |
+      | amount of 0             | 0      |
+      | exceeded maximum amount | 123.46 |
 
 #  TYPE OF ACCOUNT PAGE
 

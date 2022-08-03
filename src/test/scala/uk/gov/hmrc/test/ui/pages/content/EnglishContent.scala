@@ -156,7 +156,7 @@ object EnglishContent {
     val rejectedDate2: String = TestData.rejectedDate2AA111111B
     val rejectedAmount1: String = TestData.rejectedAmount1AA111111B
 
-    s"""Your refunds history
+    s"""Your refund history
        |In progress
        |History
        |History
@@ -174,7 +174,7 @@ object EnglishContent {
     val approvedDate1: String = TestData.approvedDate1AA111111B
     val approvedAmount1: String = TestData.approvedAmount1AA111111B
 
-    s"""Your refunds history
+    s"""Your refund history
        |In progress
        |History
        |In progress
