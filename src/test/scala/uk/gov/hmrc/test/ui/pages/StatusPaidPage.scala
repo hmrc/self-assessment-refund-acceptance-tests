@@ -25,7 +25,7 @@ object StatusPaidPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status/2"
 
-  val paidAmount: String = TestData.paidAmount1AA111111B
+  val paidAmount: String = TestData.paidAmount1AB111111C
 
  def expectedPageTitle =  {
     if (langToggle == Language.welsh) s"Mae’ch ad-daliad wedi’i dalu - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"

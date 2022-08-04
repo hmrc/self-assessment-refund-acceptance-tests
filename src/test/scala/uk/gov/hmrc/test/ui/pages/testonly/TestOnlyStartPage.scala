@@ -29,10 +29,11 @@ object TestOnlyStartPage extends BasePage {
 
   def clickRadio(nino: String): Unit ={
     nino match {
-      case "AC111111A" => click on id("1")
-      case "AA111111A" => click on id("0")
-      case "AA111111A_history" => click on id("2")
-      case "AC111111A_history" => click on id("3")
+      case "AB111111D" => click on id("1")
+      case "AB111111C" => click on id("0")
+      case "AB111111C_history" => click on id("2")
+      case "AB111111D_history" => click on id("3")
+      case _ => println("Check Nino being input")
     }
     clickSelectPreset()
   }

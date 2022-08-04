@@ -2,7 +2,7 @@ Feature: A11y tests (Temp)
 
   @a11y @journey
   Scenario: A11y - Refund Journey
-    Given The user starts a personal journey with Nino AC111111A
+    Given The user starts a personal journey with Nino AB111111D
     When the User toggles on English language
     And the user clicks other amount
     And the user enter an amount of 1
@@ -16,7 +16,7 @@ Feature: A11y tests (Temp)
 
   @a11y @journey
   Scenario: A11y - IV Kickout Page
-    Given The user starts a personal journey for AC111111A with confidence level < 250
+    Given The user starts a personal journey for AB111111D with confidence level < 250
     And the user Failed IV IV Uplift
     Then the user is on the IvKickoutPage
     When the User toggles on Welsh language
@@ -40,7 +40,7 @@ Feature: A11y tests (Temp)
 
   @a11y @history
   Scenario: A11y - History Pages
-    Given The user starts a history journey for AA111111B
+    Given The user starts a history journey for AB111111C
     When the User toggles on English language
     And the user clicks on Processing for result number 1
     And the user click back
