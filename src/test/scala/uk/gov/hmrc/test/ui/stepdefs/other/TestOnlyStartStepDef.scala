@@ -26,13 +26,8 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
     //    ScenarioVariables.personalOrBusiness = accType
     ScenarioContext.set("personalOrBusiness", accType)
     go to TestOnlyStartPage.url
-    nino match {
-      case "AA111111A" => TestOnlyStartPage.clickRadio(TestData.nino)
-        ScenarioContext.set("nino", TestData.nino)
-      case "AC111111A" => TestOnlyStartPage.clickRadio(TestData.nino2)
-        ScenarioContext.set("nino", TestData.nino2)
-      case _ => TestOnlyStartPage.clickRadio(TestData.nino)
-    }
+    ScenarioContext.set("nino", nino)
+    TestOnlyStartPage.clickRadio(nino)
     continue()
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("250")
@@ -43,13 +38,7 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
   And("""^The user starts a (.*) journey for (.*) with confidence level < 250$""") { (accType: String, nino: String) =>
     ScenarioContext.set("personalOrBusiness", accType)
     go to TestOnlyStartPage.url
-    nino match {
-      case "AA111111A" => TestOnlyStartPage.clickRadio(TestData.nino)
-        ScenarioContext.set("nino", TestData.nino)
-      case "AC111111A" => TestOnlyStartPage.clickRadio(TestData.nino2)
-        ScenarioContext.set("nino", TestData.nino2)
-      case _ => TestOnlyStartPage.clickRadio(TestData.nino)
-    }
+    TestOnlyStartPage.clickRadio(nino)
     continue()
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("200")
@@ -59,23 +48,15 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
 
   And("""^The user starts a history journey for (.*)""") { (nino: String) =>
     go to TestOnlyStartPage.url
+    ScenarioContext.set("nino", nino)
     nino match {
-      case "AA111111A" => TestOnlyStartPage.clickRadio("AA111111A_history")
-        ScenarioContext.set("nino", TestData.nino)
-      case "AC111111A" => TestOnlyStartPage.clickRadio("AC111111A_history")
-        ScenarioContext.set("nino", TestData.nino2)
-      case "AA111111B" => TestOnlyStartPage.clickRadio("AC111111A_history") //Click AC111111A to populate rest of field
-        ScenarioContext.set("nino", "AA111111B")
+      case "AB111111C" => TestOnlyStartPage.clickRadio("AB111111C_history")
+      case "AB111111D" => TestOnlyStartPage.clickRadio("AB111111D_history")
     }
     continue()
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("250")
     AuthWizardPage.clickSubmit()
-    nino match {
-      case "AA111111B" => id("nino").webElement.clear()
-                          id("nino").webElement.sendKeys(nino)
-      case _ =>
-    }
     continue()
   }
 

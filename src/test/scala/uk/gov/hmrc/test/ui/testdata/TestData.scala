@@ -31,7 +31,7 @@ object TestData {
   //TODO sort out test users and data when stubs are created - similar to the bank details class/object
 
   //Test User 1 details
-  val nino = "AA111111A"
+  val nino = "AB111111D"
   var referenceNumber = ""
   val totalRefunds = "13,029.68"
   val maxRefundAmount = "123.45"
@@ -71,21 +71,21 @@ object TestData {
   val rejectedAmount1 = "4,000.00"
 
 
-  val nino2 = "AC111111A"
-  val maxRefundAmount2 = "123.45"
+  val nino2 = "AB111111C"
+  val maxRefundAmount2 = "987.65"
 
 
-  //NINO AA111111B
+  //NINO AB111111D
 
-  val nino3 = "AA111111B"
-  def inProgessDate1AA111111B = if (langToggle == Language.welsh) "3 Mawrth 2022" else "3 March 2022"
-  def approvedDate1AA111111B = if (langToggle == Language.welsh) "1 Ionawr 2022" else "1 January 2022"
-  val inProgessAmount1AA111111B = "3,000.00"
-  val approvedAmount1AA111111B = "1,000.00"
-  def requestedOnDate1AA111111B = if (langToggle == Language.welsh) "4 Ebrill 2022" else "4 April 2022"
-  def requestedOnDate2AA111111B = if (langToggle == Language.welsh) "2 Chwefror 2022" else "2 February 2022"
-  def paidOnDate1AA111111B = if (langToggle == Language.welsh) "14 Ebrill 2022" else "14 April 2022"
-  def rejectedDate2AA111111B = if (langToggle == Language.welsh) "12 Chwefror 2022" else "12 February 2022"
-  val paidAmount1AA111111B = "4,000.00"
-  val rejectedAmount1AA111111B = "2,000.00"
+//  val nino3 = "AB111111D"
+  def inProgessDate1AB111111C = if (langToggle == Language.welsh) "3 Mawrth 2022" else "3 March 2022"
+  def approvedDate1AB111111C = if (langToggle == Language.welsh) "1 Ionawr 2022" else "1 January 2022"
+  val inProgessAmount1AB111111C = "3,000.00"
+  val approvedAmount1AB111111C = "1,000.00"
+  def requestedOnDate1AB111111C = if (langToggle == Language.welsh) "4 Ebrill 2022" else "4 April 2022"
+  def requestedOnDate2AB111111C = if (langToggle == Language.welsh) "2 Chwefror 2022" else "2 February 2022"
+  def paidOnDate1AB111111C = if (langToggle == Language.welsh) "14 Ebrill 2022" else "14 April 2022"
+  def rejectedDate2AB111111C = if (langToggle == Language.welsh) "12 Chwefror 2022" else "12 February 2022"
+  val paidAmount1AB111111C = "4,000.00"
+  val rejectedAmount1AB111111C = "2,000.00"
 }

@@ -151,12 +151,12 @@ object WelshContent {
 
   def refundHistoryHistoryPageText(): String = {
     //TODO Confirmed Welsh translation
-    val requestedOnDate1: String = TestData.requestedOnDate1AA111111B
-    val paidOnDate1: String = TestData.paidOnDate1AA111111B
-    val paidAmount1: String = TestData.paidAmount1AA111111B
-    val requestedOnDate2: String = TestData.requestedOnDate2AA111111B
-    val rejectedDate2: String = TestData.rejectedDate2AA111111B
-    val rejectedAmount1: String = TestData.rejectedAmount1AA111111B
+    val requestedOnDate1: String = TestData.requestedOnDate1AB111111C
+    val paidOnDate1: String = TestData.paidOnDate1AB111111C
+    val paidAmount1: String = TestData.paidAmount1AB111111C
+    val requestedOnDate2: String = TestData.requestedOnDate2AB111111C
+    val rejectedDate2: String = TestData.rejectedDate2AB111111C
+    val rejectedAmount1: String = TestData.rejectedAmount1AB111111C
 
     s"""Hanes eich ad-daliadau
        |Ar waith
@@ -172,10 +172,10 @@ object WelshContent {
 
   def refundHistoryInProgressPageText(): String = {
     //TODO Confirmed Welsh translation
-    val inProgressDate1: String = TestData.inProgessDate1AA111111B
-    val inProgressAmount1: String = TestData.inProgessAmount1AA111111B
-    val approvedDate1: String = TestData.approvedDate1AA111111B
-    val approvedAmount1: String = TestData.approvedAmount1AA111111B
+    val inProgressDate1: String = TestData.inProgessDate1AB111111C
+    val inProgressAmount1: String = TestData.inProgessAmount1AB111111C
+    val approvedDate1: String = TestData.approvedDate1AB111111C
+    val approvedAmount1: String = TestData.approvedAmount1AB111111C
 
     s"""Hanes eich ad-daliadau
        |Ar waith
@@ -191,7 +191,7 @@ object WelshContent {
 
   def statusApprovedPageText(): String = {
     //TODO Confirmed Welsh translation
-    val approvedAmountValue: String = TestData.approvedAmount1AA111111B
+    val approvedAmountValue: String = TestData.approvedAmount1AB111111C
     s"""Mae’ch ad-daliad o £$approvedAmountValue wedi’i gymeradwyo
        |Byddwn yn anfon eich ad-daliad i’r cyfrif banc a nodwyd gennych neu i’r cerdyn a ddefnyddiwyd gennych i dalu’ch bil diwethaf.
        |Dylech ganiatáu 3 i 5 diwrnod i’r arian gyrraedd eich cyfrif banc neu’ch cerdyn.
@@ -200,7 +200,7 @@ object WelshContent {
   }
 
   def statusProcessingPageText(): String = {
-    val pendingAmountValue: String = TestData.inProgessAmount1AA111111B
+    val pendingAmountValue: String = TestData.inProgessAmount1AB111111C
     s"""Mae’ch ad-daliad o £$pendingAmountValue ar y gweill
        |Mae’ch cais am ad-daliad wedi dod i law. Bwriad CThEM yw anfon ad-daliadau cyn pen pythefnos, ond mae mesurau diogelwch ar waith a allai achosi oedi.
        |Dylech aros 30 diwrnod cyn cysylltu â ni ynglŷn â’ch cais.
@@ -209,7 +209,7 @@ object WelshContent {
   }
 
   def statusRejectedPageText(): String = {
-    val rejectedAmountValue: String = TestData.rejectedAmount1AA111111B
+    val rejectedAmountValue: String = TestData.rejectedAmount1AB111111C
     s"""Mae’ch ad-daliad o £$rejectedAmountValue wedi’i wrthod
        |Ni allwn ad-dalu’r £$rejectedAmountValue oherwydd bod eich cais am ad-daliad wedi’i wrthod.
        |Yn ôl i’r cyfrif treth
@@ -218,8 +218,8 @@ object WelshContent {
 
   def statusPaidPageText(): String = {
     //TODO Welsh Translation
-    val paidAmountValue: String = TestData.paidAmount1AA111111B
-    val paidOnDate: String = TestData.paidOnDate1AA111111B
+    val paidAmountValue: String = TestData.paidAmount1AB111111C
+    val paidOnDate: String = TestData.paidOnDate1AB111111C
     s"""Mae’ch ad-daliad wedi’i dalu
        |Gwnaethom anfon taliad o £$paidAmountValue atoch ar $paidOnDate.
        |Mae’n gallu cymryd 3 i 5 diwrnod i’r arian gyrraedd eich cyfrif banc.

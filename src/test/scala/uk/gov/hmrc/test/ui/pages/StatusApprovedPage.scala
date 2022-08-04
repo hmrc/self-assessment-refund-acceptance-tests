@@ -25,7 +25,7 @@ object StatusApprovedPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status/2"
 
-  val approvedAmount1: String = TestData.approvedAmount1AA111111B
+  val approvedAmount1: String = TestData.approvedAmount1AB111111C
 
  def expectedPageTitle =  {
     if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$approvedAmount1 wedi’i gymeradwyo - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
