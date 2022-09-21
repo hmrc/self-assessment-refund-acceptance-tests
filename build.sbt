@@ -22,6 +22,7 @@ libraryDependencies ++= Seq(
   "io.cucumber"             % "cucumber-picocontainer"  % cucumberVersion,
   "uk.gov.hmrc"             %% "webdriver-factory"      % "0.25.0" % "test",
   "org.typelevel"           %% "cats"                   % "0.9.0",
-  "com.novocode"            %  "junit-interface"        % "0.11"
+  "com.novocode"            %  "junit-interface"        % "0.11",
+  "org.mongodb.scala"       %% "mongo-scala-driver"     % "2.7.0"
   //  "uk.gov.hmrc"             %% "zap-automation"         % "2.10.0" % "test" exclude("org.slf4j", "slf4j-api")
 )
