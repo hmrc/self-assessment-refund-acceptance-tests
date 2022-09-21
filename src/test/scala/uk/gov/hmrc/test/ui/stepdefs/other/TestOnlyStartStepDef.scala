@@ -27,6 +27,7 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
     ScenarioContext.set("personalOrBusiness", accType)
     ScenarioContext.set("nino", nino)
     go to TestOnlyStartPage.url
+    ScenarioContext.set("nino", nino)
     TestOnlyStartPage.clickRadio(nino)
     continue()
     AuthWizardPage.enterValidNino()

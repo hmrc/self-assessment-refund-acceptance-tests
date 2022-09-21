@@ -27,6 +27,7 @@ Feature: Happy Path - Welsh
 
 
   Scenario Outline: Welsh - V&C with no card on file, bypass Account on File Page
+  
     Given The user starts a <type> journey with Nino AB111111D
     When the User toggles on Welsh language
     And the user is on the RefundAmountPage
