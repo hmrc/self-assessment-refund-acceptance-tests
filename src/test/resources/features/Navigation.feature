@@ -2,7 +2,7 @@ Feature: Navigation tests
 
 #    REFUND REQUEST JOURNEY
 
-  Scenario Outline: Back Navigation - Refund Journey
+  Scenario Outline: Back Navigation - Refund Journey (Card on File)
     Given The user starts a <type> journey with Nino AB111111C
     And the user is on the RefundAmountPage
     And the user click on the full amount .
@@ -38,6 +38,13 @@ Feature: Navigation tests
       | personal |
       | business |
 
+  Scenario: Back Navigation - No Card on File
+    Given The user starts a personal journey with Nino AB111111D
+    And the user click on the full amount .
+    And the user click continue
+    And the user is on the TypeOfAccountPage
+    And the user click back
+    And the user is on the RefundAmountPage
 
   Scenario: Back Navigation - Refund Journey back to Itsa Viewer
     Given The user starts a <type> journey with Nino AB111111C
