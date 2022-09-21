@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.stepdefs.pages
+package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.pages.CheckDetailsPage
-import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
+import org.scalatest.Assertion
+import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-class CheckDetailsStepDef extends Steps with DriverActions {
+object ItsaViewerPage extends BasePage {
 
-  And("""^the user clicks on (.*) link$""") { (changeLink: String) =>
-    changeLink match {
-      case "changeType" => CheckDetailsPage.changeType()
-      case "changeBank" => CheckDetailsPage.changeBank()
-      case "changeAmount" => CheckDetailsPage.changeAmount()
-    }
-  }
+  val url: String = s"http://localhost:9081/report-quarterly/income-and-expenses/view/credit-and-refunds"
+
+  def expectedPageTitle = "TBC - GOV.UK"
+  def expectedPageHeader = "TBC"
+  def expectedPageTitleError: String = "Error: " + expectedPageTitle
+
+
 
 }

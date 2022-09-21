@@ -41,7 +41,7 @@ Feature: Error Messages Welsh
     And the user click continue
     And the user select personal account
     And the user click continue
-    And the user enters <error> <value> and the correct error message is shown
+    And the user enters <error>, <value> and the correct error message is shown
 
     Examples:
       | error                    | value     |

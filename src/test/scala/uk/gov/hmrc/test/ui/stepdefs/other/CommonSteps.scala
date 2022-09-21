@@ -112,6 +112,7 @@ class CommonSteps extends Steps with DriverActions {
       case "LockoutPage" =>
         LockoutPage.shouldBeLoaded()
         LockoutPage.assertContent()
+      case "ItsaViewerPage" => ItsaViewerPage.assertCurrentUrl()
     }
   }
 }

@@ -19,6 +19,9 @@ package uk.gov.hmrc.test.ui.pages.content
 import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccountBusiness, validAccountPersonal}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
 
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 object EnglishContent {
 
   def accountOnFilePageText(): String = {
@@ -32,10 +35,7 @@ object EnglishContent {
   def checkDetailsPageText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
 
-    def amount: String = if (ScenarioContext.get[String]("nino") == TestData.nino)
-      TestData.maxRefundAmount
-    else
-      TestData.maxRefundAmount2
+    val amount: String = ScenarioContext.get("amount")
 
     var bankDetails: BankDetails = null
 
@@ -80,19 +80,20 @@ object EnglishContent {
   def requestReceivedPageText(): String = {
     val reference: String = TestData.referenceNumber
     val refundType: String = TestData.refundType
-    val date: String = TestData.dateValue
-    val amount: String = TestData.refundAmount
+    val date: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+    val amount: String = ScenarioContext.get("amount")
     s"""Refund request received
        |Your refund reference is
        |$reference
-       |Tax $refundType
+       |Tax Self Assessment
        |Date $date
-       |Amount to be refunded £$amount
+       |Amount to be repaid £$amount
        |What happens next
        |We will send your refund to the bank details you provided or the card you used to pay your last bill.
        |HMRC aims to issue refunds within 2 weeks. However to protect you against fraud, HMRC has security measures in place which may cause a delay. Please allow 30 days before contacting us about your request.
        |You can check the status of your refund on your HMRC online account.
-       |You can print or download a copy of your refund request (PDF)
+       |You can print or print to PDF a copy of your refund request.
+       |
        |Help us improve our services
        |We use your feedback to make our services better.
        |Tell us what you think of this service (takes 30 seconds)
@@ -143,6 +144,7 @@ object EnglishContent {
 
   def typeOfAccountPageText(): String = {
     s"""What type of account details are you providing?
+       |If you are applying for a refund for yourself, you can enter either your own or your agent's bank details. If you are an agent, enter your client's bank details.
        |Business bank account
        |Personal bank account
        |Continue

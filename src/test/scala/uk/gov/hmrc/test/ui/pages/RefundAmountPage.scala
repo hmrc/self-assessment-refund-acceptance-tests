@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.WebElement
 import org.scalatest.Assertion
 import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
-import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
+import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object RefundAmountPage extends BasePage {
@@ -64,8 +64,13 @@ object RefundAmountPage extends BasePage {
   def selectRadio(radio: String, amount: String) {
     radio match {
       case "full" => click on refundFullRadio
+        if (ScenarioContext.get[String]("nino") == TestData.nino)
+          ScenarioContext.set("amount", TestData.maxRefundAmount)
+        else
+          ScenarioContext.set("amount", TestData.maxRefundAmount2)
       case "other" => click on refundDiffRadio
-                      enterAmount(amount)
+        enterAmount(amount)
+        ScenarioContext.set("amount", amount)
     }
   }
 

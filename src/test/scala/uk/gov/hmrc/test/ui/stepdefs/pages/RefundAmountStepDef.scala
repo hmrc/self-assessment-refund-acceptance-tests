@@ -28,6 +28,7 @@ class RefundAmountStepDef extends Steps with DriverActions {
 
   And("""^the user click on the (.*) amount (.*)$""") { (radio: String, amount: String) =>
         RefundAmountPage.selectRadio(radio, amount)
+
   }
 
   And("""^the user clicks other amount$""") { () =>

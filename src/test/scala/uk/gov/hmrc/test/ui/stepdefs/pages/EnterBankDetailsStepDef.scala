@@ -44,7 +44,7 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
     }
   }
 
-  Then("""^the user enters (.*) (.*) and the correct error message is shown$""") { (error: String, value: String) =>
+  Then("""^the user enters (.*), (.*) and the correct error message is shown$""") { (error: String, value: String) =>
     error match {
       //      case "enter amount" | "choice required" | "invalid amount" | "amount of 0" | "exceeded maximum amount" =>
       //        RefundAmountPage.errorSummaryValidation(error)
