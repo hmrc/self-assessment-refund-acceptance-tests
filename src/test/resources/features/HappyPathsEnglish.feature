@@ -1,6 +1,5 @@
 Feature: Happy Path - English
 
-  @wip
   Scenario Outline: English - V&C with card on file
     Given The user starts a <type> journey with Nino AB111111C
     When the User toggles on English language
@@ -23,35 +22,20 @@ Feature: Happy Path - English
     Examples:
       | type     | amount | value |
       | personal | full   | N/A   |
-#      | personal | other  | 50.00    |
-#      | business | full   | N/A   |
-#      | business | other  | 50.00    |
+      | business | other  | 50.00 |
 
-  @wip
-  Scenario Outline: English - V&C with no card on file, enter bank details
+
+  Scenario Outline: English - V&C with no card on file, bypass Account on File Page
     Given The user starts a <type> journey with Nino AB111111D
     When the User toggles on English language
     And the user is on the RefundAmountPage
     And the user click on the <amount> amount <value>
     And the user click continue
     And the user is on the TypeOfAccountPage
-    And the user select <type> account
-    And the user click continue
-    And the user is on the EnterBankDetailsPage
-    And the user enter valid <type> bank details with roll number
-    And the user click continue
-    And the user is on the CheckDetailsPage
-    And the user click continue
-    And the user click continue
-    And the user is on the RequestReceivedPage
 
     Examples:
       | type     | amount | value |
-      | personal | full   | N/A   |
-#      | personal | other  | 50.00    |
-#      | business | full   | N/A   |
-#      | business | other  | 50.00    |
-
+      | business | other  | 50.00 |
 
 
   Scenario: English - Refund History

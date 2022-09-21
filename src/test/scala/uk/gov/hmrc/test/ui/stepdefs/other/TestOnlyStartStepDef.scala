@@ -25,6 +25,7 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
   And("""^The user starts a (.*) journey with Nino (.*)$""") { (accType: String, nino: String) =>
     //    ScenarioVariables.personalOrBusiness = accType
     ScenarioContext.set("personalOrBusiness", accType)
+    ScenarioContext.set("nino", nino)
     go to TestOnlyStartPage.url
     ScenarioContext.set("nino", nino)
     TestOnlyStartPage.clickRadio(nino)

@@ -18,29 +18,40 @@ package uk.gov.hmrc.test.ui.testdata
 
 import uk.gov.hmrc.test.ui.pages.SurveyPage.langToggle
 
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 //import java.time.LocalDate
 //import java.time.format.DateTimeFormatter
 
-//case class TestData(nino: String, maxRefundAmount: String, inProgressDate1: String, inProgessAmount1: String, approvedDate1: String, approvedAmount1: String,
-//                    requestedOnDate1: String, requestedOnDate2: String, paidOnDate1: String, rejectedDate2: String, paidAmount1: String, rejectedAmount1: String)
+case class TestData(nino: String, maxRefundAmount:String, inProgressDate1: Option[String] = None, inProgessAmount1: Option[String] = None, approvedDate1: Option[String] = None, approvedAmount1: Option[String] = None,
+                    requestedOnDate1: Option[String] = None, requestedOnDate2: Option[String] = None, paidOnDate1: Option[String] = None, rejectedDate2: Option[String] = None, paidAmount1: Option[String] = None, rejectedAmount1: Option[String] = None)
+
 
 object TestData {
-//
-//  lazy val testUser1: TestData = TestData("AA111111A", "123.45",  )
+
+  //Test Users
+  lazy val AB111111D: TestData = TestData("AB111111D", "123.45")
+  lazy val AB111111C: TestData = TestData("AB111111C", "987.65")
+
+
+  //Shared variables
+  val refundType = if (langToggle == Language.welsh) "Hunanasesiad" else "Self Assessment"
+
+
+
+
 
   //TODO sort out test users and data when stubs are created - similar to the bank details class/object
 
   //Test User 1 details
   val nino = "AB111111D"
+  val refundAmount = "987.65"
   var referenceNumber = ""
   val totalRefunds = "13,029.68"
   val maxRefundAmount = "123.45"
-  val refundType = "Self Assessment"
-  val refundAmount = "987.65"
   val amountValue = "545.80"
-  //TODO placeholder as code for the page currently pulls today's date
-  val dateValue: String = "TODO-DATE"
-//  val dateValue: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+  val dateValue: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
 
   //In Progress Tab
   def inProgessDate1 = if (langToggle == Language.welsh) "7 Mehefin 2022" else "7 June 2022"

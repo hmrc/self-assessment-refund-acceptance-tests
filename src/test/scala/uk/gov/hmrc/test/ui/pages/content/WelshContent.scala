@@ -19,6 +19,9 @@ package uk.gov.hmrc.test.ui.pages.content
 import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccountBusiness, validAccountPersonal}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext, TestData}
 
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 object WelshContent {
 
   def accountOnFilePageText(): String = {
@@ -32,10 +35,7 @@ object WelshContent {
   def checkDetailsPageText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
 
-    def amount: String = if (ScenarioContext.get[String]("nino") == TestData.nino)
-      TestData.maxRefundAmount
-    else
-      TestData.maxRefundAmount2
+    val amount: String = ScenarioContext.get("amount")
 
     var bankDetails: BankDetails = null
 
@@ -80,22 +80,23 @@ object WelshContent {
   def requestReceivedPageText(): String = {
     val reference: String = TestData.referenceNumber
     val refundType: String = TestData.refundType
-    val date: String = TestData.dateValue
-    val amount: String = TestData.refundAmount
+    val date: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+    val amount: String = ScenarioContext.get("amount")
     s"""Cais am ad-daliad wedi dod i law
        |Cyfeirnod eich ad-daliad yw
        |$reference
-       |Treth $refundType
+       |Treth Hunanasesiad
        |Dyddiad $date
-       |Swm i’w ad-dalu $amount
+       |Swm i’w ad-dalu £$amount
        |Yr hyn sy’n digwydd nesaf
        |Byddwn yn anfon eich ad-daliad i’r cyfrif banc a nodwyd gennych neu i’r cerdyn a ddefnyddiwyd gennych i dalu’ch bil diwethaf.
        |Bwriad CThEM yw anfon ad-daliadau cyn pen pythefnos. Fodd bynnag, er mwyn eich diogelu rhag twyll, mae gan CThEM fesurau diogelwch ar waith a allai achosi oedi. Dylech aros 30 diwrnod cyn cysylltu â ni ynglŷn â’ch cais.
        |Gallwch wirio statws eich ad-daliad yn eich cyfrif CThEM ar-lein.
        |Gallwch argraffu neu lawrlwytho copi o’ch cais am ad-daliad (PDF)
+       |
        |Helpu ni i wella ein gwasanaethau
        |Rydym yn defnyddio’ch adborth i wella ein gwasanaethau.
-       |Rhowch wybod i ni beth yw eich barn am y gwasanaeth hwn. (mae’n cymryd 30 eiliad)
+       |Rhowch wybod i ni beth yw eich barn am y gwasanaeth hwn (mae’n cymryd 30 eiliad)
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
@@ -143,6 +144,7 @@ object WelshContent {
 
   def typeOfAccountPageText(): String = {
     s"""Manylion pa fath o gyfrif yr ydych yn eu rhoi?
+       |Os ydych yn gwneud cais am ad-daliad i chi’ch hun, gallwch nodi’ch manylion banc eich hun neu fanylion banc eich asiant. Os ydych yn asiant, nodwch fanylion banc eich cleient.
        |Cyfrif banc busnes
        |Cyfrif banc personol
        |Yn eich blaen
@@ -158,7 +160,7 @@ object WelshContent {
     val rejectedDate2: String = TestData.rejectedDate2AB111111C
     val rejectedAmount1: String = TestData.rejectedAmount1AB111111C
 
-    s"""Hanes eich ad-daliadau
+    s"""Hanes eich ad-daliad
        |Ar waith
        |Hanes
        |Hanes
@@ -177,7 +179,7 @@ object WelshContent {
     val approvedDate1: String = TestData.approvedDate1AB111111C
     val approvedAmount1: String = TestData.approvedAmount1AB111111C
 
-    s"""Hanes eich ad-daliadau
+    s"""Hanes eich ad-daliad
        |Ar waith
        |Hanes
        |Ar waith

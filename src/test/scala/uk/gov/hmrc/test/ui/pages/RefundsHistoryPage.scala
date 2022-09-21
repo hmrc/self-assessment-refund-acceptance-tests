@@ -30,11 +30,11 @@ object RefundsHistoryPage extends BasePage {
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-history/$nino#in-progress"
 
   def expectedPageTitle = {
-    if (langToggle == Language.welsh) "Hanes eich ad-daliadau - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    if (langToggle == Language.welsh) "Hanes eich ad-daliad - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else "Your refund history - Request a Self Assessment refund - GOV.UK"
   }
   def expectedPageHeader = {
-    if (langToggle == Language.welsh) "Hanes eich ad-daliadau"
+    if (langToggle == Language.welsh) "Hanes eich ad-daliad"
     else "Your refund history"
   }
 

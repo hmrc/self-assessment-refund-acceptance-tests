@@ -28,8 +28,8 @@ object BankDetails {
   }
 
   lazy val validAccountBusiness: BankDetails = environment match {
-    case "local" | "dev" | "staging" => BankDetails("Tester", "207106", "86563611", "1234")
-    case "qa"                        => BankDetails("Tester", "404784", "70872490", "1234")
+    case "local" | "dev" | "staging" => BankDetails("Megacorp", "207106", "86563611", "1234")
+    case "qa"                        => BankDetails("Megacorp", "207106", "86563611", "1234")
   }
 
   lazy val invalidAccount: BankDetails = environment match {
