@@ -13,7 +13,7 @@ environment = local / dev / qa / staging
 
 To test the service locally, use the following service manager profile to run the required services
 ```
-sm --start TBC -r
+sm --start SELF_ASSESSMENT_REFUND -r
 ```
 
 As an example, to run tests locally using chrome, the following can be run from a shell script
