@@ -61,7 +61,6 @@ Feature: Happy Path - English
     When the User toggles on English language
     And the user click on the full amount .
     And the user click continue
-    And the user click continue
     And the user select personal account
     And the user click continue
     And the user enter valid personal bank details with roll number

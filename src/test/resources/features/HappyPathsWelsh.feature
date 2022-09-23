@@ -59,11 +59,10 @@ Feature: Happy Path - Welsh
     When the User toggles on English language
 
 
-  Scenario: Welsh - DES Error on submission
+  Scenario: Welsh - DES Error on submission, details retained in journey
     Given The user starts a personal journey with Nino AB111111B
     When the User toggles on Welsh language
     And the user click on the full amount .
-    And the user click continue
     And the user click continue
     And the user select personal account
     And the user click continue

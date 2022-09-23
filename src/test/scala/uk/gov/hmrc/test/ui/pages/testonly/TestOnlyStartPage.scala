@@ -33,8 +33,7 @@ object TestOnlyStartPage extends BasePage {
       case "AB111111C" => click on id("0")
       case "AB111111C_history" => click on id("2")
       case "AB111111D_history" => click on id("3")
-      case "AB111111B" => click on id("0") // to populate the rest of fields, nino will be changed in next step
-      case _ => println("Check Nino being input")
+      case _ => click on id("0") // to populate the rest of fields, nino will be changed in next step
     }
     clickSelectPreset()
   }
