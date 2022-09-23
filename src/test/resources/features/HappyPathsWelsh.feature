@@ -57,3 +57,28 @@ Feature: Happy Path - Welsh
     And the user clicks on Rejected for result number 2
     And the user is on the StatusRejectedPage
     When the User toggles on English language
+
+
+  Scenario: Welsh - DES Error on submission
+    Given The user starts a personal journey with Nino AB111111B
+    When the User toggles on Welsh language
+    And the user click on the full amount .
+    And the user click continue
+    And the user click continue
+    And the user select personal account
+    And the user click continue
+    And the user enter valid personal bank details with roll number
+    And the user click continue
+    And the user click continue
+    And the user click continue
+    And the user is on the DesErrorPage
+    And the user selects the contact us link and is taken to the correct url
+    And the user selects Start Again
+    And the user click back
+    And the user click continue
+    And the user click continue
+    And the user click continue
+    And the user is on the CheckDetailsPage
+#    TO BE DONE UNDER OPS-8799
+#    And the user is on the ItsaViewerPage
+    When the User toggles on English language
