@@ -229,4 +229,13 @@ object WelshContent {
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
+  def requestFailedText(): String = {
+    s"""Mae’n ddrwg gennym, mae problem gyda’r gwasanaeth
+       |Nid yw’ch cais am ad-daliad wedi’i gyflwyno.
+       |Pan fydd y gwasanaeth ar gael, bydd yn rhaid i chi ddechrau eto.
+       |Fel arall, gallwch gysylltu â Chyllid a Thollau EM os oes angen i chi siarad â rhywun am eich treth Hunanasesiad neu wneud cais am ad-daliad dros y ffôn.
+       |Dechrau eto
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+  }
+
 }

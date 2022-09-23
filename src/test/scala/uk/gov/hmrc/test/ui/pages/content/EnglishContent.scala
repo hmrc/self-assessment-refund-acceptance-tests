@@ -225,6 +225,15 @@ object EnglishContent {
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
+  def requestFailedText(): String = {
+    s"""Sorry, there is a problem with the service
+       |Your refund request has not been submitted.
+       |When the service is available, you will need to start again.
+       |Alternatively, you can contact HM Revenue and Customs if you need to speak to someone about your Self Assessment tax or request a refund by phone.
+       |Start Again
+       |Is this page not working properly? (opens in new tab)""".stripMargin
+  }
+
   // template function
   def templateText(): String = {
     s"""

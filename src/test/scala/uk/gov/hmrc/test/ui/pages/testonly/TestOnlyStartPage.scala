@@ -33,13 +33,18 @@ object TestOnlyStartPage extends BasePage {
       case "AB111111C" => click on id("0")
       case "AB111111C_history" => click on id("2")
       case "AB111111D_history" => click on id("3")
-      case _ => println("Check Nino being input")
+      case _ => click on id("0") // to populate the rest of fields, nino will be changed in next step
     }
     clickSelectPreset()
   }
 
   def clickSelectPreset(): Unit = {
     click on cssSelector("#main-content > form:nth-child(5) > button")
+  }
+
+  def overwriteNino(nino: String): Unit = {
+    id("nino").webElement.clear()
+    id("nino").webElement.sendKeys(nino)
   }
 
 }

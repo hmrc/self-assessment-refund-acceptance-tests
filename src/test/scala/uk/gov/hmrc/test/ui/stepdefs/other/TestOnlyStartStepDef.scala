@@ -28,7 +28,13 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
     ScenarioContext.set("nino", nino)
     go to TestOnlyStartPage.url
     ScenarioContext.set("nino", nino)
-    TestOnlyStartPage.clickRadio(nino)
+    if (nino == "AB111111C" || nino == "AB111111D") {
+      TestOnlyStartPage.clickRadio(nino)
+    }
+    else {
+      TestOnlyStartPage.clickRadio(nino)
+      TestOnlyStartPage.overwriteNino(nino)
+    }
     continue()
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("250")
