@@ -80,7 +80,7 @@ object WelshContent {
   def requestReceivedPageText(): String = {
     val reference: String = TestData.referenceNumber
     val refundType: String = TestData.refundType
-    val date: String = LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+    val date: String = LocalDate.now().format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
     val amount: String = ScenarioContext.get("amount")
     s"""Cais am ad-daliad wedi dod i law
        |Cyfeirnod eich ad-daliad yw
