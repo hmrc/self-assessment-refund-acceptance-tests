@@ -29,6 +29,10 @@ object RequestReceivedPage extends BasePage {
   val tellUsLinkText: String = if (langToggle == Language.welsh) "Rhowch wybod i ni beth yw eich barn am y gwasanaeth hwn" else "Tell us what you think of this service."
   val problemWithPageLinkText = "div.govuk-\\!-display-none-print > a"
 
+    override def assertCurrentUrl(): Assertion = {
+      currentUrl should fullyMatch regex s"""$url/[a-z0-9]{12}""".r
+    }
+
   def expectedPageTitle = {
     if (langToggle == Language.welsh) "Cais am ad-daliad wedi dod i law - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else "Refund request received - Request a Self Assessment refund - GOV.UK"
