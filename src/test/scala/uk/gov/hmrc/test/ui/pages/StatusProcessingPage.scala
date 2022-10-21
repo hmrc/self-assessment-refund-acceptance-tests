@@ -23,9 +23,13 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object StatusProcessingPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status/0"
-
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status"
   val inProgressAmount1: String = TestData.inProgessAmount1AB111111C
+
+  override def assertCurrentUrl(): Assertion = {
+    currentUrl should fullyMatch regex s"""$url/[0-9]{3}""".r
+  }
+
 
   def expectedPageTitle = {
     if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$inProgressAmount1 ar y gweill - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
