@@ -67,9 +67,9 @@ object EnterBankDetailsPage extends BasePage {
   def errorMessageSortCode: WebElement = id("sortCode-error").webElement
   def errorMessageAccountNumber: WebElement = id("accountNumber-error").webElement
 
-  override def assertCurrentUrl(): Assertion = {
-    currentUrl should fullyMatch regex s"""$url/$accType/[a-z0-9]{24}""".r
-  }
+//  override def assertCurrentUrl(): Assertion = {
+//    currentUrl should fullyMatch regex s"""$url/$accType/[a-z0-9]{24}""".r
+//  }
 
   def assertContent(): Assertion = {
     if (langToggle == Language.welsh) pageContent should be(WelshContent.enterBankDetailsPageText())

@@ -50,10 +50,6 @@ object TypeOfAccountPage extends BasePage {
 
   def errorMessage: WebElement = id("accountType-error").webElement
 
-  override def assertCurrentUrl(): Assertion = {
-    currentUrl should fullyMatch regex s"""$url/[a-z0-9]{24}""".r
-  }
-
   def assertContent(): Assertion = {
     if (langToggle == Language.welsh) pageContent should be(WelshContent.typeOfAccountPageText())
     else pageContent should be(EnglishContent.typeOfAccountPageText())

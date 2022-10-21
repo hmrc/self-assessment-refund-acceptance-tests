@@ -43,8 +43,8 @@ trait BasePage extends DriverActions with Matchers {
   def assertCurrentPageHeader(): Assertion       = currentPageHeader should be(expectedPageHeader)
 
   def shouldBeLoaded(): Unit = {
-    //TODO when URLS are sorted with regards to journey id etc.
-//    assertCurrentUrl()
+    //TODO when URLS are sorted with regards to journey id etc. (OPS-7245)
+    assertCurrentUrl()
     assertCurrentPageTitle()
     assertCurrentPageService()
     assertCurrentPageHeader()
