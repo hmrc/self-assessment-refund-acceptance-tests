@@ -30,7 +30,7 @@ trait Steps extends ScalaDsl with EN with Matchers {
   }
 
   After { _ ⇒
-    Try(SingletonDriver.closeInstance)
+//    Try(SingletonDriver.closeInstance)
     Try(MongoDriver.dropDatabases())
 
 
