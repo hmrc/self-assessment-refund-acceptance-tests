@@ -22,8 +22,8 @@ import uk.gov.hmrc.test.ui.testdata.Language
 
 class DesErrorPageStepDef extends Steps with DriverActions {
 
-  And("""^the user selects Start Again$""") { () =>
-    DesErrorPage.clickStartAgain()
+  And("""^the Start Again link is correct$""") { () =>
+    DesErrorPage.startAgainHref()
   }
 
   And("""^the user selects the contact us link and is taken to the correct url$""") { () =>
