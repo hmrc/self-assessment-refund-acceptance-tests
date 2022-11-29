@@ -42,8 +42,8 @@ object DesErrorPage extends BasePage {
     else pageContent should be(EnglishContent.requestFailedText())
   }
 
-  def clickStartAgain(): Unit = {
-    click on cssSelector("form > button")
+  def startAgainHref(): Unit = {
+    cssSelector("#main-content > div > div > a").webElement.getAttribute("href").toString should be("https://www.tax.service.gov.uk/report-quarterly/income-and-expenses/view/claim-refund")
   }
 
   def clickContactLink(): Unit = {

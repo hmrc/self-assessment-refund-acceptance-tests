@@ -69,11 +69,4 @@ Feature: Happy Path - English
     And the user click continue
     And the user is on the DesErrorPage
     And the user selects the contact us link and is taken to the correct url
-    And the user selects Start Again
-    And the user click back
-    And the user click continue
-    And the user click continue
-    And the user click continue
-    And the user is on the CheckDetailsPage
-#    TO BE DONE UNDER OPS-8799
-#    And the user is on the ItsaViewerPage
+    And the Start Again link is correct
