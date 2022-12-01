@@ -29,17 +29,17 @@
       "ruleId": "10027"
     },
     {
-      "url": "https:\/\/www.gov.uk\/government\/organisations\/*",
+      "url": "https:\/\/www.gov.uk\/government\/organisations\/.*",
       "ruleId": "10202",
       "urlIsRegex": "true"
     },
     {
-      "url": "https:\/\/www.gov.uk\/assets\/*",
+      "url": "https:\/\/www.gov.uk\/assets\/.*",
       "ruleId": "10098",
       "urlIsRegex": "true"
     },
     {
-      "url": "https:\/\/www.gov.uk\/assets\/*",
+      "url": "https:\/\/www.gov.uk\/assets\/.*",
       "ruleId": "10021",
       "urlIsRegex": "true"
     },
