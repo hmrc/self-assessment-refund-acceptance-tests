@@ -20,7 +20,7 @@ libraryDependencies ++= Seq(
   "io.cucumber"             %% "cucumber-scala"         % cucumberVersion,
   "io.cucumber"             % "cucumber-junit"          % cucumberVersion,
   "io.cucumber"             % "cucumber-picocontainer"  % cucumberVersion,
-  "uk.gov.hmrc"             %% "webdriver-factory"      % "0.25.0" % "test",
+  "uk.gov.hmrc"             %% "webdriver-factory"      % "0.38.0" % "test",
   "org.typelevel"           %% "cats"                   % "0.9.0",
   "com.novocode"            %  "junit-interface"        % "0.11",
   "org.mongodb.scala"       %% "mongo-scala-driver"     % "2.7.0"
