@@ -1,4 +1,4 @@
-@ally @zap
+@a11y @zap
 Feature: E2E - Smoke (For accessibility / zap page captures)
 
   @journey
