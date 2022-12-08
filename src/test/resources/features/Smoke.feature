@@ -1,6 +1,7 @@
-Feature: A11y tests (Temp)
+@ally @zap
+Feature: E2E - Smoke (For accessibility / zap page captures)
 
-  @a11y @journey
+  @journey
   Scenario: A11y - Refund Journey
     Given The user starts a personal journey with Nino AB111111D
     When the User toggles on English language
@@ -14,7 +15,7 @@ Feature: A11y tests (Temp)
     And the user click continue
     And the user click continue
 
-  @a11y @journey
+  @journey
   Scenario: A11y - IV Kickout Page
     Given The user starts a personal journey for AB111111D with confidence level < 250
     And the user Failed IV IV Uplift
@@ -38,7 +39,7 @@ Feature: A11y tests (Temp)
 #    And the user click continue
 #    Then the user is on the LockoutPage
 
-  @a11y @history
+  @history
   Scenario: A11y - History Pages
     Given The user starts a history journey for AB111111C
     When the User toggles on English language
