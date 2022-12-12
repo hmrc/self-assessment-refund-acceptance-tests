@@ -22,6 +22,7 @@ Feature: Error Messages Welsh
       | enter amount            |        |
       | invalid amount          | !123   |
       | amount of 0             | 0      |
+      | negative number         | -123   |
       | exceeded maximum amount | 123.46 |
 
 #  TYPE OF ACCOUNT PAGE

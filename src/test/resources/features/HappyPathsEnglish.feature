@@ -35,7 +35,7 @@ Feature: Happy Path - English
 
     Examples:
       | type     | amount | value |
-      | business | other  | 50.00 |
+      | business | other  | .01   |
 
 
   Scenario: English - Refund History

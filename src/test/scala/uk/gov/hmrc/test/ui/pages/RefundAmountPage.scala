@@ -93,6 +93,7 @@ object RefundAmountPage extends BasePage {
         case "choice required" => errorSummaryChoice.getText should be("Dewiswch faint o ad-daliad yr hoffech ei gael")
         case "invalid amount" => errorSummaryAmount.getText should be(s"Mae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23")
         case "amount of 0" => errorSummaryAmount.getText should be(s"Rhaid i’r swm fod yn un geiniog neu’n fwy")
+        case "negative number" => errorSummaryAmount.getText should be(s"Rhaid i’r swm fod yn un geiniog neu’n fwy")
         case "exceeded maximum amount" => errorSummaryAmount.getText should be(s"Mae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
       }
     }
@@ -103,6 +104,7 @@ object RefundAmountPage extends BasePage {
         case "choice required" => errorSummaryChoice.getText should be("Select how much you want to be refunded")
         case "invalid amount" => errorSummaryAmount.getText should be(s"Amount to be refunded must be an amount of money, like 11.50 or 12")
         case "amount of 0" => errorSummaryAmount.getText should be(s"Amount must be one pence or more")
+        case "negative number" => errorSummaryAmount.getText should be(s"Amount must be one pence or more")
         case "exceeded maximum amount" => errorSummaryAmount.getText should be(s"Amount to be refunded must be £$amount or less")
       }
     }
@@ -117,6 +119,7 @@ object RefundAmountPage extends BasePage {
         case "choice required" => errorMessageChoice.getText should be("Gwall:\nDewiswch faint o ad-daliad yr hoffech ei gael")
         case "invalid amount" => errorMessageAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23")
         case "amount of 0" => errorMessageAmount.getText should be(s"Gwall:\nRhaid i’r swm fod yn un geiniog neu’n fwy")
+        case "negative number" => errorMessageAmount.getText should be(s"Gwall:\nRhaid i’r swm fod yn un geiniog neu’n fwy")
         case "exceeded maximum amount" => errorMessageAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
       }
     }
@@ -126,6 +129,7 @@ object RefundAmountPage extends BasePage {
         case "choice required" => errorMessageChoice.getText should be("Error:\nSelect how much you want to be refunded")
         case "invalid amount" => errorMessageAmount.getText should be(s"Error:\nAmount to be refunded must be an amount of money, like 11.50 or 12")
         case "amount of 0" => errorMessageAmount.getText should be(s"Error:\nAmount must be one pence or more")
+        case "negative number" => errorMessageAmount.getText should be(s"Error:\nAmount must be one pence or more")
         case "exceeded maximum amount" => errorMessageAmount.getText should be(s"Error:\nAmount to be refunded must be £$amount or less")
       }
     }
