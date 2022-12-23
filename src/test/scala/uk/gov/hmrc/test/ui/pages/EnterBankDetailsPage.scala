@@ -135,10 +135,10 @@ object EnterBankDetailsPage extends BasePage {
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Enter the name on the account as it appears on bank statements, do not copy and paste it.")
+      errorSummary("1").getText should be("Enter the name on the account")
       errorSummary("2").getText should be("Enter a sort code")
       errorSummary("3").getText should be("Enter an account number")
-      errorMessageAccountName.getText should be("Error:\nEnter the name on the account as it appears on bank statements, do not copy and paste it.")
+      errorMessageAccountName.getText should be("Error:\nEnter the name on the account")
       errorMessageSortCode.getText should be("Error:\nEnter a sort code")
       errorMessageAccountNumber.getText should be("Error:\nEnter an account number")
 
