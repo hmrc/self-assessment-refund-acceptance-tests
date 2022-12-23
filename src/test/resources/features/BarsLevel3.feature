@@ -1,6 +1,5 @@
 Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
 
-  # For some reason these pull Email Page content when run with other tests?! //TODO
   @fullRegression
   Scenario Outline: Unhappy - Bars Lockout Page
     Given The user starts a <accountType> journey with Nino AB111111D
@@ -82,19 +81,19 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     Then the <field> field should display "<message>"
 
     Examples:
-      | accountType | bankDetails           | message                                                                                  | field        |
-      | business    | valid                 | Enter a valid combination of bank account number and sort code                           | BARS Invalid |
-      | personal    | validBusiness         | Enter a valid combination of bank account number and sort code                           | BARS Invalid |
-      | personal    | invalid               | Enter a valid combination of bank account number and sort code                           | BARS Invalid |
-      | business    | invalidBusiness       | Enter a valid combination of bank account number and sort code                           | BARS Invalid |
-      | personal    | invalidName           | Enter the name on the account as it appears on bank statements. Do not copy and paste it | Name Invalid |
-      | business    | invalidNameBusiness   | Enter the name on the account as it appears on bank statements. Do not copy and paste it | Name Invalid |
-      | personal    | wellFormatted=No      | Enter a valid combination of bank account number and sort code                           | BARS Invalid |
-#      | business    | supportsDirectDebit=No | You have entered a sort code which does not accept this type of payment. Check you have entered a valid sort code or enter details for a different account | Sortcode Error |
-      | personal    | onEISCD=No            | Enter a valid combination of bank account number and sort code                           | BARS Invalid |
-      | business    | denyList              | Enter a valid combination of bank account number and sort code                           | BARS Invalid |
-      | personal    | indeterminate         | Enter a valid combination of bank account number and sort code                           | BARS Invalid |
-      | business    | indeterminateBusiness | Enter a valid combination of bank account number and sort code                           | BARS Invalid |
+      | accountType | bankDetails             | message                                                                                                                                                    | field          |
+#      | business    | valid                   | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid   |
+#      | personal    | validBusiness           | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid   |
+#      | personal    | invalid                 | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid   |
+#      | business    | invalidBusiness         | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid   |
+#      | personal    | invalidName             | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid   |
+#      | business    | invalidNameBusiness     | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid   |
+#      | personal    | wellFormatted=No        | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid   |
+#      | business    | supportsDirectCredit=No | You have entered a sort code which does not accept this type of payment. Check you have entered a valid sort code or enter details for a different account | Sortcode Error |
+#      | personal    | onEISCD=No              | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid   |
+#      | business    | denyList                | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid   |
+      | personal    | indeterminate           | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid   |
+#      | business    | indeterminateBusiness   | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid   |
 
 
   @fullRegression
@@ -114,19 +113,19 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     When the User toggles on English language
 
     Examples:
-      | accountType | bankDetails            | message                                                                                                                                                     | field          |
-      | business    | valid                  | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-      | personal    | validBusiness          | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-      | personal    | invalid                | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-      | business    | invalidBusiness        | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-      | personal    | invalidName            | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
-      | business    | invalidNameBusiness    | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
-      | personal    | wellFormatted=No       | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-#      | business    | supportsDirectDebit=No | Rydych wedi nodi cod didoli nad yw’n derbyn y math hwn o daliad. Gwiriwch eich bod wedi nodi cod didoli dilys, neu nodwch fanylion ar gyfer cyfrif gwahanol | Sortcode Error |
-      | personal    | onEISCD=No             | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-      | business    | denyList               | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-      | personal    | indeterminate          | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-      | business    | indeterminateBusiness  | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | accountType | bankDetails             | message                                                                                                                                                     | field          |
+      | business    | valid                   | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | personal    | validBusiness           | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | personal    | invalid                 | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | business    | invalidBusiness         | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | personal    | invalidName             | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
+      | business    | invalidNameBusiness     | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
+      | personal    | wellFormatted=No        | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | business    | supportsDirectCredit=No | Rydych wedi nodi cod didoli nad yw’n derbyn y math hwn o daliad. Gwiriwch eich bod wedi nodi cod didoli dilys, neu nodwch fanylion ar gyfer cyfrif gwahanol | Sortcode Error |
+      | personal    | onEISCD=No              | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | business    | denyList                | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | personal    | indeterminate           | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | business    | indeterminateBusiness   | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
 
 
   @core

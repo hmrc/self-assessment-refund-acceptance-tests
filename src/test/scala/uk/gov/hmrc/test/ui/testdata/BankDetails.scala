@@ -89,11 +89,10 @@ object BankDetails {
     case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
   }
 
-  //TODO need doesnt support credit account
-//  lazy val supportsDirectDebitNoAccount: BankDetails = environment match {
-//    case "local" | "dev" | "staging" => BankDetails("Doesnt support Direct Debit", "206705", "44311611", "0")
-//    case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
-//  }
+  lazy val supportsDirectCreditNoAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Doesnt support Direct Credit", "207102", "44344655", "0")
+    case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
+  }
 
   lazy val onEISCDNoAccount: BankDetails = environment match {
     case "local" | "dev" | "staging" => BankDetails("Not on EISCD", "309696", "44311611", "0")

@@ -73,7 +73,7 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
       case "amendedBusiness" => BankDetails.amendedBusinessAccount
       case "indeterminateBusiness" => BankDetails.indeterminateBusinessAccount
       case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
-//      case "supportsDirectDebit=No" => BankDetails.supportsDirectDebitNoAccount
+      case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
       case "onEISCD=No" => BankDetails.onEISCDNoAccount
       case "denyList" => BankDetails.denyListAccount
       case "partialNameBusiness" => BankDetails.partialNameBusinessAccount
@@ -97,20 +97,31 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
     elem match {
 
       case "BARS Invalid" =>
-        HelperFunctions.id("bank-account_sortcode-error-summary").webElement.getText should be(message)
+        EnterBankDetailsPage.errorSummary("1").getText should be(message)
         HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
 
       case "Sortcode Error" =>
-        HelperFunctions.id("bank-account_sortcode-error-summary").webElement.getText should be(message)
-        HelperFunctions.id("bank-account_" + elemId).webElement.getText should be(s"$prependError\n$message")
+        EnterBankDetailsPage.errorSummary("1").getText should be(message)
+        EnterBankDetailsPage.errorMessageSortCode.getText should be(s"$prependError\n$message")
 
       case "Name Invalid" =>
-        HelperFunctions.id("bank-account_account-name-error-summary").webElement.getText should be(message)
-        HelperFunctions.id("bank-account_account-name-error").webElement.getText should be(s"$prependError\n$message")
+        EnterBankDetailsPage.errorSummary("1").getText should be(message)
+        EnterBankDetailsPage.errorMessageAccountName.getText should be(s"$prependError\n$message")
+
+      case "Name Invalid" =>
+        EnterBankDetailsPage.errorSummary("1").getText should be(message)
+        EnterBankDetailsPage.errorMessageAccountNumber.getText should be(s"$prependError\n$message")
+
+      case "Roll Number Error" =>
+        EnterBankDetailsPage.errorSummary("1").getText should be(message)
+        EnterBankDetailsPage.errorMessageRollNumber.getText should be(s"$prependError\n$message")
+
+      case "No details entered" =>
+        EnterBankDetailsPage.assertNoDetailsError()
 
       case _ =>
-        HelperFunctions.errorSummary("bank-account_" + elemId) should be(message)
-        HelperFunctions.id("bank-account_" + elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+        EnterBankDetailsPage.errorSummary("1").getText should be(message)
+        HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
     }
   }
 

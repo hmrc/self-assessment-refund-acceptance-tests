@@ -66,6 +66,7 @@ object EnterBankDetailsPage extends BasePage {
   def errorMessageAccountName: WebElement = id("accountName-error").webElement
   def errorMessageSortCode: WebElement = id("sortCode-error").webElement
   def errorMessageAccountNumber: WebElement = id("accountNumber-error").webElement
+  def errorMessageRollNumber: WebElement = id("rollNumber-error").webElement
 
 //  override def assertCurrentUrl(): Assertion = {
 //    currentUrl should fullyMatch regex s"""$url/$accType/[a-z0-9]{24}""".r
