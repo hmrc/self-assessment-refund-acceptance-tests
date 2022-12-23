@@ -17,7 +17,9 @@
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
 import uk.gov.hmrc.test.ui.pages.EnterBankDetailsPage
+import uk.gov.hmrc.test.ui.pages.support.HelperFunctions
 import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
 
 class EnterBankDetailsStepDef extends Steps with DriverActions {
 
@@ -56,5 +58,62 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
       case "account number too long" => EnterBankDetailsPage.assertAccountNumberCorrectLengthError(value)
     }
   }
+
+
+  When("""^the User enters (.*) bank details$""") { state: String =>
+    EnterBankDetailsPage.clearBankDetails()
+    ScenarioContext.set("bankDetails", state match {
+      case "amended" => BankDetails.amendedAccount
+      case "invalid" => BankDetails.invalidAccount
+      case "invalidName" => BankDetails.invalidNameAccount
+      case "indeterminate" => BankDetails.indeterminateAccount
+      case "validBusiness" => BankDetails.businessAccount
+      case "invalidBusiness" => BankDetails.invalidBusinessAccount
+      case "invalidNameBusiness" => BankDetails.invalidBusinessNameAccount
+      case "amendedBusiness" => BankDetails.amendedBusinessAccount
+      case "indeterminateBusiness" => BankDetails.indeterminateBusinessAccount
+      case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
+//      case "supportsDirectDebit=No" => BankDetails.supportsDirectDebitNoAccount
+      case "onEISCD=No" => BankDetails.onEISCDNoAccount
+      case "denyList" => BankDetails.denyListAccount
+      case "partialNameBusiness" => BankDetails.partialNameBusinessAccount
+      case "partialName" => BankDetails.partialNameAccount
+      case _ => BankDetails.validAccount
+    })
+
+    val bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
+
+    EnterBankDetailsPage.enterBankDetails(bankDetails)
+  }
+
+  Then("""^the (.*) field should display "(.*)"$""") { (elem: String, message: String) =>
+    val elemId = elem.replaceAll(" ", "-").toLowerCase
+
+    def prependError: String = if (langToggle == Language.welsh) "Gwall:" else "Error:"
+
+    if (langToggle == Language.welsh) HelperFunctions.errorSummaryHeading() should be("Mae problem wedi codi")
+    else HelperFunctions.errorSummaryHeading() should be("There is a problem")
+
+    elem match {
+
+      case "BARS Invalid" =>
+        HelperFunctions.id("bank-account_sortcode-error-summary").webElement.getText should be(message)
+        HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+
+      case "Sortcode Error" =>
+        HelperFunctions.id("bank-account_sortcode-error-summary").webElement.getText should be(message)
+        HelperFunctions.id("bank-account_" + elemId).webElement.getText should be(s"$prependError\n$message")
+
+      case "Name Invalid" =>
+        HelperFunctions.id("bank-account_account-name-error-summary").webElement.getText should be(message)
+        HelperFunctions.id("bank-account_account-name-error").webElement.getText should be(s"$prependError\n$message")
+
+      case _ =>
+        HelperFunctions.errorSummary("bank-account_" + elemId) should be(message)
+        HelperFunctions.id("bank-account_" + elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+    }
+  }
+
+
 
 }

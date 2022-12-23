@@ -74,6 +74,9 @@ class CommonSteps extends Steps with DriverActions {
       case "CheckDetailsPage" =>
         CheckDetailsPage.shouldBeLoaded()
         CheckDetailsPage.assertContent()
+      case "CheckDetailsPageNoRoll" =>
+        CheckDetailsPage.shouldBeLoaded()
+        CheckDetailsPage.assertContentNoRoll()
       case "AuthenticationPage" =>
         AuthenticationPage.shouldBeLoaded()
       case "RequestReceivedPage" =>

@@ -86,7 +86,7 @@ object EnterBankDetailsPage extends BasePage {
     buildingRollNumber.clear()
   }
 
-  def enterPersonalBankDetails(validAccount: BankDetails = validAccountPersonal) {
+  def enterPersonalBankDetails(validAccount: BankDetails = validAccount) {
     personalAccountName.sendKeys(validAccount.accName)
     sortCode.sendKeys(validAccount.sortcode)
     accountNumber.sendKeys(validAccount.accNumber)
@@ -99,13 +99,13 @@ object EnterBankDetailsPage extends BasePage {
     accountNumber.sendKeys(invalidAccount.accNumber)
   }
 
-  def enterBusinessBankDetails(validAccount: BankDetails = validAccountBusiness) {
+  def enterBusinessBankDetails(validAccount: BankDetails = businessAccount) {
     businessAccountName.sendKeys(validAccount.accName)
     sortCode.sendKeys(validAccount.sortcode)
     accountNumber.sendKeys(validAccount.accNumber)
   }
 
-  def enterRollNumber(rollNumber1: BankDetails = validAccountPersonal) {
+  def enterRollNumber(rollNumber1: BankDetails = validAccount) {
     buildingRollNumber.sendKeys(rollNumber1.roll)
   }
 
@@ -135,17 +135,17 @@ object EnterBankDetailsPage extends BasePage {
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Enter the name on the account")
+      errorSummary("1").getText should be("Enter the name on the account as it appears on bank statements, do not copy and paste it.")
       errorSummary("2").getText should be("Enter a sort code")
       errorSummary("3").getText should be("Enter an account number")
-      errorMessageAccountName.getText should be("Error:\nEnter the name on the account")
+      errorMessageAccountName.getText should be("Error:\nEnter the name on the account as it appears on bank statements, do not copy and paste it.")
       errorMessageSortCode.getText should be("Error:\nEnter a sort code")
       errorMessageAccountNumber.getText should be("Error:\nEnter an account number")
 
     }
   }
 
-  def assertSortCodeCorrectFormatError(sortCodeValue: String, validAccount: BankDetails = validAccountPersonal): Unit = {
+  def assertSortCodeCorrectFormatError(sortCodeValue: String, validAccount: BankDetails = validAccount): Unit = {
     clearFields()
     accType match {
       case "personal" => personalAccountName.sendKeys(validAccount.accName)
@@ -162,12 +162,12 @@ object EnterBankDetailsPage extends BasePage {
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Enter a valid sort code like 309430")
-      errorMessageSortCode.getText should be("Error:\nEnter a valid sort code like 309430")
+      errorSummary("1").getText should be("Sort code must be 6 digits")
+      errorMessageSortCode.getText should be("Error:\nSort code must be 6 digits")
     }
   }
 
-  def assertAccountNumberCorrectFormatError(accountNumberValue: String, validAccount: BankDetails = validAccountPersonal): Unit = {
+  def assertAccountNumberCorrectFormatError(accountNumberValue: String, validAccount: BankDetails = validAccount): Unit = {
     clearFields()
     accType match {
       case "personal" => personalAccountName.sendKeys(validAccount.accName)
@@ -184,13 +184,13 @@ object EnterBankDetailsPage extends BasePage {
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Enter a valid account number like 00733445")
-      errorMessageAccountNumber.getText should be("Error:\nEnter a valid account number like 00733445")
+      errorSummary("1").getText should be("Account number must be between 6 and 8 digits")
+      errorMessageAccountNumber.getText should be("Error:\nAccount number must be between 6 and 8 digits")
 
     }
   }
 
-    def assertAccountNumberCorrectLengthError(accountNumberValue: String, validAccount: BankDetails = validAccountPersonal): Unit = {
+    def assertAccountNumberCorrectLengthError(accountNumberValue: String, validAccount: BankDetails = validAccount): Unit = {
       clearFields()
       accType match {
         case "personal" => personalAccountName.sendKeys(validAccount.accName)
@@ -224,4 +224,23 @@ object EnterBankDetailsPage extends BasePage {
         rollNumberHint.getText should be("You can find it on your card, statement or passbook")
       }
     }
+
+  def enterBankDetails(bankDetails: BankDetails): Unit = {
+    personalAccountName.sendKeys(bankDetails.accName)
+    sortCode.sendKeys(bankDetails.sortcode)
+    accountNumber.sendKeys(bankDetails.accNumber)
+  }
+
+  def enterBankDetailsWithRoll(bankDetails: BankDetails): Unit = {
+    personalAccountName.sendKeys(bankDetails.accName)
+    sortCode.sendKeys(bankDetails.sortcode)
+    accountNumber.sendKeys(bankDetails.accNumber)
+    buildingRollNumber.sendKeys(bankDetails.roll)
+  }
+
+  def clearBankDetails(): Unit = {
+    personalAccountName.clear()
+    sortCode.clear()
+    accountNumber.clear()
+  }
 }

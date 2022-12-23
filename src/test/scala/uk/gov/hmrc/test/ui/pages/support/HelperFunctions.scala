@@ -24,6 +24,9 @@ object HelperFunctions extends BasePage {
   def expectedPageHeader: String = ""
   def expectedPageTitle: String = ""
   def expectedPageTitleError: String = ""
+  def errorSummaryHeading(): String = id("error-summary-title").webElement.getText
+  def errorSummary(field: String): String = id(s"$field-error-summary").webElement.getText
+  def errorMessage(field: String): String = id(s"error-message-$field-input").webElement.getText
 
   def toggleLangOn(lang: String): Unit =
     if (lang == "cy")
@@ -31,4 +34,6 @@ object HelperFunctions extends BasePage {
     else if (lang == "en")
       click on cssSelector("nav > ul > li:nth-child(1)")
   //      click on id(s"$lang-switch")
+
+
 }

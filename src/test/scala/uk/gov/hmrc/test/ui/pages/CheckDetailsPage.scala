@@ -44,6 +44,11 @@ object CheckDetailsPage extends BasePage {
     else pageContent should be(EnglishContent.checkDetailsPageText())
   }
 
+  def assertContentNoRoll(): Assertion = {
+    if (langToggle == Language.welsh) pageContent should be(WelshContent.checkDetailsPageNoRollText())
+    else pageContent should be(EnglishContent.checkDetailsPageNoRollText())
+  }
+
   def changeType(): Unit = cssSelector("#main-content > div > div > dl > div:nth-child(1) > dd.govuk-summary-list__actions > a").webElement.click()
   def changeBank(): Unit = cssSelector("#main-content > div > div > dl > div:nth-child(2) > dd.govuk-summary-list__actions > a").webElement.click()
   def changeAmount(): Unit = cssSelector("#main-content > div > div > dl > div:nth-child(3) > dd.govuk-summary-list__actions > a").webElement.click()
