@@ -66,13 +66,13 @@ object WelshContent {
   def checkDetailsPageText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = ScenarioContext.get("amount")
-    var bankDetails: BankDetails = null
+    def bankDetails: BankDetails = ScenarioContext.get("bankDetails")
     var sortCode = ""
 
     accType match {
-      case "personal" => bankDetails = validAccount
+      case "personal" =>
         accType = "Personol"
-      case "business" => bankDetails = businessAccount
+      case "business" =>
         accType = "Busnes"
     }
     sortCode = bankDetails.sortcode.replace("-","").replace(" ","")

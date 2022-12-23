@@ -64,13 +64,9 @@ object EnglishContent {
   def checkDetailsPageText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = ScenarioContext.get("amount")
-    var bankDetails: BankDetails = null
+    def bankDetails: BankDetails = ScenarioContext.get("bankDetails")
     var sortCode = ""
 
-    accType match {
-      case "personal" => bankDetails = validAccount
-      case "business" => bankDetails = businessAccount
-    }
     sortCode = bankDetails.sortcode.replace("-","").replace(" ","")
     accType = accType.capitalize
 

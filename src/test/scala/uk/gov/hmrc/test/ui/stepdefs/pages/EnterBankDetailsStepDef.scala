@@ -30,7 +30,7 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
         case "business" => EnterBankDetailsPage.enterBusinessBankDetails()
       }
       case "invalid" => EnterBankDetailsPage.enterInvalidBankDetails()
-      }
+    }
   }
 
   And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (AccType: String, Roll: String) =>
@@ -78,53 +78,56 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
       case "denyList" => BankDetails.denyListAccount
       case "partialNameBusiness" => BankDetails.partialNameBusinessAccount
       case "partialName" => BankDetails.partialNameAccount
+      case "rollNumberRequired" => BankDetails.rollRequiredAccount
       case _ => BankDetails.validAccount
     })
 
     val bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
 
-    EnterBankDetailsPage.enterBankDetails(bankDetails)
-  }
-
-  Then("""^the (.*) field should display "(.*)"$""") { (elem: String, message: String) =>
-    val elemId = elem.replaceAll(" ", "-").toLowerCase
-
-    def prependError: String = if (langToggle == Language.welsh) "Gwall:" else "Error:"
-
-    if (langToggle == Language.welsh) HelperFunctions.errorSummaryHeading() should be("Mae problem wedi codi")
-    else HelperFunctions.errorSummaryHeading() should be("There is a problem")
-
-    elem match {
-
-      case "BARS Invalid" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
-
-      case "Sortcode Error" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageSortCode.getText should be(s"$prependError\n$message")
-
-      case "Name Invalid" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageAccountName.getText should be(s"$prependError\n$message")
-
-      case "Name Invalid" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageAccountNumber.getText should be(s"$prependError\n$message")
-
-      case "Roll Number Error" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageRollNumber.getText should be(s"$prependError\n$message")
-
-      case "No details entered" =>
-        EnterBankDetailsPage.assertNoDetailsError()
-
-      case _ =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+    state match {
+      case "rollNumberRequired" => EnterBankDetailsPage.enterBankDetailsWithRoll(bankDetails)
+      case _ => EnterBankDetailsPage.enterBankDetails(bankDetails)
     }
   }
 
+    Then("""^the (.*) field should display "(.*)"$""") { (elem: String, message: String) =>
+      val elemId = elem.replaceAll(" ", "-").toLowerCase
+
+      def prependError: String = if (langToggle == Language.welsh) "Gwall:" else "Error:"
+
+      if (langToggle == Language.welsh) HelperFunctions.errorSummaryHeading() should be("Mae problem wedi codi")
+      else HelperFunctions.errorSummaryHeading() should be("There is a problem")
+
+      elem match {
+
+        case "BARS Invalid" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+
+        case "Sortcode Error" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageSortCode.getText should be(s"$prependError\n$message")
+
+        case "Name Invalid" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageAccountName.getText should be(s"$prependError\n$message")
+
+        case "Name Invalid" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageAccountNumber.getText should be(s"$prependError\n$message")
+
+        case "Roll Number Error" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageRollNumber.getText should be(s"$prependError\n$message")
+
+        case "No details entered" =>
+          EnterBankDetailsPage.assertNoDetailsError()
+
+        case _ =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+      }
+    }
 
 
-}
+  }
