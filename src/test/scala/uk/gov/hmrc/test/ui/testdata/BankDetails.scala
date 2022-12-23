@@ -104,5 +104,10 @@ object BankDetails {
     case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
   }
 
+  lazy val rollRequiredAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Tinisha Bussey", "609593", "91661500", "0")
+    case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
+  }
+
 
 }
