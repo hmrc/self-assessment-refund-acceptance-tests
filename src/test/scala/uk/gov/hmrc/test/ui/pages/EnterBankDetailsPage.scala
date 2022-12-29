@@ -239,6 +239,16 @@ object EnterBankDetailsPage extends BasePage {
     buildingRollNumber.sendKeys(bankDetails.roll)
   }
 
+  def enterAccountName(input: String): Unit = personalAccountName.sendKeys(input)
+  def enterSortcode(input: String): Unit = sortCode.sendKeys(input)
+  def enterAccountNumber(input: String): Unit = accountNumber.sendKeys(input)
+  def enterRollNumberNew(input: String): Unit = buildingRollNumber.sendKeys(input)
+
+  def clearAccountName(): Unit = personalAccountName.clear()
+  def clearSortcode(): Unit = sortCode.clear()
+  def clearAccountNumber(): Unit = accountNumber.clear()
+  def clearRollNumber(): Unit = buildingRollNumber.clear()
+
   def clearBankDetails(): Unit = {
     personalAccountName.clear()
     sortCode.clear()

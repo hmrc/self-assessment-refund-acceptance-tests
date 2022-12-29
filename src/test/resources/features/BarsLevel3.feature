@@ -84,18 +84,18 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     Examples:
       | accountType | bankDetails             | message                                                                                                                                                    | field             |
       | business    | valid                   | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | personal    | validBusiness           | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | personal    | invalid                 | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | business    | invalidBusiness         | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | personal    | invalidName             | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
-      | business    | invalidNameBusiness     | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
-      | personal    | wellFormatted=No        | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | business    | supportsDirectCredit=No | You have entered a sort code which does not accept this type of payment. Check you have entered a valid sort code or enter details for a different account | Sortcode Error    |
-      | personal    | onEISCD=No              | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | business    | denyList                | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | personal    | indeterminate           | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | business    | indeterminateBusiness   | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | personal    | rollNumberRequired      | Your account may have an extra reference number. It may be called a roll number, account reference or account number                                       | Roll Number Error |
+#      | personal    | validBusiness           | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
+#      | personal    | invalid                 | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
+#      | business    | invalidBusiness         | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
+#      | personal    | invalidName             | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
+#      | business    | invalidNameBusiness     | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
+#      | personal    | wellFormatted=No        | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
+#      | business    | supportsDirectCredit=No | You have entered a sort code which does not accept this type of payment. Check you have entered a valid sort code or enter details for a different account | Sortcode Error    |
+#      | personal    | onEISCD=No              | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
+#      | business    | denyList                | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
+#      | personal    | indeterminate           | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
+#      | business    | indeterminateBusiness   | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
+#      | personal    | rollNumberRequired      | Your account may have an extra reference number. It may be called a roll number, account reference or account number                                       | Roll Number Error |
 
 
   @fullRegression

@@ -36,18 +36,51 @@ Feature: Error Messages English
 
 #  ENTER BANK ACCOUNT DETAILS PAGE
 
+#  Scenario Outline: English - Enter Bank Details Page - Error Scenarios
+#    And the user clicks other amount
+#    And the user enter an amount of 1
+#    And the user click continue
+#    And the user select personal account
+#    And the user click continue
+#    And the user enters <error>, <value> and the correct error message is shown
+#
+#    Examples:
+#      | error                    | value     |
+#      | no details entered       | N/A       |
+#      | invalid sortcode         | 12345!    |
+#      | invalid account number   | 1234567!  |
+#      | account number too short | 12345     |
+#      | account number too long  | 123456789 |
+
   Scenario Outline: English - Enter Bank Details Page - Error Scenarios
     And the user clicks other amount
     And the user enter an amount of 1
     And the user click continue
     And the user select personal account
     And the user click continue
-    And the user enters <error>, <value> and the correct error message is shown
+    When the User toggles on <lang> language
+    When the user enters <input value> into the <field> field
+    And the user click continue
+    Then the <field> field should display "<message>"
 
     Examples:
-      | error                    | value     |
-      | no details entered       | N/A       |
-      | invalid sortcode         | 12345!    |
-      | invalid account number   | 1234567!  |
-      | account number too short | 12345     |
-      | account number too long  | 123456789 |
+      | lang    | input value                                                   | field          | message                                                                                                              |
+      | English | none                                                          | Account Name   | Enter the name on the account                                                                                        |
+      | English | "Test"                                                        | Account Name   | Enter the name on the account                                                                                        |
+      | English | Test?                                                         | Account Name   | Enter the name on the account                                                                                        |
+      | English | _Test                                                         | Account Name   | Enter the name on the account                                                                                        |
+      | English | TestTestTestTestTestTestTestTestTestTestTestTestTestTestTest1 | Account Name   | Account name must be 60 characters or fewer                                                                          |
+      | English | none                                                          | Sortcode       | Enter a sort code                                                                                                    |
+      | English | 00.00.00                                                      | Sortcode       | Sort code must be 6 digits                                                                                           |
+      | English | 00000                                                         | Sortcode       | Sort code must be 6 digits                                                                                           |
+      | English | 0000000                                                       | Sortcode       | Sort code must be 6 digits                                                                                           |
+      | English | 000000words                                                   | Sortcode       | Sort code must be 6 digits                                                                                           |
+      | English | 000000?                                                       | Sortcode       | Sort code must be 6 digits                                                                                           |
+      | English | none                                                          | Account Number | Enter an account number                                                                                              |
+      | English | 52173                                                         | Account Number | Account number must be between 6 and 8 digits                                                                        |
+      | English | 521733!                                                       | Account Number | Account number must be between 6 and 8 digits                                                                        |
+      | English | 521733-1                                                      | Account Number | Account number must be between 6 and 8 digits                                                                        |
+      | English | 521730181                                                     | Account Number | Account number must be between 6 and 8 digits                                                                        |
+      | English | 521738wo                                                      | Account Number | Account number must be between 6 and 8 digits                                                                        |
+      | English | none                                                          | Roll Number    | Your account may have an extra reference number. It may be called a roll number, account reference or account number |
+      | English | 12345678901                                                   | Roll Number    | Roll number must be between 1 and 10 characters                                                                      |
