@@ -64,7 +64,7 @@ object EnglishContent {
   def checkDetailsPageText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = ScenarioContext.get("amount")
-    def bankDetails: BankDetails = ScenarioContext.get("bankDetails")
+    def bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
     var sortCode = ""
 
     sortCode = bankDetails.sortcode.replace("-","").replace(" ","")
@@ -90,7 +90,9 @@ object EnglishContent {
   def enterBankDetailsPageText(): String = {
     s"""Enter the bank or building society account details
        |We’ll only use these details to pay your refund.
+       |Bank details
        |Name on the account
+       |Bank details
        |Sort code
        |Must be 6 digits long
        |Account number

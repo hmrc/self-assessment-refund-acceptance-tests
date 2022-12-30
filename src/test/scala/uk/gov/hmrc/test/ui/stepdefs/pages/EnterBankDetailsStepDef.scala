@@ -33,157 +33,168 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
     }
   }
 
-  And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (AccType: String, Roll: String) =>
-    Roll match {
-      case "with" => AccType match {
-        case "personal" => EnterBankDetailsPage.enterPersonalBankDetailsWithRoll()
-        case "business" => EnterBankDetailsPage.enterBusinessBankDetailsWithRoll()
+  And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (accType: String, roll: String) =>
+
+    ScenarioContext.set("bankDetails", roll match {
+      case "with" =>  accType match {
+        case "personal" => BankDetails.rollRequiredAccount
+        case "business" => BankDetails.businessRollRequiredAccount
       }
-      case "without" => AccType match {
-        case "personal" => EnterBankDetailsPage.enterPersonalBankDetails()
-        case "business" => EnterBankDetailsPage.enterBusinessBankDetails()
+      case "without" => accType match {
+        case "personal" => BankDetails.validAccount
+        case "business" => BankDetails.businessAccount
       }
-    }
-  }
-
-  Then("""^the user enters (.*), (.*) and the correct error message is shown$""") { (error: String, value: String) =>
-    error match {
-      //      case "enter amount" | "choice required" | "invalid amount" | "amount of 0" | "exceeded maximum amount" =>
-      //        RefundAmountPage.errorSummaryValidation(error)
-      //        RefundAmountPage.errorMessageValidation(error)
-      case "no details entered" => EnterBankDetailsPage.assertNoDetailsError()
-      case "invalid sortcode" => EnterBankDetailsPage.assertSortCodeCorrectFormatError(value)
-      case "invalid account number" => EnterBankDetailsPage.assertAccountNumberCorrectFormatError(value)
-      case "account number too short" => EnterBankDetailsPage.assertAccountNumberCorrectLengthError(value)
-      case "account number too long" => EnterBankDetailsPage.assertAccountNumberCorrectLengthError(value)
-    }
-  }
-
-
-  When("""^the User enters (.*) bank details$""") { state: String =>
-    EnterBankDetailsPage.clearBankDetails()
-    ScenarioContext.set("bankDetails", state match {
-      case "amended" => BankDetails.amendedAccount
-      case "invalid" => BankDetails.invalidAccount
-      case "invalidName" => BankDetails.invalidNameAccount
-      case "indeterminate" => BankDetails.indeterminateAccount
-      case "validBusiness" => BankDetails.businessAccount
-      case "invalidBusiness" => BankDetails.invalidBusinessAccount
-      case "invalidNameBusiness" => BankDetails.invalidBusinessNameAccount
-      case "amendedBusiness" => BankDetails.amendedBusinessAccount
-      case "indeterminateBusiness" => BankDetails.indeterminateBusinessAccount
-      case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
-      case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
-      case "onEISCD=No" => BankDetails.onEISCDNoAccount
-      case "denyList" => BankDetails.denyListAccount
-      case "partialNameBusiness" => BankDetails.partialNameBusinessAccount
-      case "partialName" => BankDetails.partialNameAccount
-      case "rollNumberRequired" => BankDetails.rollRequiredAccount
-      case _ => BankDetails.validAccount
     })
 
     val bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
 
-    state match {
-      case "rollNumberRequired" => EnterBankDetailsPage.enterBankDetailsWithRoll(bankDetails)
+    roll match {
+      case "with" => EnterBankDetailsPage.enterBankDetailsWithRoll(bankDetails)
       case _ => EnterBankDetailsPage.enterBankDetails(bankDetails)
     }
-  }
-
-  Then("""^the (.*) field should display "(.*)"$""") { (elem: String, message: String) =>
-    val elemId = elem.replaceAll(" ", "-").toLowerCase
-
-    def prependError: String = if (langToggle == Language.welsh) "Gwall:" else "Error:"
-
-    if (langToggle == Language.welsh) HelperFunctions.errorSummaryHeading() should be("Mae problem wedi codi")
-    else HelperFunctions.errorSummaryHeading() should be("There is a problem")
-
-    elem match {
-
-      case "BARS Invalid" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
-
-      case "Sortcode Error" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageSortCode.getText should be(s"$prependError\n$message")
-
-      case "Sortcode" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageSortCode.getText should be(s"$prependError\n$message")
-
-      case "Name Invalid" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageAccountName.getText should be(s"$prependError\n$message")
-
-      case "Account Name" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageAccountName.getText should be(s"$prependError\n$message")
-
-      case "Account Number Error" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageAccountNumber.getText should be(s"$prependError\n$message")
-
-      case "Account Number" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageAccountNumber.getText should be(s"$prependError\n$message")
-
-      case "Roll Number Error" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageRollNumber.getText should be(s"$prependError\n$message")
-
-      case "Roll Number" =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        EnterBankDetailsPage.errorMessageRollNumber.getText should be(s"$prependError\n$message")
-
-      case "No details entered" =>
-        EnterBankDetailsPage.assertNoDetailsError()
-
-      case _ =>
-        EnterBankDetailsPage.errorSummary("1").getText should be(message)
-        HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
     }
+
+  Then("""^the user enters (.*), (.*) and the correct error message is shown$""") {
+    (error: String, value: String) =>
+      error match {
+        //      case "enter amount" | "choice required" | "invalid amount" | "amount of 0" | "exceeded maximum amount" =>
+        //        RefundAmountPage.errorSummaryValidation(error)
+        //        RefundAmountPage.errorMessageValidation(error)
+        case "no details entered" => EnterBankDetailsPage.assertNoDetailsError()
+        case "invalid sortcode" => EnterBankDetailsPage.assertSortCodeCorrectFormatError(value)
+        case "invalid account number" => EnterBankDetailsPage.assertAccountNumberCorrectFormatError(value)
+        case "account number too short" => EnterBankDetailsPage.assertAccountNumberCorrectLengthError(value)
+        case "account number too long" => EnterBankDetailsPage.assertAccountNumberCorrectLengthError(value)
+      }
   }
 
-  When("""^the user enters (.*) into the (.*) field$""") { (input: String, field: String) =>
-    def field1: String = field.toLowerCase
 
-    input match {
-      case "none" => field1 match {
-        case "account name" =>
-          EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
-          EnterBankDetailsPage.clearAccountName()
-        case "sortcode" =>
-          EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
-          EnterBankDetailsPage.clearSortcode()
-        case "account number" =>
-          EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
-          EnterBankDetailsPage.clearAccountNumber()
-        case "roll number" =>
-          EnterBankDetailsPage.enterBankDetails(BankDetails.rollRequiredAccount)
-          EnterBankDetailsPage.clearRollNumber()
+  When("""^the User enters (.*) bank details$""") { state: String =>
+      EnterBankDetailsPage.clearBankDetails()
+      ScenarioContext.set("bankDetails", state match {
+        case "amended" => BankDetails.amendedAccount
+        case "invalid" => BankDetails.invalidAccount
+        case "invalidName" => BankDetails.invalidNameAccount
+        case "indeterminate" => BankDetails.indeterminateAccount
+        case "validBusiness" => BankDetails.businessAccount
+        case "invalidBusiness" => BankDetails.invalidBusinessAccount
+        case "invalidNameBusiness" => BankDetails.invalidBusinessNameAccount
+        case "amendedBusiness" => BankDetails.amendedBusinessAccount
+        case "indeterminateBusiness" => BankDetails.indeterminateBusinessAccount
+        case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
+        case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
+        case "onEISCD=No" => BankDetails.onEISCDNoAccount
+        case "denyList" => BankDetails.denyListAccount
+        case "partialNameBusiness" => BankDetails.partialNameBusinessAccount
+        case "partialName" => BankDetails.partialNameAccount
+        case "rollNumberRequired" => BankDetails.rollRequiredAccount
+        case _ => BankDetails.validAccount
+      })
+
+      val bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
+
+      state match {
+        case "rollNumberRequired" => EnterBankDetailsPage.enterBankDetailsWithRoll(bankDetails)
+        case _ => EnterBankDetailsPage.enterBankDetails(bankDetails)
       }
-      case _ =>
-        field1 match {
+  }
+
+  Then("""^the (.*) field should display "(.*)"$""") {
+    (elem: String, message: String) =>
+      val elemId = elem.replaceAll(" ", "-").toLowerCase
+
+      def prependError: String = if (langToggle == Language.welsh) "Gwall:" else "Error:"
+
+      if (langToggle == Language.welsh) HelperFunctions.errorSummaryHeading() should be("Mae problem wedi codi")
+      else HelperFunctions.errorSummaryHeading() should be("There is a problem")
+
+      elem match {
+
+        case "BARS Invalid" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+
+        case "Sortcode Error" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageSortCode.getText should be(s"$prependError\n$message")
+
+        case "Sortcode" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageSortCode.getText should be(s"$prependError\n$message")
+
+        case "Name Invalid" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageAccountName.getText should be(s"$prependError\n$message")
+
+        case "Account Name" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageAccountName.getText should be(s"$prependError\n$message")
+
+        case "Account Number Error" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageAccountNumber.getText should be(s"$prependError\n$message")
+
+        case "Account Number" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageAccountNumber.getText should be(s"$prependError\n$message")
+
+        case "Roll Number Error" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageRollNumber.getText should be(s"$prependError\n$message")
+
+        case "Roll Number" =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          EnterBankDetailsPage.errorMessageRollNumber.getText should be(s"$prependError\n$message")
+
+        case "No details entered" =>
+          EnterBankDetailsPage.assertNoDetailsError()
+
+        case _ =>
+          EnterBankDetailsPage.errorSummary("1").getText should be(message)
+          HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+      }
+  }
+
+  When("""^the user enters (.*) into the (.*) field$""") {
+    (input: String, field: String) =>
+      def field1: String = field.toLowerCase
+
+      input match {
+        case "none" => field1 match {
           case "account name" =>
             EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
             EnterBankDetailsPage.clearAccountName()
-            EnterBankDetailsPage.enterAccountName(input)
           case "sortcode" =>
             EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
             EnterBankDetailsPage.clearSortcode()
-            EnterBankDetailsPage.enterSortcode(input)
           case "account number" =>
             EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
             EnterBankDetailsPage.clearAccountNumber()
-            EnterBankDetailsPage.enterAccountNumber(input)
           case "roll number" =>
             EnterBankDetailsPage.enterBankDetails(BankDetails.rollRequiredAccount)
             EnterBankDetailsPage.clearRollNumber()
-            EnterBankDetailsPage.enterRollNumberNew(input)
         }
+        case _ =>
+          field1 match {
+            case "account name" =>
+              EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
+              EnterBankDetailsPage.clearAccountName()
+              EnterBankDetailsPage.enterAccountName(input)
+            case "sortcode" =>
+              EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
+              EnterBankDetailsPage.clearSortcode()
+              EnterBankDetailsPage.enterSortcode(input)
+            case "account number" =>
+              EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
+              EnterBankDetailsPage.clearAccountNumber()
+              EnterBankDetailsPage.enterAccountNumber(input)
+            case "roll number" =>
+              EnterBankDetailsPage.enterBankDetails(BankDetails.rollRequiredAccount)
+              EnterBankDetailsPage.clearRollNumber()
+              EnterBankDetailsPage.enterRollNumberNew(input)
+          }
 
-    }
+      }
   }
 
 

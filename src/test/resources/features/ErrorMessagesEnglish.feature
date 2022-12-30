@@ -66,7 +66,6 @@ Feature: Error Messages English
     Examples:
       | lang    | input value                                                   | field          | message                                                                                                              |
       | English | none                                                          | Account Name   | Enter the name on the account                                                                                        |
-      | English | "Test"                                                        | Account Name   | Enter the name on the account                                                                                        |
       | English | Test?                                                         | Account Name   | Enter the name on the account                                                                                        |
       | English | _Test                                                         | Account Name   | Enter the name on the account                                                                                        |
       | English | TestTestTestTestTestTestTestTestTestTestTestTestTestTestTest1 | Account Name   | Account name must be 60 characters or fewer                                                                          |
