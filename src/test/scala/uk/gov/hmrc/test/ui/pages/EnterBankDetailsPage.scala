@@ -63,9 +63,14 @@ object EnterBankDetailsPage extends BasePage {
 
   def errorSummary(number: String): WebElement = cssSelector("div > ul > li:nth-child("+number+") > a").webElement
 
+  def errorSummaryAccountName: WebElement = id("accountName-error-summary").webElement
+  def errorSummarySortCode: WebElement = id("sortCode-error-summary").webElement
+  def errorSummaryAccountNumber: WebElement = id("accountNumber-error-summary").webElement
+  def errorSummaryRollNumber: WebElement = id("rollNumber-error-summary").webElement
   def errorMessageAccountName: WebElement = id("accountName-error").webElement
   def errorMessageSortCode: WebElement = id("sortCode-error").webElement
   def errorMessageAccountNumber: WebElement = id("accountNumber-error").webElement
+  def errorMessageRollNumber: WebElement = id("rollNumber-error").webElement
 
 //  override def assertCurrentUrl(): Assertion = {
 //    currentUrl should fullyMatch regex s"""$url/$accType/[a-z0-9]{24}""".r
@@ -86,7 +91,7 @@ object EnterBankDetailsPage extends BasePage {
     buildingRollNumber.clear()
   }
 
-  def enterPersonalBankDetails(validAccount: BankDetails = validAccountPersonal) {
+  def enterPersonalBankDetails(validAccount: BankDetails = validAccount) {
     personalAccountName.sendKeys(validAccount.accName)
     sortCode.sendKeys(validAccount.sortcode)
     accountNumber.sendKeys(validAccount.accNumber)
@@ -99,13 +104,13 @@ object EnterBankDetailsPage extends BasePage {
     accountNumber.sendKeys(invalidAccount.accNumber)
   }
 
-  def enterBusinessBankDetails(validAccount: BankDetails = validAccountBusiness) {
+  def enterBusinessBankDetails(validAccount: BankDetails = businessAccount) {
     businessAccountName.sendKeys(validAccount.accName)
     sortCode.sendKeys(validAccount.sortcode)
     accountNumber.sendKeys(validAccount.accNumber)
   }
 
-  def enterRollNumber(rollNumber1: BankDetails = validAccountPersonal) {
+  def enterRollNumber(rollNumber1: BankDetails = validAccount) {
     buildingRollNumber.sendKeys(rollNumber1.roll)
   }
 
@@ -125,9 +130,9 @@ object EnterBankDetailsPage extends BasePage {
     assertCurrentPageTitleError()
     if (langToggle == Language.welsh) {
       errorSummaryTitle.getText should be("Mae problem wedi codi")
-      errorSummary("1").getText should be("Nodwch yr enw sydd ar y cyfrif")
-      errorSummary("2").getText should be("Nodwch god didoli")
-      errorSummary("3").getText should be("Nodwch rif cyfrif")
+      errorSummaryAccountName.getText should be("Nodwch yr enw sydd ar y cyfrif")
+      errorSummarySortCode.getText should be("Nodwch god didoli")
+      errorSummaryAccountNumber.getText should be("Nodwch rif cyfrif")
       errorMessageAccountName.getText should be("Gwall:\nNodwch yr enw sydd ar y cyfrif")
       errorMessageSortCode.getText should be("Gwall:\nNodwch god didoli")
       errorMessageAccountNumber.getText should be("Gwall:\nNodwch rif cyfrif")
@@ -135,9 +140,9 @@ object EnterBankDetailsPage extends BasePage {
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Enter the name on the account")
-      errorSummary("2").getText should be("Enter a sort code")
-      errorSummary("3").getText should be("Enter an account number")
+      errorSummaryAccountName.getText should be("Enter the name on the account")
+      errorSummarySortCode.getText should be("Enter a sort code")
+      errorSummaryAccountNumber.getText should be("Enter an account number")
       errorMessageAccountName.getText should be("Error:\nEnter the name on the account")
       errorMessageSortCode.getText should be("Error:\nEnter a sort code")
       errorMessageAccountNumber.getText should be("Error:\nEnter an account number")
@@ -145,7 +150,7 @@ object EnterBankDetailsPage extends BasePage {
     }
   }
 
-  def assertSortCodeCorrectFormatError(sortCodeValue: String, validAccount: BankDetails = validAccountPersonal): Unit = {
+  def assertSortCodeCorrectFormatError(sortCodeValue: String, validAccount: BankDetails = validAccount): Unit = {
     clearFields()
     accType match {
       case "personal" => personalAccountName.sendKeys(validAccount.accName)
@@ -157,17 +162,17 @@ object EnterBankDetailsPage extends BasePage {
     assertCurrentPageTitleError()
     if (langToggle == Language.welsh) {
       errorSummaryTitle.getText should be("Mae problem wedi codi")
-      errorSummary("1").getText should be("Nodwch god didoli dilys, megis 309430")
+      errorSummarySortCode.getText should be("Nodwch god didoli dilys, megis 309430")
       errorMessageSortCode.getText should be("Gwall:\nNodwch god didoli dilys, megis 309430")
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Enter a valid sort code like 309430")
-      errorMessageSortCode.getText should be("Error:\nEnter a valid sort code like 309430")
+      errorSummarySortCode.getText should be("Sort code must be 6 digits")
+      errorMessageSortCode.getText should be("Error:\nSort code must be 6 digits")
     }
   }
 
-  def assertAccountNumberCorrectFormatError(accountNumberValue: String, validAccount: BankDetails = validAccountPersonal): Unit = {
+  def assertAccountNumberCorrectFormatError(accountNumberValue: String, validAccount: BankDetails = validAccount): Unit = {
     clearFields()
     accType match {
       case "personal" => personalAccountName.sendKeys(validAccount.accName)
@@ -179,18 +184,18 @@ object EnterBankDetailsPage extends BasePage {
     assertCurrentPageTitleError()
     if (langToggle == Language.welsh) {
       errorSummaryTitle.getText should be("Mae problem wedi codi")
-      errorSummary("1").getText should be("Nodwch rif cyfrif dilys, megis 00733445")
+      errorSummaryAccountNumber.getText should be("Nodwch rif cyfrif dilys, megis 00733445")
       errorMessageAccountNumber.getText should be("Gwall:\nNodwch rif cyfrif dilys, megis 00733445")
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Enter a valid account number like 00733445")
-      errorMessageAccountNumber.getText should be("Error:\nEnter a valid account number like 00733445")
+      errorSummaryAccountNumber.getText should be("Account number must be between 6 and 8 digits")
+      errorMessageAccountNumber.getText should be("Error:\nAccount number must be between 6 and 8 digits")
 
     }
   }
 
-    def assertAccountNumberCorrectLengthError(accountNumberValue: String, validAccount: BankDetails = validAccountPersonal): Unit = {
+    def assertAccountNumberCorrectLengthError(accountNumberValue: String, validAccount: BankDetails = validAccount): Unit = {
       clearFields()
       accType match {
         case "personal" => personalAccountName.sendKeys(validAccount.accName)
@@ -202,12 +207,12 @@ object EnterBankDetailsPage extends BasePage {
       assertCurrentPageTitleError()
       if (langToggle == Language.welsh) {
         errorSummaryTitle.getText should be("Mae problem wedi codi")
-        errorSummary("1").getText should be("Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
+        errorSummaryAccountNumber.getText should be("Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
         errorMessageAccountNumber.getText should be("Gwall:\nMae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
       }
       else {
         errorSummaryTitle.getText should be("There is a problem")
-        errorSummary("1").getText should be("Account number must be between 6 and 8 digits")
+        errorSummaryAccountNumber.getText should be("Account number must be between 6 and 8 digits")
         errorMessageAccountNumber.getText should be("Error:\nAccount number must be between 6 and 8 digits")
       }
     }
@@ -224,4 +229,33 @@ object EnterBankDetailsPage extends BasePage {
         rollNumberHint.getText should be("You can find it on your card, statement or passbook")
       }
     }
+
+  def enterBankDetails(bankDetails: BankDetails): Unit = {
+    personalAccountName.sendKeys(bankDetails.accName)
+    sortCode.sendKeys(bankDetails.sortcode)
+    accountNumber.sendKeys(bankDetails.accNumber)
+  }
+
+  def enterBankDetailsWithRoll(bankDetails: BankDetails): Unit = {
+    personalAccountName.sendKeys(bankDetails.accName)
+    sortCode.sendKeys(bankDetails.sortcode)
+    accountNumber.sendKeys(bankDetails.accNumber)
+    buildingRollNumber.sendKeys(bankDetails.roll)
+  }
+
+  def enterAccountName(input: String): Unit = personalAccountName.sendKeys(input)
+  def enterSortcode(input: String): Unit = sortCode.sendKeys(input)
+  def enterAccountNumber(input: String): Unit = accountNumber.sendKeys(input)
+  def enterRollNumberNew(input: String): Unit = buildingRollNumber.sendKeys(input)
+
+  def clearAccountName(): Unit = personalAccountName.clear()
+  def clearSortcode(): Unit = sortCode.clear()
+  def clearAccountNumber(): Unit = accountNumber.clear()
+  def clearRollNumber(): Unit = buildingRollNumber.clear()
+
+  def clearBankDetails(): Unit = {
+    personalAccountName.clear()
+    sortCode.clear()
+    accountNumber.clear()
+  }
 }

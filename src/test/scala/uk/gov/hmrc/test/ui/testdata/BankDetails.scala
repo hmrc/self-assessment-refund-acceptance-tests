@@ -22,19 +22,97 @@ object BankDetails {
 
   lazy val environment: String = Option(System.getProperty("environment")).getOrElse("local").toLowerCase
 
-  lazy val validAccountPersonal: BankDetails = environment match {
-    case "local" | "dev" | "staging" => BankDetails("Melvin Loper", "207106", "44311677", "1234")
-    case "qa"                        => BankDetails("Melvin Loper", "207106", "44311677", "1234")
+  lazy val validAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Melvin Loper", "20-71-06", "44311677", "0")
+    case "qa" => BankDetails("TBC", "40-47-84", "70872490", "0")
   }
 
-  lazy val validAccountBusiness: BankDetails = environment match {
-    case "local" | "dev" | "staging" => BankDetails("Megacorp", "207106", "86563611", "1234")
-    case "qa"                        => BankDetails("Megacorp", "207106", "86563611", "1234")
+  lazy val invalidNameAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("INVALID NAME", "20-71-06", "44311677", "0")
+    case "qa" => BankDetails("TBC", "40-47-84", "70872490", "0")
+  }
+
+  lazy val amendedAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Felipa Doherty", "20-71-06", "44344677", "0")
+    case "qa" => BankDetails("TBC", "40-47-84", "70872490", "0")
   }
 
   lazy val invalidAccount: BankDetails = environment match {
-    case "local" | "dev" | "staging" => BankDetails("Tester!", "010203", "12345678", "1234")
-    case "qa"                        => BankDetails("Tester!", "010203", "12345678", "1234")
+    case "local" | "dev" | "staging" => BankDetails("Tester", "00-00-00", "12345678", "0")
+    case "qa" => BankDetails("TBC", "40-47-84", "12345678", "0")
   }
+
+  lazy val indeterminateAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Nichole Cartwright", "40 51 25", "54377677", "0")
+    case "qa" => BankDetails("TBC", "09 06 66", "42553011", "0")
+  }
+
+  lazy val partialNameAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Melvin", "20 71 06", "44311677", "0")
+    case "qa" => BankDetails("TBC", "09 06 66", "42553011", "0")
+  }
+
+  lazy val businessAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Security Engima", "20 71 06", "86473611", "0")
+    case "qa" => BankDetails("TBC", "09 06 66", "42553011","0")
+  }
+
+  lazy val invalidBusinessAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Tester", "00-00-00", "12345678", "0")
+    case "qa" => BankDetails("TBC", "09 06 66", "42553011", "0")
+  }
+
+  lazy val invalidBusinessNameAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Invalid Name", "20 71 06", "86473611", "0")
+    case "qa" => BankDetails("TBC", "09 06 66", "42553011", "0")
+  }
+
+  lazy val amendedBusinessAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Megacorp", "20 71 06", "86563611", "0")
+    case "qa" => BankDetails("TBC", "40-47-84", "70872490", "0")
+  }
+
+  lazy val indeterminateBusinessAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Zanetti Office Supplies", "40 51 25", "96473611", "0")
+    case "qa" => BankDetails("TBC", "40-47-84", "70872490", "0")
+  }
+
+  lazy val partialNameBusinessAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Security", "20 71 06", "86473611", "0")
+    case "qa" => BankDetails("TBC", "09 06 66", "42553011", "0")
+  }
+
+  //Other Scenarios
+
+  lazy val wellFormattedNoAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Not well formatted", "609593", "44311611", "0")
+    case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
+  }
+
+  lazy val supportsDirectCreditNoAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Doesnt support Direct Credit", "207102", "44344655", "0")
+    case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
+  }
+
+  lazy val onEISCDNoAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Not on EISCD", "309696", "44311611", "0")
+    case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
+  }
+
+  lazy val denyListAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Deny List", "201147", "44311611", "0")
+    case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
+  }
+
+  lazy val rollRequiredAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("Tinisha Bussey", "609593", "91661500", "0")
+    case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
+  }
+
+  lazy val businessRollRequiredAccount: BankDetails = environment match {
+    case "local" | "dev" | "staging" => BankDetails("O'Connor Construction", "609593", "96863604", "0")
+    case "qa" => BankDetails("TBC", "TBC", "TBC", "0")
+  }
+
 
 }

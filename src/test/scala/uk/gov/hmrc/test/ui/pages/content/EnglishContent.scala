@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.content
 
-import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccountBusiness, validAccountPersonal}
+import uk.gov.hmrc.test.ui.testdata.BankDetails.{businessAccount, validAccount}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
 
 import java.time.LocalDate
@@ -32,18 +32,17 @@ object EnglishContent {
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
-  def checkDetailsPageText(): String = {
+  def checkDetailsPageNoRollText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
-
     val amount: String = ScenarioContext.get("amount")
-
     var bankDetails: BankDetails = null
+    var sortCode = ""
 
     accType match {
-      case "personal" => bankDetails = validAccountPersonal
-      case "business" => bankDetails = validAccountBusiness
+      case "personal" => bankDetails = validAccount
+      case "business" => bankDetails = businessAccount
     }
-
+    sortCode = bankDetails.sortcode.replace("-", "").replace(" ", "")
     accType = accType.capitalize
 
     s"""Check your details
@@ -52,7 +51,32 @@ object EnglishContent {
        |account type
        |Name on the account ${bankDetails.accName} Change
        |bank details
-       |Sort code ${bankDetails.sortcode}
+       |Sort code $sortCode
+       |Account number ${bankDetails.accNumber}
+       |Amount to be repaid
+       |£$amount Change
+       |refund amount
+       |Confirm your details to complete your refund request.
+       |Confirm and continue
+       |Is this page not working properly? (opens in new tab)""".stripMargin
+  }
+
+  def checkDetailsPageText(): String = {
+    var accType: String = ScenarioContext.get("personalOrBusiness")
+    val amount: String = ScenarioContext.get("amount")
+    def bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
+    var sortCode = ""
+
+    sortCode = bankDetails.sortcode.replace("-","").replace(" ","")
+    accType = accType.capitalize
+
+    s"""Check your details
+       |Account type
+       |$accType Change
+       |account type
+       |Name on the account ${bankDetails.accName} Change
+       |bank details
+       |Sort code $sortCode
        |Account number ${bankDetails.accNumber}
        |Building society number ${bankDetails.roll}
        |Amount to be repaid
@@ -66,7 +90,9 @@ object EnglishContent {
   def enterBankDetailsPageText(): String = {
     s"""Enter the bank or building society account details
        |We’ll only use these details to pay your refund.
+       |Bank details
        |Name on the account
+       |Bank details
        |Sort code
        |Must be 6 digits long
        |Account number

@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.content
 
-import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccountBusiness, validAccountPersonal}
+import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccount, businessAccount}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext, TestData}
 
 import java.time.LocalDate
@@ -32,19 +32,19 @@ object WelshContent {
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
   }
 
-  def checkDetailsPageText(): String = {
+  def checkDetailsPageNoRollText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
-
     val amount: String = ScenarioContext.get("amount")
-
     var bankDetails: BankDetails = null
+    var sortCode = ""
 
     accType match {
-      case "personal" => bankDetails = validAccountPersonal
+      case "personal" => bankDetails = validAccount
         accType = "Personol"
-      case "business" => bankDetails = validAccountBusiness
+      case "business" => bankDetails = businessAccount
         accType = "Busnes"
     }
+    sortCode = bankDetails.sortcode.replace("-", "").replace(" ", "")
 
     s"""Gwiriwch eich manylion
        |Math o Gyfrif
@@ -52,7 +52,38 @@ object WelshContent {
        |y math o gyfrif
        |Enw ar y cyfrif ${bankDetails.accName} Newid
        |y manylion banc
-       |Cod didoli ${bankDetails.sortcode}
+       |Cod didoli $sortCode
+       |Rhif y cyfrif ${bankDetails.accNumber}
+       |Swm i’w ad-dalu
+       |£$amount Newid
+       |swm yr ad-daliad
+       |Cadarnhewch eich manylion er mwyn cwblhau’ch cais am ad-daliad.
+       |Cadarnhau ac yn eich blaen
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+  }
+
+
+  def checkDetailsPageText(): String = {
+    var accType: String = ScenarioContext.get("personalOrBusiness")
+    val amount: String = ScenarioContext.get("amount")
+    def bankDetails: BankDetails = ScenarioContext.get("bankDetails")
+    var sortCode = ""
+
+    accType match {
+      case "personal" =>
+        accType = "Personol"
+      case "business" =>
+        accType = "Busnes"
+    }
+    sortCode = bankDetails.sortcode.replace("-","").replace(" ","")
+
+    s"""Gwiriwch eich manylion
+       |Math o Gyfrif
+       |$accType Newid
+       |y math o gyfrif
+       |Enw ar y cyfrif ${bankDetails.accName} Newid
+       |y manylion banc
+       |Cod didoli $sortCode
        |Rhif y cyfrif ${bankDetails.accNumber}
        |Rhif rôl y gymdeithas adeiladu ${bankDetails.roll}
        |Swm i’w ad-dalu
@@ -66,7 +97,9 @@ object WelshContent {
   def enterBankDetailsPageText(): String = {
     s"""Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu
        |Dim ond er mwyn talu’ch ad-daliad y byddwn yn defnyddio’r manylion hyn.
+       |Fanylion banc
        |Enw ar y cyfrif
+       |Fanylion banc
        |Cod didoli
        |Mae’n rhaid iddo fod yn 6 digid o hyd
        |Rhif y cyfrif
