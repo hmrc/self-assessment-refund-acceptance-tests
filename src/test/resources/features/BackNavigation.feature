@@ -52,7 +52,6 @@ Feature: Navigation tests
     And the user click back
     And the user is on the ItsaViewerPage
 
-
   Scenario: Back Navigation - Refund Journey - Language change and back button behaviour
     Given The user starts a personal journey with Nino AB111111C
     When the User toggles on English language
@@ -103,7 +102,8 @@ Feature: Navigation tests
     And the user select personal account
     And the user click continue
     And the user is on the EnterBankDetailsPage
-    And the user enters no details entered, . and the correct error message is shown
+    And the user click continue
+    Then the No details entered field should display "the correct error message"
     And the user click back
     And the user is on the TypeOfAccountPage
     And the user click continue
@@ -115,7 +115,6 @@ Feature: Navigation tests
     And the user click continue
     And the user click back
     And the user is on the ItsaViewerPage
-
 
 
 #    REFUND HISTORY JOURNEY
