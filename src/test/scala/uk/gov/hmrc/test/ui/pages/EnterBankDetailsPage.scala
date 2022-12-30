@@ -141,11 +141,11 @@ object EnterBankDetailsPage extends BasePage {
     else {
       errorSummaryTitle.getText should be("There is a problem")
       errorSummaryAccountName.getText should be("Enter the name on the account")
-      errorSummarySortCode.getText should be("Enter a sort code")
-      errorSummaryAccountNumber.getText should be("Enter an account number")
+      errorSummarySortCode.getText should be("Enter sort code")
+      errorSummaryAccountNumber.getText should be("Enter account number")
       errorMessageAccountName.getText should be("Error:\nEnter the name on the account")
-      errorMessageSortCode.getText should be("Error:\nEnter a sort code")
-      errorMessageAccountNumber.getText should be("Error:\nEnter an account number")
+      errorMessageSortCode.getText should be("Error:\nEnter sort code")
+      errorMessageAccountNumber.getText should be("Error:\nEnter account number")
 
     }
   }
