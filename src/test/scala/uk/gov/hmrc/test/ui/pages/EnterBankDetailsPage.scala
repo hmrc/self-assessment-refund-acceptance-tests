@@ -63,6 +63,10 @@ object EnterBankDetailsPage extends BasePage {
 
   def errorSummary(number: String): WebElement = cssSelector("div > ul > li:nth-child("+number+") > a").webElement
 
+  def errorSummaryAccountName: WebElement = id("accountName-error-summary").webElement
+  def errorSummarySortCode: WebElement = id("sortCode-error-summary").webElement
+  def errorSummaryAccountNumber: WebElement = id("accountNumber-error-summary").webElement
+  def errorSummaryRollNumber: WebElement = id("rollNumber-error-summary").webElement
   def errorMessageAccountName: WebElement = id("accountName-error").webElement
   def errorMessageSortCode: WebElement = id("sortCode-error").webElement
   def errorMessageAccountNumber: WebElement = id("accountNumber-error").webElement
@@ -126,9 +130,9 @@ object EnterBankDetailsPage extends BasePage {
     assertCurrentPageTitleError()
     if (langToggle == Language.welsh) {
       errorSummaryTitle.getText should be("Mae problem wedi codi")
-      errorSummary("1").getText should be("Nodwch yr enw sydd ar y cyfrif")
-      errorSummary("2").getText should be("Nodwch god didoli")
-      errorSummary("3").getText should be("Nodwch rif cyfrif")
+      errorSummaryAccountName.getText should be("Nodwch yr enw sydd ar y cyfrif")
+      errorSummarySortCode.getText should be("Nodwch god didoli")
+      errorSummaryAccountNumber.getText should be("Nodwch rif cyfrif")
       errorMessageAccountName.getText should be("Gwall:\nNodwch yr enw sydd ar y cyfrif")
       errorMessageSortCode.getText should be("Gwall:\nNodwch god didoli")
       errorMessageAccountNumber.getText should be("Gwall:\nNodwch rif cyfrif")
@@ -136,9 +140,9 @@ object EnterBankDetailsPage extends BasePage {
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Enter the name on the account")
-      errorSummary("2").getText should be("Enter a sort code")
-      errorSummary("3").getText should be("Enter an account number")
+      errorSummaryAccountName.getText should be("Enter the name on the account")
+      errorSummarySortCode.getText should be("Enter a sort code")
+      errorSummaryAccountNumber.getText should be("Enter an account number")
       errorMessageAccountName.getText should be("Error:\nEnter the name on the account")
       errorMessageSortCode.getText should be("Error:\nEnter a sort code")
       errorMessageAccountNumber.getText should be("Error:\nEnter an account number")
@@ -158,12 +162,12 @@ object EnterBankDetailsPage extends BasePage {
     assertCurrentPageTitleError()
     if (langToggle == Language.welsh) {
       errorSummaryTitle.getText should be("Mae problem wedi codi")
-      errorSummary("1").getText should be("Nodwch god didoli dilys, megis 309430")
+      errorSummarySortCode.getText should be("Nodwch god didoli dilys, megis 309430")
       errorMessageSortCode.getText should be("Gwall:\nNodwch god didoli dilys, megis 309430")
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Sort code must be 6 digits")
+      errorSummarySortCode.getText should be("Sort code must be 6 digits")
       errorMessageSortCode.getText should be("Error:\nSort code must be 6 digits")
     }
   }
@@ -180,12 +184,12 @@ object EnterBankDetailsPage extends BasePage {
     assertCurrentPageTitleError()
     if (langToggle == Language.welsh) {
       errorSummaryTitle.getText should be("Mae problem wedi codi")
-      errorSummary("1").getText should be("Nodwch rif cyfrif dilys, megis 00733445")
+      errorSummaryAccountNumber.getText should be("Nodwch rif cyfrif dilys, megis 00733445")
       errorMessageAccountNumber.getText should be("Gwall:\nNodwch rif cyfrif dilys, megis 00733445")
     }
     else {
       errorSummaryTitle.getText should be("There is a problem")
-      errorSummary("1").getText should be("Account number must be between 6 and 8 digits")
+      errorSummaryAccountNumber.getText should be("Account number must be between 6 and 8 digits")
       errorMessageAccountNumber.getText should be("Error:\nAccount number must be between 6 and 8 digits")
 
     }
@@ -203,12 +207,12 @@ object EnterBankDetailsPage extends BasePage {
       assertCurrentPageTitleError()
       if (langToggle == Language.welsh) {
         errorSummaryTitle.getText should be("Mae problem wedi codi")
-        errorSummary("1").getText should be("Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
+        errorSummaryAccountNumber.getText should be("Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
         errorMessageAccountNumber.getText should be("Gwall:\nMae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
       }
       else {
         errorSummaryTitle.getText should be("There is a problem")
-        errorSummary("1").getText should be("Account number must be between 6 and 8 digits")
+        errorSummaryAccountNumber.getText should be("Account number must be between 6 and 8 digits")
         errorMessageAccountNumber.getText should be("Error:\nAccount number must be between 6 and 8 digits")
       }
     }

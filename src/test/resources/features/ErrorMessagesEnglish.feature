@@ -36,22 +36,6 @@ Feature: Error Messages English
 
 #  ENTER BANK ACCOUNT DETAILS PAGE
 
-#  Scenario Outline: English - Enter Bank Details Page - Error Scenarios
-#    And the user clicks other amount
-#    And the user enter an amount of 1
-#    And the user click continue
-#    And the user select personal account
-#    And the user click continue
-#    And the user enters <error>, <value> and the correct error message is shown
-#
-#    Examples:
-#      | error                    | value     |
-#      | no details entered       | N/A       |
-#      | invalid sortcode         | 12345!    |
-#      | invalid account number   | 1234567!  |
-#      | account number too short | 12345     |
-#      | account number too long  | 123456789 |
-
   Scenario Outline: English - Enter Bank Details Page - Error Scenarios
     And the user clicks other amount
     And the user enter an amount of 1
@@ -68,14 +52,14 @@ Feature: Error Messages English
       | English | none                                                          | Account Name   | Enter the name on the account                                                                                        |
       | English | Test?                                                         | Account Name   | Enter the name on the account                                                                                        |
       | English | _Test                                                         | Account Name   | Enter the name on the account                                                                                        |
-      | English | TestTestTestTestTestTestTestTestTestTestTestTestTestTestTest1 | Account Name   | Account name must be 60 characters or fewer                                                                          |
-      | English | none                                                          | Sortcode       | Enter a sort code                                                                                                    |
+      | English | TestTestTestTestTestTestTestTestTestTestTestTestTestTestTest1 | Account Name   | Name on the account must be 60 characters or less                                                                         |
+      | English | none                                                          | Sortcode       | Enter sort code                                                                                                    |
       | English | 00.00.00                                                      | Sortcode       | Sort code must be 6 digits                                                                                           |
       | English | 00000                                                         | Sortcode       | Sort code must be 6 digits                                                                                           |
       | English | 0000000                                                       | Sortcode       | Sort code must be 6 digits                                                                                           |
       | English | 000000words                                                   | Sortcode       | Sort code must be 6 digits                                                                                           |
       | English | 000000?                                                       | Sortcode       | Sort code must be 6 digits                                                                                           |
-      | English | none                                                          | Account Number | Enter an account number                                                                                              |
+      | English | none                                                          | Account Number | Enter account number                                                                                              |
       | English | 52173                                                         | Account Number | Account number must be between 6 and 8 digits                                                                        |
       | English | 521733!                                                       | Account Number | Account number must be between 6 and 8 digits                                                                        |
       | English | 521733-1                                                      | Account Number | Account number must be between 6 and 8 digits                                                                        |

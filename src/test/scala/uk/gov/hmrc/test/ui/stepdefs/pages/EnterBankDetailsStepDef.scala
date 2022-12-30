@@ -22,17 +22,7 @@ import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
 
 class EnterBankDetailsStepDef extends Steps with DriverActions {
-
-  And("""^the user enter (valid|invalid) (personal|business) bank details$""") { (valid: String, AccType: String) =>
-    valid match {
-      case "valid" => AccType match {
-        case "personal" => EnterBankDetailsPage.enterPersonalBankDetails()
-        case "business" => EnterBankDetailsPage.enterBusinessBankDetails()
-      }
-      case "invalid" => EnterBankDetailsPage.enterInvalidBankDetails()
-    }
-  }
-
+  
   And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (accType: String, roll: String) =>
 
     ScenarioContext.set("bankDetails", roll match {
