@@ -48,15 +48,13 @@ object RefundAmountPage extends BasePage {
 
   def errorSummaryTitle: WebElement = id("error-summary-title").webElement
 
-  def errorSummaryAmount: WebElement = id("amount-error-summary").webElement
+  def errorSummaryAmount: WebElement = id("error-amount").webElement
 
-  def errorSummaryChoice: WebElement = id("choice-error-summary").webElement
+  def errorSummaryChoice: WebElement = id("error-choice").webElement
 
   def errorMessageChoice: WebElement = id("choice-error").webElement
 
   def errorMessageAmount: WebElement = id("different-amount-error").webElement
-
-
 
   def assertContent(): Assertion = {
     if (langToggle == Language.welsh) pageContent should be(WelshContent.refundAmountPageText())

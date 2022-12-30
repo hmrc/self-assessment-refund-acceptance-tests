@@ -10,7 +10,7 @@ Feature: E2E - Smoke (For accessibility / zap page captures)
     And the user click continue
     And the user select personal account
     And the user click continue
-    And the user enter valid personal bank details without roll number
+    And the user enter valid personal bank details
     And the user click continue
     And the user click continue
     And the user click continue
