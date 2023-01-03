@@ -95,7 +95,7 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
       | business    | denyList                | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
       | personal    | partialName             | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
       | business    | partialNameBusiness     | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
-      | personal    | noRollNumberButRequired | Your account may have an extra reference number. It may be called a roll number, account reference or account number                                       | Roll Number Error |
+      | personal    | noRollNumberButRequired | Building society roll number must be entered if you have one. It may also be called a reference code                                       | Roll Number Error |
 
 
   @fullRegression

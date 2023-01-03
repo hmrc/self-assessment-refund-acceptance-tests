@@ -29,12 +29,12 @@ object EnterBankDetailsPage extends BasePage {
 
   def expectedPageTitle = {
     if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else "Enter the bank or building society account details - Request a Self Assessment refund - GOV.UK"
+    else "Enter bank or building society account details - Request a Self Assessment refund - GOV.UK"
   }
 
   def expectedPageHeader = {
     if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu"
-    else "Enter the bank or building society account details"
+    else "Enter bank or building society account details"
   }
 
   def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
