@@ -24,7 +24,6 @@ import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
 class EnterBankDetailsStepDef extends Steps with DriverActions {
 
   And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (accType: String, roll: String) =>
-
     ScenarioContext.set("bankDetails", roll match {
       case "with" => accType match {
         case "personal" => BankDetails.rollRequiredAccount
