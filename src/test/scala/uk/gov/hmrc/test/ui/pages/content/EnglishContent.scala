@@ -35,13 +35,10 @@ object EnglishContent {
   def checkDetailsPageNoRollText(): String = {
     var accType: String = ScenarioContext.get("personalOrBusiness")
     val amount: String = ScenarioContext.get("amount")
-    var bankDetails: BankDetails = null
+    def bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
     var sortCode = ""
 
-    accType match {
-      case "personal" => bankDetails = validAccount
-      case "business" => bankDetails = businessAccount
-    }
+
     sortCode = bankDetails.sortcode.replace("-", "").replace(" ", "")
     accType = accType.capitalize
 
@@ -88,7 +85,7 @@ object EnglishContent {
   }
 
   def enterBankDetailsPageText(): String = {
-    s"""Enter the bank or building society account details
+    s"""Enter bank or building society account details
        |We’ll only use these details to pay your refund.
        |Bank details
        |Name on the account

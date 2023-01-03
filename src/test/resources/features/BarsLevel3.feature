@@ -60,12 +60,12 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     And the user is on the <page>
 
     Examples:
-      | accountType | bankDetails         | page                   |
-      | personal    | valid               | CheckDetailsPageNoRoll |
-      | business    | validBusiness       | CheckDetailsPageNoRoll |
-      | personal    | rollNumberRequired  | CheckDetailsPage       |
-      | personal    | partialName         | CheckDetailsPageNoRoll |
-      | business    | partialNameBusiness | CheckDetailsPageNoRoll |
+      | accountType | bankDetails           | page                   |
+      | personal    | valid                 | CheckDetailsPageNoRoll |
+      | business    | validBusiness         | CheckDetailsPageNoRoll |
+      | personal    | rollNumberRequired    | CheckDetailsPage       |
+      | personal    | indeterminate         | CheckDetailsPageNoRoll |
+      | business    | indeterminateBusiness | CheckDetailsPageNoRoll |
 
   @core
   Scenario Outline: Unhappy - Invalid Bank Details
@@ -93,8 +93,8 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
       | business    | supportsDirectCredit=No | You have entered a sort code which does not accept this type of payment. Check you have entered a valid sort code or enter details for a different account | Sortcode Error    |
       | personal    | onEISCD=No              | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
       | business    | denyList                | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | personal    | indeterminate           | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | business    | indeterminateBusiness   | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
+      | personal    | partialName             | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
+      | business    | partialNameBusiness     | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
       | personal    | noRollNumberButRequired | Your account may have an extra reference number. It may be called a roll number, account reference or account number                                       | Roll Number Error |
 
 
@@ -126,8 +126,8 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
       | business    | supportsDirectCredit=No | Rydych wedi nodi cod didoli nad yw’n derbyn y math hwn o daliad. Gwiriwch eich bod wedi nodi cod didoli dilys, neu nodwch fanylion ar gyfer cyfrif gwahanol | Sortcode Error |
       | personal    | onEISCD=No              | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | business    | denyList                | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-      | personal    | indeterminate           | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-      | business    | indeterminateBusiness   | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | personal    | partialName             | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                                  | Name Invalid   |
+      | business    | partialNameBusiness     | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                                   | Name Invalid   |
 #      | personal    | noRollNumberButRequired      | TBC                                                                                                                                                         | BARS Invalid   |
 
 
