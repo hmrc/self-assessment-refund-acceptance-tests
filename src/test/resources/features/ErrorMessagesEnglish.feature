@@ -48,23 +48,23 @@ Feature: Error Messages English
     Then the <field> field should display "<message>"
 
     Examples:
-      | lang    | input value                                                   | field          | message                                                                                                              |
-      | English | none                                                          | Account Name   | Enter the name on the account                                                                                        |
-      | English | Test?                                                         | Account Name   | Enter the name on the account                                                                                        |
-      | English | _Test                                                         | Account Name   | Enter the name on the account                                                                                        |
-      | English | TestTestTestTestTestTestTestTestTestTestTestTestTestTestTest1 | Account Name   | Name on the account must be 60 characters or less                                                                    |
-      | English | none                                                          | Sortcode       | Enter sort code                                                                                                      |
-      | English | 00.00.00                                                      | Sortcode       | Sort code must be 6 digits                                                                                           |
-      | English | 00000                                                         | Sortcode       | Sort code must be 6 digits                                                                                           |
-      | English | 0000000                                                       | Sortcode       | Sort code must be 6 digits                                                                                           |
-      | English | 000000words                                                   | Sortcode       | Sort code must be 6 digits                                                                                           |
-      | English | 000000?                                                       | Sortcode       | Sort code must be 6 digits                                                                                           |
-      | English | none                                                          | Account Number | Enter account number                                                                                                 |
-      | English | 52173                                                         | Account Number | Account number must be between 6 and 8 digits                                                                        |
-      | English | 521733!                                                       | Account Number | Account number must be between 6 and 8 digits                                                                        |
-      | English | 521733-1                                                      | Account Number | Account number must be between 6 and 8 digits                                                                        |
-      | English | 521730181                                                     | Account Number | Account number must be between 6 and 8 digits                                                                        |
-      | English | 521738wo                                                      | Account Number | Account number must be between 6 and 8 digits                                                                        |
-      | English | none                                                          | Roll Number    | Your account may have an extra reference number. It may be called a roll number, account reference or account number |
-      | English | 12345678901                                                   | Roll Number    | Roll number must be between 1 and 10 characters                                                                      |
-      | English | 12345678@                                                     | Roll Number    | Roll number must only contain letters and numbers                                                                     |
+      | lang    | input value                                                   | field          | message                                                                                              |
+      | English | none                                                          | Account Name   | Enter the name on the account                                                                        |
+      | English | Test?                                                         | Account Name   | Enter the name on the account                                                                        |
+      | English | _Test                                                         | Account Name   | Enter the name on the account                                                                        |
+      | English | TestTestTestTestTestTestTestTestTestTestTestTestTestTestTest1 | Account Name   | Name on the account must be 60 characters or less                                                    |
+      | English | none                                                          | Sortcode       | Enter sort code                                                                                      |
+      | English | 00.00.00                                                      | Sortcode       | Sort code must be 6 digits                                                                           |
+      | English | 00000                                                         | Sortcode       | Sort code must be 6 digits                                                                           |
+      | English | 0000000                                                       | Sortcode       | Sort code must be 6 digits                                                                           |
+      | English | 000000words                                                   | Sortcode       | Sort code must be 6 digits                                                                           |
+      | English | 000000?                                                       | Sortcode       | Sort code must be 6 digits                                                                           |
+      | English | none                                                          | Account Number | Enter account number                                                                                 |
+      | English | 52173                                                         | Account Number | Account number must be between 6 and 8 digits                                                        |
+      | English | 521733!                                                       | Account Number | Account number must be between 6 and 8 digits                                                        |
+      | English | 521733-1                                                      | Account Number | Account number must be between 6 and 8 digits                                                        |
+      | English | 521730181                                                     | Account Number | Account number must be between 6 and 8 digits                                                        |
+      | English | 521738wo                                                      | Account Number | Account number must be between 6 and 8 digits                                                        |
+      | English | none                                                          | Roll Number    | Building society roll number must be entered if you have one. It may also be called a reference code |
+      | English | 12345678901                                                   | Roll Number    | Roll number must be between 1 and 10 characters                                                      |
+      | English | 12345678@                                                     | Roll Number    | Roll number must only contain letters and numbers                                                    |
