@@ -26,7 +26,7 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
   And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (accType: String, roll: String) =>
 
     ScenarioContext.set("bankDetails", roll match {
-      case "with" =>  accType match {
+      case "with" => accType match {
         case "personal" => BankDetails.rollRequiredAccount
         case "business" => BankDetails.businessRollRequiredAccount
       }
@@ -42,51 +42,38 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
       case "with" => EnterBankDetailsPage.enterBankDetailsWithRoll(bankDetails)
       case _ => EnterBankDetailsPage.enterBankDetails(bankDetails)
     }
-    }
-
-  Then("""^the user enters (.*), (.*) and the correct error message is shown$""") {
-    (error: String, value: String) =>
-      error match {
-        //      case "enter amount" | "choice required" | "invalid amount" | "amount of 0" | "exceeded maximum amount" =>
-        //        RefundAmountPage.errorSummaryValidation(error)
-        //        RefundAmountPage.errorMessageValidation(error)
-        case "no details entered" => EnterBankDetailsPage.assertNoDetailsError()
-        case "invalid sortcode" => EnterBankDetailsPage.assertSortCodeCorrectFormatError(value)
-        case "invalid account number" => EnterBankDetailsPage.assertAccountNumberCorrectFormatError(value)
-        case "account number too short" => EnterBankDetailsPage.assertAccountNumberCorrectLengthError(value)
-        case "account number too long" => EnterBankDetailsPage.assertAccountNumberCorrectLengthError(value)
-      }
   }
 
-
   When("""^the User enters (.*) bank details$""") { state: String =>
-      EnterBankDetailsPage.clearBankDetails()
-      ScenarioContext.set("bankDetails", state match {
-        case "amended" => BankDetails.amendedAccount
-        case "invalid" => BankDetails.invalidAccount
-        case "invalidName" => BankDetails.invalidNameAccount
-        case "indeterminate" => BankDetails.indeterminateAccount
-        case "validBusiness" => BankDetails.businessAccount
-        case "invalidBusiness" => BankDetails.invalidBusinessAccount
-        case "invalidNameBusiness" => BankDetails.invalidBusinessNameAccount
-        case "amendedBusiness" => BankDetails.amendedBusinessAccount
-        case "indeterminateBusiness" => BankDetails.indeterminateBusinessAccount
-        case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
-        case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
-        case "onEISCD=No" => BankDetails.onEISCDNoAccount
-        case "denyList" => BankDetails.denyListAccount
-        case "partialNameBusiness" => BankDetails.partialNameBusinessAccount
-        case "partialName" => BankDetails.partialNameAccount
-        case "rollNumberRequired" => BankDetails.rollRequiredAccount
-        case _ => BankDetails.validAccount
-      })
+    EnterBankDetailsPage.clearBankDetails()
+    ScenarioContext.set("bankDetails", state match {
+      case "amended" => BankDetails.amendedAccount
+      case "invalid" => BankDetails.invalidAccount
+      case "invalidName" => BankDetails.invalidNameAccount
+      case "indeterminate" => BankDetails.indeterminateAccount
+      case "validBusiness" => BankDetails.businessAccount
+      case "invalidBusiness" => BankDetails.invalidBusinessAccount
+      case "invalidNameBusiness" => BankDetails.invalidBusinessNameAccount
+      case "amendedBusiness" => BankDetails.amendedBusinessAccount
+      case "indeterminateBusiness" => BankDetails.indeterminateBusinessAccount
+      case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
+      case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
+      case "onEISCD=No" => BankDetails.onEISCDNoAccount
+      case "denyList" => BankDetails.denyListAccount
+      case "partialNameBusiness" => BankDetails.partialNameBusinessAccount
+      case "partialName" => BankDetails.partialNameAccount
+      case "rollNumberRequired" => BankDetails.rollRequiredAccount
+      case "noRollNumberButRequired" => BankDetails.rollRequiredAccount
+      case "businessRollNumberRequired" => BankDetails.businessRollRequiredAccount
+      case _ => BankDetails.validAccount
+    })
 
-      val bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
+    val bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
 
-      state match {
-        case "rollNumberRequired" => EnterBankDetailsPage.enterBankDetailsWithRoll(bankDetails)
-        case _ => EnterBankDetailsPage.enterBankDetails(bankDetails)
-      }
+    state match {
+      case "rollNumberRequired" => EnterBankDetailsPage.enterBankDetailsWithRoll(bankDetails)
+      case _ => EnterBankDetailsPage.enterBankDetails(bankDetails)
+    }
   }
 
   Then("""^the (.*) field should display "(.*)"$""") {
@@ -183,9 +170,6 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
               EnterBankDetailsPage.clearRollNumber()
               EnterBankDetailsPage.enterRollNumberNew(input)
           }
-
       }
   }
-
-
 }

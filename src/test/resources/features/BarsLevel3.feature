@@ -95,7 +95,7 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
       | business    | denyList                | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
       | personal    | indeterminate           | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
       | business    | indeterminateBusiness   | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
-      | personal    | rollNumberRequired      | Your account may have an extra reference number. It may be called a roll number, account reference or account number                                       | Roll Number Error |
+      | personal    | noRollNumberButRequired | Your account may have an extra reference number. It may be called a roll number, account reference or account number                                       | Roll Number Error |
 
 
   @fullRegression
@@ -116,19 +116,19 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
 
     Examples:
       | accountType | bankDetails             | message                                                                                                                                                     | field          |
-      | business    | valid                   | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                      | BARS Invalid   |
+      | business    | valid                   | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | personal    | validBusiness           | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | personal    | invalid                 | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | business    | invalidBusiness         | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | personal    | invalidName             | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
-      | business    | invalidNameBusiness     | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                          | Name Invalid   |
+      | business    | invalidNameBusiness     | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
       | personal    | wellFormatted=No        | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | business    | supportsDirectCredit=No | Rydych wedi nodi cod didoli nad yw’n derbyn y math hwn o daliad. Gwiriwch eich bod wedi nodi cod didoli dilys, neu nodwch fanylion ar gyfer cyfrif gwahanol | Sortcode Error |
       | personal    | onEISCD=No              | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | business    | denyList                | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | personal    | indeterminate           | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | business    | indeterminateBusiness   | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-#      | personal    | rollNumberRequired      | TBC                                                                                                                                                         | BARS Invalid   |
+#      | personal    | noRollNumberButRequired      | TBC                                                                                                                                                         | BARS Invalid   |
 
 
   @core

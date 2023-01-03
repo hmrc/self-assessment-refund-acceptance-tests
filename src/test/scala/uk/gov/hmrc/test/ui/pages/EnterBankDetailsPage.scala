@@ -41,28 +41,17 @@ object EnterBankDetailsPage extends BasePage {
 
   def accType: String = ScenarioContext.get("personalOrBusiness")
 
-  def personalAccountName: WebElement = id("accountName").webElement
-
-  def businessAccountName: WebElement = id("accountName").webElement
-
+  def accountName: WebElement = id("accountName").webElement
   def sortCode: WebElement = id("sortCode").webElement
-
   def accountNumber: WebElement = id("accountNumber").webElement
-
   def buildingRollNumber: WebElement = id("rollNumber").webElement
-
   def pageContent: String = id("main-content").webElement.getText
-
   def sortCodeHint: WebElement = id("sortCode-hint").webElement
-
   def accountNumberHint: WebElement = id("accountNumber-hint").webElement
-
   def rollNumberHint: WebElement = id("rollNumber-hint").webElement
 
   def errorSummaryTitle: WebElement = id("error-summary-title").webElement
-
   def errorSummary(number: String): WebElement = cssSelector("div > ul > li:nth-child("+number+") > a").webElement
-
   def errorSummaryAccountName: WebElement = id("accountName-error-summary").webElement
   def errorSummarySortCode: WebElement = id("sortCode-error-summary").webElement
   def errorSummaryAccountNumber: WebElement = id("accountNumber-error-summary").webElement
@@ -81,51 +70,8 @@ object EnterBankDetailsPage extends BasePage {
     else pageContent should be(EnglishContent.enterBankDetailsPageText())
   }
 
-  def clearFields() {
-    accType match {
-      case "personal" => personalAccountName.clear()
-      case "business" => businessAccountName.clear()
-    }
-    sortCode.clear()
-    accountNumber.clear()
-    buildingRollNumber.clear()
-  }
-
-  def enterPersonalBankDetails(validAccount: BankDetails = validAccount) {
-    personalAccountName.sendKeys(validAccount.accName)
-    sortCode.sendKeys(validAccount.sortcode)
-    accountNumber.sendKeys(validAccount.accNumber)
-  }
-
-  //TODO get bank details that are suitable when all the BARS stuff is sorted.
-  def enterInvalidBankDetails(invalidAccount: BankDetails = invalidAccount) {
-    personalAccountName.sendKeys(invalidAccount.accName)
-    sortCode.sendKeys(invalidAccount.sortcode)
-    accountNumber.sendKeys(invalidAccount.accNumber)
-  }
-
-  def enterBusinessBankDetails(validAccount: BankDetails = businessAccount) {
-    businessAccountName.sendKeys(validAccount.accName)
-    sortCode.sendKeys(validAccount.sortcode)
-    accountNumber.sendKeys(validAccount.accNumber)
-  }
-
-  def enterRollNumber(rollNumber1: BankDetails = validAccount) {
-    buildingRollNumber.sendKeys(rollNumber1.roll)
-  }
-
-  def enterPersonalBankDetailsWithRoll() {
-    enterPersonalBankDetails()
-    enterRollNumber()
-  }
-
-  def enterBusinessBankDetailsWithRoll() {
-    enterBusinessBankDetails()
-    enterRollNumber()
-  }
-
   def assertNoDetailsError(): Unit = {
-    clearFields()
+    clearBankDetails()
     continue()
     assertCurrentPageTitleError()
     if (langToggle == Language.welsh) {
@@ -150,73 +96,6 @@ object EnterBankDetailsPage extends BasePage {
     }
   }
 
-  def assertSortCodeCorrectFormatError(sortCodeValue: String, validAccount: BankDetails = validAccount): Unit = {
-    clearFields()
-    accType match {
-      case "personal" => personalAccountName.sendKeys(validAccount.accName)
-      case "business" => businessAccountName.sendKeys(validAccount.accName)
-    }
-    sortCode.sendKeys(sortCodeValue)
-    accountNumber.sendKeys(validAccount.accNumber)
-    continue()
-    assertCurrentPageTitleError()
-    if (langToggle == Language.welsh) {
-      errorSummaryTitle.getText should be("Mae problem wedi codi")
-      errorSummarySortCode.getText should be("Nodwch god didoli dilys, megis 309430")
-      errorMessageSortCode.getText should be("Gwall:\nNodwch god didoli dilys, megis 309430")
-    }
-    else {
-      errorSummaryTitle.getText should be("There is a problem")
-      errorSummarySortCode.getText should be("Sort code must be 6 digits")
-      errorMessageSortCode.getText should be("Error:\nSort code must be 6 digits")
-    }
-  }
-
-  def assertAccountNumberCorrectFormatError(accountNumberValue: String, validAccount: BankDetails = validAccount): Unit = {
-    clearFields()
-    accType match {
-      case "personal" => personalAccountName.sendKeys(validAccount.accName)
-      case "business" => businessAccountName.sendKeys(validAccount.accName)
-    }
-    sortCode.sendKeys(validAccount.sortcode)
-    accountNumber.sendKeys(accountNumberValue)
-    continue()
-    assertCurrentPageTitleError()
-    if (langToggle == Language.welsh) {
-      errorSummaryTitle.getText should be("Mae problem wedi codi")
-      errorSummaryAccountNumber.getText should be("Nodwch rif cyfrif dilys, megis 00733445")
-      errorMessageAccountNumber.getText should be("Gwall:\nNodwch rif cyfrif dilys, megis 00733445")
-    }
-    else {
-      errorSummaryTitle.getText should be("There is a problem")
-      errorSummaryAccountNumber.getText should be("Account number must be between 6 and 8 digits")
-      errorMessageAccountNumber.getText should be("Error:\nAccount number must be between 6 and 8 digits")
-
-    }
-  }
-
-    def assertAccountNumberCorrectLengthError(accountNumberValue: String, validAccount: BankDetails = validAccount): Unit = {
-      clearFields()
-      accType match {
-        case "personal" => personalAccountName.sendKeys(validAccount.accName)
-        case "business" => businessAccountName.sendKeys(validAccount.accName)
-      }
-      sortCode.sendKeys(validAccount.sortcode)
-      accountNumber.sendKeys(accountNumberValue)
-      continue()
-      assertCurrentPageTitleError()
-      if (langToggle == Language.welsh) {
-        errorSummaryTitle.getText should be("Mae problem wedi codi")
-        errorSummaryAccountNumber.getText should be("Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
-        errorMessageAccountNumber.getText should be("Gwall:\nMae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid")
-      }
-      else {
-        errorSummaryTitle.getText should be("There is a problem")
-        errorSummaryAccountNumber.getText should be("Account number must be between 6 and 8 digits")
-        errorMessageAccountNumber.getText should be("Error:\nAccount number must be between 6 and 8 digits")
-      }
-    }
-
     def assertHintText(): Unit = {
       if (langToggle == Language.welsh) {
         sortCodeHint.getText should be("Mae’n rhaid iddo fod yn 6 digid o hyd")
@@ -231,31 +110,32 @@ object EnterBankDetailsPage extends BasePage {
     }
 
   def enterBankDetails(bankDetails: BankDetails): Unit = {
-    personalAccountName.sendKeys(bankDetails.accName)
+    accountName.sendKeys(bankDetails.accName)
     sortCode.sendKeys(bankDetails.sortcode)
     accountNumber.sendKeys(bankDetails.accNumber)
   }
 
   def enterBankDetailsWithRoll(bankDetails: BankDetails): Unit = {
-    personalAccountName.sendKeys(bankDetails.accName)
+    accountName.sendKeys(bankDetails.accName)
     sortCode.sendKeys(bankDetails.sortcode)
     accountNumber.sendKeys(bankDetails.accNumber)
     buildingRollNumber.sendKeys(bankDetails.roll)
   }
 
-  def enterAccountName(input: String): Unit = personalAccountName.sendKeys(input)
+  def enterAccountName(input: String): Unit = accountName.sendKeys(input)
   def enterSortcode(input: String): Unit = sortCode.sendKeys(input)
   def enterAccountNumber(input: String): Unit = accountNumber.sendKeys(input)
   def enterRollNumberNew(input: String): Unit = buildingRollNumber.sendKeys(input)
 
-  def clearAccountName(): Unit = personalAccountName.clear()
+  def clearAccountName(): Unit = accountName.clear()
   def clearSortcode(): Unit = sortCode.clear()
   def clearAccountNumber(): Unit = accountNumber.clear()
   def clearRollNumber(): Unit = buildingRollNumber.clear()
 
   def clearBankDetails(): Unit = {
-    personalAccountName.clear()
-    sortCode.clear()
-    accountNumber.clear()
+    clearAccountName()
+    clearSortcode()
+    clearAccountNumber()
+    clearRollNumber()
   }
 }
