@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.pages.content
 import uk.gov.hmrc.test.ui.testdata.BankDetails.{businessAccount, validAccount}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
 
-import java.time.LocalDate
+import java.time.{LocalDate, LocalDateTime}
 import java.time.format.DateTimeFormatter
 
 object EnglishContent {
@@ -143,8 +143,14 @@ object EnglishContent {
   }
 
   def lockoutPageText(): String = {
-    s"""TBC
-       |Back to your tax account
+    val date: String = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
+    val time: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("h:mma")).toLowerCase()
+
+    s"""You’ve tried to confirm your bank details too many times
+       |Your refund request has not been submitted.
+       |You’ll need to wait until $date, $time before trying to confirm your bank details again.
+       |Contact HMRC by phone to speak to someone about Self Assessment.
+       |Go to tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 

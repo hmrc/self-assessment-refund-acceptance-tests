@@ -23,16 +23,15 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object LockoutPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/TBC"
-  val rejectedAmount1: String = TestData.rejectedAmount1
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/bars-lockout"
 
   def expectedPageTitle =  {
-    if (langToggle == Language.welsh) s"TBC - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else s"TBC - Request a Self Assessment refund - GOV.UK"
+    if (langToggle == Language.welsh) s"Rydych wedi ceisio cadarnhau’ch manylion banc gormod o weithiau - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    else s"You’ve tried to confirm your bank details too many times - Request a Self Assessment refund - GOV.UK"
   }
   def expectedPageHeader = {
-    if (langToggle == Language.welsh) s"TBC"
-    else s"TBC"
+    if (langToggle == Language.welsh) s"Rydych wedi ceisio cadarnhau’ch manylion banc gormod o weithiau"
+    else s"You’ve tried to confirm your bank details too many times"
   }
 
   def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle

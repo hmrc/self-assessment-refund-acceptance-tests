@@ -16,10 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages.content
 
-import uk.gov.hmrc.test.ui.testdata.BankDetails.{validAccount, businessAccount}
+import uk.gov.hmrc.test.ui.testdata.BankDetails.{businessAccount, validAccount}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext, TestData}
 
-import java.time.LocalDate
+import java.time.{LocalDate, LocalDateTime}
 import java.time.format.DateTimeFormatter
 
 object WelshContent {
@@ -153,9 +153,15 @@ object WelshContent {
   }
 
   def lockoutPageText(): String = {
-    s"""TBC
-       |Yn ôl i’ch cyfrif treth
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+    val date: String = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
+    val time: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("h:mma")).toLowerCase()
+
+    s"""Rydych wedi ceisio cadarnhau’ch manylion banc gormod o weithiau
+       |Nid yw’ch cais am ad-daliad wedi’i gyflwyno.
+       |Bydd angen i chi aros tan $date, $time cyn ceisio cadarnhau’ch manylion banc eto.
+       |Cysylltwch â CThEF dros y ffôn er mwyn siarad â rhywun ynghylch Hunanasesiad.
+       |Ewch i’r cyfrif treth
+       |Is this page not working properly? (opens in new tab)""".stripMargin
   }
 
   def doesNotAcceptPaymentsPageText(): String = {
