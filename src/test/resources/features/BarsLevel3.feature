@@ -1,6 +1,6 @@
 Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
 
-  @fullRegression
+  @core
   Scenario Outline: Unhappy - Bars Lockout Page
     Given The user starts a <accountType> journey with Nino AB111111D
     When the User toggles on English language
@@ -13,7 +13,8 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     When the User enters <bankDetails> bank details
     And the user click continue
     And the user click continue
-#    Then the User should be on the page: Bars Lockout
+    And the user click continue
+    Then the user is on the LockoutPage
 
     Examples:
       | accountType | bankDetails         |
@@ -38,7 +39,7 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     And the user click continue
     And the user click continue
     And the user click continue
-#    Then the User should be on the page: Bars Lockout
+    Then the user is on the LockoutPage
 
     Examples:
       | accountType | bankDetails         |
