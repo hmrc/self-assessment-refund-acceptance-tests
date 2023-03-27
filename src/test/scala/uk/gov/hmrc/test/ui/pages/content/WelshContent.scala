@@ -154,7 +154,7 @@ object WelshContent {
 
   def lockoutPageText(): String = {
     val date: String = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
-    val time: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("h:mma")).toLowerCase()
+    val time: String = LocalDateTime.now().plusHours(1).format(DateTimeFormatter.ofPattern("h:mma")).toLowerCase()
 
     s"""Rydych wedi ceisio cadarnhau’ch manylion banc gormod o weithiau
        |Nid yw’ch cais am ad-daliad wedi’i gyflwyno.
