@@ -16,11 +16,20 @@
 
 package uk.gov.hmrc.test.ui.utils
 
-import org.openqa.selenium.{WebDriver}
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.chrome.ChromeOptions
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 trait Driver {
 
-  def initiateBrowser: WebDriver = SingletonDriver.getInstance()
+  import org.openqa.selenium.chrome.ChromeOptions
+
+  def chromeOptions: Option[ChromeOptions] = {
+    val options = new ChromeOptions()
+      .addArguments("--remote-allow-origins=*")
+    Some(options)
+  }
+
+  def initiateBrowser: WebDriver = SingletonDriver.getInstance(chromeOptions)
 
 }

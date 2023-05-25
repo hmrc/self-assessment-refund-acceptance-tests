@@ -16,11 +16,12 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   "org.scalatest"           %% "scalatest"              % scalatestVersion excludeAll ExclusionRule(organization = "org.seleniumhq.selenium"),
-  "org.seleniumhq.selenium" %  "selenium-java"          % "3.9.1",
+  "org.seleniumhq.selenium" %  "selenium-java"          % "4.8.1",
+//  "org.seleniumhq.selenium" %  "selenium-http-jdk-client"          % "4.5.0",
   "io.cucumber"             %% "cucumber-scala"         % cucumberVersion,
   "io.cucumber"             % "cucumber-junit"          % cucumberVersion,
   "io.cucumber"             % "cucumber-picocontainer"  % cucumberVersion,
-  "uk.gov.hmrc"             %% "webdriver-factory"      % "0.38.0" % "test",
+  "uk.gov.hmrc"             %% "webdriver-factory"      % "0.40.0" % "test",
   "org.typelevel"           %% "cats"                   % "0.9.0",
   "com.novocode"            %  "junit-interface"        % "0.11",
   "org.mongodb.scala"       %% "mongo-scala-driver"     % "2.7.0"
