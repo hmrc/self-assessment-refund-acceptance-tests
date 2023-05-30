@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.other
 
+import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.{JavascriptExecutor, WebDriver}
 import org.scalatest.selenium.WebBrowser
 import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext}
