@@ -40,9 +40,9 @@ Feature: Error Messages English
     And the user clicks other amount
     And the user enter an amount of 1
     And the user click continue
+    When the User toggles on <lang> language
     And the user select personal account
     And the user click continue
-    When the User toggles on <lang> language
     When the user enters <input value> into the <field> field
     And the user click continue
     Then the <field> field should display "<message>"
