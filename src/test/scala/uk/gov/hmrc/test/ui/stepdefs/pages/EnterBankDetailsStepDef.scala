@@ -21,6 +21,8 @@ import uk.gov.hmrc.test.ui.pages.support.HelperFunctions
 import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
 
+import java.lang.Thread.sleep
+
 class EnterBankDetailsStepDef extends Steps with DriverActions {
 
   And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (accType: String, roll: String) =>
@@ -78,6 +80,8 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
   Then("""^the (.*) field should display "(.*)"$""") {
     (elem: String, message: String) =>
       val elemId = elem.replaceAll(" ", "-").toLowerCase
+
+      sleep(400) //To see if prevents issues with false negative tests.
 
       def prependError: String = if (langToggle == Language.welsh) "Gwall:" else "Error:"
 
