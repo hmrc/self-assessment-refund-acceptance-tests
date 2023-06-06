@@ -20,6 +20,8 @@ import uk.gov.hmrc.test.ui.pages.AuthWizardPage
 import uk.gov.hmrc.test.ui.pages.testonly.TestOnlyStartPage
 import uk.gov.hmrc.test.ui.testdata.{ScenarioContext, TestData}
 
+import java.lang.Thread.sleep
+
 class TestOnlyStartStepDef extends Steps with DriverActions {
 
   And("""^The user starts a (.*) journey with Nino (.*)$""") { (accType: String, nino: String) =>
@@ -39,7 +41,7 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("250")
     AuthWizardPage.clickSubmit()
-    wait(1000)
+    sleep(1000)
     continue()
   }
 
@@ -51,7 +53,7 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("200")
     AuthWizardPage.clickSubmit()
-    wait(1000)
+    sleep(1000)
     continue()
   }
 
@@ -66,7 +68,7 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("250")
     AuthWizardPage.clickSubmit()
-    wait(1000)
+    sleep(1000)
     continue()
   }
 
