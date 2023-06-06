@@ -39,7 +39,7 @@ Feature: Error Messages Welsh
 
 #  ENTER BANK ACCOUNT DETAILS PAGE
 
-  Scenario Outline: English - Enter Bank Details Page - Error Scenarios
+  Scenario Outline: Welsh - Enter Bank Details Page - Error Scenarios
     And the user clicks other amount
     And the user enter an amount of 1
     And the user click continue
