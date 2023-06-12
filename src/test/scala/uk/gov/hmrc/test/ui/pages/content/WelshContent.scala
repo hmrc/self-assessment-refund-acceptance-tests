@@ -96,7 +96,6 @@ object WelshContent {
 
   def enterBankDetailsPageText(): String = {
     s"""Nodwch fanylion y cyfrif banc neu'r cyfrif cymdeithas adeiladu
-       |Dim ond er mwyn talu’ch ad-daliad y byddwn yn defnyddio’r manylion hyn.
        |Enw ar y cyfrif
        |Fanylion banc
        |Cod didoli
