@@ -96,7 +96,7 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
       | business    | denyList                | Enter a valid combination of bank account number and sort code                                                                                             | BARS Invalid      |
       | personal    | partialName             | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
       | business    | partialNameBusiness     | Enter the name on the account as it appears on bank statements. Do not copy and paste it                                                                   | Name Invalid      |
-      | personal    | noRollNumberButRequired | Building society roll number must be entered if you have one. It may also be called a reference code                                       | Roll Number Error |
+      | personal    | noRollNumberButRequired | Building society roll number must be entered if you have one. It may also be called a reference code                                                       | Roll Number Error |
 
 
   @fullRegression
@@ -117,18 +117,18 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
 
     Examples:
       | accountType | bankDetails             | message                                                                                                                                                     | field          |
-#      | business    | valid                   | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-#      | personal    | validBusiness           | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | business    | valid                   | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | personal    | validBusiness           | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
       | personal    | invalid                 | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-#      | business    | invalidBusiness         | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-#      | personal    | invalidName             | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
-#      | business    | invalidNameBusiness     | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
-#      | personal    | wellFormatted=No        | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-#      | business    | supportsDirectCredit=No | Rydych wedi nodi cod didoli nad yw’n derbyn y math hwn o daliad. Gwiriwch eich bod wedi nodi cod didoli dilys, neu nodwch fanylion ar gyfer cyfrif gwahanol | Sortcode Error |
-#      | personal    | onEISCD=No              | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-#      | business    | denyList                | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
-#      | personal    | partialName             | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                                  | Name Invalid   |
-#      | business    | partialNameBusiness     | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                                   | Name Invalid   |
+      | business    | invalidBusiness         | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | personal    | invalidName             | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
+      | business    | invalidNameBusiness     | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
+      | personal    | wellFormatted=No        | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | business    | supportsDirectCredit=No | Rydych wedi nodi cod didoli nad yw’n derbyn y math hwn o daliad. Gwiriwch eich bod wedi nodi cod didoli dilys, neu nodwch fanylion ar gyfer cyfrif gwahanol | Sortcode Error |
+      | personal    | onEISCD=No              | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | business    | denyList                | Nodwch gyfuniad dilys o rif cyfrif banc a chod didoli                                                                                                       | BARS Invalid   |
+      | personal    | partialName             | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
+      | business    | partialNameBusiness     | Nodwch yr enw ar y cyfrif, fel y mae’n ymddangos ar gyfriflenni banc. Peidiwch â’i gopïo a’i ludo                                                           | Name Invalid   |
 #      | personal    | noRollNumberButRequired      | TBC                                                                                                                                                         | BARS Invalid   |
 
 
