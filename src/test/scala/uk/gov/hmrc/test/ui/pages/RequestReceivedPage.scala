@@ -24,7 +24,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 object RequestReceivedPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-request-confirmation"
-  val selfAssessmentTaxAccountLinkText: String = if (langToggle == Language.welsh) "cyfrif CThEM ar-lein" else "HMRC online account"
+  val selfAssessmentTaxAccountLinkText: String = if (langToggle == Language.welsh) "cyfrif CThEF ar-lein" else "HMRC online account"
   val printPreviewLinkText: String = if (langToggle == Language.welsh) "argraffu neu lawrlwytho" else "print or download"
   val tellUsLinkText: String = if (langToggle == Language.welsh) "Rhowch wybod i ni beth yw eich barn am y gwasanaeth hwn" else "Tell us what you think of this service."
   val problemWithPageLinkText = "div.govuk-\\!-display-none-print > a"
