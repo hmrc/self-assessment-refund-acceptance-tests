@@ -121,8 +121,8 @@ object WelshContent {
        |Swm i’w ad-dalu £$amount
        |Yr hyn sy’n digwydd nesaf
        |Byddwn yn anfon eich ad-daliad i’r cyfrif banc a nodwyd gennych neu i’r cerdyn a ddefnyddiwyd gennych i dalu’ch bil diwethaf.
-       |Bwriad CThEM yw anfon ad-daliadau cyn pen pythefnos. Fodd bynnag, er mwyn eich diogelu rhag twyll, mae gan CThEM fesurau diogelwch ar waith a allai achosi oedi. Dylech aros 30 diwrnod cyn cysylltu â ni ynglŷn â’ch cais.
-       |Gallwch wirio statws eich ad-daliad yn eich cyfrif CThEM ar-lein.
+       |Bwriad CThEF yw anfon ad-daliadau cyn pen pythefnos. Fodd bynnag, er mwyn eich diogelu rhag twyll, mae gan CThEF fesurau diogelwch ar waith a allai achosi oedi. Dylech aros 30 diwrnod cyn cysylltu â ni ynglŷn â’ch cais.
+       |Gallwch wirio statws eich ad-daliad yn eich cyfrif CThEF ar-lein.
        |Gallwch argraffu neu lawrlwytho copi o’ch cais am ad-daliad (PDF)
        |
        |Helpu ni i wella ein gwasanaethau
@@ -241,7 +241,7 @@ object WelshContent {
   def statusProcessingPageText(): String = {
     val pendingAmountValue: String = TestData.inProgessAmount1AB111111C
     s"""Mae’ch ad-daliad o £$pendingAmountValue ar y gweill
-       |Mae’ch cais am ad-daliad wedi dod i law. Bwriad CThEM yw anfon ad-daliadau cyn pen pythefnos, ond mae mesurau diogelwch ar waith a allai achosi oedi.
+       |Mae’ch cais am ad-daliad wedi dod i law. Bwriad CThEF yw anfon ad-daliadau cyn pen pythefnos, ond mae mesurau diogelwch ar waith a allai achosi oedi.
        |Dylech aros 30 diwrnod cyn cysylltu â ni ynglŷn â’ch cais.
        |Yn ôl i’r cyfrif treth
        |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
