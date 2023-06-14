@@ -21,7 +21,7 @@ import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.mongo.MongoDriver
 import uk.gov.hmrc.webdriver.SingletonDriver
 
-trait Steps extends ScalaDsl with EN with Matchers { //todo is Matchers needed here?
+trait Steps extends ScalaDsl with EN with Matchers {
 
   Before {
     ScenarioVariables.resetScenarioVariables()
