@@ -16,24 +16,20 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.other
 
-import cucumber.api.scala.{EN, ScalaDsl}
-import org.scalatest.Matchers
+import io.cucumber.scala.{EN, ScalaDsl, Scenario}
+import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.mongo.MongoDriver
 import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
-trait Steps extends ScalaDsl with EN with Matchers {
+trait Steps extends ScalaDsl with EN with Matchers { //todo is Matchers needed here?
 
-  Before { _ ⇒
+  Before {
     ScenarioVariables.resetScenarioVariables()
   }
 
-  After { _ ⇒
     Try(SingletonDriver.closeInstance)
     Try(MongoDriver.dropDatabases())
-
-
-  }
 
 }

@@ -24,6 +24,6 @@ import org.junit.runner.RunWith
   features = Array("src/test/resources/features"),
   glue = Array("uk.gov.hmrc.test.ui.stepdefs"),
   plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags = Array("@qa, @qaOnly", "~@wip", "~@ignore")
+  tags = "(@qa or qaOnly) and not (@wip or @ignore)" //todo check this runs same tests before PR
 )
 class QaRunner {}

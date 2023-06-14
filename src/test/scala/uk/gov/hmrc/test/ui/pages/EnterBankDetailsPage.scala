@@ -16,11 +16,11 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.By.{cssSelector, id}
 import org.openqa.selenium.WebElement
 import org.scalatest.Assertion
 import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
-import uk.gov.hmrc.test.ui.testdata.BankDetails._
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object EnterBankDetailsPage extends BasePage {
