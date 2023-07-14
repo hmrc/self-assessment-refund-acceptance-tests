@@ -52,7 +52,7 @@ class CommonSteps extends Steps with DriverActions {
       case "RequestReceivedPage" => AuthWizardPage.enterRedirectUrl(RequestReceivedPage.url)
       case "EnterBankDetailsPage" => AuthWizardPage.enterRedirectUrl(EnterBankDetailsPage.url)
       case "TypeOfAccountPage" => AuthWizardPage.enterRedirectUrl(TypeOfAccountPage.url)
-      case "RefundHistoryPage" => AuthWizardPage.enterRedirectUrl(RefundsHistoryPage.urlOrigin)
+      case "RefundHistoryPage" => AuthWizardPage.enterRedirectUrl(RefundsHistoryPage.url)
       case "StatusApprovedPage" => AuthWizardPage.enterRedirectUrl(StatusApprovedPage.url)
       case "StatusPendingPage" => AuthWizardPage.enterRedirectUrl(StatusProcessingPage.url)
       case "StatusRejectedPage" => AuthWizardPage.enterRedirectUrl(StatusRejectedPage.url)
