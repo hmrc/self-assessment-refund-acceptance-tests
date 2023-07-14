@@ -27,7 +27,6 @@ object RefundsHistoryPage extends BasePage {
   val nino: String = TestData.nino
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-history"
-  val urlOrigin: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-history#in-progress"
 
   def expectedPageTitle = {
     if (langToggle == Language.welsh) "Hanes eich ad-daliad - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
