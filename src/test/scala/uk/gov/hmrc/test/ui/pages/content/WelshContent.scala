@@ -29,7 +29,7 @@ object WelshContent {
        |Os gwnaethoch dalu’ch Hunanasesiad â cherdyn credyd neu ddebyd, byddwn yn ceisio ad-dalu’r arian i’ch cerdyn. Mae angen eich manylion banc arnom rhag ofn na allwn wneud hyn.
        |Dewiswch ‘Yn eich blaen’ i roi’ch manylion banc.
        |Yn eich blaen
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def checkDetailsPageNoRollText(): String = {
@@ -59,7 +59,7 @@ object WelshContent {
        |swm yr ad-daliad
        |Cadarnhewch eich manylion er mwyn cwblhau’ch cais am ad-daliad.
        |Cadarnhau ac yn eich blaen
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
 
@@ -91,7 +91,7 @@ object WelshContent {
        |swm yr ad-daliad
        |Cadarnhewch eich manylion er mwyn cwblhau’ch cais am ad-daliad.
        |Cadarnhau ac yn eich blaen
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def enterBankDetailsPageText(): String = {
@@ -105,7 +105,7 @@ object WelshContent {
        |Rhif rôl y gymdeithas adeiladu (os oes gennych un)
        |Gallwch ddod o hyd iddo ar eich cerdyn, cyfriflen neu baslyfr
        |Yn eich blaen
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def requestReceivedPageText(): String = {
@@ -128,7 +128,7 @@ object WelshContent {
        |Helpu ni i wella ein gwasanaethau
        |Rydym yn defnyddio’ch adborth i wella ein gwasanaethau.
        |Rhowch wybod i ni beth yw eich barn am y gwasanaeth hwn (mae’n cymryd 30 eiliad)
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def refundAmountPageText(): String = {
@@ -141,14 +141,14 @@ object WelshContent {
        |Ad-daliad o’r swm llawn, £$amount
        |Ad-daliad am swm gwahanol
        |Yn eich blaen
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def ivKickoutPageText(): String = {
     s"""Nid oedd modd i ni gadarnhau pwy ydych
        |Rydych wedi nodi gwybodaeth nad yw’n cyd-fynd â’n cofnodion gormod o weithiau. Am resymau diogelwch, mae’n rhaid i chi aros 24 awr ac yna fewngofnodi i roi cynnig arall arni.
        |Yn ôl i’ch cyfrif treth
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def lockoutPageText(): String = {
@@ -169,7 +169,7 @@ object WelshContent {
        |
        |Gallwch roi cynnig arall arni gan ddefnyddio cyfrif banc gwahanol.
        |Rhoi cynnig arall arni
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   //Redirects to Payments Survey Service so content assertion not needed.
@@ -185,7 +185,7 @@ object WelshContent {
        |Cyfrif banc busnes
        |Cyfrif banc personol
        |Yn eich blaen
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def refundHistoryHistoryPageText(): String = {
@@ -206,7 +206,7 @@ object WelshContent {
        |fanylion yr hawliad dyddiedig $requestedOnDate1
        |$requestedOnDate2 $rejectedDate2 £$rejectedAmount1 Wedi’i wrthod Bwrw golwg dros
        |fanylion yr hawliad dyddiedig $requestedOnDate2
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def refundHistoryInProgressPageText(): String = {
@@ -225,7 +225,7 @@ object WelshContent {
        |fanylion yr hawliad dyddiedig $inProgressDate1
        |$approvedDate1 £$approvedAmount1 Cymeradwywyd Bwrw golwg dros
        |fanylion yr hawliad dyddiedig $approvedDate1
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def statusApprovedPageText(): String = {
@@ -235,7 +235,7 @@ object WelshContent {
        |Byddwn yn anfon eich ad-daliad i’r cyfrif banc a nodwyd gennych neu i’r cerdyn a ddefnyddiwyd gennych i dalu’ch bil diwethaf.
        |Dylech ganiatáu 3 i 5 diwrnod i’r arian gyrraedd eich cyfrif banc neu’ch cerdyn.
        |Yn ôl i’r cyfrif treth
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def statusProcessingPageText(): String = {
@@ -244,7 +244,7 @@ object WelshContent {
        |Mae’ch cais am ad-daliad wedi dod i law. Bwriad CThEF yw anfon ad-daliadau cyn pen pythefnos, ond mae mesurau diogelwch ar waith a allai achosi oedi.
        |Dylech aros 30 diwrnod cyn cysylltu â ni ynglŷn â’ch cais.
        |Yn ôl i’r cyfrif treth
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def statusRejectedPageText(): String = {
@@ -252,7 +252,7 @@ object WelshContent {
     s"""Mae’ch ad-daliad o £$rejectedAmountValue wedi’i wrthod
        |Ni allwn ad-dalu’r £$rejectedAmountValue oherwydd bod eich cais am ad-daliad wedi’i wrthod.
        |Yn ôl i’r cyfrif treth
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def statusPaidPageText(): String = {
@@ -263,7 +263,7 @@ object WelshContent {
        |Gwnaethom anfon taliad o £$paidAmountValue atoch ar $paidOnDate.
        |Mae’n gallu cymryd 3 i 5 diwrnod i’r arian gyrraedd eich cyfrif banc.
        |Yn ôl i’r cyfrif treth
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
   def requestFailedText(): String = {
@@ -272,7 +272,7 @@ object WelshContent {
        |Pan fydd y gwasanaeth ar gael, bydd yn rhaid i chi ddechrau eto.
        |Fel arall, gallwch gysylltu â Chyllid a Thollau EM os oes angen i chi siarad â rhywun am eich treth Hunanasesiad neu wneud cais am ad-daliad dros y ffôn.
        |Dechrau eto
-       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor mewn tab newydd)""".stripMargin
+       |A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)""".stripMargin
   }
 
 }
