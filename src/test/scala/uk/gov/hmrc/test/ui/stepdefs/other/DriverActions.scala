@@ -32,7 +32,7 @@ trait DriverActions extends WebBrowser {
     else SingletonDriver.getInstance(Some(options))
   }
 
-  def clickBack(): Unit = click on id("back")
+  def clickBack(): Unit = click on cssSelector("a.govuk-back-link")
 
   def continue(): Unit = click on id("continue")
 
