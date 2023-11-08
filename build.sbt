@@ -15,7 +15,7 @@ libraryDependencies ++= Seq(
   "org.scalatest"           %% "scalatest"              % "3.2.16" excludeAll ExclusionRule(organization = "org.seleniumhq.selenium"),
   "org.scalatestplus"   %% "selenium-3-141"     % "3.2.10.0",
   "org.seleniumhq.selenium" %  "selenium-java"          % "4.8.1",
-//  "org.seleniumhq.selenium" %  "selenium-http-jdk-client"          % "4.5.0",
+//  "org.seleniumhq.selenium" %  "selenium-http-jdk-client"          % "4.8.1",
   "io.cucumber"             %% "cucumber-scala"         % "8.15.0",
   "io.cucumber"             % "cucumber-junit"          % "7.12.1",
   "io.cucumber"             % "cucumber-picocontainer"  % "7.12.1",
