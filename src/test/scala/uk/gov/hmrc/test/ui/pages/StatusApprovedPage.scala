@@ -31,11 +31,11 @@ object StatusApprovedPage extends BasePage {
   }
 
  def expectedPageTitle =  {
-    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$approvedAmount1 wedi’i gymeradwyo - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    if (langToggle == Language.welsh) s"Mae'ch ad-daliad o £$approvedAmount1 wedi'i gymeradwyo - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else s"Your refund of £$approvedAmount1 has been approved - Request a Self Assessment refund - GOV.UK"
   }
   def expectedPageHeader = {
-    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$approvedAmount1 wedi’i gymeradwyo"
+    if (langToggle == Language.welsh) s"Mae'ch ad-daliad o £$approvedAmount1 wedi'i gymeradwyo"
     else s"Your refund of £$approvedAmount1 has been approved"
   }
 

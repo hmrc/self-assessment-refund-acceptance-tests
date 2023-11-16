@@ -98,8 +98,8 @@ object EnterBankDetailsPage extends BasePage {
 
     def assertHintText(): Unit = {
       if (langToggle == Language.welsh) {
-        sortCodeHint.getText should be("Mae’n rhaid iddo fod yn 6 digid o hyd")
-        accountNumberHint.getText should be("Mae’n rhaid iddo fod rhwng 6 ac 8 digid o hyd")
+        sortCodeHint.getText should be("Mae'n rhaid iddo fod yn 6 digid o hyd")
+        accountNumberHint.getText should be("Mae'n rhaid iddo fod rhwng 6 ac 8 digid o hyd")
         rollNumberHint.getText should be("Gallwch ddod o hyd iddo ar eich cerdyn, cyfriflen neu baslyfr")
       }
       else {

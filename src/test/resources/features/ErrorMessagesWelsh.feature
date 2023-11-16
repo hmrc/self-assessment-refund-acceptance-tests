@@ -56,18 +56,18 @@ Feature: Error Messages Welsh
       | Welsh | none                                                          | Account Name   | Nodwch yr enw sydd ar y cyfrif                                      |
       | Welsh | Test?                                                         | Account Name   | Nodwch yr enw sydd ar y cyfrif                                      |
       | Welsh | _Test                                                         | Account Name   | Nodwch yr enw sydd ar y cyfrif                                      |
-      | Welsh | TestTestTestTestTestTestTestTestTestTestTestTestTestTestTest1 | Account Name   | Mae’n rhaid i’r enw sydd ar y cyfrif fod yn 60 o gymeriadau neu lai |
+      | Welsh | TestTestTestTestTestTestTestTestTestTestTestTestTestTestTest1 | Account Name   | Mae'n rhaid i'r enw sydd ar y cyfrif fod yn 60 o gymeriadau neu lai |
       | Welsh | none                                                          | Sortcode       | Nodwch god didoli                                                   |
-      | Welsh | 00.00.00                                                      | Sortcode       | Mae’n rhaid i’r cod didoli fod yn 6 digid                           |
-      | Welsh | 00000                                                         | Sortcode       | Mae’n rhaid i’r cod didoli fod yn 6 digid                           |
-      | Welsh | 0000000                                                       | Sortcode       | Mae’n rhaid i’r cod didoli fod yn 6 digid                           |
-      | Welsh | 000000words                                                   | Sortcode       | Mae’n rhaid i’r cod didoli fod yn 6 digid                           |
-      | Welsh | 000000?                                                       | Sortcode       | Mae’n rhaid i’r cod didoli fod yn 6 digid                           |
+      | Welsh | 00.00.00                                                      | Sortcode       | Mae'n rhaid i'r cod didoli fod yn 6 digid                           |
+      | Welsh | 00000                                                         | Sortcode       | Mae'n rhaid i'r cod didoli fod yn 6 digid                           |
+      | Welsh | 0000000                                                       | Sortcode       | Mae'n rhaid i'r cod didoli fod yn 6 digid                           |
+      | Welsh | 000000words                                                   | Sortcode       | Mae'n rhaid i'r cod didoli fod yn 6 digid                           |
+      | Welsh | 000000?                                                       | Sortcode       | Mae'n rhaid i'r cod didoli fod yn 6 digid                           |
       | Welsh | none                                                          | Account Number | Nodwch rif y cyfrif                                                 |
-      | Welsh | 52173                                                         | Account Number | Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
-      | Welsh | 521733!                                                       | Account Number | Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
-      | Welsh | 521733-1                                                      | Account Number | Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
-      | Welsh | 521730181                                                     | Account Number | Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
-      | Welsh | 521738wo                                                      | Account Number | Mae’n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
+      | Welsh | 52173                                                         | Account Number | Mae'n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
+      | Welsh | 521733!                                                       | Account Number | Mae'n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
+      | Welsh | 521733-1                                                      | Account Number | Mae'n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
+      | Welsh | 521730181                                                     | Account Number | Mae'n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
+      | Welsh | 521738wo                                                      | Account Number | Mae'n rhaid i rif y cyfrif fod rhwng 6 ac 8 digid                   |
 #      | Welsh | none                                                          | Roll Number    | TBC                                                        |
 #      | Welsh | 12345678901                                                   | Roll Number    | TBC                                                                     |
