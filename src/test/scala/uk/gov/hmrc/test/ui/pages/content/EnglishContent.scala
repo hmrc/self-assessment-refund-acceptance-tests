@@ -26,8 +26,8 @@ object EnglishContent {
 
   def accountOnFilePageText(): String = {
     s"""We need to get your bank details
-       |If you paid your Self Assessment by credit or debit card, we'll try to refund you back to your card. We need your bank details in case we can not do this.
-       |Select 'continue' to provide your bank details.
+       |If you paid your Self Assessment by credit or debit card, we’ll try to refund you back to your card. We need your bank details in case we can not do this.
+       |Select ’continue’ to provide your bank details.
        |Continue
        |Is this page not working properly? (opens in new tab)""".stripMargin
   }
@@ -143,12 +143,12 @@ object EnglishContent {
 
   def lockoutPageText(): String = {
     val date: String = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
-    //Plus 1 hour to account for BST on VM's
+    //Plus 1 hour to account for BST on VM’s
     val time: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("h:mma")).toLowerCase()
 
-    s"""You've tried to confirm your bank details too many times
+    s"""You’ve tried to confirm your bank details too many times
        |Your refund request has not been submitted.
-       |You'll need to wait until $date, $time before trying to confirm your bank details again.
+       |You’ll need to wait until $date, $time before trying to confirm your bank details again.
        |Contact HMRC by phone to speak to someone about Self Assessment.
        |Go to tax account
        |Is this page not working properly? (opens in new tab)""".stripMargin
@@ -172,7 +172,7 @@ object EnglishContent {
 
   def typeOfAccountPageText(): String = {
     s"""What type of account details are you providing?
-       |If you are applying for a refund for yourself, you can enter either your own or your agent's bank details. If you are an agent, enter your client's bank details.
+       |If you are applying for a refund for yourself, you can enter either your own or your agent’s bank details. If you are an agent, enter your client’s bank details.
        |Business bank account
        |Personal bank account
        |Continue

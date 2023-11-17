@@ -46,6 +46,6 @@ object Configuration {
         paymentsSurveyUrl = "https://www.qa.tax.service.gov.uk/payments-survey"
       )
 
-    case _ => throw new IllegalArgumentException(s"Environment '$environment' not known")
+    case _ => throw new IllegalArgumentException(s"Environment ’$environment’ not known")
   }
 }

@@ -17,7 +17,7 @@
 # Initializes port_mappings with all running application ports using the Service Manager status command.
 # Appends ZAP_PORT 11000 to ./run-zap-spec.sh
 #######################################
-port_mappings=$(sm -s | grep PASS | awk '{ print $12"->"$12 }' | paste -sd "," -)
+port_mappings=$(sm -s | grep PASS | awk ’{ print $12"->"$12 }’ | paste -sd "," -)
 port_mappings="$port_mappings,11000->11000"
 
 # Alternatively, port_mappings can be explicitly initialised as below:
@@ -40,7 +40,7 @@ fi
 #
 # Accepted Environment Variables:
 # PORT_MAPPINGS: List of the ports of the services under test.
-# TARGET_IP: IP of the host machine. For Mac this is 'host.docker.internal'. For linux this is 'localhost'
+# TARGET_IP: IP of the host machine. For Mac this is ’host.docker.internal’. For linux this is ’localhost’
 #
 # The latest version of the docker images are available at:
 # https://artefacts.tax.service.gov.uk/artifactory/webapp/#/artifacts/browse/tree/General/chrome-with-rinetd
@@ -58,5 +58,5 @@ docker pull ${BROWSER} \
   -p 4444:4444 \
   -p 5900:5900 \
   -e PORT_MAPPINGS="$port_mappings" \
-  -e TARGET_IP='host.docker.internal' \
+  -e TARGET_IP=’host.docker.internal’ \
   ${BROWSER}

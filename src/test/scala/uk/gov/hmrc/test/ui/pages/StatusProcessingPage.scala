@@ -32,12 +32,12 @@ object StatusProcessingPage extends BasePage {
 
 
   def expectedPageTitle = {
-    if (langToggle == Language.welsh) s"Mae'ch ad-daliad o £$inProgressAmount1 ar y gweill - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$inProgressAmount1 ar y gweill - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else s"Your refund of £$inProgressAmount1 is in progress - Request a Self Assessment refund - GOV.UK"
   }
 
   def expectedPageHeader = {
-    if (langToggle == Language.welsh) s"Mae'ch ad-daliad o £$inProgressAmount1 ar y gweill"
+    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$inProgressAmount1 ar y gweill"
     else s"Your refund of £$inProgressAmount1 is in progress"
   }
 

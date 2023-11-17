@@ -26,11 +26,11 @@ object DesErrorPage extends BasePage {
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-request/failed"
 
   def expectedPageTitle =
-    if (langToggle == Language.welsh) "Mae'n ddrwg gennym, mae problem gyda'r gwasanaeth - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    if (langToggle == Language.welsh) "Mae’n ddrwg gennym, mae problem gyda’r gwasanaeth - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else "Sorry, there is a problem with the service - Request a Self Assessment refund - GOV.UK"
 
   def expectedPageHeader =
-    if (langToggle == Language.welsh) "Mae'n ddrwg gennym, mae problem gyda'r gwasanaeth"
+    if (langToggle == Language.welsh) "Mae’n ddrwg gennym, mae problem gyda’r gwasanaeth"
     else "Sorry, there is a problem with the service"
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle

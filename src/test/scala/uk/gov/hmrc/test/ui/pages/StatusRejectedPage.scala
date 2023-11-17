@@ -31,11 +31,11 @@ object StatusRejectedPage extends BasePage {
   }
 
   def expectedPageTitle =  {
-    if (langToggle == Language.welsh) s"Mae'ch ad-daliad o £$rejectedAmount1 wedi'i wrthod - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$rejectedAmount1 wedi’i wrthod - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else s"Your refund of £$rejectedAmount1 has been rejected - Request a Self Assessment refund - GOV.UK"
   }
   def expectedPageHeader = {
-    if (langToggle == Language.welsh) s"Mae'ch ad-daliad o £$rejectedAmount1 wedi'i wrthod"
+    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$rejectedAmount1 wedi’i wrthod"
     else s"Your refund of £$rejectedAmount1 has been rejected"
   }
 
