@@ -28,7 +28,7 @@ trait Steps extends ScalaDsl with EN with Matchers {
   }
 
   After {
-    SingletonDriver.closeInstance
-    MongoDriver.dropDatabases()
+//    SingletonDriver.closeInstance
+//    MongoDriver.dropDatabases()
   }
 }
