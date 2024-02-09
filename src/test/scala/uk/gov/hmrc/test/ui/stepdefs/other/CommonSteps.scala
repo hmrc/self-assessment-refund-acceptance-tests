@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.other
 
+import uk.gov.hmrc.test.ui.mongo.MongoDriver
 import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.support.HelperFunctions
 import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext}
@@ -24,6 +25,11 @@ class CommonSteps extends DriverActions {
 
   And("""^the user click continue$""") { () =>
     continue()
+  }
+
+  And("""^the user signs out$""") { () =>
+    signOut()
+    MongoDriver.dropDatabases()
   }
 
   And("""^the user click back""") { () =>
