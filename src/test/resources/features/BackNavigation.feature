@@ -53,6 +53,7 @@ Feature: Navigation tests
     And the user is on the RefundAmountPage
     And the user click back
     And the user is on the ItsaViewerPage
+    And the user clicks browser back
     And the user signs out
 
   Scenario: Back Navigation - Refund Journey - Language change and back button behaviour
@@ -120,6 +121,7 @@ Feature: Navigation tests
     And the user click continue
     And the user click back
     And the user is on the ItsaViewerPage
+    And the user clicks browser back
     And the user signs out
 
 
@@ -151,4 +153,5 @@ Feature: Navigation tests
     And the user is on the RefundHistoryPage
     And the user click back
     And the user is on the ItsaViewerPage
+    And the user clicks browser back
     And the user signs out

@@ -35,6 +35,9 @@ class CommonSteps extends DriverActions {
   And("""^the user click back""") { () =>
     clickBack()
   }
+  And("""^the user clicks browser back""") { () =>
+    goBack()
+  }
 
   When("""^the User toggles on (Welsh|English) language$""") { option: String =>
     if (option == "Welsh") {
