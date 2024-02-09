@@ -4,7 +4,6 @@ Feature: Error Messages Welsh
     Given The user starts a personal journey with Nino AB111111D
     When the User toggles on Welsh language
     And the user is on the RefundAmountPage
-    And the user signs out
 
 #  REFUND AMOUNT PAGE
 
