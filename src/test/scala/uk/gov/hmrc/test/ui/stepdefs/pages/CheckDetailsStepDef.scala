@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
 import uk.gov.hmrc.test.ui.pages.CheckDetailsPage
-import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
+import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
 
-class CheckDetailsStepDef extends Steps with DriverActions {
+class CheckDetailsStepDef extends DriverActions {
 
   And("""^the user clicks on (.*) link$""") { (changeLink: String) =>
     changeLink match {

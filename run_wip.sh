@@ -9,4 +9,4 @@ if [ -z "$BROWSER_TYPE" ]; then
     echo ""
 fi
 
-sbt clean -Dbrowser="${BROWSER_TYPE:=$DEFAULT_BROWSER}" -Denvironment="${ENV:=local}" -Dteardown="${TEARDOWN:=true}" "testOnly uk.gov.hmrc.test.ui.runner.Runner" testReport
+sbt clean -Dbrowser="${BROWSER_TYPE:=$DEFAULT_BROWSER}" -Denvironment="${ENV:=local}" -Dteardown="${TEARDOWN:=true}" "testOnly uk.gov.hmrc.test.ui.runner.WipRunner" testReport

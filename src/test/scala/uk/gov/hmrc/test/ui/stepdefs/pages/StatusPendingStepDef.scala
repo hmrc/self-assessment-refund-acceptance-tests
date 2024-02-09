@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
-import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
+import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
 
-class StatusPendingStepDef extends Steps with DriverActions {
+class StatusPendingStepDef extends DriverActions {
 
 }

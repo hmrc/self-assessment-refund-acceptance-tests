@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
 import uk.gov.hmrc.test.ui.pages.{TypeOfAccountPage}
-import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
+import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
 
-class TypeOfAccountStepDef extends Steps with DriverActions {
+class TypeOfAccountStepDef extends DriverActions {
 
   And("""^the user select (business|personal) account$""") { radio: String =>
     TypeOfAccountPage.selectRadio(radio)

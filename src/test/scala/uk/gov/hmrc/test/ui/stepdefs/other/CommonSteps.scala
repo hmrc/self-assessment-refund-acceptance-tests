@@ -20,7 +20,7 @@ import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.support.HelperFunctions
 import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext}
 
-class CommonSteps extends Steps with DriverActions {
+class CommonSteps extends DriverActions {
 
   And("""^the user click continue$""") { () =>
     continue()

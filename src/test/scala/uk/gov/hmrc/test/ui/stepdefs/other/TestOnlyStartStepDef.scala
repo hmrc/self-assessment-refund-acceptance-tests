@@ -18,17 +18,17 @@ package uk.gov.hmrc.test.ui.stepdefs.other
 
 import uk.gov.hmrc.test.ui.pages.AuthWizardPage
 import uk.gov.hmrc.test.ui.pages.testonly.TestOnlyStartPage
-import uk.gov.hmrc.test.ui.testdata.{ScenarioContext, TestData}
+import uk.gov.hmrc.test.ui.testdata.ScenarioContext
 
 import java.lang.Thread.sleep
 
-class TestOnlyStartStepDef extends Steps with DriverActions {
+class TestOnlyStartStepDef extends DriverActions {
 
   And("""^The user starts a (.*) journey with Nino (.*)$""") { (accType: String, nino: String) =>
     //    ScenarioVariables.personalOrBusiness = accType
     ScenarioContext.set("personalOrBusiness", accType)
     ScenarioContext.set("nino", nino)
-    go to TestOnlyStartPage.url
+    driver.navigate().to(TestOnlyStartPage.url)
     ScenarioContext.set("nino", nino)
     if (nino == "AB111111C" || nino == "AB111111D") {
       TestOnlyStartPage.clickRadio(nino)
@@ -47,7 +47,7 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
 
   And("""^The user starts a (.*) journey for (.*) with confidence level < 250$""") { (accType: String, nino: String) =>
     ScenarioContext.set("personalOrBusiness", accType)
-    go to TestOnlyStartPage.url
+    driver.navigate().to(TestOnlyStartPage.url)
     TestOnlyStartPage.clickRadio(nino)
     continue()
     AuthWizardPage.enterValidNino()
@@ -58,7 +58,7 @@ class TestOnlyStartStepDef extends Steps with DriverActions {
   }
 
   And("""^The user starts a history journey for (.*)""") { (nino: String) =>
-    go to TestOnlyStartPage.url
+    driver.navigate().to(TestOnlyStartPage.url)
     ScenarioContext.set("nino", nino)
     nino match {
       case "AB111111C" => TestOnlyStartPage.clickRadio("AB111111C_history")

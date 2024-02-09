@@ -16,19 +16,16 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.other
 
-import io.cucumber.scala.{EN, ScalaDsl, Scenario}
-import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.mongo.MongoDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
+import io.cucumber.scala.{EN, ScalaDsl}
+import uk.gov.hmrc.selenium.webdriver.Browser
 
-trait Steps extends ScalaDsl with EN with Matchers {
-
-  Before {
-    ScenarioVariables.resetScenarioVariables()
+object Steps extends ScalaDsl with EN with Browser {
+  BeforeAll {
+    startBrowser()
   }
 
-  After {
-    SingletonDriver.closeInstance
-    MongoDriver.dropDatabases()
+  AfterAll {
+    quitBrowser()
   }
+
 }
