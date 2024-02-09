@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
-import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
+import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
 
-class AuthenticationStepDef extends Steps with DriverActions {
+class AuthenticationStepDef extends DriverActions {
 
 }

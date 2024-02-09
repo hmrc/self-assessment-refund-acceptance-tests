@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
 import uk.gov.hmrc.test.ui.pages.RefundsHistoryPage
-import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
+import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
 
-class RefundsHistoryStepDef extends Steps with DriverActions {
+class RefundsHistoryStepDef extends DriverActions {
 
   And("""^the user clicks on the (In Progress|History) tab$""") { (tab: String) =>
     RefundsHistoryPage.clickTab(tab)

@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
 import uk.gov.hmrc.test.ui.pages.RefundAmountPage
-import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
+import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
 
-class RefundAmountStepDef extends Steps with DriverActions {
+class RefundAmountStepDef extends DriverActions {
 
   Given("""^the user go to the select amount page$""") { () =>
     go to RefundAmountPage.url

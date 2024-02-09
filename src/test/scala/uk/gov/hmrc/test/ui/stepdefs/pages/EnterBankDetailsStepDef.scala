@@ -18,12 +18,12 @@ package uk.gov.hmrc.test.ui.stepdefs.pages
 
 import uk.gov.hmrc.test.ui.pages.EnterBankDetailsPage
 import uk.gov.hmrc.test.ui.pages.support.HelperFunctions
-import uk.gov.hmrc.test.ui.stepdefs.other.{DriverActions, Steps}
+import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
 
 import java.lang.Thread.sleep
 
-class EnterBankDetailsStepDef extends Steps with DriverActions {
+class EnterBankDetailsStepDef extends DriverActions {
 
   And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (accType: String, roll: String) =>
     ScenarioContext.set("bankDetails", roll match {
@@ -85,53 +85,53 @@ class EnterBankDetailsStepDef extends Steps with DriverActions {
 
       def prependError: String = if (langToggle == Language.welsh) "Gwall:" else "Error:"
 
-      if (langToggle == Language.welsh) HelperFunctions.errorSummaryHeading() should be("Mae problem wedi codi")
-      else HelperFunctions.errorSummaryHeading() should be("There is a problem")
+      if (langToggle == Language.welsh) HelperFunctions.errorSummaryHeading() matches("Mae problem wedi codi")
+      else HelperFunctions.errorSummaryHeading() matches("There is a problem")
 
       elem match {
 
         case "BARS Invalid" =>
-          EnterBankDetailsPage.errorSummarySortCode.getText should be(message)
-          HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummarySortCode.getText matches(message)
+          HelperFunctions.id(elemId + "-error").webElement.getText matches(s"$prependError\n$message")
 
         case "Sortcode Error" =>
-          EnterBankDetailsPage.errorSummarySortCode.getText should be(message)
-          EnterBankDetailsPage.errorMessageSortCode.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummarySortCode.getText matches(message)
+          EnterBankDetailsPage.errorMessageSortCode.getText matches(s"$prependError\n$message")
 
         case "Sortcode" =>
-          EnterBankDetailsPage.errorSummarySortCode.getText should be(message)
-          EnterBankDetailsPage.errorMessageSortCode.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummarySortCode.getText matches(message)
+          EnterBankDetailsPage.errorMessageSortCode.getText matches(s"$prependError\n$message")
 
         case "Name Invalid" =>
-          EnterBankDetailsPage.errorSummaryAccountName.getText should be(message)
-          EnterBankDetailsPage.errorMessageAccountName.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummaryAccountName.getText matches(message)
+          EnterBankDetailsPage.errorMessageAccountName.getText matches(s"$prependError\n$message")
 
         case "Account Name" =>
-          EnterBankDetailsPage.errorSummaryAccountName.getText should be(message)
-          EnterBankDetailsPage.errorMessageAccountName.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummaryAccountName.getText matches(message)
+          EnterBankDetailsPage.errorMessageAccountName.getText matches(s"$prependError\n$message")
 
         case "Account Number Error" =>
-          EnterBankDetailsPage.errorSummaryAccountNumber.getText should be(message)
-          EnterBankDetailsPage.errorMessageAccountNumber.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummaryAccountNumber.getText matches(message)
+          EnterBankDetailsPage.errorMessageAccountNumber.getText matches(s"$prependError\n$message")
 
         case "Account Number" =>
-          EnterBankDetailsPage.errorSummaryAccountNumber.getText should be(message)
-          EnterBankDetailsPage.errorMessageAccountNumber.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummaryAccountNumber.getText matches(message)
+          EnterBankDetailsPage.errorMessageAccountNumber.getText matches(s"$prependError\n$message")
 
         case "Roll Number Error" =>
-          EnterBankDetailsPage.errorSummaryRollNumber.getText should be(message)
-          EnterBankDetailsPage.errorMessageRollNumber.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummaryRollNumber.getText matches(message)
+          EnterBankDetailsPage.errorMessageRollNumber.getText matches(s"$prependError\n$message")
 
         case "Roll Number" =>
-          EnterBankDetailsPage.errorSummaryRollNumber.getText should be(message)
-          EnterBankDetailsPage.errorMessageRollNumber.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummaryRollNumber.getText matches(message)
+          EnterBankDetailsPage.errorMessageRollNumber.getText matches(s"$prependError\n$message")
 
         case "No details entered" =>
           EnterBankDetailsPage.assertNoDetailsError()
 
         case _ =>
-          EnterBankDetailsPage.errorSummary("1").getText should be(message)
-          HelperFunctions.id(elemId + "-error").webElement.getText should be(s"$prependError\n$message")
+          EnterBankDetailsPage.errorSummary("1").getText matches(message)
+          HelperFunctions.id(elemId + "-error").webElement.getText matches(s"$prependError\n$message")
       }
   }
 

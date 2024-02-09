@@ -16,21 +16,14 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.other
 
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeOptions
+import io.cucumber.scala.{EN, ScalaDsl}
+import org.scalatest.concurrent.Eventually
+import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.selenium.WebBrowser
 import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext}
-import uk.gov.hmrc.webdriver.SingletonDriver
+import uk.gov.hmrc.test.ui.utils.BrowserDriver
 
-trait DriverActions extends WebBrowser {
-
-  implicit def driver: WebDriver = {
-    val options = new ChromeOptions
-    options.addArguments("--remote-allow-origins=*")
-    val runZap = sys.props.getOrElse("zapBrowser", "false").toBoolean
-    if (runZap) SingletonDriver.getInstance(Some(options))
-    else SingletonDriver.getInstance(Some(options))
-  }
+trait DriverActions extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers with WebBrowser {
 
   def clickBack(): Unit = click on cssSelector("a.govuk-back-link")
 
