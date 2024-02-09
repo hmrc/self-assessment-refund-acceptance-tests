@@ -49,7 +49,7 @@ Feature: Navigation tests
     And the user signs out
 
   Scenario: Back Navigation - Refund Journey back to Itsa Viewer
-    Given The user starts a <type> journey with Nino AB111111C
+    Given The user starts a personal journey with Nino AB111111C
     And the user is on the RefundAmountPage
     And the user click back
     And the user is on the ItsaViewerPage
@@ -121,6 +121,7 @@ Feature: Navigation tests
     And the user click continue
     And the user click back
     And the user is on the ItsaViewerPage
+    And the user clicks browser back
     And the user clicks browser back
     And the user signs out
 
