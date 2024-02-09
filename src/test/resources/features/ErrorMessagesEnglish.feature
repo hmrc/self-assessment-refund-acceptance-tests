@@ -4,18 +4,21 @@ Feature: Error Messages English
     Given The user starts a personal journey with Nino AB111111D
     When the User toggles on English language
     And the user is on the RefundAmountPage
+    And the user signs out
 
 #  REFUND AMOUNT PAGE
 
   Scenario: English - Refund Amount Page - No Radio button selected
     And the user click continue
     And the choice required error shows
+    And the user signs out
 
   Scenario Outline: English - Refund Amount Page - Other Amount Value Errors
     And the user clicks other amount
     And the user enter an amount of <amount>
     And the user click continue
     And the <errorType> error shows
+    And the user signs out
 
     Examples:
       | errorType               | amount |
@@ -33,6 +36,7 @@ Feature: Error Messages English
     And the user click continue
     And the user click continue
     And the no type of account selected error is displayed
+    And the user signs out
 
 #  ENTER BANK ACCOUNT DETAILS PAGE
 
@@ -46,6 +50,7 @@ Feature: Error Messages English
     When the user enters <input value> into the <field> field
     And the user click continue
     Then the <field> field should display "<message>"
+    And the user signs out
 
     Examples:
       | lang    | input value                                                   | field          | message                                                                                              |

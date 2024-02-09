@@ -19,6 +19,7 @@ Feature: Happy Path - Welsh
     And the user click continue
     And the user is on the RequestReceivedPage
     When the User toggles on English language
+    And the user signs out
 
     Examples:
       | type     | amount | value |
@@ -34,6 +35,7 @@ Feature: Happy Path - Welsh
     And the user click continue
     And the user is on the TypeOfAccountPage
     When the User toggles on English language
+    And the user signs out
 
     Examples:
       | type     | amount | value |
@@ -57,6 +59,7 @@ Feature: Happy Path - Welsh
     And the user clicks on Rejected for result number 2
     And the user is on the StatusRejectedPage
     When the User toggles on English language
+    And the user signs out
 
 
   Scenario: Welsh - DES Error on submission, details retained in journey
@@ -74,3 +77,4 @@ Feature: Happy Path - Welsh
     And the user selects the contact us link and is taken to the correct url
     And the Start Again link is correct
     When the User toggles on English language
+    And the user signs out

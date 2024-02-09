@@ -4,6 +4,7 @@ Feature: Error Messages Welsh
     Given The user starts a personal journey with Nino AB111111D
     When the User toggles on Welsh language
     And the user is on the RefundAmountPage
+    And the user signs out
 
 #  REFUND AMOUNT PAGE
 
@@ -11,6 +12,7 @@ Feature: Error Messages Welsh
     And the user click continue
     And the choice required error shows
     When the User toggles on English language
+    And the user signs out
 
   Scenario Outline: Welsh - Refund Amount Page - Other Amount Value Errors
     And the user clicks other amount
@@ -18,6 +20,7 @@ Feature: Error Messages Welsh
     And the user click continue
     And the <errorType> error shows
     When the User toggles on English language
+    And the user signs out
 
     Examples:
       | errorType               | amount |
@@ -36,6 +39,7 @@ Feature: Error Messages Welsh
     And the user click continue
     And the no type of account selected error is displayed
     When the User toggles on English language
+    And the user signs out
 
 #  ENTER BANK ACCOUNT DETAILS PAGE
 
@@ -50,6 +54,7 @@ Feature: Error Messages Welsh
     And the user click continue
     Then the <field> field should display "<message>"
     When the User toggles on English language
+    And the user signs out
 
     Examples:
       | lang  | input value                                                   | field          | message                                                             |

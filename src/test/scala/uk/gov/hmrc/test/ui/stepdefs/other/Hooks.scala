@@ -18,14 +18,17 @@ package uk.gov.hmrc.test.ui.stepdefs.other
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.selenium.webdriver.Browser
+import uk.gov.hmrc.test.ui.mongo.MongoDriver
+import uk.gov.hmrc.test.ui.pages.SurveyPage.signOut
 
-object Steps extends ScalaDsl with EN with Browser {
+object Hooks extends ScalaDsl with EN with Browser {
   BeforeAll {
     startBrowser()
   }
 
   AfterAll {
     quitBrowser()
+    MongoDriver.dropDatabases()
   }
 
 }

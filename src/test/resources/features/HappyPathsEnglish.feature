@@ -18,6 +18,7 @@ Feature: Happy Path - English
     And the user click continue
     And the user click continue
     And the user is on the RequestReceivedPage
+    And the user signs out
 
     Examples:
       | type     | amount | value |
@@ -32,6 +33,7 @@ Feature: Happy Path - English
     And the user click on the <amount> amount <value>
     And the user click continue
     And the user is on the TypeOfAccountPage
+    And the user signs out
 
     Examples:
       | type     | amount | value |
@@ -54,6 +56,7 @@ Feature: Happy Path - English
     And the user click back
     And the user clicks on Rejected for result number 2
     And the user is on the StatusRejectedPage
+    And the user signs out
 
 
   Scenario: English - DES Error on submission, details retained in journey
@@ -70,3 +73,4 @@ Feature: Happy Path - English
     And the user is on the DesErrorPage
     And the user selects the contact us link and is taken to the correct url
     And the Start Again link is correct
+    And the user signs out

@@ -15,6 +15,8 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     And the user click continue
     And the user click continue
     Then the user is on the LockoutPage
+    And the user signs out
+
 
     Examples:
       | accountType | bankDetails         |
@@ -40,6 +42,7 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     And the user click continue
     And the user click continue
     Then the user is on the LockoutPage
+    And the user signs out
 
     Examples:
       | accountType | bankDetails         |
@@ -59,6 +62,7 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     When the User enters <bankDetails> bank details
     And the user click continue
     And the user is on the <page>
+    And the user signs out
 
     Examples:
       | accountType | bankDetails           | page                   |
@@ -81,6 +85,7 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     When the User enters <bankDetails> bank details
     And the user click continue
     Then the <field> field should display "<message>"
+    And the user signs out
 
     Examples:
       | accountType | bankDetails             | message                                                                                                                                                    | field             |
@@ -114,6 +119,7 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     And the user click continue
     Then the <field> field should display "<message>"
     When the User toggles on English language
+    And the user signs out
 
     Examples:
       | accountType | bankDetails             | message                                                                                                                                                     | field          |
@@ -148,6 +154,8 @@ Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
     When the User enters <bankDetails> bank details
     And the user click continue
     And the user is on the CheckDetailsPageNoRoll
+    And the user signs out
+
     Examples:
       | accountType | bankDetails   |
       | personal    | valid         |

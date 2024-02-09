@@ -14,6 +14,7 @@ Feature: E2E - Smoke (For accessibility / zap page captures)
     And the user click continue
     And the user click continue
     And the user click continue
+    And the user signs out
 
   @journey
   Scenario: A11y - IV Kickout Page
@@ -22,6 +23,7 @@ Feature: E2E - Smoke (For accessibility / zap page captures)
     Then the user is on the IvKickoutPage
     When the User toggles on Welsh language
     Then the user is on the IvKickoutPage
+    And the user signs out
 
 #  @a11y @journey
 #  Scenario: A11y - BARS Lockout Refund Journey
@@ -51,3 +53,4 @@ Feature: E2E - Smoke (For accessibility / zap page captures)
     And the user clicks on Paid for result number 1
     And the user click back
     And the user clicks on Rejected for result number 2
+    And the user signs out
