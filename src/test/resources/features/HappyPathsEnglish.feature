@@ -1,5 +1,8 @@
 Feature: Happy Path - English
 
+  Background:
+    Given the database has been dropped
+
   Scenario Outline: English - V&C with card on file
     Given The user starts a <type> journey with Nino AB111111C
     When the User toggles on English language

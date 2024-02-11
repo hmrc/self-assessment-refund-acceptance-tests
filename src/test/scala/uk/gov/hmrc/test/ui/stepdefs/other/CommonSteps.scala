@@ -27,9 +27,12 @@ class CommonSteps extends DriverActions {
     continue()
   }
 
+  And("""^the database has been dropped$""") { () =>
+    MongoDriver.dropDatabases()
+  }
+
   And("""^the user signs out$""") { () =>
     signOut()
-    MongoDriver.dropDatabases()
   }
 
   And("""^the user click back""") { () =>
