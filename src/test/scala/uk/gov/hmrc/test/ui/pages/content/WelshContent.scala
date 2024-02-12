@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages.content
 
-import uk.gov.hmrc.test.ui.testdata.BankDetails.{businessAccount, validAccount}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext, TestData}
 
 import java.time.{LocalDate, LocalDateTime}

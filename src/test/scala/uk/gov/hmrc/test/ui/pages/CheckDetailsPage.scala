@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.WebElement
 import org.scalatest.Assertion
 import uk.gov.hmrc.test.ui.pages.EnterBankDetailsPage.pageContent
 import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}

@@ -21,9 +21,6 @@ import uk.gov.hmrc.test.ui.pages.SurveyPage.langToggle
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-//import java.time.LocalDate
-//import java.time.format.DateTimeFormatter
-
 case class TestData(nino: String, maxRefundAmount:String, inProgressDate1: Option[String] = None, inProgessAmount1: Option[String] = None, approvedDate1: Option[String] = None, approvedAmount1: Option[String] = None,
                     requestedOnDate1: Option[String] = None, requestedOnDate2: Option[String] = None, paidOnDate1: Option[String] = None, rejectedDate2: Option[String] = None, paidAmount1: Option[String] = None, rejectedAmount1: Option[String] = None)
 

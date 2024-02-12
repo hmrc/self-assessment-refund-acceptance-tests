@@ -20,8 +20,6 @@ import uk.gov.hmrc.test.ui.pages.AuthWizardPage
 import uk.gov.hmrc.test.ui.pages.testonly.TestOnlyStartPage
 import uk.gov.hmrc.test.ui.testdata.ScenarioContext
 
-import java.lang.Thread.sleep
-
 class TestOnlyStartStepDef extends DriverActions {
 
   And("""^The user starts a (.*) journey with Nino (.*)$""") { (accType: String, nino: String) =>
