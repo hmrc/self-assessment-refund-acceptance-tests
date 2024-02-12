@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.other
 
-import uk.gov.hmrc.test.ui.mongo.MongoDriver
 import uk.gov.hmrc.test.ui.pages.AuthWizardPage
 import uk.gov.hmrc.test.ui.pages.testonly.TestOnlyStartPage
 import uk.gov.hmrc.test.ui.testdata.ScenarioContext
@@ -27,9 +26,12 @@ class TestOnlyStartStepDef extends DriverActions {
 
   And("""^The user starts a (.*) journey with Nino (.*)$""") { (accType: String, nino: String) =>
     ScenarioContext.set("personalOrBusiness", accType)
+    driver.navigate().to(AuthWizardPage.url)
     ScenarioContext.set("nino", nino)
-    driver.navigate().to(TestOnlyStartPage.url)
-    ScenarioContext.set("nino", nino)
+    AuthWizardPage.enterValidNino()
+    AuthWizardPage.setConfidenceLevel("250")
+    AuthWizardPage.enterRedirectUrl(TestOnlyStartPage.url)
+    AuthWizardPage.clickSubmit()
     if (nino == "AB111111C" || nino == "AB111111D") {
       TestOnlyStartPage.clickRadio(nino)
     }
@@ -37,11 +39,6 @@ class TestOnlyStartStepDef extends DriverActions {
       TestOnlyStartPage.clickRadio(nino)
       TestOnlyStartPage.overwriteNino(nino)
     }
-    continue()
-    AuthWizardPage.enterValidNino()
-    AuthWizardPage.setConfidenceLevel("250")
-    AuthWizardPage.clickSubmit()
-    sleep(500)
     continue()
   }
 

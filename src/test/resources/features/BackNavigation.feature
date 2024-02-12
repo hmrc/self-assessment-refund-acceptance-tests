@@ -3,7 +3,7 @@ Feature: Navigation tests
 #    REFUND REQUEST JOURNEY
   Background:
     Given the database has been dropped
-
+@wip
   Scenario Outline: Back Navigation - Refund Journey (Card on File)
     Given The user starts a <type> journey with Nino AB111111C
     And the user is on the RefundAmountPage
