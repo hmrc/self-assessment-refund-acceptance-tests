@@ -4,6 +4,7 @@ Feature: Navigation tests
   Background:
     Given the database has been dropped
 
+  @core
   Scenario Outline: Back Navigation - Refund Journey (Card on File)
     Given The user starts a <type> journey with Nino AB111111C
     And the user is on the RefundAmountPage
@@ -41,6 +42,7 @@ Feature: Navigation tests
       | personal |
       | business |
 
+  @core
   Scenario: Back Navigation - No Card on File
     Given The user starts a personal journey with Nino AB111111D
     And the user click on the full amount .
@@ -50,6 +52,7 @@ Feature: Navigation tests
     And the user is on the RefundAmountPage
     And the user signs out
 
+  @fullRegression
   Scenario: Back Navigation - Refund Journey back to Itsa Viewer
     Given The user starts a personal journey with Nino AB111111C
     And the user is on the RefundAmountPage
@@ -58,6 +61,7 @@ Feature: Navigation tests
     And the user clicks browser back
     And the user signs out
 
+  @fullRegression
   Scenario: Back Navigation - Refund Journey - Language change and back button behaviour
     Given The user starts a personal journey with Nino AB111111C
     When the User toggles on English language
@@ -93,7 +97,7 @@ Feature: Navigation tests
     When the User toggles on English language
     And the user signs out
 
-
+  @fullRegression
   Scenario: Back Navigation - Refund Journey - Error Page and back button behaviour
     Given The user starts a personal journey with Nino AB111111C
     And the user is on the RefundAmountPage
@@ -117,6 +121,7 @@ Feature: Navigation tests
     And the user is on the EnterBankDetailsPage
     And the user signs out
 
+  @fullRegression
   Scenario: Back Navigation - Refund Journey - Error Page and back button behaviour back to Itsa Viewer
     Given The user starts a personal journey with Nino AB111111C
     And the user is on the RefundAmountPage
@@ -129,7 +134,7 @@ Feature: Navigation tests
 
 
 #    REFUND HISTORY JOURNEY
-
+  @core
   Scenario: Back Navigation - Refund History
     Given The user starts a history journey for AB111111C
     When the User toggles on English language
@@ -151,6 +156,7 @@ Feature: Navigation tests
     And the user is on the StatusRejectedPage
     And the user signs out
 
+  @core
   Scenario: Back Navigation - Refund History back to Itsa Viewer
     Given The user starts a history journey for AB111111C
     And the user is on the RefundHistoryPage

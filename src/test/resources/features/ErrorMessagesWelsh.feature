@@ -1,3 +1,4 @@
+@fullRegression
 Feature: Error Messages Welsh
 
   Background:

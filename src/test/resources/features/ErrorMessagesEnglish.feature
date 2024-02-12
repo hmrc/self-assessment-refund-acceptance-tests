@@ -1,3 +1,4 @@
+@core
 Feature: Error Messages English
 
   Background:
