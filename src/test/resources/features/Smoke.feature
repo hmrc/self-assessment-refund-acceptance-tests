@@ -4,7 +4,7 @@ Feature: E2E - Smoke (For accessibility / zap page captures)
   Background:
     Given the database has been dropped
 
-  @journey @wip
+  @journey
   Scenario: A11y - Refund Journey
     Given The user starts a personal journey with Nino AB111111D
     When the User toggles on English language
