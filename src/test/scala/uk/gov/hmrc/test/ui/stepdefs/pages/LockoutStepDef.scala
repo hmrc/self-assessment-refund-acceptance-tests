@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
-import uk.gov.hmrc.test.ui.pages.IvKickoutPage
 import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
 
 class LockoutStepDef extends DriverActions {

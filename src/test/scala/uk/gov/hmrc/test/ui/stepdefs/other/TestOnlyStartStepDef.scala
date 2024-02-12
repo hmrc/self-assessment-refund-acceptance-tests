@@ -16,20 +16,20 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.other
 
-import uk.gov.hmrc.test.ui.mongo.MongoDriver
 import uk.gov.hmrc.test.ui.pages.AuthWizardPage
 import uk.gov.hmrc.test.ui.pages.testonly.TestOnlyStartPage
 import uk.gov.hmrc.test.ui.testdata.ScenarioContext
-
-import java.lang.Thread.sleep
 
 class TestOnlyStartStepDef extends DriverActions {
 
   And("""^The user starts a (.*) journey with Nino (.*)$""") { (accType: String, nino: String) =>
     ScenarioContext.set("personalOrBusiness", accType)
+    driver.navigate().to(AuthWizardPage.url)
     ScenarioContext.set("nino", nino)
-    driver.navigate().to(TestOnlyStartPage.url)
-    ScenarioContext.set("nino", nino)
+    AuthWizardPage.enterValidNino()
+    AuthWizardPage.setConfidenceLevel("250")
+    AuthWizardPage.enterRedirectUrl(TestOnlyStartPage.url)
+    AuthWizardPage.clickSubmit()
     if (nino == "AB111111C" || nino == "AB111111D") {
       TestOnlyStartPage.clickRadio(nino)
     }
@@ -38,37 +38,30 @@ class TestOnlyStartStepDef extends DriverActions {
       TestOnlyStartPage.overwriteNino(nino)
     }
     continue()
-    AuthWizardPage.enterValidNino()
-    AuthWizardPage.setConfidenceLevel("250")
-    AuthWizardPage.clickSubmit()
-    sleep(500)
-    continue()
   }
 
   And("""^The user starts a (.*) journey for (.*) with confidence level < 250$""") { (accType: String, nino: String) =>
     ScenarioContext.set("personalOrBusiness", accType)
-    driver.navigate().to(TestOnlyStartPage.url)
-    TestOnlyStartPage.clickRadio(nino)
-    continue()
+    driver.navigate().to(AuthWizardPage.url)
     AuthWizardPage.enterValidNino()
     AuthWizardPage.setConfidenceLevel("200")
+    AuthWizardPage.enterRedirectUrl(TestOnlyStartPage.url)
     AuthWizardPage.clickSubmit()
-    sleep(500)
+    TestOnlyStartPage.clickRadio(nino)
     continue()
   }
 
   And("""^The user starts a history journey for (.*)""") { (nino: String) =>
-    driver.navigate().to(TestOnlyStartPage.url)
+    driver.navigate().to(AuthWizardPage.url)
     ScenarioContext.set("nino", nino)
+    AuthWizardPage.enterValidNino()
+    AuthWizardPage.setConfidenceLevel("250")
+    AuthWizardPage.enterRedirectUrl(TestOnlyStartPage.url)
+    AuthWizardPage.clickSubmit()
     nino match {
       case "AB111111C" => TestOnlyStartPage.clickRadio("AB111111C_history")
       case "AB111111D" => TestOnlyStartPage.clickRadio("AB111111D_history")
     }
-    continue()
-    AuthWizardPage.enterValidNino()
-    AuthWizardPage.setConfidenceLevel("250")
-    AuthWizardPage.clickSubmit()
-    sleep(500)
     continue()
   }
 

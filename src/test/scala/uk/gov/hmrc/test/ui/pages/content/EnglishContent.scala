@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages.content
 
-import uk.gov.hmrc.test.ui.testdata.BankDetails.{businessAccount, validAccount}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
 
 import java.time.{LocalDate, LocalDateTime}
@@ -100,7 +99,6 @@ object EnglishContent {
 
   def requestReceivedPageText(): String = {
     val reference: String = TestData.referenceNumber
-    val refundType: String = TestData.refundType
     val date: String = LocalDate.now().format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
     val amount: String = ScenarioContext.get("amount")
     s"""Refund request received
@@ -122,7 +120,6 @@ object EnglishContent {
   }
 
   def refundAmountPageText(): String = {
-    println(ScenarioContext.get("nino"))
     def amount: String = if (ScenarioContext.get[String]("nino") == TestData.nino)
       TestData.maxRefundAmount
     else

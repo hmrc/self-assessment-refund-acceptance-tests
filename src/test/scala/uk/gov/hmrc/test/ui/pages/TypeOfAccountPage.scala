@@ -55,7 +55,7 @@ object TypeOfAccountPage extends BasePage {
     else pageContent should be(EnglishContent.typeOfAccountPageText())
   }
 
-  def selectRadio(radio: String) {
+  def selectRadio(radio: String): Unit = {
     radio match {
       case "business" => click on businessAccountRadio
       case "personal" => click on personalAccountRadio

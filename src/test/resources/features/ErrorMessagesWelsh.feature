@@ -1,10 +1,11 @@
+@fullRegression
 Feature: Error Messages Welsh
 
   Background:
-    Given The user starts a personal journey with Nino AB111111D
+    Given the database has been dropped
+    And The user starts a personal journey with Nino AB111111D
     When the User toggles on Welsh language
     And the user is on the RefundAmountPage
-    And the user signs out
 
 #  REFUND AMOUNT PAGE
 

@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By.cssSelector
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions

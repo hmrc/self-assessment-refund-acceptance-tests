@@ -16,9 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
-
 object ItsaViewerPage extends BasePage {
 
   val url: String = s"http://localhost:9081/report-quarterly/income-and-expenses/view/claim-refund"

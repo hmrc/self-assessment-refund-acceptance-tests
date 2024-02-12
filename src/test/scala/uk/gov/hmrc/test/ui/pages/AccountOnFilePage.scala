@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.scalatest.Assertion
 import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
-import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
+import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object AccountOnFilePage extends BasePage {

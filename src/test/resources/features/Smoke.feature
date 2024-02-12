@@ -1,7 +1,10 @@
-@a11y @zap
+@core
 Feature: E2E - Smoke (For accessibility / zap page captures)
 
-  @journey @wip
+  Background:
+    Given the database has been dropped
+
+  @journey
   Scenario: A11y - Refund Journey
     Given The user starts a personal journey with Nino AB111111D
     When the User toggles on English language
@@ -24,22 +27,6 @@ Feature: E2E - Smoke (For accessibility / zap page captures)
     When the User toggles on Welsh language
     Then the user is on the IvKickoutPage
     And the user signs out
-
-#  @a11y @journey
-#  Scenario: A11y - BARS Lockout Refund Journey
-#    Given The user starts a personal journey with Nino AA111111A
-#    When the User toggles on English language
-#    And the user is on the RefundAmountPage
-#    And the user clicks other amount
-#    And the user enter an amount of 1
-#    And the user click continue
-#    And the user select personal account
-#    And the user click continue
-#    And the user enter invalid personal bank details
-#    And the user click continue
-#    And the user click continue
-#    And the user click continue
-#    Then the user is on the LockoutPage
 
   @history
   Scenario: A11y - History Pages

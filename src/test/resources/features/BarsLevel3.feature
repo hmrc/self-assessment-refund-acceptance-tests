@@ -1,5 +1,8 @@
 Feature: Level 3 Bars check - Testing of Business and Personal Endpoint
 
+  Background:
+    Given the database has been dropped
+
   @core
   Scenario Outline: Unhappy - Bars Lockout Page
     Given The user starts a <accountType> journey with Nino AB111111D

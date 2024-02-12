@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.testdata.{ScenarioContext, TestData}
+import uk.gov.hmrc.test.ui.testdata.ScenarioContext
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object AuthWizardPage extends BasePage {
