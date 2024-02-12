@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages.content
 
-import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext, TestData}
+import uk.gov.hmrc.test.ui.testdata.{BankDetails, ScenarioContext, TestData}
 
 import java.time.{LocalDate, LocalDateTime}
 import java.time.format.DateTimeFormatter
@@ -109,7 +109,6 @@ object WelshContent {
 
   def requestReceivedPageText(): String = {
     val reference: String = TestData.referenceNumber
-    val refundType: String = TestData.refundType
     val date: String = LocalDate.now().format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
     val amount: String = ScenarioContext.get("amount")
     s"""Cais am ad-daliad wedi dod i law

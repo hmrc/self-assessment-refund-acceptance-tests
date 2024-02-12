@@ -63,7 +63,7 @@ object RefundAmountPage extends BasePage {
     else pageContent should be(EnglishContent.refundAmountPageText())
   }
 
-  def selectRadio(radio: String, amount: String) {
+  def selectRadio(radio: String, amount: String): Unit = {
     radio match {
       case "full" => click on refundFullRadio
         if (ScenarioContext.get[String]("nino") == TestData.nino)
@@ -76,15 +76,15 @@ object RefundAmountPage extends BasePage {
     }
   }
 
-  def selectOtherAmountRadio() {
+  def selectOtherAmountRadio(): Unit = {
     click on refundDiffRadio
   }
 
-  def enterAmount(amount: String) {
+  def enterAmount(amount: String): Unit = {
     enterAmountInput.sendKeys(amount)
   }
 
-  def errorSummaryValidation(error: String) {
+  def errorSummaryValidation(error: String): Unit = {
     val amount: String = TestData.maxRefundAmount
 
     assertCurrentPageTitleError()
@@ -112,7 +112,7 @@ object RefundAmountPage extends BasePage {
     }
   }
 
-  def errorMessageValidation(error: String) {
+  def errorMessageValidation(error: String): Unit = {
     val amount: String = TestData.maxRefundAmount
 
     if (langToggle == Language.welsh) {
