@@ -3,21 +3,24 @@
 
 ### This is the acceptance test suite for online payments Income Tax Self-Assessment (self-assessment-refund) service.
 
-System properties can be used to specify the browser type and environment against which the tests should be run.
-The following options are currently supported:
+## Running the tests
 
-```
-browser = chrome / headless-chrome
-environment = local / dev / qa / staging
-```
+Prior to executing the tests ensure you have the appropriate [drivers installed](#installing-local-driver-binaries), install [MongoDB](https://docs.mongodb.com/manual/installation/) and install/configure [service manager](https://github.com/hmrc/service-manager).  
 
-To test the service locally, use the following service manager profile to run the required services
-```
-sm --start SELF_ASSESSMENT_REFUND -r
-```
+Run the following command to start services locally:
 
-As an example, to run tests locally using chrome, the following can be run from a shell script
-```
-driver_path=/usr/local/bin/chromedriver
-sbt -Denvironment=local -Dbrowser=chrome -Dwebdriver.chrome.driver=${driver_path} 'testOnly self-assessment-refund-acceptance-tests.runner.Runner'
-```
+    sudo mongod
+    sm --start SELF_ASSESSMENT_REFUND
+    
+All tests are run against dockerised environments. You must have [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid) installed.
+
+Start the dockerised environments through the `start.sh` script in docker-selenium-grid.
+
+Then execute the `run_tests.sh` script in the self-assessment-refund-acceptance-tests repo:
+
+    ./run_tests.sh <environment> <browser-driver>
+
+The `run_tests.sh` script defaults to the `local` environment with the dockerised `chrome` browser.  For a complete list of supported param values, see:
+ - [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid)  for **browser**
+
+
