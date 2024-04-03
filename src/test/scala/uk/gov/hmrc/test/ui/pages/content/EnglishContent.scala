@@ -141,7 +141,7 @@ object EnglishContent {
   def lockoutPageText(): String = {
     val date: String = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
     //Plus 1 hour to account for BST on VM’s
-    val time: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("h:mma")).toLowerCase()
+    val time: String = LocalDateTime.now().plusHours(1).format(DateTimeFormatter.ofPattern("h:mma")).toLowerCase()
 
     s"""You’ve tried to confirm your bank details too many times
        |Your refund request has not been submitted.
