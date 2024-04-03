@@ -7,4 +7,4 @@ addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.3")
 
 addSbtPlugin("uk.gov.hmrc" % "sbt-auto-build" % "3.20.0")
 
-addSbtPlugin("uk.gov.hmrc" % "sbt-test-report" % "0.22.0")
+addSbtPlugin("uk.gov.hmrc" % "sbt-test-report" % "0.24.0")
