@@ -5,6 +5,14 @@
       "reason": "Owned by a different team."
     },
     {
+      "path": "/bas-gateway",
+      "reason": "Owned by a different team."
+    },
+    {
+      "path": "/report-quarterly",
+      "reason": "Owned by a different team."
+    },
+    {
       "path": "/test-only",
       "reason": "Page used for internal use only."
     }
