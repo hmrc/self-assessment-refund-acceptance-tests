@@ -24,5 +24,4 @@ object AuthenticationPage extends BasePage {
 
   def expectedPageTitle = "TBC"
   def expectedPageHeader = "TBC"
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
 }

@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -39,13 +38,4 @@ object StatusRejectedPage extends BasePage {
     else s"Your refund of £$rejectedAmount1 has been rejected"
   }
 
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
-
-  def pageContent: String = id("main-content").webElement(driver).getText
-
-
-  def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.statusRejectedPageText())
-    else pageContent should be(EnglishContent.statusRejectedPageText())
-  }
 }

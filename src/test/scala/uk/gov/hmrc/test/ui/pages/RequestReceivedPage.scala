@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -43,8 +42,6 @@ object RequestReceivedPage extends BasePage {
     else "Refund request received"
   }
 
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
-
   def referenceNumber: String = cssSelector("span.line-break > strong").webElement(driver).getText
 
   def referenceContent: String = cssSelector("div.govuk-panel.govuk-panel--confirmation > div").webElement(driver).getText
@@ -55,15 +52,8 @@ object RequestReceivedPage extends BasePage {
 
   def amountValue: String = cssSelector("tr:nth-child(3) > td").webElement(driver).getText
 
-  def pageContent: String = id("main-content").webElement(driver).getText
-
   def setReferenceNumber(): Unit = {
     TestData.referenceNumber = referenceNumber
-  }
-
-  def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.requestReceivedPageText())
-    else pageContent should be(EnglishContent.requestReceivedPageText())
   }
 
   def referenceNumberDisplayed(): Assertion = {

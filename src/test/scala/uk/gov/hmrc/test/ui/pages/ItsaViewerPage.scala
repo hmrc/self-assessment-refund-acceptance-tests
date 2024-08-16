@@ -22,7 +22,6 @@ object ItsaViewerPage extends BasePage {
 
   def expectedPageTitle = "TBC - GOV.UK"
   def expectedPageHeader = "TBC"
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
 
 

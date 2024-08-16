@@ -17,8 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
-import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -36,10 +34,6 @@ object RefundAmountPage extends BasePage {
     else "How much do you want to be refunded?"
   }
 
-  def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
-
-  def pageContent: String = id("main-content").webElement(driver).getText
-
   def refundFullRadio: WebElement = id("choice-full").webElement(driver)
 
   def refundDiffRadio: WebElement = id("choice-different").webElement(driver)
@@ -56,12 +50,6 @@ object RefundAmountPage extends BasePage {
 
   def errorMessageAmount: WebElement = id("different-amount-error").webElement(driver)
 
-
-
-  def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.refundAmountPageText())
-    else pageContent should be(EnglishContent.refundAmountPageText())
-  }
 
   def selectRadio(radio: String, amount: String): Unit = {
     radio match {

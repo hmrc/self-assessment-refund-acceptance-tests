@@ -23,7 +23,6 @@ object SharedFunctions extends BasePage {
   val url = ""
   def expectedPageTitle = ""
   def expectedPageHeader = ""
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
   def expectedPage(page: String): Unit = {
     page match {

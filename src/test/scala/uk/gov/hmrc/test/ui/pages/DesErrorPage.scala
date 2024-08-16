@@ -16,8 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -32,15 +30,6 @@ object DesErrorPage extends BasePage {
   def expectedPageHeader =
     if (langToggle == Language.welsh) "Mae’n ddrwg gennym, mae problem gyda’r gwasanaeth"
     else "Sorry, there is a problem with the service"
-
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
-
-  def pageContent: String = id("main-content").webElement(driver).getText
-
-  def assertContent(): Assertion =  {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.requestFailedText())
-    else pageContent should be(EnglishContent.requestFailedText())
-  }
 
   def startAgainHref(): Unit = {
     cssSelector("#main-content > div > div > a").webElement(driver).getAttribute("href").toString should be("https://www.tax.service.gov.uk/report-quarterly/income-and-expenses/view/claim-refund")

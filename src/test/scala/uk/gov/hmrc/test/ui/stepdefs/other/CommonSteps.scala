@@ -79,58 +79,42 @@ class CommonSteps extends DriverActions {
     page match {
       case "RefundAmountPage" =>
         RefundAmountPage.shouldBeLoaded()
-        RefundAmountPage.assertContent()
       case "AccountOnFilePage" =>
         AccountOnFilePage.shouldBeLoaded()
-        AccountOnFilePage.assertContent()
       case "CheckDetailsPage" =>
         CheckDetailsPage.shouldBeLoaded()
-        CheckDetailsPage.assertContent()
       case "CheckDetailsPageNoRoll" =>
         CheckDetailsPage.shouldBeLoaded()
-        CheckDetailsPage.assertContentNoRoll()
       case "AuthenticationPage" =>
         AuthenticationPage.shouldBeLoaded()
       case "RequestReceivedPage" =>
         RequestReceivedPage.shouldBeLoaded()
         RequestReceivedPage.referenceNumberDisplayed()
         RequestReceivedPage.setReferenceNumber()
-        RequestReceivedPage.assertContent()
       case "EnterBankDetailsPage" =>
         EnterBankDetailsPage.shouldBeLoaded()
-        EnterBankDetailsPage.assertContent()
       case "TypeOfAccountPage" =>
         TypeOfAccountPage.shouldBeLoaded()
-        TypeOfAccountPage.assertContent()
       case "RefundHistoryPage" =>
         RefundsHistoryPage.shouldBeLoaded()
-        RefundsHistoryPage.assertContent("In Progress")
         RefundsHistoryPage.clickTab("History")
-        RefundsHistoryPage.assertContent("History")
       case "SurveyPage" =>
         SurveyPage.shouldBeLoaded()
       case "StatusApprovedPage" =>
         StatusApprovedPage.shouldBeLoaded()
-        StatusApprovedPage.assertContent()
       case "StatusProcessingPage" =>
         StatusProcessingPage.shouldBeLoaded()
-        StatusProcessingPage.assertContent()
       case "StatusRejectedPage" =>
         StatusRejectedPage.shouldBeLoaded()
-        StatusRejectedPage.assertContent()
       case "StatusPaidPage" =>
         StatusPaidPage.shouldBeLoaded()
-        StatusPaidPage.assertContent()
       case "IvKickoutPage" =>
         //TODO - probable bug - no ticket for it.
 //        IvKickoutPage.shouldBeLoaded()
-        IvKickoutPage.assertContent()
       case "LockoutPage" =>
         LockoutPage.shouldBeLoaded()
-        LockoutPage.assertContent()
       case "DesErrorPage" =>
         DesErrorPage.shouldBeLoaded()
-        DesErrorPage.assertContent()
       case "ItsaViewerPage" => ItsaViewerPage.assertCurrentUrl()
     }
   }

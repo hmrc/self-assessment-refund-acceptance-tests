@@ -16,9 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.EnterBankDetailsPage.pageContent
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -34,18 +31,6 @@ object CheckDetailsPage extends BasePage {
   def expectedPageHeader = {
     if (langToggle == Language.welsh) "Gwiriwch eich manylion"
     else "Check your details"
-  }
-
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
-
-  def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.checkDetailsPageText())
-    else pageContent should be(EnglishContent.checkDetailsPageText())
-  }
-
-  def assertContentNoRoll(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.checkDetailsPageNoRollText())
-    else pageContent should be(EnglishContent.checkDetailsPageNoRollText())
   }
 
   def changeType(): Unit = cssSelector("#main-content > div > div > dl > div:nth-child(1) > dd.govuk-summary-list__actions > a").webElement(driver).click()

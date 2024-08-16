@@ -25,7 +25,6 @@ object AuthWizardPage extends BasePage {
 
   def expectedPageTitle = "Authority Wizard"
   def expectedPageHeader = "Authority Wizard"
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
   def enterRedirectUrl(url: String): Unit = {
     name("redirectionUrl").webElement(driver).sendKeys(url)

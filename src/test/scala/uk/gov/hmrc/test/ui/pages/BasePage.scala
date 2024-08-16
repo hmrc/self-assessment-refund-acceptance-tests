@@ -26,7 +26,7 @@ trait BasePage extends DriverActions with Matchers {
 
   val url: String
   def expectedPageTitle: String
-  def expectedPageTitleError: String
+  def expectedPageTitleError: String = "Error: " + expectedPageTitle
   def expectedPageService: String = {
     if (langToggle == Language.welsh) "Gwneud cais am ad-daliad Hunanasesiad"
     else "Request a Self Assessment refund"

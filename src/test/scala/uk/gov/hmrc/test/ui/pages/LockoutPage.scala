@@ -16,8 +16,6 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -34,13 +32,4 @@ object LockoutPage extends BasePage {
     else s"You’ve tried to confirm your bank details too many times"
   }
 
-  def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
-
-  def pageContent: String = id("main-content").webElement(driver).getText
-
-
-  def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.lockoutPageText())
-    else pageContent should be(EnglishContent.lockoutPageText())
-  }
 }

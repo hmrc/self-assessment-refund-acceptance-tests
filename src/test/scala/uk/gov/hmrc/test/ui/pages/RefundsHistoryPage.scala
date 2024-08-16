@@ -17,8 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
-import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -37,10 +35,6 @@ object RefundsHistoryPage extends BasePage {
     else "Your refund history"
   }
 
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
-
-  def pageContent: String = id("main-content").webElement(driver).getText
-
   //In Progress
   def inProgressTab: WebElement = id("tab_in-progress").webElement(driver)
   def inProgressRequestedOnDate(num: String): WebElement = cssSelector(s"#in-progress > div > table > tbody > tr:nth-child($num) > th").webElement(driver)
@@ -53,14 +47,6 @@ object RefundsHistoryPage extends BasePage {
   def history(num: String): WebElement = cssSelector(s"#completed > div > table > tbody > tr:nth-child($num) > td:nth-child(2)").webElement(driver)
   def historyAmountClaimed(num: String): WebElement = cssSelector(s"#history > div > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement(driver)
   def historyRejected(num: String): WebElement = cssSelector(s"#history > div > table > tbody > tr:nth-child($num) > td:nth-child(5) > a").webElement(driver)
-
-
-  def assertContent(tab: String): Assertion = {
-    tab match {
-      case "In Progress" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryInProgressPageText()) else pageContent should be(EnglishContent.refundHistoryInProgressPageText())
-      case "History" => if (langToggle == Language.welsh) pageContent should be(WelshContent.refundHistoryHistoryPageText()) else pageContent should be(EnglishContent.refundHistoryHistoryPageText())
-    }
-  }
 
   def clickTab(tab: String): Unit ={
     tab match {

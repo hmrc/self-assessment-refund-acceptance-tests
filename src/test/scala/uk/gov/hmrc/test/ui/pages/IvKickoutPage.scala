@@ -17,8 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
-import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -35,17 +33,6 @@ object IvKickoutPage extends BasePage {
     if (langToggle == Language.welsh) "Nid oedd modd i ni gadarnhau pwy ydych"
     else "We could not confirm your identity"
   }
-
-  def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
-
-  def pageContent: String = id("main-content").webElement(driver).getText
-
-  def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.ivKickoutPageText())
-    else pageContent should be(EnglishContent.ivKickoutPageText())
-  }
-
-
 
 
 

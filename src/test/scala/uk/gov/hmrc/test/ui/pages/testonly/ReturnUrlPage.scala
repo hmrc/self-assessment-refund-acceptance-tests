@@ -25,5 +25,4 @@ object ReturnUrlPage extends BasePage {
   val url = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/show-return-url"
   def expectedPageTitle = "Return url"
   def expectedPageHeader = "Return Url page"
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
 }

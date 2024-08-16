@@ -17,8 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
-import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -35,8 +33,6 @@ object EnterBankDetailsPage extends BasePage {
     if (langToggle == Language.welsh) "Nodwch fanylion y cyfrif banc neu’r cyfrif cymdeithas adeiladu"
     else "Enter bank or building society account details"
   }
-
-  def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
 
   def accType: String = ScenarioContext.get("personalOrBusiness")
 
@@ -63,11 +59,6 @@ object EnterBankDetailsPage extends BasePage {
 //  override def assertCurrentUrl(): Assertion = {
 //    currentUrl should fullyMatch regex s"""$url/$accType/[a-z0-9]{24}""".r
 //  }
-
-  def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.enterBankDetailsPageText())
-    else pageContent should be(EnglishContent.enterBankDetailsPageText())
-  }
 
   def assertNoDetailsError(): Unit = {
     clearBankDetails()

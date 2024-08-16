@@ -25,7 +25,6 @@ object SurveyPage extends BasePage {
 
   def expectedPageTitle = "How was our payment service? - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = "How was our payment service?"
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
 
 }

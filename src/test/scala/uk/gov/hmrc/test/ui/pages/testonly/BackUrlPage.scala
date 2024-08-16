@@ -24,6 +24,5 @@ object BackUrlPage extends BasePage {
   val url = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/show-back-url"
   def expectedPageTitle = "Back Page - Business tax account - GOV.UK"
   def expectedPageHeader = "Back url page"
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
 }

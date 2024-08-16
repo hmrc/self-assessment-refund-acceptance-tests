@@ -25,7 +25,6 @@ object TestOnlyStartPage extends BasePage {
 
   def expectedPageTitle = "TBC"
   def expectedPageHeader = "TBC"
-  def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
   def clickRadio(nino: String): Unit ={
     nino match {

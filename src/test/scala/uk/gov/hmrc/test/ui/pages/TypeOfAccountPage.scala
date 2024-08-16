@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.WebElement
 import org.scalatest.Assertion
-import uk.gov.hmrc.test.ui.pages.content.{EnglishContent, WelshContent}
 import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -36,24 +35,15 @@ object TypeOfAccountPage extends BasePage {
     else "What type of account details are you providing?"
   }
 
-  def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
-
   def businessAccountRadio: WebElement = id("accountType").webElement(driver)
 
   def personalAccountRadio: WebElement = id("accountType-2").webElement(driver)
-
-  def pageContent: String = id("main-content").webElement(driver).getText
 
   def errorSummaryTitle: WebElement = id("error-summary-title").webElement(driver)
 
   def errorSummary: WebElement = cssSelector("div > ul > li > a").webElement(driver)
 
   def errorMessage: WebElement = id("accountType-error").webElement(driver)
-
-  def assertContent(): Assertion = {
-    if (langToggle == Language.welsh) pageContent should be(WelshContent.typeOfAccountPageText())
-    else pageContent should be(EnglishContent.typeOfAccountPageText())
-  }
 
   def selectRadio(radio: String): Unit = {
     radio match {
