@@ -36,7 +36,7 @@ object AccountOnFilePage extends BasePage {
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
-  def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement(driver).getText
 
   def assertContent(): Assertion =  {
     if (langToggle == Language.welsh) pageContent should be(WelshContent.accountOnFilePageText())

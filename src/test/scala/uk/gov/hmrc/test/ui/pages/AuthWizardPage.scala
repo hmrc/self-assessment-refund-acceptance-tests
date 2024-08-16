@@ -28,11 +28,11 @@ object AuthWizardPage extends BasePage {
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
   def enterRedirectUrl(url: String): Unit = {
-    name("redirectionUrl").webElement.sendKeys(url)
+    name("redirectionUrl").webElement(driver).sendKeys(url)
   }
 
   def enterValidNino(): Unit =
-    id("nino").webElement.sendKeys(ScenarioContext.getOrElse("nino","AB111111C"))
+    id("nino").webElement(driver).sendKeys(ScenarioContext.getOrElse("nino","AB111111C"))
 
   def setConfidenceLevel(cl: String): Unit =
     singleSel(name("confidenceLevel")).value = cl

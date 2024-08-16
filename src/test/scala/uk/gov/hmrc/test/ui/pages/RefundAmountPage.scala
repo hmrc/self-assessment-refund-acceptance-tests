@@ -38,23 +38,23 @@ object RefundAmountPage extends BasePage {
 
   def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
 
-  def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement(driver).getText
 
-  def refundFullRadio: WebElement = id("choice-full").webElement
+  def refundFullRadio: WebElement = id("choice-full").webElement(driver)
 
-  def refundDiffRadio: WebElement = id("choice-different").webElement
+  def refundDiffRadio: WebElement = id("choice-different").webElement(driver)
 
-  def enterAmountInput: WebElement = id("different-amount").webElement
+  def enterAmountInput: WebElement = id("different-amount").webElement(driver)
 
-  def errorSummaryTitle: WebElement = id("error-summary-title").webElement
+  def errorSummaryTitle: WebElement = id("error-summary-title").webElement(driver)
 
-  def errorSummaryAmount: WebElement = id("amount-error-summary").webElement
+  def errorSummaryAmount: WebElement = id("amount-error-summary").webElement(driver)
 
-  def errorSummaryChoice: WebElement = id("choice-error-summary").webElement
+  def errorSummaryChoice: WebElement = id("choice-error-summary").webElement(driver)
 
-  def errorMessageChoice: WebElement = id("choice-error").webElement
+  def errorMessageChoice: WebElement = id("choice-error").webElement(driver)
 
-  def errorMessageAmount: WebElement = id("different-amount-error").webElement
+  def errorMessageAmount: WebElement = id("different-amount-error").webElement(driver)
 
 
 

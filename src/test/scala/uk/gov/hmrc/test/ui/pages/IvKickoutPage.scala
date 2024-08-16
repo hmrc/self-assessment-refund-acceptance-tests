@@ -38,7 +38,7 @@ object IvKickoutPage extends BasePage {
 
   def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
 
-  def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement(driver).getText
 
   def assertContent(): Assertion = {
     if (langToggle == Language.welsh) pageContent should be(WelshContent.ivKickoutPageText())
@@ -51,19 +51,19 @@ object IvKickoutPage extends BasePage {
 
   // IV Stub Page
 
-  def ninoEntry: WebElement = id("forNino").webElement
+  def ninoEntry: WebElement = id("forNino").webElement(driver)
 
   def IvOutcome(outcome: String): WebElement = {
     outcome match {
-      case "Success" => id("Success").webElement
-      case "Pre Condition Failed" => id("PreconditionFailed").webElement
-      case "Locked Out" => id("LockedOut").webElement
-      case "Insufficient Evidence" => id("InsufficientEvidence").webElement
-      case "Failed Matching" => id("FailedMatching").webElement
-      case "Technical Issue" => id("TechnicalIssue").webElement
-      case "User Aborted" => id("UserAborted").webElement
-      case "Timed Out" => id("Timeout").webElement
-      case "Failed IV" => id("FailedIV").webElement
+      case "Success" => id("Success").webElement(driver)
+      case "Pre Condition Failed" => id("PreconditionFailed").webElement(driver)
+      case "Locked Out" => id("LockedOut").webElement(driver)
+      case "Insufficient Evidence" => id("InsufficientEvidence").webElement(driver)
+      case "Failed Matching" => id("FailedMatching").webElement(driver)
+      case "Technical Issue" => id("TechnicalIssue").webElement(driver)
+      case "User Aborted" => id("UserAborted").webElement(driver)
+      case "Timed Out" => id("Timeout").webElement(driver)
+      case "Failed IV" => id("FailedIV").webElement(driver)
     }
   }
 

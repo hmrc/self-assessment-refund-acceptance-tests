@@ -36,7 +36,7 @@ object LockoutPage extends BasePage {
 
   def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
 
-  def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement(driver).getText
 
 
   def assertContent(): Assertion = {

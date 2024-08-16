@@ -45,17 +45,17 @@ object RequestReceivedPage extends BasePage {
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
-  def referenceNumber: String = cssSelector("span.line-break > strong").webElement.getText
+  def referenceNumber: String = cssSelector("span.line-break > strong").webElement(driver).getText
 
-  def referenceContent: String = cssSelector("div.govuk-panel.govuk-panel--confirmation > div").webElement.getText
+  def referenceContent: String = cssSelector("div.govuk-panel.govuk-panel--confirmation > div").webElement(driver).getText
 
-  def taxValue: String = cssSelector("tr:nth-child(1) > td").webElement.getText
+  def taxValue: String = cssSelector("tr:nth-child(1) > td").webElement(driver).getText
 
-  def dateValue: String = cssSelector("tr:nth-child(2) > td").webElement.getText
+  def dateValue: String = cssSelector("tr:nth-child(2) > td").webElement(driver).getText
 
-  def amountValue: String = cssSelector("tr:nth-child(3) > td").webElement.getText
+  def amountValue: String = cssSelector("tr:nth-child(3) > td").webElement(driver).getText
 
-  def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement(driver).getText
 
   def setReferenceNumber(): Unit = {
     TestData.referenceNumber = referenceNumber

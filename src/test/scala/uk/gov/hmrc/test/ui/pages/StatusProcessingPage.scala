@@ -43,7 +43,7 @@ object StatusProcessingPage extends BasePage {
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
-  def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement(driver).getText
 
 
   def assertContent(): Assertion = {

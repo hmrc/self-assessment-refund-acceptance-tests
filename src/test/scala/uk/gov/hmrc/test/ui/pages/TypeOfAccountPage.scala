@@ -38,17 +38,17 @@ object TypeOfAccountPage extends BasePage {
 
   def expectedPageTitleError = if (langToggle == Language.welsh) "Gwall: " + expectedPageTitle else "Error: " + expectedPageTitle
 
-  def businessAccountRadio: WebElement = id("accountType").webElement
+  def businessAccountRadio: WebElement = id("accountType").webElement(driver)
 
-  def personalAccountRadio: WebElement = id("accountType-2").webElement
+  def personalAccountRadio: WebElement = id("accountType-2").webElement(driver)
 
-  def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement(driver).getText
 
-  def errorSummaryTitle: WebElement = id("error-summary-title").webElement
+  def errorSummaryTitle: WebElement = id("error-summary-title").webElement(driver)
 
-  def errorSummary: WebElement = cssSelector("div > ul > li > a").webElement
+  def errorSummary: WebElement = cssSelector("div > ul > li > a").webElement(driver)
 
-  def errorMessage: WebElement = id("accountType-error").webElement
+  def errorMessage: WebElement = id("accountType-error").webElement(driver)
 
   def assertContent(): Assertion = {
     if (langToggle == Language.welsh) pageContent should be(WelshContent.typeOfAccountPageText())

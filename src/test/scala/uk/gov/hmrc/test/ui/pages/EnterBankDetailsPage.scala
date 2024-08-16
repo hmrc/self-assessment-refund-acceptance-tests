@@ -40,25 +40,25 @@ object EnterBankDetailsPage extends BasePage {
 
   def accType: String = ScenarioContext.get("personalOrBusiness")
 
-  def accountName: WebElement = id("accountName").webElement
-  def sortCode: WebElement = id("sortCode").webElement
-  def accountNumber: WebElement = id("accountNumber").webElement
-  def buildingRollNumber: WebElement = id("rollNumber").webElement
-  def pageContent: String = id("main-content").webElement.getText
-  def sortCodeHint: WebElement = id("sortCode-hint").webElement
-  def accountNumberHint: WebElement = id("accountNumber-hint").webElement
-  def rollNumberHint: WebElement = id("rollNumber-hint").webElement
+  def accountName: WebElement = id("accountName").webElement(driver)
+  def sortCode: WebElement = id("sortCode").webElement(driver)
+  def accountNumber: WebElement = id("accountNumber").webElement(driver)
+  def buildingRollNumber: WebElement = id("rollNumber").webElement(driver)
+  def pageContent: String = id("main-content").webElement(driver).getText
+  def sortCodeHint: WebElement = id("sortCode-hint").webElement(driver)
+  def accountNumberHint: WebElement = id("accountNumber-hint").webElement(driver)
+  def rollNumberHint: WebElement = id("rollNumber-hint").webElement(driver)
 
-  def errorSummaryTitle: WebElement = id("error-summary-title").webElement
-  def errorSummary(number: String): WebElement = cssSelector("div > ul > li:nth-child("+number+") > a").webElement
-  def errorSummaryAccountName: WebElement = id("accountName-error-summary").webElement
-  def errorSummarySortCode: WebElement = id("sortCode-error-summary").webElement
-  def errorSummaryAccountNumber: WebElement = id("accountNumber-error-summary").webElement
-  def errorSummaryRollNumber: WebElement = id("rollNumber-error-summary").webElement
-  def errorMessageAccountName: WebElement = id("accountName-error").webElement
-  def errorMessageSortCode: WebElement = id("sortCode-error").webElement
-  def errorMessageAccountNumber: WebElement = id("accountNumber-error").webElement
-  def errorMessageRollNumber: WebElement = id("rollNumber-error").webElement
+  def errorSummaryTitle: WebElement = id("error-summary-title").webElement(driver)
+  def errorSummary(number: String): WebElement = cssSelector("div > ul > li:nth-child("+number+") > a").webElement(driver)
+  def errorSummaryAccountName: WebElement = id("accountName-error-summary").webElement(driver)
+  def errorSummarySortCode: WebElement = id("sortCode-error-summary").webElement(driver)
+  def errorSummaryAccountNumber: WebElement = id("accountNumber-error-summary").webElement(driver)
+  def errorSummaryRollNumber: WebElement = id("rollNumber-error-summary").webElement(driver)
+  def errorMessageAccountName: WebElement = id("accountName-error").webElement(driver)
+  def errorMessageSortCode: WebElement = id("sortCode-error").webElement(driver)
+  def errorMessageAccountNumber: WebElement = id("accountNumber-error").webElement(driver)
+  def errorMessageRollNumber: WebElement = id("rollNumber-error").webElement(driver)
 
 //  override def assertCurrentUrl(): Assertion = {
 //    currentUrl should fullyMatch regex s"""$url/$accType/[a-z0-9]{24}""".r

@@ -35,7 +35,7 @@ object DesErrorPage extends BasePage {
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
-  def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement(driver).getText
 
   def assertContent(): Assertion =  {
     if (langToggle == Language.welsh) pageContent should be(WelshContent.requestFailedText())
@@ -43,7 +43,7 @@ object DesErrorPage extends BasePage {
   }
 
   def startAgainHref(): Unit = {
-    cssSelector("#main-content > div > div > a").webElement.getAttribute("href").toString should be("https://www.tax.service.gov.uk/report-quarterly/income-and-expenses/view/claim-refund")
+    cssSelector("#main-content > div > div > a").webElement(driver).getAttribute("href").toString should be("https://www.tax.service.gov.uk/report-quarterly/income-and-expenses/view/claim-refund")
   }
 
   def clickContactLink(): Unit = {

@@ -39,20 +39,20 @@ object RefundsHistoryPage extends BasePage {
 
   def expectedPageTitleError: String = "Error: " + expectedPageTitle
 
-  def pageContent: String = id("main-content").webElement.getText
+  def pageContent: String = id("main-content").webElement(driver).getText
 
   //In Progress
-  def inProgressTab: WebElement = id("tab_in-progress").webElement
-  def inProgressRequestedOnDate(num: String): WebElement = cssSelector(s"#in-progress > div > table > tbody > tr:nth-child($num) > th").webElement
-  def inProgressAmountClaimed(num: String): WebElement = cssSelector(s"#in-progress > div > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement
-  def viewProcessing(num: String): WebElement = cssSelector(s"#in-progress > div > table > tbody > tr:nth-child($num) > td:nth-child(4) > a").webElement
+  def inProgressTab: WebElement = id("tab_in-progress").webElement(driver)
+  def inProgressRequestedOnDate(num: String): WebElement = cssSelector(s"#in-progress > div > table > tbody > tr:nth-child($num) > th").webElement(driver)
+  def inProgressAmountClaimed(num: String): WebElement = cssSelector(s"#in-progress > div > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement(driver)
+  def viewProcessing(num: String): WebElement = cssSelector(s"#in-progress > div > table > tbody > tr:nth-child($num) > td:nth-child(4) > a").webElement(driver)
 
   // History
-  def historyTab: WebElement = id("tab_history").webElement
-  def historyRequestedOnDate(num: String): WebElement = cssSelector(s"#completed > div > table > tbody > tr:nth-child($num) > th").webElement
-  def history(num: String): WebElement = cssSelector(s"#completed > div > table > tbody > tr:nth-child($num) > td:nth-child(2)").webElement
-  def historyAmountClaimed(num: String): WebElement = cssSelector(s"#history > div > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement
-  def historyRejected(num: String): WebElement = cssSelector(s"#history > div > table > tbody > tr:nth-child($num) > td:nth-child(5) > a").webElement
+  def historyTab: WebElement = id("tab_history").webElement(driver)
+  def historyRequestedOnDate(num: String): WebElement = cssSelector(s"#completed > div > table > tbody > tr:nth-child($num) > th").webElement(driver)
+  def history(num: String): WebElement = cssSelector(s"#completed > div > table > tbody > tr:nth-child($num) > td:nth-child(2)").webElement(driver)
+  def historyAmountClaimed(num: String): WebElement = cssSelector(s"#history > div > table > tbody > tr:nth-child($num) > td.govuk-table__cell.govuk-table__cell--numeric.no-break").webElement(driver)
+  def historyRejected(num: String): WebElement = cssSelector(s"#history > div > table > tbody > tr:nth-child($num) > td:nth-child(5) > a").webElement(driver)
 
 
   def assertContent(tab: String): Assertion = {
