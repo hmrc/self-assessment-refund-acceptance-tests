@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
+import uk.gov.hmrc.test.ui.stepdefs.DriverActions
 import uk.gov.hmrc.test.ui.testdata.Language
 
 

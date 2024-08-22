@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
 import uk.gov.hmrc.test.ui.pages.CheckDetailsPage
-import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
+import uk.gov.hmrc.test.ui.stepdefs.DriverActions
 
 class CheckDetailsStepDef extends DriverActions {
 

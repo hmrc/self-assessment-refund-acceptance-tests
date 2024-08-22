@@ -18,56 +18,56 @@ package uk.gov.hmrc.test.ui.stepdefs.pages
 
 import uk.gov.hmrc.test.ui.pages.EnterBankDetailsPage
 import uk.gov.hmrc.test.ui.pages.support.HelperFunctions
-import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
-
 import java.lang.Thread.sleep
+
+import uk.gov.hmrc.test.ui.stepdefs.DriverActions
 
 class EnterBankDetailsStepDef extends DriverActions {
 
-  And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (accType: String, roll: String) =>
-    ScenarioContext.set("bankDetails", roll match {
-      case "with" => accType match {
-        case "personal" => BankDetails.rollRequiredAccount
-        case "business" => BankDetails.businessRollRequiredAccount
-      }
-      case "without" => accType match {
-        case "personal" => BankDetails.validAccount
-        case "business" => BankDetails.businessAccount
-      }
-    })
-
-    val bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
-
-    roll match {
-      case "with" => EnterBankDetailsPage.enterBankDetailsWithRoll(bankDetails)
-      case _ => EnterBankDetailsPage.enterBankDetails(bankDetails)
-    }
-  }
+//  And("""^the user enter valid (personal|business) bank details (with|without) roll number$""") { (accType: String, roll: String) =>
+//    ScenarioContext.set("bankDetails", roll match {
+//      case "with" => accType match {
+//        case "personal" => BankDetails.rollRequiredAccount
+//        case "business" => BankDetails.businessRollRequiredAccount
+//      }
+//      case "without" => accType match {
+//        case "personal" => BankDetails.validAccount
+//        case "business" => BankDetails.businessAccount
+//      }
+//    })
+//
+//    val bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
+//
+//    roll match {
+//      case "with" => EnterBankDetailsPage.enterBankDetailsWithRoll(bankDetails)
+//      case _ => EnterBankDetailsPage.enterBankDetails(bankDetails)
+//    }
+//  }
 
   When("""^the User enters (.*) bank details$""") { state: String =>
     EnterBankDetailsPage.clearBankDetails()
-    ScenarioContext.set("bankDetails", state match {
-      case "amended" => BankDetails.amendedAccount
-      case "invalid" => BankDetails.invalidAccount
-      case "invalidName" => BankDetails.invalidNameAccount
-      case "indeterminate" => BankDetails.indeterminateAccount
-      case "validBusiness" => BankDetails.businessAccount
-      case "invalidBusiness" => BankDetails.invalidBusinessAccount
-      case "invalidNameBusiness" => BankDetails.invalidBusinessNameAccount
-      case "amendedBusiness" => BankDetails.amendedBusinessAccount
-      case "indeterminateBusiness" => BankDetails.indeterminateBusinessAccount
-      case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
-      case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
-      case "onEISCD=No" => BankDetails.onEISCDNoAccount
-      case "denyList" => BankDetails.denyListAccount
-      case "partialNameBusiness" => BankDetails.partialNameBusinessAccount
-      case "partialName" => BankDetails.partialNameAccount
-      case "rollNumberRequired" => BankDetails.rollRequiredAccount
-      case "noRollNumberButRequired" => BankDetails.rollRequiredAccount
-      case "businessRollNumberRequired" => BankDetails.businessRollRequiredAccount
-      case _ => BankDetails.validAccount
-    })
+//    ScenarioContext.set("bankDetails", state match {
+////      case "amended" => BankDetails.amendedAccount
+////      case "invalid" => BankDetails.invalidAccount
+////      case "invalidName" => BankDetails.invalidNameAccount
+////      case "indeterminate" => BankDetails.indeterminateAccount
+////      case "validBusiness" => BankDetails.businessAccount
+////      case "invalidBusiness" => BankDetails.invalidBusinessAccount
+////      case "invalidNameBusiness" => BankDetails.invalidBusinessNameAccount
+////      case "amendedBusiness" => BankDetails.amendedBusinessAccount
+////      case "indeterminateBusiness" => BankDetails.indeterminateBusinessAccount
+////      case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
+////      case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
+////      case "onEISCD=No" => BankDetails.onEISCDNoAccount
+////      case "denyList" => BankDetails.denyListAccount
+////      case "partialNameBusiness" => BankDetails.partialNameBusinessAccount
+////      case "partialName" => BankDetails.partialNameAccount
+////      case "rollNumberRequired" => BankDetails.rollRequiredAccount
+////      case "noRollNumberButRequired" => BankDetails.rollRequiredAccount
+////      case "businessRollNumberRequired" => BankDetails.businessRollRequiredAccount
+////      case _ => BankDetails.validAccount
+//    })
 
     val bankDetails: BankDetails = ScenarioContext.get[BankDetails]("bankDetails")
 
@@ -138,41 +138,41 @@ class EnterBankDetailsStepDef extends DriverActions {
   When("""^the user enters (.*) into the (.*) field$""") {
     (input: String, field: String) =>
       def field1: String = field.toLowerCase
-
-      input match {
-        case "none" => field1 match {
-          case "account name" =>
-            EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
-            EnterBankDetailsPage.clearAccountName()
-          case "sortcode" =>
-            EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
-            EnterBankDetailsPage.clearSortcode()
-          case "account number" =>
-            EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
-            EnterBankDetailsPage.clearAccountNumber()
-          case "roll number" =>
-            EnterBankDetailsPage.enterBankDetails(BankDetails.rollRequiredAccount)
-            EnterBankDetailsPage.clearRollNumber()
-        }
-        case _ =>
-          field1 match {
-            case "account name" =>
-              EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
-              EnterBankDetailsPage.clearAccountName()
-              EnterBankDetailsPage.enterAccountName(input)
-            case "sortcode" =>
-              EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
-              EnterBankDetailsPage.clearSortcode()
-              EnterBankDetailsPage.enterSortcode(input)
-            case "account number" =>
-              EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
-              EnterBankDetailsPage.clearAccountNumber()
-              EnterBankDetailsPage.enterAccountNumber(input)
-            case "roll number" =>
-              EnterBankDetailsPage.enterBankDetails(BankDetails.rollRequiredAccount)
-              EnterBankDetailsPage.clearRollNumber()
-              EnterBankDetailsPage.enterRollNumberNew(input)
-          }
-      }
+//
+//      input match {
+//        case "none" => field1 match {
+//          case "account name" =>
+//            EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
+//            EnterBankDetailsPage.clearAccountName()
+//          case "sortcode" =>
+//            EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
+//            EnterBankDetailsPage.clearSortcode()
+//          case "account number" =>
+//            EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
+//            EnterBankDetailsPage.clearAccountNumber()
+//          case "roll number" =>
+//            EnterBankDetailsPage.enterBankDetails(BankDetails.rollRequiredAccount)
+//            EnterBankDetailsPage.clearRollNumber()
+//        }
+//        case _ =>
+//          field1 match {
+//            case "account name" =>
+//              EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
+//              EnterBankDetailsPage.clearAccountName()
+//              EnterBankDetailsPage.enterAccountName(input)
+//            case "sortcode" =>
+//              EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
+//              EnterBankDetailsPage.clearSortcode()
+//              EnterBankDetailsPage.enterSortcode(input)
+//            case "account number" =>
+//              EnterBankDetailsPage.enterBankDetails(BankDetails.validAccount)
+//              EnterBankDetailsPage.clearAccountNumber()
+//              EnterBankDetailsPage.enterAccountNumber(input)
+//            case "roll number" =>
+//              EnterBankDetailsPage.enterBankDetails(BankDetails.rollRequiredAccount)
+//              EnterBankDetailsPage.clearRollNumber()
+//              EnterBankDetailsPage.enterRollNumberNew(input)
+//          }
+//      }
   }
 }

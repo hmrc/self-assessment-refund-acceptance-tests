@@ -1,0 +1,84 @@
+/*
+ * Copyright 2024 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package uk.gov.hmrc.test.ui.stepdefs
+
+import uk.gov.hmrc.test.ui.pages._
+
+class AssertionSteps extends DriverActions {
+
+  Then("""^the user is on the (.*)$""") { page: String =>
+    page match {
+      case "AccountOnFilePage" =>
+        AccountOnFilePage.shouldBeLoaded()
+      case "CheckDetailsPage" =>
+        CheckDetailsPage.shouldBeLoaded()
+      case "DummyReauthenticationPage" =>
+        DummyReauthenticationPage.shouldBeLoaded()
+      case "EnterBankDetailsPage" =>
+        EnterBankDetailsPage.shouldBeLoaded()
+      case "RefundAmountPage" =>
+        RefundAmountPage.shouldBeLoaded()
+      case "RequestReceivedPage" =>
+        RequestReceivedPage.shouldBeLoaded()
+        findTextByCssSelector("div.govuk-panel.govuk-panel--confirmation > div") should include regex """Your refund reference is
+            |[a-z0-9]{12}""".stripMargin.r
+      case "SurveyPage" =>
+              SurveyPage.shouldBeLoaded()
+      case "TypeOfAccountPage" =>
+        TypeOfAccountPage.shouldBeLoaded()
+//      case "CheckDetailsPageNoRoll" =>
+//        CheckDetailsPage.shouldBeLoaded()
+//      case "AuthenticationPage" =>
+//        AuthenticationPage.shouldBeLoaded()
+//      case "RefundHistoryPage" =>
+//        RefundsHistoryPage.shouldBeLoaded()
+//        RefundsHistoryPage.clickTab("History")
+//      case "StatusApprovedPage" =>
+//        StatusApprovedPage.shouldBeLoaded()
+//      case "StatusProcessingPage" =>
+//        StatusProcessingPage.shouldBeLoaded()
+//      case "StatusRejectedPage" =>
+//        StatusRejectedPage.shouldBeLoaded()
+//      case "StatusPaidPage" =>
+//        StatusPaidPage.shouldBeLoaded()
+//      case "IvKickoutPage" =>
+//      //TODO - probable bug - no ticket for it.
+//      //        IvKickoutPage.shouldBeLoaded()
+//      case "LockoutPage" =>
+//        LockoutPage.shouldBeLoaded()
+//      case "DesErrorPage" =>
+//        DesErrorPage.shouldBeLoaded()
+//      case "ItsaViewerPage" => ItsaViewerPage.assertCurrentUrl()
+    }
+  }
+
+  Then("""^the page shows (.*) and (.*) the roll number$""") { (amount: String, roll: String) =>
+    roll match {
+      case "shows" => isPresent("//*[@id=\"main-content\"]/div/div/dl/div[5]/dt")
+        amount match {
+          case "the full amount" => findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£987.65"
+          case "the amount typed" => findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£100.00"
+        }
+      case "doesn't show" => !isPresent("//*[@id=\"main-content\"]/div/div/dl/div[5]/dt")
+        amount match {
+          case "the full amount" => findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£987.65"
+          case "the amount typed" => findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£100.00"
+        }
+    }
+  }
+
+}

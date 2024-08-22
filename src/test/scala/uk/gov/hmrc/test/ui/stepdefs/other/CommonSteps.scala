@@ -16,20 +16,12 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.other
 
-import uk.gov.hmrc.test.ui.mongo.MongoDriver
 import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.support.HelperFunctions
+import uk.gov.hmrc.test.ui.stepdefs.DriverActions
 import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext}
 
 class CommonSteps extends DriverActions {
-
-  And("""^the user click continue$""") { () =>
-    continue()
-  }
-
-  And("""^the database has been dropped$""") { () =>
-    MongoDriver.dropDatabases()
-  }
 
   And("""^the user signs out$""") { () =>
     signOut()
@@ -75,47 +67,4 @@ class CommonSteps extends DriverActions {
     AuthWizardPage.clickSubmit()
   }
 
-  And("""^the user is on the (.*)$""") { page: String =>
-    page match {
-      case "RefundAmountPage" =>
-        RefundAmountPage.shouldBeLoaded()
-      case "AccountOnFilePage" =>
-        AccountOnFilePage.shouldBeLoaded()
-      case "CheckDetailsPage" =>
-        CheckDetailsPage.shouldBeLoaded()
-      case "CheckDetailsPageNoRoll" =>
-        CheckDetailsPage.shouldBeLoaded()
-      case "AuthenticationPage" =>
-        AuthenticationPage.shouldBeLoaded()
-      case "RequestReceivedPage" =>
-        RequestReceivedPage.shouldBeLoaded()
-        RequestReceivedPage.referenceNumberDisplayed()
-        RequestReceivedPage.setReferenceNumber()
-      case "EnterBankDetailsPage" =>
-        EnterBankDetailsPage.shouldBeLoaded()
-      case "TypeOfAccountPage" =>
-        TypeOfAccountPage.shouldBeLoaded()
-      case "RefundHistoryPage" =>
-        RefundsHistoryPage.shouldBeLoaded()
-        RefundsHistoryPage.clickTab("History")
-      case "SurveyPage" =>
-        SurveyPage.shouldBeLoaded()
-      case "StatusApprovedPage" =>
-        StatusApprovedPage.shouldBeLoaded()
-      case "StatusProcessingPage" =>
-        StatusProcessingPage.shouldBeLoaded()
-      case "StatusRejectedPage" =>
-        StatusRejectedPage.shouldBeLoaded()
-      case "StatusPaidPage" =>
-        StatusPaidPage.shouldBeLoaded()
-      case "IvKickoutPage" =>
-        //TODO - probable bug - no ticket for it.
-//        IvKickoutPage.shouldBeLoaded()
-      case "LockoutPage" =>
-        LockoutPage.shouldBeLoaded()
-      case "DesErrorPage" =>
-        DesErrorPage.shouldBeLoaded()
-      case "ItsaViewerPage" => ItsaViewerPage.assertCurrentUrl()
-    }
-  }
 }

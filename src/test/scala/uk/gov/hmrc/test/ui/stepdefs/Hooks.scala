@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.stepdefs.other
+package uk.gov.hmrc.test.ui.stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import uk.gov.hmrc.selenium.webdriver.Browser

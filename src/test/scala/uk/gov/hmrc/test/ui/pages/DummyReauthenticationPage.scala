@@ -16,21 +16,21 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object SurveyPage extends BasePage {
+object DummyReauthenticationPage extends BasePage {
 
-  val urlRedirect: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/user-panel"
-  val url: String = s"${testConfig.paymentsSurveyUrl}/v2/survey"
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/reauthentication?continue=/self-assessment-refund/check-your-details-submit"
 
-  def expectedPageTitle = "How was our payment service? - Request a Self Assessment refund - GOV.UK"
-  def expectedPageHeader = "How was our payment service?"
-
-  override def shouldBeLoaded(): Unit = {
-    currentUrl should include(url)
-    assertCurrentPageTitle()
-    cssSelector("div.govuk-header__content > a").webElement(driver).getText should be(expectedPageService)
-    assertCurrentPageHeader()
+  def expectedPageTitle =  {
+    if (langToggle == Language.welsh) s"TBC - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+    else s"Dummy Reauthentication - Request a Self Assessment refund - GOV.UK"
+  }
+  def expectedPageHeader = {
+    if (langToggle == Language.welsh) s"TBC"
+    else s"Dummy Reauthentication"
   }
 
 }
+

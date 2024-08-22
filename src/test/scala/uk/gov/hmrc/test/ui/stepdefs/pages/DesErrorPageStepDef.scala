@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
 import uk.gov.hmrc.test.ui.pages.DesErrorPage
-import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
+import uk.gov.hmrc.test.ui.stepdefs.DriverActions
 import uk.gov.hmrc.test.ui.testdata.Language
 
 class DesErrorPageStepDef extends DriverActions {
