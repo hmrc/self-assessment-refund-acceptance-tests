@@ -1,13 +1,13 @@
 @test
-Feature: Page features
+Feature: Page Features
 
-  Scenario: Welsh toggle
+  Scenario: User selects Welsh toggle
     Given The user starts a refund journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user clicks Cymraeg
     Then the user is on the RefundAmountPage in Welsh
 
-  Scenario: Sign out
+  Scenario: User signs out
     Given The user starts a refund journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user clicks sign out

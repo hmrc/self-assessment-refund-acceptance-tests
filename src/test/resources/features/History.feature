@@ -1,7 +1,7 @@
 @test
-Feature: Happy Path (Refund)
+Feature: History Pages
 
-  Scenario: Views Paid Refund
+  Scenario: Users views Paid Refund
     Given The user starts a history journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundHistoryPage
     When the user clicks the history tab
@@ -10,7 +10,7 @@ Feature: Happy Path (Refund)
     When the user clicks back to tax account
     # add when button leads somewhere
 
-  Scenario: Views Rejected Refund
+  Scenario: User views Rejected Refund
     Given The user starts a history journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundHistoryPage
     When the user clicks the history tab
@@ -19,7 +19,7 @@ Feature: Happy Path (Refund)
     When the user clicks back to tax account
     # add when button leads somewhere
 
-  Scenario: Views Approved Refund
+  Scenario: User views Approved Refund
     Given The user starts a history journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundHistoryPage
     When the user clicks view approved
@@ -27,7 +27,7 @@ Feature: Happy Path (Refund)
     When the user clicks back to tax account
     # add when button leads somewhere
 
-  Scenario: Happy Processing Refund
+  Scenario: User views Processing Refund
     Given The user starts a history journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundHistoryPage
     When the user clicks view processing

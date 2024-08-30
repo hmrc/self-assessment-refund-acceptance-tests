@@ -1,7 +1,7 @@
 @test
-Feature: Happy Path (Refund)
+Feature: Refund Happy Path
 
-  Scenario Outline: Happy Path - Card on File
+  Scenario Outline: User completes refund with card on file
     Given The user starts a refund journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects <amount> and clicks continue
@@ -28,7 +28,7 @@ Feature: Happy Path (Refund)
       | a different amount | business account | business     | without     | the amount typed   | doesn't show     |
       | a different amount | personal account | personal     | without     | the amount typed   | doesn't show     |
 
-  Scenario: Happy Path - No Card on File & User clicks feedback link
+  Scenario:  User completes refund without card on file and clicks feedback link
     Given The user starts a refund journey with Nino AB111111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
