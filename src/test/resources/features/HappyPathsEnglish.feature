@@ -64,7 +64,7 @@ Feature: Happy Path - English
 
 
   Scenario: English - DES Error on submission, details retained in journey
-    Given The user starts a personal journey with Nino AB111111B
+    Given The user starts a personal journey with Nino AB200111B
     When the User toggles on English language
     And the user click on the full amount .
     And the user click continue
