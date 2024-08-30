@@ -1,8 +1,8 @@
-@test @wip
+@test
 Feature: Bars
 
   Scenario Outline: Fail Business Verify BARS
-    Given The user starts a journey with Nino AB111111D and confidence 250
+    Given The user starts a refund journey with Nino AB111111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
     Then the user is on the TypeOfAccountPage
@@ -22,7 +22,7 @@ Feature: Bars
       | personal account | wrong name personal |
 
   Scenario Outline: Fail Validate 4 times without lockout
-    Given The user starts a journey with Nino AB111111D and confidence 250
+    Given The user starts a refund journey with Nino AB111111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
     Then the user is on the TypeOfAccountPage
@@ -42,7 +42,7 @@ Feature: Bars
       | personal account | invalid personal |
 
   Scenario Outline: User fails validate BARS checks
-    Given The user starts a journey with Nino AB111111D and confidence 250
+    Given The user starts a refund journey with Nino AB111111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
     Then the user is on the TypeOfAccountPage

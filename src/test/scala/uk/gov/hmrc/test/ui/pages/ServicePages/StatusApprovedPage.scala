@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,28 +14,27 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
 import org.scalatest.Assertion
+import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object StatusApprovedPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status"
+  val url: String             = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status"
   val approvedAmount1: String = TestData.approvedAmount1AB111111C
 
-  override def assertCurrentUrl(): Assertion = {
+  override def assertCurrentUrl(): Assertion =
     currentUrl should fullyMatch regex s"""$url/[0-9]{3}""".r
-  }
 
- def expectedPageTitle =  {
-    if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$approvedAmount1 wedi’i gymeradwyo - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+  def expectedPageTitle  =
+    if (langToggle == Language.welsh)
+      s"Mae’ch ad-daliad o £$approvedAmount1 wedi’i gymeradwyo - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else s"Your refund of £$approvedAmount1 has been approved - Request a Self Assessment refund - GOV.UK"
-  }
-  def expectedPageHeader = {
+  def expectedPageHeader =
     if (langToggle == Language.welsh) s"Mae’ch ad-daliad o £$approvedAmount1 wedi’i gymeradwyo"
     else s"Your refund of £$approvedAmount1 has been approved"
-  }
 
 }

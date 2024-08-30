@@ -25,6 +25,7 @@ class AssertionSteps extends DriverActions {
     page match {
       case "AccountOnFilePage" =>
         AccountOnFilePage.shouldBeLoaded()
+      case "BackUrlPage" => BackUrlPage.shouldBeLoaded()
       case "CheckDetailsPage" =>
         CheckDetailsPage.shouldBeLoaded()
       case "DesErrorPage" =>
@@ -37,33 +38,37 @@ class AssertionSteps extends DriverActions {
       case "IvUpliftPage" => IvUpliftPage.shouldBeLoaded()
       case "LockoutPage" =>
         LockoutPage.shouldBeLoaded()
+      case "LoggedOutPage" => LoggedOutPage.shouldBeLoaded()
       case "RefundAmountPage" =>
         RefundAmountPage.shouldBeLoaded()
+      case "RefundAmountPage in Welsh" => RefundAmountPageWelsh.shouldBeLoaded()
+      case "RefundHistoryPage" =>
+        RefundsHistoryPage.shouldBeLoaded()
       case "RequestReceivedPage" =>
         RequestReceivedPage.shouldBeLoaded()
         findTextByCssSelector("div.govuk-panel.govuk-panel--confirmation > div") should include regex """Your refund reference is
             |[a-z0-9]{12}""".stripMargin.r
+      case "ReturnUrlPage" => ReturnUrlPage.shouldBeLoaded()
       case "SaEnquiresPage" => SaEnquiresPage.shouldBeLoaded()
+      case "StatusApprovedPage" =>
+        StatusApprovedPage.shouldBeLoaded()
+      case "StatusPaidPage" =>
+        StatusPaidPage.shouldBeLoaded()
+      case "StatusProcessingPage" =>
+        StatusProcessingPage.shouldBeLoaded()
+      case "StatusRejectedPage" =>
+        StatusRejectedPage.shouldBeLoaded()
       case "SurveyPage" =>
               SurveyPage.shouldBeLoaded()
       case "TypeOfAccountPage" =>
         TypeOfAccountPage.shouldBeLoaded()
+      case "V&CPage" => VandCPage.shouldBeLoaded()
       case "WelshEnquiresPage" => WelshEnquiresPage.shouldBeLoaded()
 //      case "CheckDetailsPageNoRoll" =>
 //        CheckDetailsPage.shouldBeLoaded()
 //      case "AuthenticationPage" =>
 //        AuthenticationPage.shouldBeLoaded()
-//      case "RefundHistoryPage" =>
-//        RefundsHistoryPage.shouldBeLoaded()
 //        RefundsHistoryPage.clickTab("History")
-//      case "StatusApprovedPage" =>
-//        StatusApprovedPage.shouldBeLoaded()
-//      case "StatusProcessingPage" =>
-//        StatusProcessingPage.shouldBeLoaded()
-//      case "StatusRejectedPage" =>
-//        StatusRejectedPage.shouldBeLoaded()
-//      case "StatusPaidPage" =>
-//        StatusPaidPage.shouldBeLoaded()
 //      case "ItsaViewerPage" => ItsaViewerPage.assertCurrentUrl()
     }
   }

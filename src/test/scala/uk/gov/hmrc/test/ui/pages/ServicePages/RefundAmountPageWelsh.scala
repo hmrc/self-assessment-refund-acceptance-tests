@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,24 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.testonly
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object BackUrlPage extends BasePage {
+object RefundAmountPageWelsh extends BasePage {
 
-  val url = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/show-back-url"
-  def expectedPageTitle = "Back Page - Business tax account - GOV.UK"
-  def expectedPageHeader = "Back url page"
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-amount"
+
+  def expectedPageTitle  = "Faint o ad-daliad yr hoffech ei gael? - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+  def expectedPageHeader = "Faint o ad-daliad yr hoffech ei gael?"
+
+  override def shouldBeLoaded(): Unit = {
+    assertCurrentUrl()
+    assertCurrentPageTitle()
+    currentPageService should be("Gwneud cais am ad-daliad Hunanasesiad")
+    assertCurrentPageHeader()
+  }
 
 }
+

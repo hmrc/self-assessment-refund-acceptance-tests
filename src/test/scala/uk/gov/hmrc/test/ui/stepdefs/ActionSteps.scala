@@ -23,7 +23,7 @@ import uk.gov.hmrc.test.ui.testdata.BankDetails
 
 class ActionSteps extends DriverActions {
 
-  Given("""^The user starts a journey with Nino (.*) and confidence (.*)$""") { (nino: String, confidence: String) =>
+  Given("""^The user starts a (.*) journey with Nino (.*), confidence (.*), and urls (.*)$""") { (journey: String, nino: String, confidence: String, urls: String) =>
     MongoDriver.dropDatabases()
     driver.navigate().to(AuthWizardPage.url)
     enterTextById("nino", nino)
@@ -34,12 +34,16 @@ class ActionSteps extends DriverActions {
     click on id("submit-top")
     if (isPresent("Gwneud cais am ad-daliad Hunanasesiad")) {clickByCssSelector("nav > ul > li:nth-child(1) > a")}
 //    AuthWizardPage.clickSubmit()
+    journey match {
+      case "refund" =>
     nino match {
-      case "AB111111D" => click on id("1")
-      case "AB111111C" | "AB111111B" => click on id("0")
-      case "AB111111C_history" => click on id("2")
-      case "AB111111D_history" => click on id("3")
-      case _ => click on id("0") // to populate the rest of fields, nino will be changed in next step
+    case "AB111111D" => click on id ("1")
+    case "AB111111C" | "AB111111B" => click on id ("0")
+    case _ => click on id ("0") // to populate the rest of fields, nino will be changed in next step
+    }
+      case "history" => nino match {
+        case "AB111111C" => click on id ("2")
+      }
     }
 //    if (nino == "AB111111C" || nino == "AB111111D") {
 //      TestOnlyStartPage.clickRadio(nino)
@@ -54,6 +58,12 @@ class ActionSteps extends DriverActions {
       id("nino").webElement.clear()
       id("nino").webElement.sendKeys(nino)
       case _ => ()
+    }
+    urls match {
+      case "not provided" =>
+        id("backUrl").webElement.clear()
+        id("returnUrl").webElement.clear()
+      case "provided" =>
     }
     continue()
   }
@@ -71,12 +81,21 @@ class ActionSteps extends DriverActions {
 
   When("""^the user clicks (.*)$""") { (element: String) =>
     element match {
+    case "back" => clickByCssSelector("a.govuk-back-link")
     case "back to tax account" => clickByCssSelector("a.govuk-button")
     case "contact HMRC" => clickByCssSelector("p:nth-child(4) > a")
     case "continue" => continue()
     case "Cymraeg"                                          => clickByCssSelector("nav > ul > li:nth-child(2) > a")
     case "English"                                          => clickByCssSelector("nav > ul > li:nth-child(1) > a")
     case "the feedback link" => clickById("help-us-improve-our-services-link")
+    case "the history tab" => clickById("tab_history")
+    case "HMRC online account" => clickByCssSelector("p:nth-child(6) > a")
+    case "lockout return button" => clickById("return-to")
+    case "sign out" => clickByCssSelector("a.govuk-link.hmrc-sign-out-nav__link")
+    case "view approved" => clickByCssSelector("tr:nth-child(2) > td:nth-child(4) > a")
+    case "view paid" => clickByCssSelector("tr:nth-child(1) > td:nth-child(5) > a")
+    case "view processing" => clickByCssSelector("tr:nth-child(1) > td:nth-child(4) > a")
+    case "view rejected" => clickByCssSelector("tr:nth-child(2) > td:nth-child(5) > a")
     }
   }
 

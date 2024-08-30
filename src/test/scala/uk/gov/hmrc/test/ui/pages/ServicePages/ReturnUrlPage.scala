@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages.testonly
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
-
 
 object ReturnUrlPage extends BasePage {
 
-  val url = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/show-return-url"
-  def expectedPageTitle = "Return url"
-  def expectedPageHeader = "Return Url page"
+  val url                = "http://localhost:9171/returnUrl"
+  def expectedPageTitle  = "Page not found - 404"
+  def expectedPageHeader = "This page can’t be found"
+
 }

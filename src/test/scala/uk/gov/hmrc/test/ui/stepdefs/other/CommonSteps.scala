@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.stepdefs.other
 
 import uk.gov.hmrc.test.ui.pages.ExternalPages.SurveyPage
-import uk.gov.hmrc.test.ui.pages.ServicePages.{AccountOnFilePage, CheckDetailsPage, EnterBankDetailsPage, RefundAmountPage, RequestReceivedPage, TypeOfAccountPage}
+import uk.gov.hmrc.test.ui.pages.ServicePages.{AccountOnFilePage, CheckDetailsPage, EnterBankDetailsPage, RefundAmountPage, RefundsHistoryPage, RequestReceivedPage, StatusApprovedPage, StatusProcessingPage, StatusRejectedPage, TypeOfAccountPage}
 import uk.gov.hmrc.test.ui.pages._
 import uk.gov.hmrc.test.ui.pages.support.HelperFunctions
 import uk.gov.hmrc.test.ui.stepdefs.DriverActions
