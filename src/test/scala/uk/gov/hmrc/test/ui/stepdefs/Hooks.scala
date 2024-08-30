@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.mongo
+package uk.gov.hmrc.test.ui.stepdefs
 
-import uk.gov.hmrc.test.ui.mongo.MongoHelper._
-import org.mongodb.scala._
+import io.cucumber.scala.{EN, ScalaDsl}
+import uk.gov.hmrc.selenium.webdriver.Browser
+import uk.gov.hmrc.test.ui.mongo.MongoDriver
 
-object MongoDriver {
+object Hooks extends ScalaDsl with EN with Browser {
+  BeforeAll {
+    startBrowser()
+  }
 
-  // Connect to the default server localhost on port 27017
-  // Dropping Mongo like this will only work locally, unless you have config for other MongoClients.
+  AfterAll {
+    quitBrowser()
+    MongoDriver.dropDatabases()
+  }
 
-  private val mongoClient: MongoClient = MongoClient()
-
-  private val selfAssessmentRefundBackend: MongoDatabase = mongoClient.getDatabase("self-assessment-refund-backend")
-
-  def dropDatabases(): Unit =
-    selfAssessmentRefundBackend.drop().printResults()
 }

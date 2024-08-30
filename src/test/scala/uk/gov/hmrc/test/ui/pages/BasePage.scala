@@ -18,30 +18,23 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.stepdefs.other.DriverActions
-import uk.gov.hmrc.test.ui.testdata.Language
+import uk.gov.hmrc.test.ui.stepdefs.BaseSteps
 
-
-trait BasePage extends DriverActions with Matchers {
+trait BasePage extends BaseSteps with Matchers {
 
   val url: String
   def expectedPageTitle: String
-  def expectedPageTitleError: String
-  def expectedPageService: String = {
-    if (langToggle == Language.welsh) "Gwneud cais am ad-daliad Hunanasesiad"
-    else "Request a Self Assessment refund"
-  }
+  def expectedPageService: String = "Request a Self Assessment refund"
   def expectedPageHeader: String
 
-  def currentPageTitle: String = pageTitle
-  def currentPageService: String = cssSelector("div.govuk-header__content > span").webElement.getText
-  def currentPageHeader: String = cssSelector("h1").webElement.getText
+  def currentPageTitle: String   = pageTitle
+  def currentPageService: String = cssSelector("div.govuk-header__content > span").webElement(driver).getText
+  def currentPageHeader: String  = cssSelector("h1").webElement(driver).getText
 
-  def assertCurrentUrl(): Assertion              = currentUrl should be(url)
-  def assertCurrentPageTitle(): Assertion        = currentPageTitle should be(expectedPageTitle)
-  def assertCurrentPageTitleError(): Assertion   = currentPageTitle should be(expectedPageTitleError)
-  def assertCurrentPageService(): Assertion      = currentPageService should be(expectedPageService)
-  def assertCurrentPageHeader(): Assertion       = currentPageHeader should be(expectedPageHeader)
+  def assertCurrentUrl(): Assertion         = currentUrl         should include(url)
+  def assertCurrentPageTitle(): Assertion   = currentPageTitle   should be(expectedPageTitle)
+  def assertCurrentPageService(): Assertion = currentPageService should be(expectedPageService)
+  def assertCurrentPageHeader(): Assertion  = currentPageHeader  should be(expectedPageHeader)
 
   def shouldBeLoaded(): Unit = {
     assertCurrentUrl()

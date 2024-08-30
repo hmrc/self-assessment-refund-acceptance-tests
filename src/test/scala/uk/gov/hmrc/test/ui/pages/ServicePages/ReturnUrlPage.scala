@@ -14,20 +14,14 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.mongo
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
-import uk.gov.hmrc.test.ui.mongo.MongoHelper._
-import org.mongodb.scala._
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-object MongoDriver {
+object ReturnUrlPage extends BasePage {
 
-  // Connect to the default server localhost on port 27017
-  // Dropping Mongo like this will only work locally, unless you have config for other MongoClients.
+  val url                = "http://localhost:9171/returnUrl"
+  def expectedPageTitle  = "Page not found - 404"
+  def expectedPageHeader = "This page can’t be found"
 
-  private val mongoClient: MongoClient = MongoClient()
-
-  private val selfAssessmentRefundBackend: MongoDatabase = mongoClient.getDatabase("self-assessment-refund-backend")
-
-  def dropDatabases(): Unit =
-    selfAssessmentRefundBackend.drop().printResults()
 }

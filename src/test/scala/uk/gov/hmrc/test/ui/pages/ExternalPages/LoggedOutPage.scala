@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.mongo
+package uk.gov.hmrc.test.ui.pages.ExternalPages
 
-import uk.gov.hmrc.test.ui.mongo.MongoHelper._
-import org.mongodb.scala._
+import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object MongoDriver {
+object LoggedOutPage extends BasePage {
 
-  // Connect to the default server localhost on port 27017
-  // Dropping Mongo like this will only work locally, unless you have config for other MongoClients.
+  val url: String = s"${testConfig.basGateway}/loggedout"
 
-  private val mongoClient: MongoClient = MongoClient()
+  def expectedPageTitle  = "Signed Out"
+  def expectedPageHeader = "You’re signed out"
 
-  private val selfAssessmentRefundBackend: MongoDatabase = mongoClient.getDatabase("self-assessment-refund-backend")
+  override def shouldBeLoaded(): Unit = {
+    assertCurrentUrl()
+    assertCurrentPageTitle()
+    id("title").webElement(driver).getText should be(expectedPageHeader)
+  }
 
-  def dropDatabases(): Unit =
-    selfAssessmentRefundBackend.drop().printResults()
 }

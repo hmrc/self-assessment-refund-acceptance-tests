@@ -14,20 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.mongo
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
-import uk.gov.hmrc.test.ui.mongo.MongoHelper._
-import org.mongodb.scala._
+import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object MongoDriver {
+object LockoutPage extends BasePage {
 
-  // Connect to the default server localhost on port 27017
-  // Dropping Mongo like this will only work locally, unless you have config for other MongoClients.
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/bars-lockout"
 
-  private val mongoClient: MongoClient = MongoClient()
+  def expectedPageTitle  =
+    s"You’ve tried to confirm your bank details too many times - Request a Self Assessment refund - GOV.UK"
+  def expectedPageHeader = s"You’ve tried to confirm your bank details too many times"
 
-  private val selfAssessmentRefundBackend: MongoDatabase = mongoClient.getDatabase("self-assessment-refund-backend")
-
-  def dropDatabases(): Unit =
-    selfAssessmentRefundBackend.drop().printResults()
 }

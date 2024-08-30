@@ -16,10 +16,14 @@
 
 package uk.gov.hmrc.test.ui.utils
 
-case class TestConfig(authLoginStubUrl: String,
-                      selfAssessmentRefundFrontendUrl: String,
-                      paymentsSurveyUrl: String
-                     )
+case class TestConfig(
+  authLoginStubUrl: String,
+  selfAssessmentRefundFrontendUrl: String,
+  paymentsSurveyUrl: String,
+  ivStubUrl: String,
+  basGateway: String,
+  viewAndChange: String
+)
 
 object Configuration {
   lazy val environment: String = Option(System.getProperty("environment")).getOrElse("local").toLowerCase
@@ -29,21 +33,30 @@ object Configuration {
       TestConfig(
         authLoginStubUrl = "http://localhost:9949",
         selfAssessmentRefundFrontendUrl = "http://localhost:9171/self-assessment-refund",
-        paymentsSurveyUrl = "http://localhost:9966/payments-survey"
+        paymentsSurveyUrl = "http://localhost:9966/payments-survey",
+        ivStubUrl = "http://localhost:9948/iv-stub",
+        basGateway = "http://localhost:9553/bas-gateway",
+        viewAndChange = "http://localhost:9081"
       )
 
     case "dev" =>
       TestConfig(
         authLoginStubUrl = "https://www.development.tax.service.gov.uk",
         selfAssessmentRefundFrontendUrl = "https://www.development.tax.service.gov.uk/self-assessment-refund",
-        paymentsSurveyUrl = "https://www.development.tax.service.gov.uk/payments-survey"
+        paymentsSurveyUrl = "https://www.development.tax.service.gov.uk/payments-survey",
+        ivStubUrl = "https://www.development.tax.service.gov.uk/iv-stub",
+        basGateway = "https://www.development.tax.service.gov.uk/bas-gateway",
+        viewAndChange = "https://www.development.tax.service.gov.uk"
       )
 
     case "qa" =>
       TestConfig(
         authLoginStubUrl = "https://www.qa.tax.service.gov.uk",
         selfAssessmentRefundFrontendUrl = "https://www.qa.tax.service.gov.uk/self-assessment-refund",
-        paymentsSurveyUrl = "https://www.qa.tax.service.gov.uk/payments-survey"
+        paymentsSurveyUrl = "https://www.qa.tax.service.gov.uk/payments-survey",
+        ivStubUrl = "https://www.qa.tax.service.gov.uk/iv-stub",
+        basGateway = "https://www.qa.tax.service.gov.uk/bas-gateway",
+        viewAndChange = "https://www.qa.tax.service.gov.uk"
       )
 
     case _ => throw new IllegalArgumentException(s"Environment '$environment' not known")
