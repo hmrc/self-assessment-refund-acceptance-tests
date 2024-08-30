@@ -18,11 +18,11 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.stepdefs.DriverActions
+import uk.gov.hmrc.test.ui.stepdefs.BaseSteps
 import uk.gov.hmrc.test.ui.testdata.Language
 
 
-trait BasePage extends DriverActions with Matchers {
+trait BasePage extends BaseSteps with Matchers {
 
   val url: String
   def expectedPageTitle: String

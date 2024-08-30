@@ -24,7 +24,7 @@ import org.scalatestplus.selenium.WebBrowser
 import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext}
 import uk.gov.hmrc.test.ui.utils.BrowserDriver
 
-trait DriverActions extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers with WebBrowser {
+trait BaseSteps extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers with WebBrowser {
 
   //TO BE DELETED IF UNUSED
   def clickBack(): Unit = click on cssSelector("a.govuk-back-link")

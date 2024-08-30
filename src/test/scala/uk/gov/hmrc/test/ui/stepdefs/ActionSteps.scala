@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.AuthWizardPage
 import uk.gov.hmrc.test.ui.pages.testonly.TestOnlyStartPage
 import uk.gov.hmrc.test.ui.testdata.BankDetails
 
-class ActionSteps extends DriverActions {
+class ActionSteps extends BaseSteps {
 
   Given("""^The user starts a (.*) journey with Nino (.*), confidence (.*), and urls (.*)$""") { (journey: String, nino: String, confidence: String, urls: String) =>
     MongoDriver.dropDatabases()

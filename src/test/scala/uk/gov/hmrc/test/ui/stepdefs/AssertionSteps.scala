@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.stepdefs
 import uk.gov.hmrc.test.ui.pages.ExternalPages._
 import uk.gov.hmrc.test.ui.pages.ServicePages._
 
-class AssertionSteps extends DriverActions {
+class AssertionSteps extends BaseSteps {
 
   Then("""^the user is on the (.*)$""") { page: String =>
     page match {
