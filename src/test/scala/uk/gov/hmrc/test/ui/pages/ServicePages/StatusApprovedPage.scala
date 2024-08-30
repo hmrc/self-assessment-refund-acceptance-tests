@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object StatusApprovedPage extends BasePage {
 
-  val url: String             = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status"
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-status"
 
   override def assertCurrentUrl(): Assertion =
     currentUrl should fullyMatch regex s"""$url/[0-9]{3}""".r

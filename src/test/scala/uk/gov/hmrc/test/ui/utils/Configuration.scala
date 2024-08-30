@@ -16,13 +16,14 @@
 
 package uk.gov.hmrc.test.ui.utils
 
-case class TestConfig(authLoginStubUrl: String,
-                      selfAssessmentRefundFrontendUrl: String,
-                      paymentsSurveyUrl: String,
-                      ivStubUrl: String,
-                      basGateway: String,
-                      viewAndChange: String
-                     )
+case class TestConfig(
+  authLoginStubUrl: String,
+  selfAssessmentRefundFrontendUrl: String,
+  paymentsSurveyUrl: String,
+  ivStubUrl: String,
+  basGateway: String,
+  viewAndChange: String
+)
 
 object Configuration {
   lazy val environment: String = Option(System.getProperty("environment")).getOrElse("local").toLowerCase

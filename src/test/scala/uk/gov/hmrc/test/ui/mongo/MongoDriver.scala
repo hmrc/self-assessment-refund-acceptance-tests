@@ -28,7 +28,6 @@ object MongoDriver {
 
   private val selfAssessmentRefundBackend: MongoDatabase = mongoClient.getDatabase("self-assessment-refund-backend")
 
-  def dropDatabases(): Unit = {
+  def dropDatabases(): Unit =
     selfAssessmentRefundBackend.drop().printResults()
-  }
 }

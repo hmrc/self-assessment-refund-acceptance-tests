@@ -20,7 +20,6 @@ import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.stepdefs.BaseSteps
 
-
 trait BasePage extends BaseSteps with Matchers {
 
   val url: String
@@ -28,14 +27,14 @@ trait BasePage extends BaseSteps with Matchers {
   def expectedPageService: String = "Request a Self Assessment refund"
   def expectedPageHeader: String
 
-  def currentPageTitle: String = pageTitle
+  def currentPageTitle: String   = pageTitle
   def currentPageService: String = cssSelector("div.govuk-header__content > span").webElement(driver).getText
-  def currentPageHeader: String = cssSelector("h1").webElement(driver).getText
+  def currentPageHeader: String  = cssSelector("h1").webElement(driver).getText
 
-  def assertCurrentUrl(): Assertion              = currentUrl should include(url)
-  def assertCurrentPageTitle(): Assertion        = currentPageTitle should be(expectedPageTitle)
-  def assertCurrentPageService(): Assertion      = currentPageService should be(expectedPageService)
-  def assertCurrentPageHeader(): Assertion       = currentPageHeader should be(expectedPageHeader)
+  def assertCurrentUrl(): Assertion         = currentUrl         should include(url)
+  def assertCurrentPageTitle(): Assertion   = currentPageTitle   should be(expectedPageTitle)
+  def assertCurrentPageService(): Assertion = currentPageService should be(expectedPageService)
+  def assertCurrentPageHeader(): Assertion  = currentPageHeader  should be(expectedPageHeader)
 
   def shouldBeLoaded(): Unit = {
     assertCurrentUrl()

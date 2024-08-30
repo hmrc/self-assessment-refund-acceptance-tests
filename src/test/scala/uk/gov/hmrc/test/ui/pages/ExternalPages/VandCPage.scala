@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object VandCPage extends BasePage {
 
-  val url: String         = s"${testConfig.viewAndChange}/report-quarterly/income-and-expenses/view/cannot-access-service"
+  val url: String = s"${testConfig.viewAndChange}/report-quarterly/income-and-expenses/view/cannot-access-service"
 
   def expectedPageTitle  = "You cannot access this service - GOV.UK"
   def expectedPageHeader = "You cannot access this service"
@@ -33,4 +33,3 @@ object VandCPage extends BasePage {
   }
 
 }
-

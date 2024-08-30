@@ -21,8 +21,8 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object TestOnlyStartPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/start-journey"
-  def expectedPageTitle: String = ""
+  val url: String                = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/start-journey"
+  def expectedPageTitle: String  = ""
   def expectedPageHeader: String = ""
 
 }

@@ -23,7 +23,8 @@ object LockoutPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/bars-lockout"
 
-  def expectedPageTitle  = s"You’ve tried to confirm your bank details too many times - Request a Self Assessment refund - GOV.UK"
+  def expectedPageTitle  =
+    s"You’ve tried to confirm your bank details too many times - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = s"You’ve tried to confirm your bank details too many times"
 
 }

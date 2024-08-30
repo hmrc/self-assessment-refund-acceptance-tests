@@ -33,4 +33,3 @@ object LoggedOutPage extends BasePage {
   }
 
 }
-

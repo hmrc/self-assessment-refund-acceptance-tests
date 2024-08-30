@@ -34,4 +34,3 @@ object RefundAmountPageWelsh extends BasePage {
   }
 
 }
-

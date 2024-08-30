@@ -23,108 +23,122 @@ import uk.gov.hmrc.test.ui.testdata.BankDetails
 
 class ActionSteps extends BaseSteps {
 
-  Given("""^The user starts a (.*) journey with Nino (.*), confidence (.*), and urls (.*)$""") { (journey: String, nino: String, confidence: String, urls: String) =>
-    MongoDriver.dropDatabases()
-    driver.navigate().to(AuthWizardPage.url)
-    enterTextById("nino", nino)
-    singleSel(name("confidenceLevel")).value = confidence
-    enterTextById("redirectionUrl", TestOnlyStartPage.url)
-    click on id("submit-top")
-    if (isPresent("Gwneud cais am ad-daliad Hunanasesiad")) {clickByCssSelector("nav > ul > li:nth-child(1) > a")}
-    journey match {
-      case "refund" =>
-    nino match {
-    case "AB111111D" => click on id ("1")
-    case "AB111111C" | "AB111111B" => click on id ("0")
-    case _ => click on id ("0") // to populate the rest of fields, nino will be changed in next step
-    }
-      case "history" => nino match {
-        case "AB111111C" => click on id ("2")
+  Given("""^The user starts a (.*) journey with Nino (.*), confidence (.*), and urls (.*)$""") {
+    (journey: String, nino: String, confidence: String, urls: String) =>
+      MongoDriver.dropDatabases()
+      driver.navigate().to(AuthWizardPage.url)
+      enterTextById("nino", nino)
+      singleSel(name("confidenceLevel")).value = confidence
+      enterTextById("redirectionUrl", TestOnlyStartPage.url)
+      click on id("submit-top")
+      if (isPresent("Gwneud cais am ad-daliad Hunanasesiad")) { clickByCssSelector("nav > ul > li:nth-child(1) > a") }
+      journey match {
+        case "refund"  =>
+          nino match {
+            case "AB111111D"               => click on id("1")
+            case "AB111111C" | "AB111111B" => click on id("0")
+            case _                         => click on id("0") // to populate the rest of fields, nino will be changed in next step
+          }
+        case "history" =>
+          nino match {
+            case "AB111111C" => click on id("2")
+            case _           => throw new Exception(nino + " not expected")
+          }
+        case _         => throw new Exception(journey + " not found")
       }
-    }
-    click on cssSelector("#main-content > form:nth-child(5) > button")
-    nino match {
-      case "AB111111B" =>
-      id("nino").webElement.clear()
-      id("nino").webElement.sendKeys(nino)
-      case _ => ()
-    }
-    urls match {
-      case "not provided" =>
-        id("backUrl").webElement.clear()
-        id("returnUrl").webElement.clear()
-      case "provided" =>
-    }
-    continue()
+      click on cssSelector("#main-content > form:nth-child(5) > button")
+      nino match {
+        case "AB111111B" =>
+          id("nino").webElement.clear()
+          id("nino").webElement.sendKeys(nino)
+        case _           => ()
+      }
+      urls match {
+        case "not provided" =>
+          id("backUrl").webElement.clear()
+          id("returnUrl").webElement.clear()
+        case "provided"     => ()
+        case _              => throw new Exception(urls + " not found")
+      }
+      continue()
   }
 
   When("""^the user selects (.*) and clicks continue$""") { (element: String) =>
     element match {
-      case "the full amount" => clickById("choice-full")
-      case "a different amount" => clickById("choice-different")
+      case "the full amount"    => clickById("choice-full")
+      case "a different amount" =>
+        clickById("choice-different")
         enterTextById("different-amount", "100")
-      case "business account" => clickById("accountType")
-      case "personal account" => clickById("accountType-2")
+      case "business account"   => clickById("accountType")
+      case "personal account"   => clickById("accountType-2")
+      case _                    => throw new Exception(element + " not found")
     }
     continue()
   }
 
   When("""^the user clicks (.*)$""") { (element: String) =>
     element match {
-    case "back" => clickByCssSelector("a.govuk-back-link")
-    case "back to tax account" => clickByCssSelector("a.govuk-button")
-    case "contact HMRC" => clickByCssSelector("p:nth-child(4) > a")
-    case "continue" => continue()
-    case "Cymraeg"                                          => clickByCssSelector("nav > ul > li:nth-child(2) > a")
-    case "English"                                          => clickByCssSelector("nav > ul > li:nth-child(1) > a")
-    case "the feedback link" => clickById("help-us-improve-our-services-link")
-    case "the history tab" => clickById("tab_history")
-    case "HMRC online account" => clickByCssSelector("p:nth-child(6) > a")
-    case "lockout return button" => clickById("return-to")
-    case "sign out" => clickByCssSelector("a.govuk-link.hmrc-sign-out-nav__link")
-    case "view approved" => clickByCssSelector("tr:nth-child(2) > td:nth-child(4) > a")
-    case "view paid" => clickByCssSelector("tr:nth-child(1) > td:nth-child(5) > a")
-    case "view processing" => clickByCssSelector("tr:nth-child(1) > td:nth-child(4) > a")
-    case "view rejected" => clickByCssSelector("tr:nth-child(2) > td:nth-child(5) > a")
+      case "back"                  => clickByCssSelector("a.govuk-back-link")
+      case "back to tax account"   => clickByCssSelector("a.govuk-button")
+      case "contact HMRC"          => clickByCssSelector("p:nth-child(4) > a")
+      case "continue"              => continue()
+      case "Cymraeg"               => clickByCssSelector("nav > ul > li:nth-child(2) > a")
+      case "English"               => clickByCssSelector("nav > ul > li:nth-child(1) > a")
+      case "the feedback link"     => clickById("help-us-improve-our-services-link")
+      case "the history tab"       => clickById("tab_history")
+      case "HMRC online account"   => clickByCssSelector("p:nth-child(6) > a")
+      case "lockout return button" => clickById("return-to")
+      case "sign out"              => clickByCssSelector("a.govuk-link.hmrc-sign-out-nav__link")
+      case "view approved"         => clickByCssSelector("tr:nth-child(2) > td:nth-child(4) > a")
+      case "view paid"             => clickByCssSelector("tr:nth-child(1) > td:nth-child(5) > a")
+      case "view processing"       => clickByCssSelector("tr:nth-child(1) > td:nth-child(4) > a")
+      case "view rejected"         => clickByCssSelector("tr:nth-child(2) > td:nth-child(5) > a")
+      case _                       => throw new Exception(element + " not found")
     }
   }
 
-  When("""^the user enters (.*) bank details (.*) roll number and clicks continue$""") { (accountType: String, roll: String) =>
-   val bankDetails = {
-          accountType match {
-            case "denyList" => BankDetails.denyListAccount
-            case "invalid business" => BankDetails.invalidBusinessAccount
-            case "invalid personal" => BankDetails.invalidPersonalAccount
-            case "missingRollNumber" => BankDetails.businessRollRequiredAccount
-            case "onEISCD=No" => BankDetails.onEISCDNoAccount
-            case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
-            case "valid business" => roll match {
-              case "with" => BankDetails.businessRollRequiredAccount
+  When("""^the user enters (.*) bank details (.*) roll number and clicks continue$""") {
+    (accountType: String, roll: String) =>
+      val bankDetails = {
+        accountType match {
+          case "denyList"                => BankDetails.denyListAccount
+          case "invalid business"        => BankDetails.invalidBusinessAccount
+          case "invalid personal"        => BankDetails.invalidPersonalAccount
+          case "missingRollNumber"       => BankDetails.businessRollRequiredAccount
+          case "onEISCD=No"              => BankDetails.onEISCDNoAccount
+          case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
+          case "valid business"          =>
+            roll match {
+              case "with"    => BankDetails.businessRollRequiredAccount
               case "without" => BankDetails.validBusinessAccount
             }
-            case "valid personal" => roll match {
-              case "with" => BankDetails.personalRollRequiredAccount
+          case "valid personal"          =>
+            roll match {
+              case "with"    => BankDetails.personalRollRequiredAccount
               case "without" => BankDetails.validPersonalAccount
             }
-            case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
-            case "wrong name business" => BankDetails.invalidNameBusinessAccount
-            case "wrong name personal" => BankDetails.invalidNamePersonalAccount
-          }
-   }
-   enterTextById("accountName",bankDetails.accName)
-    enterTextById("sortCode", bankDetails.sortcode)
-    enterTextById("accountNumber", bankDetails.accNumber)
-  roll match {
-      case "with" => enterTextById("rollNumber", bankDetails.roll)
-      case "without" => ()
-  }
-    continue()
+          case "wellFormatted=No"        => BankDetails.wellFormattedNoAccount
+          case "wrong name business"     => BankDetails.invalidNameBusinessAccount
+          case "wrong name personal"     => BankDetails.invalidNamePersonalAccount
+          case _                         => throw new Exception(accountType + " not found")
+        }
+      }
+      enterTextById("accountName", bankDetails.accName)
+      enterTextById("sortCode", bankDetails.sortcode)
+      enterTextById("accountNumber", bankDetails.accNumber)
+      roll match {
+        case "with"    => enterTextById("rollNumber", bankDetails.roll)
+        case "without" => ()
+        case _         => throw new Exception(roll + " not found")
+      }
+      continue()
   }
 
-  When("""^the IV uplift user selects (.*)$""") { (element: String) =>
-    element match {
+  When("""^the IV uplift user selects (.*)$""") { (result: String) =>
+    result match {
       case "IV success" => clickById("Success")
       case "IV failure" => clickById("FailedIV")
+      case _            => throw new Exception(result + " not found")
     }
     clickById("submit-continue")
   }
