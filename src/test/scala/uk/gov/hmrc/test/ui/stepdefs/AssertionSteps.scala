@@ -64,12 +64,6 @@ class AssertionSteps extends BaseSteps {
         TypeOfAccountPage.shouldBeLoaded()
       case "V&CPage" => VandCPage.shouldBeLoaded()
       case "WelshEnquiresPage" => WelshEnquiresPage.shouldBeLoaded()
-//      case "CheckDetailsPageNoRoll" =>
-//        CheckDetailsPage.shouldBeLoaded()
-//      case "AuthenticationPage" =>
-//        AuthenticationPage.shouldBeLoaded()
-//        RefundsHistoryPage.clickTab("History")
-//      case "ItsaViewerPage" => ItsaViewerPage.assertCurrentUrl()
     }
   }
 

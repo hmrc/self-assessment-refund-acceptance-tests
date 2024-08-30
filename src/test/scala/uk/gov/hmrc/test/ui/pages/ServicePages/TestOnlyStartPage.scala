@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
-object ItsaViewerPage extends BasePage {
+import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-  val url: String = s"http://localhost:9081/report-quarterly/income-and-expenses/view/claim-refund"
+object TestOnlyStartPage extends BasePage {
 
-  def expectedPageTitle = "TBC - GOV.UK"
-  def expectedPageHeader = "TBC"
-
-
+  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/start-journey"
+  def expectedPageTitle: String = ""
+  def expectedPageHeader: String = ""
 
 }

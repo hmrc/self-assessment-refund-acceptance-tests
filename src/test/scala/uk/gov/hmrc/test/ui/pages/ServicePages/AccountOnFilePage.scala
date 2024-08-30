@@ -17,19 +17,13 @@
 package uk.gov.hmrc.test.ui.pages.ServicePages
 
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object AccountOnFilePage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/we-need-to-get-your-bank-details"
 
-  def expectedPageTitle  =
-    if (langToggle == Language.welsh)
-      "Mae angen i ni gael eich manylion banc - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else "We need to get your bank details - Request a Self Assessment refund - GOV.UK"
-  def expectedPageHeader =
-    if (langToggle == Language.welsh) "Mae angen i ni gael eich manylion banc"
-    else "We need to get your bank details"
+  def expectedPageTitle  = "We need to get your bank details - Request a Self Assessment refund - GOV.UK"
+  def expectedPageHeader = "We need to get your bank details"
 
 }

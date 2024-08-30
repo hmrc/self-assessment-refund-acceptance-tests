@@ -21,24 +21,11 @@ import org.openqa.selenium.{By, WebElement}
 import org.scalatest.concurrent.Eventually
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.selenium.WebBrowser
-import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext}
 import uk.gov.hmrc.test.ui.utils.BrowserDriver
 
 trait BaseSteps extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers with WebBrowser {
 
-  //TO BE DELETED IF UNUSED
-  def clickBack(): Unit = click on cssSelector("a.govuk-back-link")
-
   def continue(): Unit = click on id("continue")
-
-  //TO BE DELETED IF UNUSED
-  def langToggle: String = ScenarioContext.getOrElse[String]("langToggle", Language.english)
-
-  //TO BE DELETED IF UNUSED
-  def signOut(): Unit =
-    //click on id("homeNavHref")
-    if (langToggle == "cy") click on linkText("Allgofnodi")
-    else if (langToggle == "en") click on linkText("Sign out")
 
   def enterTextById(id: String, text: String): Unit = findElementById(id).sendKeys(text)
 

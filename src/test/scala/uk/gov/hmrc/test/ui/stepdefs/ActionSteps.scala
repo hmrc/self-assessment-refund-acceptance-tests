@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.stepdefs
 
 import uk.gov.hmrc.test.ui.mongo.MongoDriver
-import uk.gov.hmrc.test.ui.pages.AuthWizardPage
-import uk.gov.hmrc.test.ui.pages.testonly.TestOnlyStartPage
+import uk.gov.hmrc.test.ui.pages.ExternalPages.AuthWizardPage
+import uk.gov.hmrc.test.ui.pages.ServicePages.TestOnlyStartPage
 import uk.gov.hmrc.test.ui.testdata.BankDetails
 
 class ActionSteps extends BaseSteps {
@@ -28,12 +28,9 @@ class ActionSteps extends BaseSteps {
     driver.navigate().to(AuthWizardPage.url)
     enterTextById("nino", nino)
     singleSel(name("confidenceLevel")).value = confidence
-//    AuthWizardPage.setConfidenceLevel("250")
     enterTextById("redirectionUrl", TestOnlyStartPage.url)
-//    AuthWizardPage.enterRedirectUrl(TestOnlyStartPage.url)
     click on id("submit-top")
     if (isPresent("Gwneud cais am ad-daliad Hunanasesiad")) {clickByCssSelector("nav > ul > li:nth-child(1) > a")}
-//    AuthWizardPage.clickSubmit()
     journey match {
       case "refund" =>
     nino match {
@@ -45,13 +42,6 @@ class ActionSteps extends BaseSteps {
         case "AB111111C" => click on id ("2")
       }
     }
-//    if (nino == "AB111111C" || nino == "AB111111D") {
-//      TestOnlyStartPage.clickRadio(nino)
-//    }
-//    else {
-//      TestOnlyStartPage.clickRadio(nino)
-//      TestOnlyStartPage.overwriteNino(nino)
-//    }
     click on cssSelector("#main-content > form:nth-child(5) > button")
     nino match {
       case "AB111111B" =>
@@ -129,10 +119,6 @@ class ActionSteps extends BaseSteps {
       case "without" => ()
   }
     continue()
-//    case "without" => accType match {
-//            case "personal" => BankDetails.validPersonalAccount
-//            case "business" => BankDetails.validBusinessAccount
-//          }
   }
 
   When("""^the IV uplift user selects (.*)$""") { (element: String) =>

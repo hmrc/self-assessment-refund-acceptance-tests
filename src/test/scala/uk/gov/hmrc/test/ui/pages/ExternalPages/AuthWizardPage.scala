@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.testdata
+package uk.gov.hmrc.test.ui.pages.ExternalPages
 
-object Language {
+import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-  val welsh: String = "cy"
-  val english: String = "en"
+object AuthWizardPage extends BasePage {
+
+  val url = s"${testConfig.authLoginStubUrl}/auth-login-stub/gg-sign-in"
+
+  def expectedPageTitle  = "Authority Wizard"
+  def expectedPageHeader = "Authority Wizard"
 
 }
-

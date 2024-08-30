@@ -16,22 +16,18 @@
 
 package uk.gov.hmrc.test.ui.pages.ExternalPages
 
+import org.scalatest.Assertion
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object SurveyPage extends BasePage {
 
-  val urlRedirect: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/user-panel"
   val url: String         = s"${testConfig.paymentsSurveyUrl}/v2/survey"
 
   def expectedPageTitle  = "How was our payment service? - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = "How was our payment service?"
 
-  override def shouldBeLoaded(): Unit = {
-    assertCurrentUrl()
-    assertCurrentPageTitle()
+  override def assertCurrentPageService(): Assertion =
     cssSelector("div.govuk-header__content > a").webElement(driver).getText should be(expectedPageService)
-    assertCurrentPageHeader()
-  }
 
 }

@@ -16,47 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages.ServicePages
 
-import org.openqa.selenium.WebElement
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object IvKickoutPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/failedUplift"
 
-  def expectedPageTitle =
-    if (langToggle == Language.welsh)
-      "Nid oedd modd i ni gadarnhau pwy ydych - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else "We could not confirm your identity - Request a Self Assessment refund - GOV.UK"
+  def expectedPageTitle = "We could not confirm your identity - Request a Self Assessment refund - GOV.UK"
 
-  def expectedPageHeader =
-    if (langToggle == Language.welsh) "Nid oedd modd i ni gadarnhau pwy ydych"
-    else "We could not confirm your identity"
-
-  // IV Stub Page
-
-  def ninoEntry: WebElement = id("forNino").webElement(driver)
-
-  def IvOutcome(outcome: String): WebElement =
-    outcome match {
-      case "Success"               => id("Success").webElement(driver)
-      case "Pre Condition Failed"  => id("PreconditionFailed").webElement(driver)
-      case "Locked Out"            => id("LockedOut").webElement(driver)
-      case "Insufficient Evidence" => id("InsufficientEvidence").webElement(driver)
-      case "Failed Matching"       => id("FailedMatching").webElement(driver)
-      case "Technical Issue"       => id("TechnicalIssue").webElement(driver)
-      case "User Aborted"          => id("UserAborted").webElement(driver)
-      case "Timed Out"             => id("Timeout").webElement(driver)
-      case "Failed IV"             => id("FailedIV").webElement(driver)
-    }
-
-  def enterNino(): Unit =
-    ninoEntry.sendKeys(ScenarioContext.get("nino"))
-
-  def selectIvOutcome(outcome: String): Unit =
-    IvOutcome(outcome).click()
-
-  def clickSubmit(): Unit = clickOn(id("submit-continue"))
+  def expectedPageHeader = "We could not confirm your identity"
 
 }

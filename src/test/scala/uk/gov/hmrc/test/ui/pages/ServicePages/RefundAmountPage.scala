@@ -16,125 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages.ServicePages
 
-import org.openqa.selenium.WebElement
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.testdata.{Language, ScenarioContext, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object RefundAmountPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-amount"
 
-  def expectedPageTitle =
-    if (langToggle == Language.welsh)
-      "Faint o ad-daliad yr hoffech ei gael? - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else "How much do you want to be refunded? - Request a Self Assessment refund - GOV.UK"
+  def expectedPageTitle = "How much do you want to be refunded? - Request a Self Assessment refund - GOV.UK"
 
-  def expectedPageHeader =
-    if (langToggle == Language.welsh) "Faint o ad-daliad yr hoffech ei gael?"
-    else "How much do you want to be refunded?"
+  def expectedPageHeader = "How much do you want to be refunded?"
 
-  def refundFullRadio: WebElement = id("choice-full").webElement(driver)
-
-  def refundDiffRadio: WebElement = id("choice-different").webElement(driver)
-
-  def enterAmountInput: WebElement = id("different-amount").webElement(driver)
-
-  def errorSummaryTitle: WebElement = id("error-summary-title").webElement(driver)
-
-  def errorSummaryAmount: WebElement = id("amount-error-summary").webElement(driver)
-
-  def errorSummaryChoice: WebElement = id("choice-error-summary").webElement(driver)
-
-  def errorMessageChoice: WebElement = id("choice-error").webElement(driver)
-
-  def errorMessageAmount: WebElement = id("different-amount-error").webElement(driver)
-
-  def selectRadio(radio: String, amount: String): Unit =
-    radio match {
-      case "full"  =>
-        click on refundFullRadio
-        if (ScenarioContext.get[String]("nino") == TestData.nino)
-          ScenarioContext.set("amount", TestData.maxRefundAmount)
-        else
-          ScenarioContext.set("amount", TestData.maxRefundAmount2)
-      case "other" =>
-        click on refundDiffRadio
-        enterAmount(amount)
-        ScenarioContext.set("amount", amount)
-    }
-
-  def selectOtherAmountRadio(): Unit =
-    click on refundDiffRadio
-
-  def enterAmount(amount: String): Unit =
-    enterAmountInput.sendKeys(amount)
-
-  def errorSummaryValidation(error: String): Unit = {
-    val amount: String = TestData.maxRefundAmount
-
-    assertCurrentPageTitleError()
-    if (langToggle == Language.welsh) {
-      errorSummaryTitle.getText should be("Mae problem wedi codi")
-      error match {
-        case "enter amount"            => errorSummaryAmount.getText should be("Nodwch y swm i’w ad-dalu")
-        case "choice required"         => errorSummaryChoice.getText should be("Dewiswch faint o ad-daliad yr hoffech ei gael")
-        case "invalid amount"          =>
-          errorSummaryAmount.getText should be(
-            s"Mae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23"
-          )
-        case "amount of 0"             => errorSummaryAmount.getText should be(s"Rhaid i’r swm fod yn un geiniog neu’n fwy")
-        case "negative number"         => errorSummaryAmount.getText should be(s"Rhaid i’r swm fod yn un geiniog neu’n fwy")
-        case "exceeded maximum amount" =>
-          errorSummaryAmount.getText should be(s"Mae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
-      }
-    } else {
-      errorSummaryTitle.getText should be("There is a problem")
-      error match {
-        case "enter amount"            => errorSummaryAmount.getText should be("Enter an amount to be refunded")
-        case "choice required"         => errorSummaryChoice.getText should be("Select how much you want to be refunded")
-        case "invalid amount"          =>
-          errorSummaryAmount.getText should be(s"Amount to be refunded must be an amount of money, like 11.50 or 12")
-        case "amount of 0"             => errorSummaryAmount.getText should be(s"Amount must be one pence or more")
-        case "negative number"         => errorSummaryAmount.getText should be(s"Amount must be one pence or more")
-        case "exceeded maximum amount" =>
-          errorSummaryAmount.getText should be(s"Amount to be refunded must be £$amount or less")
-      }
-    }
-  }
-
-  def errorMessageValidation(error: String): Unit = {
-    val amount: String = TestData.maxRefundAmount
-
-    if (langToggle == Language.welsh) {
-      error match {
-        case "enter amount"            => errorMessageAmount.getText should be("Gwall:\nNodwch y swm i’w ad-dalu")
-        case "choice required"         =>
-          errorMessageChoice.getText should be("Gwall:\nDewiswch faint o ad-daliad yr hoffech ei gael")
-        case "invalid amount"          =>
-          errorMessageAmount.getText should be(
-            s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn swm o arian, megis 22.50 neu 23"
-          )
-        case "amount of 0"             => errorMessageAmount.getText should be(s"Gwall:\nRhaid i’r swm fod yn un geiniog neu’n fwy")
-        case "negative number"         =>
-          errorMessageAmount.getText should be(s"Gwall:\nRhaid i’r swm fod yn un geiniog neu’n fwy")
-        case "exceeded maximum amount" =>
-          errorMessageAmount.getText should be(s"Gwall:\nMae’n rhaid i’r swm sydd i’w ad-dalu fod yn £$amount neu lai")
-      }
-    } else {
-      error match {
-        case "enter amount"            => errorMessageAmount.getText should be("Error:\nEnter an amount to be refunded")
-        case "choice required"         =>
-          errorMessageChoice.getText should be("Error:\nSelect how much you want to be refunded")
-        case "invalid amount"          =>
-          errorMessageAmount.getText should be(
-            s"Error:\nAmount to be refunded must be an amount of money, like 11.50 or 12"
-          )
-        case "amount of 0"             => errorMessageAmount.getText should be(s"Error:\nAmount must be one pence or more")
-        case "negative number"         => errorMessageAmount.getText should be(s"Error:\nAmount must be one pence or more")
-        case "exceeded maximum amount" =>
-          errorMessageAmount.getText should be(s"Error:\nAmount to be refunded must be £$amount or less")
-      }
-    }
-  }
 }

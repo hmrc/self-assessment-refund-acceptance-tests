@@ -16,53 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages.ServicePages
 
-import org.openqa.selenium.WebElement
-import org.scalatest.Assertion
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object TypeOfAccountPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/your-account-type"
 
-  def expectedPageTitle =
-    if (langToggle == Language.welsh)
-      "Manylion pa fath o gyfrif yr ydych yn eu rhoi? - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else "What type of account details are you providing? - Request a Self Assessment refund - GOV.UK"
+  def expectedPageTitle = "What type of account details are you providing? - Request a Self Assessment refund - GOV.UK"
 
-  def expectedPageHeader =
-    if (langToggle == Language.welsh) "Manylion pa fath o gyfrif yr ydych yn eu rhoi?"
-    else "What type of account details are you providing?"
-
-  def businessAccountRadio: WebElement = id("accountType").webElement(driver)
-
-  def personalAccountRadio: WebElement = id("accountType-2").webElement(driver)
-
-  def errorSummaryTitle: WebElement = id("error-summary-title").webElement(driver)
-
-  def errorSummary: WebElement = cssSelector("div > ul > li > a").webElement(driver)
-
-  def errorMessage: WebElement = id("accountType-error").webElement(driver)
-
-  def selectRadio(radio: String): Unit =
-    radio match {
-      case "business" => click on businessAccountRadio
-      case "personal" => click on personalAccountRadio
-      case "none"     => continue()
-    }
-
-  def assertError(): Assertion = {
-    assertCurrentPageTitleError()
-    if (langToggle == Language.welsh) {
-      errorSummaryTitle.getText should be("Mae problem wedi codi")
-      errorSummary.getText      should be("Dewiswch y math o gyfrif")
-      errorMessage.getText      should be("Gwall:\nDewiswch y math o gyfrif")
-    } else {
-      errorSummaryTitle.getText should be("There is a problem")
-      errorSummary.getText      should be("Select a type of account")
-      errorMessage.getText      should be("Error:\nSelect a type of account")
-    }
-  }
+  def expectedPageHeader = "What type of account details are you providing?"
 
 }

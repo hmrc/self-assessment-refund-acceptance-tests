@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages.ServicePages
 
 import uk.gov.hmrc.test.ui.pages.BasePage
-import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object DummyReauthenticationPage extends BasePage {
@@ -25,11 +24,7 @@ object DummyReauthenticationPage extends BasePage {
   val url: String =
     s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/reauthentication?continue=/self-assessment-refund/check-your-details-submit"
 
-  def expectedPageTitle  =
-    if (langToggle == Language.welsh) s"TBC - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
-    else s"Dummy Reauthentication - Request a Self Assessment refund - GOV.UK"
-  def expectedPageHeader =
-    if (langToggle == Language.welsh) s"TBC"
-    else s"Dummy Reauthentication"
+  def expectedPageTitle  = s"Dummy Reauthentication - Request a Self Assessment refund - GOV.UK"
+  def expectedPageHeader = s"Dummy Reauthentication"
 
 }
