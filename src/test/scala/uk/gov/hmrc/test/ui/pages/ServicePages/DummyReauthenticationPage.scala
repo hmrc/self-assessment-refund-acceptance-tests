@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,22 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
+import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object DummyReauthenticationPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/reauthentication?continue=/self-assessment-refund/check-your-details-submit"
+  val url: String =
+    s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/reauthentication?continue=/self-assessment-refund/check-your-details-submit"
 
-  def expectedPageTitle =  {
+  def expectedPageTitle  =
     if (langToggle == Language.welsh) s"TBC - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else s"Dummy Reauthentication - Request a Self Assessment refund - GOV.UK"
-  }
-  def expectedPageHeader = {
+  def expectedPageHeader =
     if (langToggle == Language.welsh) s"TBC"
     else s"Dummy Reauthentication"
-  }
 
 }
-

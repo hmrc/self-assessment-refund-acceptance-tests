@@ -16,7 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages.testonly
 
-import uk.gov.hmrc.test.ui.pages.{BasePage, RefundAmountPage}
+import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.ServicePages.RefundAmountPage
 
 object SharedFunctions extends BasePage {
 

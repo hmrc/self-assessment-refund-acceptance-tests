@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.testdata
 
-import uk.gov.hmrc.test.ui.pages.SurveyPage.langToggle
+import uk.gov.hmrc.test.ui.pages.ExternalPages.SurveyPage.langToggle
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

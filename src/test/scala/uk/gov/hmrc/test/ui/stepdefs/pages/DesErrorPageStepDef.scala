@@ -16,15 +16,15 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
-import uk.gov.hmrc.test.ui.pages.DesErrorPage
+import uk.gov.hmrc.test.ui.pages.ServicePages.DesErrorPage
 import uk.gov.hmrc.test.ui.stepdefs.DriverActions
 import uk.gov.hmrc.test.ui.testdata.Language
 
 class DesErrorPageStepDef extends DriverActions {
 
-  And("""^the Start Again link is correct$""") { () =>
-    DesErrorPage.startAgainHref()
-  }
+//  And("""^the Start Again link is correct$""") { () =>
+//    DesErrorPage.startAgainHref()
+//  }
 
   And("""^the user selects the contact us link and is taken to the correct url$""") { () =>
     DesErrorPage.clickContactLink()

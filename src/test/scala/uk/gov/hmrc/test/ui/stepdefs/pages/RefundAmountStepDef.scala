@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
-import uk.gov.hmrc.test.ui.pages.RefundAmountPage
+import uk.gov.hmrc.test.ui.pages.ServicePages.RefundAmountPage
 import uk.gov.hmrc.test.ui.stepdefs.DriverActions
 
 class RefundAmountStepDef extends DriverActions {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,21 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.ExternalPages
 
+import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object SurveyPage extends BasePage {
+object IvUpliftPage extends BasePage {
 
-  val urlRedirect: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/user-panel"
-  val url: String = s"${testConfig.paymentsSurveyUrl}/v2/survey"
+  val url: String = s"${testConfig.ivStubUrl}/uplift"
 
-  def expectedPageTitle = "How was our payment service? - Request a Self Assessment refund - GOV.UK"
-  def expectedPageHeader = "How was our payment service?"
+  def expectedPageTitle  = "Identity Verification - Stubbed Journey configuration"
+  def expectedPageHeader = "Identity Verification Stub"
 
   override def shouldBeLoaded(): Unit = {
-    currentUrl should include(url)
+    assertCurrentUrl()
     assertCurrentPageTitle()
-    cssSelector("div.govuk-header__content > a").webElement(driver).getText should be(expectedPageService)
     assertCurrentPageHeader()
   }
 

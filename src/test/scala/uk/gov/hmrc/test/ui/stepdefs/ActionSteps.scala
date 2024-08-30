@@ -23,19 +23,20 @@ import uk.gov.hmrc.test.ui.testdata.BankDetails
 
 class ActionSteps extends DriverActions {
 
-  Given("""^The user starts a journey with Nino (.*)$""") { (nino: String) =>
+  Given("""^The user starts a journey with Nino (.*) and confidence (.*)$""") { (nino: String, confidence: String) =>
     MongoDriver.dropDatabases()
     driver.navigate().to(AuthWizardPage.url)
     enterTextById("nino", nino)
-    singleSel(name("confidenceLevel")).value = "250"
+    singleSel(name("confidenceLevel")).value = confidence
 //    AuthWizardPage.setConfidenceLevel("250")
     enterTextById("redirectionUrl", TestOnlyStartPage.url)
 //    AuthWizardPage.enterRedirectUrl(TestOnlyStartPage.url)
     click on id("submit-top")
+    if (isPresent("Gwneud cais am ad-daliad Hunanasesiad")) {clickByCssSelector("nav > ul > li:nth-child(1) > a")}
 //    AuthWizardPage.clickSubmit()
     nino match {
       case "AB111111D" => click on id("1")
-      case "AB111111C" => click on id("0")
+      case "AB111111C" | "AB111111B" => click on id("0")
       case "AB111111C_history" => click on id("2")
       case "AB111111D_history" => click on id("3")
       case _ => click on id("0") // to populate the rest of fields, nino will be changed in next step
@@ -48,6 +49,12 @@ class ActionSteps extends DriverActions {
 //      TestOnlyStartPage.overwriteNino(nino)
 //    }
     click on cssSelector("#main-content > form:nth-child(5) > button")
+    nino match {
+      case "AB111111B" =>
+      id("nino").webElement.clear()
+      id("nino").webElement.sendKeys(nino)
+      case _ => ()
+    }
     continue()
   }
 
@@ -64,22 +71,35 @@ class ActionSteps extends DriverActions {
 
   When("""^the user clicks (.*)$""") { (element: String) =>
     element match {
+    case "back to tax account" => clickByCssSelector("a.govuk-button")
+    case "contact HMRC" => clickByCssSelector("p:nth-child(4) > a")
     case "continue" => continue()
+    case "Cymraeg"                                          => clickByCssSelector("nav > ul > li:nth-child(2) > a")
+    case "English"                                          => clickByCssSelector("nav > ul > li:nth-child(1) > a")
     case "the feedback link" => clickById("help-us-improve-our-services-link")
     }
   }
 
-  When("""^the user enters valid (.*) bank details (.*) roll number and clicks continue$""") { (accountType: String, roll: String) =>
+  When("""^the user enters (.*) bank details (.*) roll number and clicks continue$""") { (accountType: String, roll: String) =>
    val bankDetails = {
           accountType match {
-            case "personal" => roll match {
-              case "with" => BankDetails.personalRollRequiredAccount
-              case "without" => BankDetails.validPersonalAccount
-            }
-            case "business" => roll match {
+            case "denyList" => BankDetails.denyListAccount
+            case "invalid business" => BankDetails.invalidBusinessAccount
+            case "invalid personal" => BankDetails.invalidPersonalAccount
+            case "missingRollNumber" => BankDetails.businessRollRequiredAccount
+            case "onEISCD=No" => BankDetails.onEISCDNoAccount
+            case "supportsDirectCredit=No" => BankDetails.supportsDirectCreditNoAccount
+            case "valid business" => roll match {
               case "with" => BankDetails.businessRollRequiredAccount
               case "without" => BankDetails.validBusinessAccount
             }
+            case "valid personal" => roll match {
+              case "with" => BankDetails.personalRollRequiredAccount
+              case "without" => BankDetails.validPersonalAccount
+            }
+            case "wellFormatted=No" => BankDetails.wellFormattedNoAccount
+            case "wrong name business" => BankDetails.invalidNameBusinessAccount
+            case "wrong name personal" => BankDetails.invalidNamePersonalAccount
           }
    }
    enterTextById("accountName",bankDetails.accName)
@@ -94,6 +114,14 @@ class ActionSteps extends DriverActions {
 //            case "personal" => BankDetails.validPersonalAccount
 //            case "business" => BankDetails.validBusinessAccount
 //          }
+  }
+
+  When("""^the IV uplift user selects (.*)$""") { (element: String) =>
+    element match {
+      case "IV success" => clickById("Success")
+      case "IV failure" => clickById("FailedIV")
+    }
+    clickById("submit-continue")
   }
 
 }

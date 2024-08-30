@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,22 +21,20 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object AuthWizardPage extends BasePage {
 
-  val url= s"${testConfig.authLoginStubUrl}/auth-login-stub/gg-sign-in"
+  val url = s"${testConfig.authLoginStubUrl}/auth-login-stub/gg-sign-in"
 
-  def expectedPageTitle = "Authority Wizard"
+  def expectedPageTitle  = "Authority Wizard"
   def expectedPageHeader = "Authority Wizard"
 
-  def enterRedirectUrl(url: String): Unit = {
+  def enterRedirectUrl(url: String): Unit =
     name("redirectionUrl").webElement(driver).sendKeys(url)
-  }
 
   def enterValidNino(): Unit =
-    id("nino").webElement(driver).sendKeys(ScenarioContext.getOrElse("nino","AB111111C"))
+    id("nino").webElement(driver).sendKeys(ScenarioContext.getOrElse("nino", "AB111111C"))
 
   def setConfidenceLevel(cl: String): Unit =
     singleSel(name("confidenceLevel")).value = cl
 
-  def clickSubmit(): Unit = {
+  def clickSubmit(): Unit =
     click on id("submit-top")
-  }
 }

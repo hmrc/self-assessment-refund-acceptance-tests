@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,21 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.stepdefs.pages
+package uk.gov.hmrc.test.ui.pages.ExternalPages
 
-import uk.gov.hmrc.test.ui.pages.ServicePages.TypeOfAccountPage
-import uk.gov.hmrc.test.ui.stepdefs.DriverActions
+import uk.gov.hmrc.test.ui.pages.BasePage
 
-class TypeOfAccountStepDef extends DriverActions {
+object WelshEnquiresPage extends BasePage {
 
-  And("""^the user select (business|personal) account$""") { radio: String =>
-    TypeOfAccountPage.selectRadio(radio)
+  val url: String = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/welsh-language-helplines"
+
+  def expectedPageTitle  = "Treth Incwm, Hunanasesiad a mwy - GOV.UK"
+  def expectedPageHeader = "Treth Incwm, Hunanasesiad a mwy"
+
+  override def shouldBeLoaded(): Unit = {
+    assertCurrentUrl()
+    assertCurrentPageTitle()
+    assertCurrentPageHeader()
   }
-
-  And("""^the no type of account selected error is displayed$"""){ () =>
-    TypeOfAccountPage.assertError()
-  }
-
 
 }

@@ -2,7 +2,7 @@
 Feature: Happy Path (Refund)
 
   Scenario Outline: Happy Path - Card on File
-    Given The user starts a journey with Nino AB111111C
+    Given The user starts a journey with Nino AB111111C and confidence 250
     Then the user is on the RefundAmountPage
     When the user selects <amount> and clicks continue
     Then the user is on the AccountOnFilePage
@@ -29,7 +29,7 @@ Feature: Happy Path (Refund)
       | a different amount | personal account | personal     | without     | the amount typed   | doesn't show     |
 
   Scenario: Happy Path - No Card on File & User clicks feedback link
-    Given The user starts a journey with Nino AB111111D
+    Given The user starts a journey with Nino AB111111D and confidence 250
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
     Then the user is on the TypeOfAccountPage
@@ -44,5 +44,3 @@ Feature: Happy Path (Refund)
     Then the user is on the RequestReceivedPage
     When the user clicks the feedback link
     Then the user is on the SurveyPage
-
-  Scenario: Enrolment with low confidence

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,37 +14,42 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
 import org.scalatest.Assertion
+import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.pages.ExternalPages.SurveyPage
 import uk.gov.hmrc.test.ui.testdata.{Language, TestData}
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object RequestReceivedPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-request-confirmation"
-  val selfAssessmentTaxAccountLinkText: String = if (langToggle == Language.welsh) "cyfrif CThEF ar-lein" else "HMRC online account"
-  val printPreviewLinkText: String = if (langToggle == Language.welsh) "argraffu neu lawrlwytho" else "print or download"
-  val tellUsLinkText: String = if (langToggle == Language.welsh) "Rhowch wybod i ni beth yw eich barn am y gwasanaeth hwn" else "Tell us what you think of this service."
-  val problemWithPageLinkText = "div.govuk-\\!-display-none-print > a"
+  val url: String                              = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-request-confirmation"
+  val selfAssessmentTaxAccountLinkText: String =
+    if (langToggle == Language.welsh) "cyfrif CThEF ar-lein" else "HMRC online account"
+  val printPreviewLinkText: String             =
+    if (langToggle == Language.welsh) "argraffu neu lawrlwytho" else "print or download"
+  val tellUsLinkText: String                   =
+    if (langToggle == Language.welsh) "Rhowch wybod i ni beth yw eich barn am y gwasanaeth hwn"
+    else "Tell us what you think of this service."
+  val problemWithPageLinkText                  = "div.govuk-\\!-display-none-print > a"
 
-    override def assertCurrentUrl(): Assertion = {
-      currentUrl should fullyMatch regex s"""$url/[a-z0-9]{12}""".r
-    }
+  override def assertCurrentUrl(): Assertion =
+    currentUrl should fullyMatch regex s"""$url/[a-z0-9]{12}""".r
 
-  def expectedPageTitle = {
-    if (langToggle == Language.welsh) "Cais am ad-daliad wedi dod i law - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
+  def expectedPageTitle =
+    if (langToggle == Language.welsh)
+      "Cais am ad-daliad wedi dod i law - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else "Refund request received - Request a Self Assessment refund - GOV.UK"
-  }
 
-  def expectedPageHeader = {
+  def expectedPageHeader =
     if (langToggle == Language.welsh) "Cais am ad-daliad wedi dod i law"
     else "Refund request received"
-  }
 
   def referenceNumber: String = cssSelector("span.line-break > strong").webElement(driver).getText
 
-  def referenceContent: String = cssSelector("div.govuk-panel.govuk-panel--confirmation > div").webElement(driver).getText
+  def referenceContent: String =
+    cssSelector("div.govuk-panel.govuk-panel--confirmation > div").webElement(driver).getText
 
   def taxValue: String = cssSelector("tr:nth-child(1) > td").webElement(driver).getText
 
@@ -52,11 +57,10 @@ object RequestReceivedPage extends BasePage {
 
   def amountValue: String = cssSelector("tr:nth-child(3) > td").webElement(driver).getText
 
-  def setReferenceNumber(): Unit = {
+  def setReferenceNumber(): Unit =
     TestData.referenceNumber = referenceNumber
-  }
 
-  def referenceNumberDisplayed(): Assertion = {
+  def referenceNumberDisplayed(): Assertion =
     if (langToggle == Language.welsh)
       referenceContent should fullyMatch regex
         s"""Cyfeirnod eich ad-daliad yw
@@ -65,7 +69,6 @@ object RequestReceivedPage extends BasePage {
       referenceContent should fullyMatch regex
         s"""Your refund reference is
            |[a-z0-9]{12}""".stripMargin.r
-  }
 
   //  def refundDetailsCorrect(): Unit = {
   //    val tax: String = TestData.refundType
@@ -76,9 +79,8 @@ object RequestReceivedPage extends BasePage {
   //    amountValue should be(amount)
   //  }
 
-  def clickSelfAssessmentTaxAccountLinkText(): Unit = {
+  def clickSelfAssessmentTaxAccountLinkText(): Unit =
     click on linkText(selfAssessmentTaxAccountLinkText)
-  }
 
   def clickTellUsLinkText(): Unit = {
     click on linkText(tellUsLinkText)

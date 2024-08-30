@@ -16,11 +16,11 @@
 
 package uk.gov.hmrc.test.ui.stepdefs.pages
 
-import uk.gov.hmrc.test.ui.pages.EnterBankDetailsPage
 import uk.gov.hmrc.test.ui.pages.support.HelperFunctions
 import uk.gov.hmrc.test.ui.testdata.{BankDetails, Language, ScenarioContext}
 import java.lang.Thread.sleep
 
+import uk.gov.hmrc.test.ui.pages.ServicePages.EnterBankDetailsPage
 import uk.gov.hmrc.test.ui.stepdefs.DriverActions
 
 class EnterBankDetailsStepDef extends DriverActions {

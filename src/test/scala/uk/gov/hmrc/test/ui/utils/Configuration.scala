@@ -18,7 +18,8 @@ package uk.gov.hmrc.test.ui.utils
 
 case class TestConfig(authLoginStubUrl: String,
                       selfAssessmentRefundFrontendUrl: String,
-                      paymentsSurveyUrl: String
+                      paymentsSurveyUrl: String,
+                      ivStubUrl: String
                      )
 
 object Configuration {
@@ -29,21 +30,24 @@ object Configuration {
       TestConfig(
         authLoginStubUrl = "http://localhost:9949",
         selfAssessmentRefundFrontendUrl = "http://localhost:9171/self-assessment-refund",
-        paymentsSurveyUrl = "http://localhost:9966/payments-survey"
+        paymentsSurveyUrl = "http://localhost:9966/payments-survey",
+        ivStubUrl = "http://localhost:9948/iv-stub"
       )
 
     case "dev" =>
       TestConfig(
         authLoginStubUrl = "https://www.development.tax.service.gov.uk",
         selfAssessmentRefundFrontendUrl = "https://www.development.tax.service.gov.uk/self-assessment-refund",
-        paymentsSurveyUrl = "https://www.development.tax.service.gov.uk/payments-survey"
+        paymentsSurveyUrl = "https://www.development.tax.service.gov.uk/payments-survey",
+        ivStubUrl = "https://www.development.tax.service.gov.uk/iv-stub"
       )
 
     case "qa" =>
       TestConfig(
         authLoginStubUrl = "https://www.qa.tax.service.gov.uk",
         selfAssessmentRefundFrontendUrl = "https://www.qa.tax.service.gov.uk/self-assessment-refund",
-        paymentsSurveyUrl = "https://www.qa.tax.service.gov.uk/payments-survey"
+        paymentsSurveyUrl = "https://www.qa.tax.service.gov.uk/payments-survey",
+        ivStubUrl = "https://www.qa.tax.service.gov.uk/iv-stub"
       )
 
     case _ => throw new IllegalArgumentException(s"Environment '$environment' not known")

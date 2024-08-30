@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
+import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.testdata.Language
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
@@ -23,21 +24,22 @@ object CheckDetailsPage extends BasePage {
 
   val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/check-your-details"
 
-  def expectedPageTitle = {
+  def expectedPageTitle =
     if (langToggle == Language.welsh) "Gwiriwch eich manylion - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
     else "Check your details - Request a Self Assessment refund - GOV.UK"
-  }
 
-  def expectedPageHeader = {
+  def expectedPageHeader =
     if (langToggle == Language.welsh) "Gwiriwch eich manylion"
     else "Check your details"
-  }
 
-  def changeType(): Unit = cssSelector("#main-content > div > div > dl > div:nth-child(1) > dd.govuk-summary-list__actions > a").webElement(driver).click()
-  def changeBank(): Unit = cssSelector("#main-content > div > div > dl > div:nth-child(2) > dd.govuk-summary-list__actions > a").webElement(driver).click()
-  def changeAmount(): Unit = cssSelector("#main-content > div > div > dl > div:nth-child(3) > dd.govuk-summary-list__actions > a").webElement(driver).click()
-
-
-
+  def changeType(): Unit   = cssSelector(
+    "#main-content > div > div > dl > div:nth-child(1) > dd.govuk-summary-list__actions > a"
+  ).webElement(driver).click()
+  def changeBank(): Unit   = cssSelector(
+    "#main-content > div > div > dl > div:nth-child(2) > dd.govuk-summary-list__actions > a"
+  ).webElement(driver).click()
+  def changeAmount(): Unit = cssSelector(
+    "#main-content > div > div > dl > div:nth-child(3) > dd.govuk-summary-list__actions > a"
+  ).webElement(driver).click()
 
 }
