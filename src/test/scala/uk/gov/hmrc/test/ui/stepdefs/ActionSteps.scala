@@ -66,6 +66,7 @@ class ActionSteps extends BaseSteps {
   When("""^the user selects (.*) and clicks continue$""") { (element: String) =>
     element match {
       case "the full amount"    => clickById("choice-full")
+      case "the suggested amount"   => clickById("choice-suggested")
       case "a different amount" =>
         clickById("choice-different")
         enterTextById("different-amount", "100")

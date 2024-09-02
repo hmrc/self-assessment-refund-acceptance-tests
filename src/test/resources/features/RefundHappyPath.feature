@@ -18,15 +18,19 @@ Feature: Refund Happy Path
     When the user clicks continue
     Then the user is on the RequestReceivedPage
     Examples:
-      | amount             | accountType      | bank details | roll number | checkAnswersAmount | checkAnswersRoll |
-      | the full amount    | business account | business     | with        | the full amount    | shows            |
-      | the full amount    | personal account | personal     | with        | the full amount    | shows            |
-      | the full amount    | business account | business     | without     | the full amount    | doesn't show     |
-      | the full amount    | personal account | personal     | without     | the full amount    | doesn't show     |
-      | a different amount | business account | business     | with        | the amount typed   | shows            |
-      | a different amount | personal account | personal     | with        | the amount typed   | shows            |
-      | a different amount | business account | business     | without     | the amount typed   | doesn't show     |
-      | a different amount | personal account | personal     | without     | the amount typed   | doesn't show     |
+      | amount               | accountType      | bank details | roll number | checkAnswersAmount   | checkAnswersRoll |
+      | the full amount      | business account | business     | with        | the full amount      | shows            |
+      | the full amount      | personal account | personal     | with        | the full amount      | shows            |
+      | the full amount      | business account | business     | without     | the full amount      | doesn't show     |
+      | the full amount      | personal account | personal     | without     | the full amount      | doesn't show     |
+      | the suggested amount | business account | business     | with        | the suggested amount | shows            |
+      | the suggested amount | personal account | personal     | with        | the suggested amount | shows            |
+      | the suggested amount | business account | business     | without     | the suggested amount | doesn't show     |
+      | the suggested amount | personal account | personal     | without     | the suggested amount | doesn't show     |
+      | a different amount   | business account | business     | with        | the amount typed     | shows            |
+      | a different amount   | personal account | personal     | with        | the amount typed     | shows            |
+      | a different amount   | business account | business     | without     | the amount typed     | doesn't show     |
+      | a different amount   | personal account | personal     | without     | the amount typed     | doesn't show     |
 
   Scenario:  User completes refund without card on file and clicks feedback link
     Given The user starts a refund journey with Nino AB111111D, confidence 250, and urls provided

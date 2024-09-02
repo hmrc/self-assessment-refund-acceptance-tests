@@ -75,6 +75,8 @@ class AssertionSteps extends BaseSteps {
         amount match {
           case "the full amount"  =>
             findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£987.65"
+          case "the suggested amount"  =>
+            findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£345.67"
           case "the amount typed" =>
             findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£100.00"
           case _                  => throw new Exception(amount + " not found")
@@ -84,6 +86,8 @@ class AssertionSteps extends BaseSteps {
         amount match {
           case "the full amount"  =>
             findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£987.65"
+          case "the suggested amount"  =>
+            findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£345.67"
           case "the amount typed" =>
             findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£100.00"
           case _                  => throw new Exception(amount + " not found")
