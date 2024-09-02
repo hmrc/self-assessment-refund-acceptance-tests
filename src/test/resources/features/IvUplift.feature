@@ -2,7 +2,7 @@
 Feature: IV Uplift
 
   Scenario: IV Uplift successful
-    Given The user starts a refund journey with Nino AB111111C, confidence 50, and urls provided
+    Given The user starts a refund journey with Nino AB200111C, confidence 50, and urls provided
     Then the user is on the IvUpliftPage
     When the IV uplift user selects IV success
     Then the user is on the RefundAmountPage
@@ -21,7 +21,7 @@ Feature: IV Uplift
     Then the user is on the RequestReceivedPage
 
   Scenario: IV Uplift unsuccessful
-    Given The user starts a refund journey with Nino AB111111C, confidence 50, and urls provided
+    Given The user starts a refund journey with Nino AB200111C, confidence 50, and urls provided
     Then the user is on the IvUpliftPage
     When the IV uplift user selects IV failure
     Then the user is on the IvKickoutPage

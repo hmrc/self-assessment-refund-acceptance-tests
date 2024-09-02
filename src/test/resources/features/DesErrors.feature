@@ -2,7 +2,7 @@
 Feature: DES Errors
 
   Scenario: DES errors and user contacts HMRC
-    Given The user starts a refund journey with Nino AB111111B, confidence 250, and urls provided
+    Given The user starts a refund journey with Nino AB200111B, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects the full amount and clicks continue
     Then the user is on the TypeOfAccountPage
@@ -20,7 +20,7 @@ Feature: DES Errors
     Then the user is on the SaEnquiresPage
 
   Scenario: DES errors and Welsh user contacts HMRC
-    Given The user starts a refund journey with Nino AB111111B, confidence 250, and urls provided
+    Given The user starts a refund journey with Nino AB200111B, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects the full amount and clicks continue
     Then the user is on the TypeOfAccountPage
