@@ -73,20 +73,24 @@ class AssertionSteps extends BaseSteps {
       case "shows"        =>
         isPresent("//*[@id=\"main-content\"]/div/div/dl/div[5]/dt")
         amount match {
-          case "the full amount"  =>
+          case "the full amount"      =>
             findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£987.65"
-          case "the amount typed" =>
+          case "the suggested amount" =>
+            findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£641.98"
+          case "the amount typed"     =>
             findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£100.00"
-          case _                  => throw new Exception(amount + " not found")
+          case _                      => throw new Exception(amount + " not found")
         }
       case "doesn't show" =>
         !isPresent("//*[@id=\"main-content\"]/div/div/dl/div[5]/dt")
         amount match {
-          case "the full amount"  =>
+          case "the full amount"      =>
             findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£987.65"
-          case "the amount typed" =>
+          case "the suggested amount" =>
+            findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£641.98"
+          case "the amount typed"     =>
             findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£100.00"
-          case _                  => throw new Exception(amount + " not found")
+          case _                      => throw new Exception(amount + " not found")
         }
       case _              => throw new Exception(roll + " not found")
     }

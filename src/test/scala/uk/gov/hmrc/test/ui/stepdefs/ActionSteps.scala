@@ -35,8 +35,8 @@ class ActionSteps extends BaseSteps {
       journey match {
         case "refund"  =>
           nino match {
-            case "AB111111D"               => click on id("1")
-            case "AB111111C" | "AB111111B" => click on id("0")
+            case "AB200111D"               => click on id("1")
+            case "AB200111C" | "AB200111B" => click on id("0")
             case _                         => click on id("0") // to populate the rest of fields, nino will be changed in next step
           }
         case "history" =>
@@ -48,7 +48,7 @@ class ActionSteps extends BaseSteps {
       }
       click on cssSelector("#main-content > form:nth-child(5) > button")
       nino match {
-        case "AB111111B" =>
+        case "AB200111B" =>
           id("nino").webElement.clear()
           id("nino").webElement.sendKeys(nino)
         case _           => ()
@@ -65,13 +65,14 @@ class ActionSteps extends BaseSteps {
 
   When("""^the user selects (.*) and clicks continue$""") { (element: String) =>
     element match {
-      case "the full amount"    => clickById("choice-full")
-      case "a different amount" =>
+      case "the full amount"      => clickById("choice-full")
+      case "the suggested amount" => clickById("choice-suggested")
+      case "a different amount"   =>
         clickById("choice-different")
         enterTextById("different-amount", "100")
-      case "business account"   => clickById("accountType")
-      case "personal account"   => clickById("accountType-2")
-      case _                    => throw new Exception(element + " not found")
+      case "business account"     => clickById("accountType")
+      case "personal account"     => clickById("accountType-2")
+      case _                      => throw new Exception(element + " not found")
     }
     continue()
   }
