@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object RefundAmountPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-amount"
+  val url: String = s"${testConfig.saRequestRefundJourneyFrontendUrl}/refund-amount"
 
   def expectedPageTitle = "How much do you want to be refunded? - Request a Self Assessment refund - GOV.UK"
 

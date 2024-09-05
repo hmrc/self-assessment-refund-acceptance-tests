@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
 object RefundAmountPageWelsh extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/refund-amount"
+  val url: String = s"${testConfig.saRequestRefundJourneyFrontendUrl}/refund-amount"
 
   def expectedPageTitle  = "Faint o ad-daliad yr hoffech ei gael? - Gwneud cais am ad-daliad Hunanasesiad - GOV.UK"
   def expectedPageHeader = "Faint o ad-daliad yr hoffech ei gael?"
