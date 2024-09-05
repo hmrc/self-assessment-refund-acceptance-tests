@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.BasePage
 object ReturnUrlPage extends BasePage {
 
   val url                = "http://localhost:9171/returnUrl"
-  def expectedPageTitle  = "Page not found - 404"
+  def expectedPageTitle  = "Page not found - 404 - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = "This page can’t be found"
 
 }
