@@ -2,7 +2,7 @@
 Feature: History Pages
 
   Scenario: Users views Paid Refund
-    Given The user starts a history journey with Nino AB111111C, confidence 250, and urls provided
+    Given The Individual user starts a history journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundHistoryPage
     When the user clicks the history tab
     And the user clicks view paid
@@ -11,7 +11,7 @@ Feature: History Pages
     # add when button leads somewhere
 
   Scenario: User views Rejected Refund
-    Given The user starts a history journey with Nino AB111111C, confidence 250, and urls provided
+    Given The Individual user starts a history journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundHistoryPage
     When the user clicks the history tab
     And the user clicks view rejected
@@ -20,7 +20,7 @@ Feature: History Pages
     # add when button leads somewhere
 
   Scenario: User views Approved Refund
-    Given The user starts a history journey with Nino AB111111C, confidence 250, and urls provided
+    Given The Individual user starts a history journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundHistoryPage
     When the user clicks view approved
     Then the user is on the StatusApprovedPage
@@ -28,7 +28,7 @@ Feature: History Pages
     # add when button leads somewhere
 
   Scenario: User views Processing Refund
-    Given The user starts a history journey with Nino AB111111C, confidence 250, and urls provided
+    Given The Individual user starts a history journey with Nino AB111111C, confidence 250, and urls provided
     Then the user is on the RefundHistoryPage
     When the user clicks view processing
     Then the user is on the StatusProcessingPage

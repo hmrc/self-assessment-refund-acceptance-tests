@@ -2,12 +2,12 @@
 Feature: IV Uplift
 
   Scenario: IV Uplift successful
-    Given The user starts a refund journey with Nino AB200111C, confidence 50, and urls provided
+    Given The Individual user starts a refund journey with Nino AB200111C, confidence 50, and urls provided
     Then the user is on the IvUpliftPage
     When the IV uplift user selects IV success
     Then the user is on the RefundAmountPage
     When the user selects the full amount and clicks continue
-    Then the user is on the AccountOnFilePage
+    Then the user is on the HowYouWillGetTheRefundPage
     When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects business account and clicks continue
@@ -21,7 +21,7 @@ Feature: IV Uplift
     Then the user is on the RequestReceivedPage
 
   Scenario: IV Uplift unsuccessful
-    Given The user starts a refund journey with Nino AB200111C, confidence 50, and urls provided
+    Given The Individual user starts a refund journey with Nino AB200111C, confidence 50, and urls provided
     Then the user is on the IvUpliftPage
     When the IV uplift user selects IV failure
     Then the user is on the IvKickoutPage

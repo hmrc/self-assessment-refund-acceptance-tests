@@ -23,12 +23,13 @@ import uk.gov.hmrc.test.ui.testdata.BankDetails
 
 class ActionSteps extends BaseSteps {
 
-  Given("""^The user starts a (.*) journey with Nino (.*), confidence (.*), and urls (.*)$""") {
-    (journey: String, nino: String, confidence: String, urls: String) =>
+  Given("""^The (.*) user starts a (.*) journey with Nino (.*), confidence (.*), and urls (.*)$""") {
+    (userType: String, journey: String, nino: String, confidence: String, urls: String) =>
       MongoDriver.dropDatabases()
       driver.navigate().to(AuthWizardPage.url)
-      enterTextById("nino", nino)
+      if (userType == "Individual") enterTextById("nino", nino)
       singleSel(name("confidenceLevel")).value = confidence
+      singleSel(name("affinityGroup")).value = userType
       enterTextById("redirectionUrl", TestOnlyStartPage.url)
       click on id("submit-top")
       if (isPresent("Gwneud cais am ad-daliad Hunanasesiad")) { clickByCssSelector("nav > ul > li:nth-child(1) > a") }
