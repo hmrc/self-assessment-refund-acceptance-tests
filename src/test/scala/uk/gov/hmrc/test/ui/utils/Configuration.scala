@@ -22,7 +22,8 @@ case class TestConfig(
   paymentsSurveyUrl: String,
   ivStubUrl: String,
   basGateway: String,
-  viewAndChange: String
+  viewAndChange: String,
+  saRequestRefundJourneyFrontendUrl: String
 )
 
 object Configuration {
@@ -36,7 +37,8 @@ object Configuration {
         paymentsSurveyUrl = "http://localhost:9966/payments-survey",
         ivStubUrl = "http://localhost:9948/iv-stub",
         basGateway = "http://localhost:9553/bas-gateway",
-        viewAndChange = "http://localhost:9081"
+        viewAndChange = "http://localhost:9081",
+        saRequestRefundJourneyFrontendUrl = "http://localhost:9171/request-a-self-assessment-refund"
       )
 
     case "dev" =>
@@ -46,7 +48,8 @@ object Configuration {
         paymentsSurveyUrl = "https://www.development.tax.service.gov.uk/payments-survey",
         ivStubUrl = "https://www.development.tax.service.gov.uk/iv-stub",
         basGateway = "https://www.development.tax.service.gov.uk/bas-gateway",
-        viewAndChange = "https://www.development.tax.service.gov.uk"
+        viewAndChange = "https://www.development.tax.service.gov.uk",
+        saRequestRefundJourneyFrontendUrl = "https://www.development.tax.service.gov.uk/request-a-self-assessment-refund"
       )
 
     case "qa" =>
@@ -56,7 +59,8 @@ object Configuration {
         paymentsSurveyUrl = "https://www.qa.tax.service.gov.uk/payments-survey",
         ivStubUrl = "https://www.qa.tax.service.gov.uk/iv-stub",
         basGateway = "https://www.qa.tax.service.gov.uk/bas-gateway",
-        viewAndChange = "https://www.qa.tax.service.gov.uk"
+        viewAndChange = "https://www.qa.tax.service.gov.uk",
+        saRequestRefundJourneyFrontendUrl = "https://www.qa.tax.service.gov.uk/request-a-self-assessment-refund"
       )
 
     case _ => throw new IllegalArgumentException(s"Environment '$environment' not known")
