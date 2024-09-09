@@ -5,6 +5,8 @@ Feature: BARS
     Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
+    Then the user is on the WeNeedYourBankDetailsPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects <account> and clicks continue
     Then the user is on the EnterBankDetailsPage
@@ -25,6 +27,8 @@ Feature: BARS
     Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
+    Then the user is on the WeNeedYourBankDetailsPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects <account> and clicks continue
     Then the user is on the EnterBankDetailsPage
@@ -45,6 +49,8 @@ Feature: BARS
     Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
+    Then the user is on the WeNeedYourBankDetailsPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects <account> and clicks continue
     Then the user is on the EnterBankDetailsPage

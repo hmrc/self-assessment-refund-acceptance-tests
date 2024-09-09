@@ -27,6 +27,8 @@ Feature: Page Features
     Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls <URL>
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
+    Then the user is on the WeNeedYourBankDetailsPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects personal account and clicks continue
     Then the user is on the EnterBankDetailsPage
@@ -48,6 +50,8 @@ Feature: Page Features
     Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls <URL>
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
+    Then the user is on the WeNeedYourBankDetailsPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects business account and clicks continue
     Then the user is on the EnterBankDetailsPage

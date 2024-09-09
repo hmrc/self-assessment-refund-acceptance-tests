@@ -5,6 +5,8 @@ Feature: DES Errors
     Given The Individual user starts a refund journey with Nino AB200111B, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects the full amount and clicks continue
+    Then the user is on the WeNeedYourBankDetailsPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects business account and clicks continue
     Then the user is on the EnterBankDetailsPage
@@ -23,6 +25,8 @@ Feature: DES Errors
     Given The Individual user starts a refund journey with Nino AB200111B, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects the full amount and clicks continue
+    Then the user is on the WeNeedYourBankDetailsPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects business account and clicks continue
     Then the user is on the EnterBankDetailsPage
