@@ -19,11 +19,11 @@ package uk.gov.hmrc.test.ui.pages.ServicePages
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object AccountOnFilePage extends BasePage {
+object HowYouWillGetTheRefundPage extends BasePage {
 
-  val url: String = s"${testConfig.selfAssessmentRefundFrontendUrl}/we-need-to-get-your-bank-details"
+  val url: String = s"${testConfig.saRequestRefundJourneyFrontendUrl}/how-you-will-get-the-refund"
 
-  def expectedPageTitle  = "We need to get your bank details - Request a Self Assessment refund - GOV.UK"
-  def expectedPageHeader = "We need to get your bank details"
+  def expectedPageTitle  = "How you will get the refund - Request a Self Assessment refund - GOV.UK"
+  def expectedPageHeader = "How you will get the refund"
 
 }

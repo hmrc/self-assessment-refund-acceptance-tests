@@ -1,11 +1,11 @@
 @test
 Feature: Refund Happy Path
 
-  Scenario Outline: User completes refund with card on file
-    Given The user starts a refund journey with Nino AB200111C, confidence 250, and urls provided
+  Scenario Outline: Individual user completes refund with card on file
+    Given The Individual user starts a refund journey with Nino AB200111C, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects <amount> and clicks continue
-    Then the user is on the AccountOnFilePage
+    Then the user is on the HowYouWillGetTheRefundPage
     When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects <accountType> and clicks continue
@@ -32,8 +32,9 @@ Feature: Refund Happy Path
       | a different amount   | business account | business     | without     | the amount typed     | doesn't show     |
       | a different amount   | personal account | personal     | without     | the amount typed     | doesn't show     |
 
-  Scenario:  User completes refund without card on file and clicks feedback link
-    Given The user starts a refund journey with Nino AB200111D, confidence 250, and urls provided
+    #TODO: update in OPS-12656
+  Scenario: Individual user completes refund without card on file and clicks feedback link
+    Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
     Then the user is on the TypeOfAccountPage
@@ -48,3 +49,35 @@ Feature: Refund Happy Path
     Then the user is on the RequestReceivedPage
     When the user clicks the feedback link
     Then the user is on the SurveyPage
+
+    #TODO: update in OPS-12685
+  Scenario: Agent user completes refund with card on file
+    Given The Agent user starts a refund journey with Nino AB200111C, confidence 50, and urls provided
+    Then the user is on the RefundAmountPage
+    When the user selects a different amount and clicks continue
+    Then the user is on the TypeOfAccountPage
+    When the user selects personal account and clicks continue
+    Then the user is on the EnterBankDetailsPage
+    When the user enters valid personal bank details without roll number and clicks continue
+    Then the user is on the CheckDetailsPage
+    And the page shows the amount typed and doesn't show the roll number
+    When the user clicks continue
+    Then the user is on the DummyReauthenticationPage
+    When the user clicks continue
+    Then the user is on the RequestReceivedPage
+
+    #TODO: update in OPS-12657
+  Scenario: Agent user completes refund without card on file
+    Given The Agent user starts a refund journey with Nino AB200111D, confidence 50, and urls provided
+    Then the user is on the RefundAmountPage
+    When the user selects a different amount and clicks continue
+    Then the user is on the TypeOfAccountPage
+    When the user selects personal account and clicks continue
+    Then the user is on the EnterBankDetailsPage
+    When the user enters valid personal bank details without roll number and clicks continue
+    Then the user is on the CheckDetailsPage
+    And the page shows the amount typed and doesn't show the roll number
+    When the user clicks continue
+    Then the user is on the DummyReauthenticationPage
+    When the user clicks continue
+    Then the user is on the RequestReceivedPage

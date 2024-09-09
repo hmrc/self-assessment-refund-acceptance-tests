@@ -49,7 +49,8 @@ object Configuration {
         ivStubUrl = "https://www.development.tax.service.gov.uk/iv-stub",
         basGateway = "https://www.development.tax.service.gov.uk/bas-gateway",
         viewAndChange = "https://www.development.tax.service.gov.uk",
-        saRequestRefundJourneyFrontendUrl = "https://www.development.tax.service.gov.uk/request-a-self-assessment-refund"
+        saRequestRefundJourneyFrontendUrl =
+          "https://www.development.tax.service.gov.uk/request-a-self-assessment-refund"
       )
 
     case "qa" =>

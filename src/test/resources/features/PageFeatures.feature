@@ -2,19 +2,19 @@
 Feature: Page Features
 
   Scenario: User selects Welsh toggle
-    Given The user starts a refund journey with Nino AB200111C, confidence 250, and urls provided
+    Given The Individual user starts a refund journey with Nino AB200111C, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user clicks Cymraeg
     Then the user is on the RefundAmountPage in Welsh
 
   Scenario: User signs out
-    Given The user starts a refund journey with Nino AB200111C, confidence 250, and urls provided
+    Given The Individual user starts a refund journey with Nino AB200111C, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user clicks sign out
     Then the user is on the LoggedOutPage
 
   Scenario Outline: User clicks back link on first page
-    Given The user starts a refund journey with Nino AB200111C, confidence 250, and urls <URL>
+    Given The Individual user starts a refund journey with Nino AB200111C, confidence 250, and urls <URL>
     Then the user is on the RefundAmountPage
     When the user clicks back
     Then the user is on the <page>
@@ -24,7 +24,7 @@ Feature: Page Features
       | not provided | V&CPage     |
 
   Scenario Outline: User clicks return link on confirmation page
-    Given The user starts a refund journey with Nino AB200111D, confidence 250, and urls <URL>
+    Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls <URL>
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
     Then the user is on the TypeOfAccountPage
@@ -45,7 +45,7 @@ Feature: Page Features
       | not provided | RefundHistoryPage |
 
   Scenario Outline: User clicks return link on lockout page
-    Given The user starts a refund journey with Nino AB200111D, confidence 250, and urls <URL>
+    Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls <URL>
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
     Then the user is on the TypeOfAccountPage
