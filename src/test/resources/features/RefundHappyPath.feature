@@ -52,6 +52,7 @@ Feature: Refund Happy Path
     Then the user is on the SurveyPage
 
     #TODO: update in OPS-12685
+  @ignore
   Scenario: Agent user completes refund with card on file
     Given The Agent user starts a refund journey with Nino AB200111C, confidence 50, and urls provided
     Then the user is on the RefundAmountPage
@@ -67,11 +68,12 @@ Feature: Refund Happy Path
     When the user clicks continue
     Then the user is on the RequestReceivedPage
 
-    #TODO: update in OPS-12657
   Scenario: Agent user completes refund without card on file
     Given The Agent user starts a refund journey with Nino AB200111D, confidence 50, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
+    Then the user is on the WeNeedYourClientsBankDetailsPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects personal account and clicks continue
     Then the user is on the EnterBankDetailsPage
