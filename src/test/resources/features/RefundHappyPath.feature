@@ -32,11 +32,12 @@ Feature: Refund Happy Path
       | a different amount   | business account | business     | without     | the amount typed     | doesn't show     |
       | a different amount   | personal account | personal     | without     | the amount typed     | doesn't show     |
 
-    #TODO: update in OPS-12656
   Scenario: Individual user completes refund without card on file and clicks feedback link
     Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
+    Then the user is on the WeNeedYourBankDetailsPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects personal account and clicks continue
     Then the user is on the EnterBankDetailsPage
