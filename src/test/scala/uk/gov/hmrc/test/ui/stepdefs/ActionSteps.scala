@@ -27,7 +27,14 @@ class ActionSteps extends BaseSteps {
     (userType: String, journey: String, nino: String, confidence: String, urls: String) =>
       MongoDriver.dropDatabases()
       driver.navigate().to(AuthWizardPage.url)
+
       if (userType == "Individual") enterTextById("nino", nino)
+      if (userType == "Agent") {
+        enterTextById("enrolment[0].name", "HMRC-MTD-IT")
+        enterTextById("input-0-0-name", "MTDITID")
+        enterTextById("input-0-0-value", "FJWF01635669298")
+      }
+
       singleSel(name("confidenceLevel")).value = confidence
       singleSel(name("affinityGroup")).value = userType
       enterTextById("redirectionUrl", TestOnlyStartPage.url)
