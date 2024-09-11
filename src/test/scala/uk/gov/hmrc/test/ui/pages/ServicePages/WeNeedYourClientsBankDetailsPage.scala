@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.runner
+package uk.gov.hmrc.test.ui.pages.ServicePages
 
-import io.cucumber.junit.{Cucumber, CucumberOptions}
-import org.junit.runner.RunWith
+import uk.gov.hmrc.test.ui.pages.BasePage
+import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.stepdefs"),
-  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json"),
-  tags = "@test and not @ignore"
-)
-class Runner {}
+object WeNeedYourClientsBankDetailsPage extends BasePage {
+
+  val url: String = s"${testConfig.saRequestRefundJourneyFrontendUrl}/we-need-your-clients-bank-details"
+
+  def expectedPageTitle  = "We need your client’s bank details - Request a Self Assessment refund - GOV.UK"
+  def expectedPageHeader = "We need your client’s bank details"
+}
