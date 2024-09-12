@@ -23,50 +23,52 @@ class AssertionSteps extends BaseSteps {
 
   Then("""^the user is on the (.*)$""") { page: String =>
     page match {
-      case "BackUrlPage"                => BackUrlPage.shouldBeLoaded()
-      case "CheckDetailsPage"           =>
+      case "BackUrlPage"                      => BackUrlPage.shouldBeLoaded()
+      case "CheckDetailsPage"                 =>
         CheckDetailsPage.shouldBeLoaded()
-      case "DesErrorPage"               =>
+      case "DesErrorPage"                     =>
         DesErrorPage.shouldBeLoaded()
-      case "DummyReauthenticationPage"  =>
+      case "DummyReauthenticationPage"        =>
         DummyReauthenticationPage.shouldBeLoaded()
-      case "EnterBankDetailsPage"       =>
+      case "EnterBankDetailsPage"             =>
         EnterBankDetailsPage.shouldBeLoaded()
-      case "HowYouWillGetTheRefundPage" =>
+      case "HowYourClientWillGetRefundPage"   => HowYourClientWillGetRefundPage.shouldBeLoaded()
+      case "HowYouWillGetTheRefundPage"       =>
         HowYouWillGetTheRefundPage.shouldBeLoaded()
-      case "IvKickoutPage"              => IvKickoutPage.shouldBeLoaded()
-      case "IvUpliftPage"               => IvUpliftPage.shouldBeLoaded()
-      case "LockoutPage"                =>
+      case "IvKickoutPage"                    => IvKickoutPage.shouldBeLoaded()
+      case "IvUpliftPage"                     => IvUpliftPage.shouldBeLoaded()
+      case "LockoutPage"                      =>
         LockoutPage.shouldBeLoaded()
-      case "LoggedOutPage"              => LoggedOutPage.shouldBeLoaded()
-      case "RefundAmountPage"           =>
+      case "LoggedOutPage"                    => LoggedOutPage.shouldBeLoaded()
+      case "RefundAmountPage"                 =>
         RefundAmountPage.shouldBeLoaded()
-      case "RefundAmountPage in Welsh"  => RefundAmountPageWelsh.shouldBeLoaded()
-      case "RefundHistoryPage"          =>
+      case "RefundAmountPage in Welsh"        => RefundAmountPageWelsh.shouldBeLoaded()
+      case "RefundHistoryPage"                =>
         RefundsHistoryPage.shouldBeLoaded()
-      case "RequestReceivedPage"        =>
+      case "RequestReceivedPage"              =>
         RequestReceivedPage.shouldBeLoaded()
         findTextByCssSelector("div.govuk-panel.govuk-panel--confirmation > div") should include regex """Your refund reference is
             |[a-z0-9]{12}""".stripMargin.r
-      case "ReturnUrlPage"              => ReturnUrlPage.shouldBeLoaded()
-      case "SaEnquiresPage"             => SaEnquiresPage.shouldBeLoaded()
-      case "StatusApprovedPage"         =>
+      case "ReturnUrlPage"                    => ReturnUrlPage.shouldBeLoaded()
+      case "SaEnquiresPage"                   => SaEnquiresPage.shouldBeLoaded()
+      case "StatusApprovedPage"               =>
         StatusApprovedPage.shouldBeLoaded()
-      case "StatusPaidPage"             =>
+      case "StatusPaidPage"                   =>
         StatusPaidPage.shouldBeLoaded()
-      case "StatusProcessingPage"       =>
+      case "StatusProcessingPage"             =>
         StatusProcessingPage.shouldBeLoaded()
-      case "StatusRejectedPage"         =>
+      case "StatusRejectedPage"               =>
         StatusRejectedPage.shouldBeLoaded()
-      case "SurveyPage"                 =>
+      case "SurveyPage"                       =>
         SurveyPage.shouldBeLoaded()
-      case "TypeOfAccountPage"          =>
+      case "TechnicalDifficultiesPage"        => TechnicalDifficultiesPage.shouldBeLoaded()
+      case "TypeOfAccountPage"                =>
         TypeOfAccountPage.shouldBeLoaded()
-      case "V&CPage"                    => VandCPage.shouldBeLoaded()
-      case "WeNeedYourBankDetailsPage"  => WeNeedYourBankDetailsPage.shouldBeLoaded()
-      case "WeNeedYourClientsBankDetailsPage"  => WeNeedYourClientsBankDetailsPage.shouldBeLoaded()
-      case "WelshEnquiresPage"          => WelshEnquiresPage.shouldBeLoaded()
-      case _                            => throw new Exception(page + " not found")
+      case "V&CPage"                          => VandCPage.shouldBeLoaded()
+      case "WeNeedYourBankDetailsPage"        => WeNeedYourBankDetailsPage.shouldBeLoaded()
+      case "WeNeedYourClientsBankDetailsPage" => WeNeedYourClientsBankDetailsPage.shouldBeLoaded()
+      case "WelshEnquiresPage"                => WelshEnquiresPage.shouldBeLoaded()
+      case _                                  => throw new Exception(page + " not found")
     }
   }
 

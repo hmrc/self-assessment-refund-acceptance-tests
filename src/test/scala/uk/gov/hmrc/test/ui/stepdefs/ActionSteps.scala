@@ -28,24 +28,26 @@ class ActionSteps extends BaseSteps {
       MongoDriver.dropDatabases()
       driver.navigate().to(AuthWizardPage.url)
 
-      if (userType == "Individual") enterTextById("nino", nino)
-      if (userType == "Agent") {
-        enterTextById("enrolment[0].name", "HMRC-MTD-IT")
-        enterTextById("input-0-0-name", "MTDITID")
-        enterTextById("input-0-0-value", "FJWF01635669298")
+      userType match {
+        case "Individual" | "Organisation" => enterTextById("nino", nino)
+        case "Agent"                       =>
+          enterTextById("enrolment[0].name", "HMRC-MTD-IT")
+          enterTextById("input-0-0-name", "MTDITID")
+          enterTextById("input-0-0-value", "FJWF01635669298")
+        case _                             => throw new Exception(userType + " not found")
       }
-
       singleSel(name("confidenceLevel")).value = confidence
       singleSel(name("affinityGroup")).value = userType
       enterTextById("redirectionUrl", TestOnlyStartPage.url)
       click on id("submit-top")
+
       if (isPresent("Gwneud cais am ad-daliad Hunanasesiad")) { clickByCssSelector("nav > ul > li:nth-child(1) > a") }
       journey match {
         case "refund"  =>
           nino match {
-            case "AB200111D"               => click on id("1")
-            case "AB200111C" | "AB200111B" => click on id("0")
-            case _                         => click on id("0") // to populate the rest of fields, nino will be changed in next step
+            case "AB200111D" => click on id("1")
+            case "AB200111C" => click on id("0")
+            case _           => click on id("0") // to populate the rest of fields, nino will be changed in next step
           }
         case "history" =>
           nino match {
@@ -55,18 +57,22 @@ class ActionSteps extends BaseSteps {
         case _         => throw new Exception(journey + " not found")
       }
       click on cssSelector("#main-content > form:nth-child(5) > button")
+
       nino match {
-        case "AB200111B" =>
+        case "AB200111C" | "AB200111D" => ()
+        case _                         =>
           id("nino").webElement.clear()
           id("nino").webElement.sendKeys(nino)
-        case _           => ()
       }
       urls match {
-        case "not provided" =>
+        case "not provided"              =>
           id("backUrl").webElement.clear()
           id("returnUrl").webElement.clear()
-        case "provided"     => ()
-        case _              => throw new Exception(urls + " not found")
+        case "provided"                  => ()
+        case "provided but amount wrong" =>
+          id("fullAmount").webElement.clear()
+          id("fullAmount").webElement.sendKeys("1000")
+        case _                           => throw new Exception(urls + " not found")
       }
       continue()
   }
