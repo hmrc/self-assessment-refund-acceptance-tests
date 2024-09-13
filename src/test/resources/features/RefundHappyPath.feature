@@ -51,12 +51,46 @@ Feature: Refund Happy Path
     When the user clicks the feedback link
     Then the user is on the SurveyPage
 
-    #TODO: update in OPS-12685
-  @ignore
+  Scenario: Organisation user completes refund with card on file
+    Given The Organisation user starts a refund journey with Nino AB200111C, confidence 250, and urls provided
+    Then the user is on the RefundAmountPage
+    When the user selects the full amount and clicks continue
+    Then the user is on the HowYouWillGetTheRefundPage
+    When the user clicks continue
+    Then the user is on the TypeOfAccountPage
+    When the user selects business account and clicks continue
+    Then the user is on the EnterBankDetailsPage
+    When the user enters valid business bank details with roll number and clicks continue
+    Then the user is on the CheckDetailsPage
+    And the page shows the full amount and shows the roll number
+    When the user clicks continue
+    Then the user is on the DummyReauthenticationPage
+    When the user clicks continue
+    Then the user is on the RequestReceivedPage
+
+  Scenario: Organisation user completes refund without card on file
+    Given The Organisation user starts a refund journey with Nino AB200111D, confidence 250, and urls provided
+    Then the user is on the RefundAmountPage
+    When the user selects a different amount and clicks continue
+    Then the user is on the WeNeedYourBankDetailsPage
+    When the user clicks continue
+    Then the user is on the TypeOfAccountPage
+    When the user selects personal account and clicks continue
+    Then the user is on the EnterBankDetailsPage
+    When the user enters valid personal bank details without roll number and clicks continue
+    Then the user is on the CheckDetailsPage
+    And the page shows the amount typed and doesn't show the roll number
+    When the user clicks continue
+    Then the user is on the DummyReauthenticationPage
+    When the user clicks continue
+    Then the user is on the RequestReceivedPage
+
   Scenario: Agent user completes refund with card on file
     Given The Agent user starts a refund journey with Nino AB200111C, confidence 50, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
+    Then the user is on the HowYourClientWillGetRefundPage
+    When the user clicks continue
     Then the user is on the TypeOfAccountPage
     When the user selects personal account and clicks continue
     Then the user is on the EnterBankDetailsPage
