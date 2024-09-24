@@ -31,7 +31,7 @@ class AssertionSteps extends BaseSteps {
       case "DummyReauthenticationPage"        =>
         DummyReauthenticationPage.shouldBeLoaded()
       case "EnterBankDetailsPage"             =>
-        EnterBankDetailsPage.shouldBeLoaded()
+        BankDetailsPage.shouldBeLoaded()
       case "HowYourClientWillGetRefundPage"   => HowYourClientWillGetRefundPage.shouldBeLoaded()
       case "HowYouWillGetTheRefundPage"       =>
         HowYouWillGetTheRefundPage.shouldBeLoaded()
