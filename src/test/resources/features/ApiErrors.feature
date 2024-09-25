@@ -42,7 +42,7 @@ Feature: API Errors
     When the user selects business account and clicks continue
     Then the user is on the EnterBankDetailsPage
     When the user enters valid business bank details with roll number and clicks continue
-    Then the user is on the CheckDetailsPage
+    Then the user is on the CheckYourAnswersPage
     And the page shows the full amount and shows the roll number
     When the user clicks continue
     Then the user is on the DummyReauthenticationPage
@@ -62,7 +62,7 @@ Feature: API Errors
     When the user selects business account and clicks continue
     Then the user is on the EnterBankDetailsPage
     When the user enters valid business bank details with roll number and clicks continue
-    Then the user is on the CheckDetailsPage
+    Then the user is on the CheckYourAnswersPage
     And the page shows the full amount and shows the roll number
     When the user clicks continue
     Then the user is on the DummyReauthenticationPage

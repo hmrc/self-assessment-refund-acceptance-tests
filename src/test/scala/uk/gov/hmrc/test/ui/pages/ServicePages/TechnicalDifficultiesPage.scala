@@ -22,7 +22,8 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 object TechnicalDifficultiesPage extends BasePage {
 
   val url: String                = s"${testConfig.selfAssessmentRefundFrontendUrl}"
-  def expectedPageTitle: String  = "Sorry, there is a problem with the service - 500 - Request a Self Assessment refund - GOV.UK"
+  def expectedPageTitle: String  =
+    "Sorry, there is a problem with the service - 500 - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader: String = "Sorry, there is a problem with the service"
 
   override def shouldBeLoaded(): Unit = {

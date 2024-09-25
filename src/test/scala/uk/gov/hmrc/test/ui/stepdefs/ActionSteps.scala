@@ -108,6 +108,7 @@ class ActionSteps extends BaseSteps {
       case "view paid"             => clickByCssSelector("tr:nth-child(1) > td:nth-child(5) > a")
       case "view processing"       => clickByCssSelector("tr:nth-child(1) > td:nth-child(4) > a")
       case "view rejected"         => clickByCssSelector("tr:nth-child(2) > td:nth-child(5) > a")
+      case "change amount"         => clickByCssSelector("div:nth-child(1) > dd.govuk-summary-list__actions > a")
       case _                       => throw new Exception(element + " not found")
     }
   }
