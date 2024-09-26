@@ -36,6 +36,8 @@ Feature: Page Features
     Then the user is on the CheckDetailsPage
     And the page shows the amount typed and doesn't show the roll number
     When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
+    When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage

@@ -19,12 +19,10 @@ package uk.gov.hmrc.test.ui.pages.ServicePages
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object DummyReauthenticationPage extends BasePage {
+object YouNeedToSignInAgainPage extends BasePage {
 
-  val url: String =
-    s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/reauthentication?continue=/request-a-self-assessment-refund/reauthenticated-submit"
+  val url: String = s"${testConfig.saRequestRefundJourneyFrontendUrl}/sign-in-again"
 
-  def expectedPageTitle  = s"Dummy Reauthentication - Request a Self Assessment refund - GOV.UK"
-  def expectedPageHeader = s"Dummy Reauthentication"
-
+  def expectedPageTitle  = "For your security, you need to sign in again - Request a Self Assessment refund - GOV.UK"
+  def expectedPageHeader = "For your security, you need to sign in again"
 }
