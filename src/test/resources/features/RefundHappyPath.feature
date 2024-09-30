@@ -118,3 +118,5 @@ Feature: Refund Happy Path
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage
+
+    #TODO: after OPS-12792, consider other Agent auth scenarios e.g. Legacy & Non-Legacy, Just Delegated Enrolment Only
