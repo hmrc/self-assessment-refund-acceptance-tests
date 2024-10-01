@@ -22,7 +22,7 @@ import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 object DummyReauthenticationPage extends BasePage {
 
   val url: String =
-    s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/reauthentication?continue=/self-assessment-refund/check-your-details-submit"
+    s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/reauthentication?continue=/request-a-self-assessment-refund/check-your-answers-submit"
 
   def expectedPageTitle  = s"Dummy Reauthentication - Request a Self Assessment refund - GOV.UK"
   def expectedPageHeader = s"Dummy Reauthentication"
