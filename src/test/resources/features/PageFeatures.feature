@@ -70,7 +70,6 @@ Feature: Page Features
       | provided     | ReturnUrlPage     |
       | not provided | V&CPage           |
 
-    @wip
   Scenario: User changes the amount to be refunded from check your answers page
     Given The Individual user starts a refund journey with Nino AB200111C, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
