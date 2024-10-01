@@ -70,6 +70,7 @@ Feature: Page Features
       | provided     | ReturnUrlPage     |
       | not provided | V&CPage           |
 
+    @wip
   Scenario: User changes the amount to be refunded from check your answers page
     Given The Individual user starts a refund journey with Nino AB200111C, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
@@ -87,6 +88,8 @@ Feature: Page Features
     Then the user selects the full amount and clicks continue
     Then the user is on the CheckYourAnswersPage
     And the page shows the full amount and doesn't show the roll number
+    When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
     When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue

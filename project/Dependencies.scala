@@ -14,8 +14,6 @@ object Dependencies {
     "com.novocode"         % "junit-interface"        % "0.11"     % Test,
     "io.cucumber"          % "cucumber-picocontainer" % "7.19.0"   % Test,
     "org.mongodb.scala"   %% "mongo-scala-driver"     % "5.1.4"    % Test,
-    // updating to mongo-driver 5.2.0 not recommended as requires Mongo version 7 when MDTP uses version 5
-    // https://docs.tax.service.gov.uk/mdtp-handbook/documentation/developer-set-up/set-up-mongodb.html
     "com.typesafe.play"   %% "play-json"              % "2.10.5"   % Test
   )
 
