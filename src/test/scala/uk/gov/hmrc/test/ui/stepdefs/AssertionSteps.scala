@@ -68,6 +68,7 @@ class AssertionSteps extends BaseSteps {
       case "WeNeedYourBankDetailsPage"        => WeNeedYourBankDetailsPage.shouldBeLoaded()
       case "WeNeedYourClientsBankDetailsPage" => WeNeedYourClientsBankDetailsPage.shouldBeLoaded()
       case "WelshEnquiresPage"                => WelshEnquiresPage.shouldBeLoaded()
+      case "YouNeedToSignInAgainPage"         => YouNeedToSignInAgainPage.shouldBeLoaded()
       case _                                  => throw new Exception(page + " not found")
     }
   }

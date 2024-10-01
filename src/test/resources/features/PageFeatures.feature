@@ -36,6 +36,8 @@ Feature: Page Features
     Then the user is on the CheckYourAnswersPage
     And the page shows the amount typed and doesn't show the roll number
     When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
+    When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage
@@ -85,6 +87,8 @@ Feature: Page Features
     Then the user selects the full amount and clicks continue
     Then the user is on the CheckYourAnswersPage
     And the page shows the full amount and doesn't show the roll number
+    When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
     When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue

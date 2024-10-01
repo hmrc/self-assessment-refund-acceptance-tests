@@ -45,6 +45,8 @@ Feature: API Errors
     Then the user is on the CheckYourAnswersPage
     And the page shows the full amount and shows the roll number
     When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
+    When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the DesErrorPage
@@ -64,6 +66,8 @@ Feature: API Errors
     When the user enters valid business bank details with roll number and clicks continue
     Then the user is on the CheckYourAnswersPage
     And the page shows the full amount and shows the roll number
+    When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
     When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue

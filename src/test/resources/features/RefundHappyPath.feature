@@ -14,6 +14,8 @@ Feature: Refund Happy Path
     Then the user is on the CheckYourAnswersPage
     And the page shows <checkAnswersAmount> and <checkAnswersRoll> the roll number
     When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
+    When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage
@@ -45,6 +47,8 @@ Feature: Refund Happy Path
     Then the user is on the CheckYourAnswersPage
     And the page shows the amount typed and doesn't show the roll number
     When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
+    When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage
@@ -64,6 +68,8 @@ Feature: Refund Happy Path
     Then the user is on the CheckYourAnswersPage
     And the page shows the full amount and shows the roll number
     When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
+    When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage
@@ -80,6 +86,8 @@ Feature: Refund Happy Path
     When the user enters valid personal bank details without roll number and clicks continue
     Then the user is on the CheckYourAnswersPage
     And the page shows the amount typed and doesn't show the roll number
+    When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
     When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
@@ -98,6 +106,8 @@ Feature: Refund Happy Path
     Then the user is on the CheckYourAnswersPage
     And the page shows the amount typed and doesn't show the roll number
     When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
+    When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage
@@ -114,6 +124,8 @@ Feature: Refund Happy Path
     When the user enters valid personal bank details without roll number and clicks continue
     Then the user is on the CheckYourAnswersPage
     And the page shows the amount typed and doesn't show the roll number
+    When the user clicks continue
+    Then the user is on the YouNeedToSignInAgainPage
     When the user clicks continue
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue

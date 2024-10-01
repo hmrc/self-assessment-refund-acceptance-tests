@@ -16,7 +16,10 @@ object SbtUpdatesSettings {
     // compiled by a more recent version of the Java Runtime (class file version 55.0), this
     // version of the Java Runtime only recognizes class file versions up to 52.0
     // ---
-    dependencyUpdatesFilter -= moduleFilter("com.vladsch.flexmark", "flexmark-all")
+    dependencyUpdatesFilter -= moduleFilter("com.vladsch.flexmark", "flexmark-all"),
+    dependencyUpdatesFilter -= moduleFilter("org.mongodb.scala", "mongo-scala-driver")
+    // updating to mongo-driver 5.2.0 not recommended as requires Mongo version 7 when MDTP uses version 5
+    // https://docs.tax.service.gov.uk/mdtp-handbook/documentation/developer-set-up/set-up-mongodb.html
   )
 
 }
