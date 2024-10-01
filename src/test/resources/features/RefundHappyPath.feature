@@ -11,7 +11,7 @@ Feature: Refund Happy Path
     When the user selects <accountType> and clicks continue
     Then the user is on the EnterBankDetailsPage
     When the user enters valid <bank details> bank details <roll number> roll number and clicks continue
-    Then the user is on the CheckDetailsPage
+    Then the user is on the CheckYourAnswersPage
     And the page shows <checkAnswersAmount> and <checkAnswersRoll> the roll number
     When the user clicks continue
     Then the user is on the YouNeedToSignInAgainPage
@@ -44,7 +44,7 @@ Feature: Refund Happy Path
     When the user selects personal account and clicks continue
     Then the user is on the EnterBankDetailsPage
     When the user enters valid personal bank details without roll number and clicks continue
-    Then the user is on the CheckDetailsPage
+    Then the user is on the CheckYourAnswersPage
     And the page shows the amount typed and doesn't show the roll number
     When the user clicks continue
     Then the user is on the YouNeedToSignInAgainPage
@@ -65,7 +65,7 @@ Feature: Refund Happy Path
     When the user selects business account and clicks continue
     Then the user is on the EnterBankDetailsPage
     When the user enters valid business bank details with roll number and clicks continue
-    Then the user is on the CheckDetailsPage
+    Then the user is on the CheckYourAnswersPage
     And the page shows the full amount and shows the roll number
     When the user clicks continue
     Then the user is on the YouNeedToSignInAgainPage
@@ -84,7 +84,7 @@ Feature: Refund Happy Path
     When the user selects personal account and clicks continue
     Then the user is on the EnterBankDetailsPage
     When the user enters valid personal bank details without roll number and clicks continue
-    Then the user is on the CheckDetailsPage
+    Then the user is on the CheckYourAnswersPage
     And the page shows the amount typed and doesn't show the roll number
     When the user clicks continue
     Then the user is on the YouNeedToSignInAgainPage
@@ -103,7 +103,7 @@ Feature: Refund Happy Path
     When the user selects personal account and clicks continue
     Then the user is on the EnterBankDetailsPage
     When the user enters valid personal bank details without roll number and clicks continue
-    Then the user is on the CheckDetailsPage
+    Then the user is on the CheckYourAnswersPage
     And the page shows the amount typed and doesn't show the roll number
     When the user clicks continue
     Then the user is on the YouNeedToSignInAgainPage
@@ -122,7 +122,7 @@ Feature: Refund Happy Path
     When the user selects personal account and clicks continue
     Then the user is on the EnterBankDetailsPage
     When the user enters valid personal bank details without roll number and clicks continue
-    Then the user is on the CheckDetailsPage
+    Then the user is on the CheckYourAnswersPage
     And the page shows the amount typed and doesn't show the roll number
     When the user clicks continue
     Then the user is on the YouNeedToSignInAgainPage
@@ -130,3 +130,5 @@ Feature: Refund Happy Path
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage
+
+    #TODO: after OPS-12792, consider other Agent auth scenarios e.g. Legacy & Non-Legacy, Just Delegated Enrolment Only

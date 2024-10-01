@@ -24,8 +24,8 @@ class AssertionSteps extends BaseSteps {
   Then("""^the user is on the (.*)$""") { page: String =>
     page match {
       case "BackUrlPage"                      => BackUrlPage.shouldBeLoaded()
-      case "CheckDetailsPage"                 =>
-        CheckDetailsPage.shouldBeLoaded()
+      case "CheckYourAnswersPage"             =>
+        CheckYourAnswersPage.shouldBeLoaded()
       case "DesErrorPage"                     =>
         DesErrorPage.shouldBeLoaded()
       case "DummyReauthenticationPage"        =>
@@ -76,25 +76,25 @@ class AssertionSteps extends BaseSteps {
   Then("""^the page shows (.*) and (.*) the roll number$""") { (amount: String, roll: String) =>
     roll match {
       case "shows"        =>
-        isPresent("//*[@id=\"main-content\"]/div/div/dl/div[5]/dt")
+        isPresent("//*[@id=\"main-content\"]/div/div/dl/div[3]/dd[1]/text()[4]")
         amount match {
           case "the full amount"      =>
-            findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£987.65"
+            findTextByCssSelector("div:nth-child(1) > dd.govuk-summary-list__value") shouldBe "£987.65"
           case "the suggested amount" =>
-            findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£641.98"
+            findTextByCssSelector("div:nth-child(1) > dd.govuk-summary-list__value") shouldBe "£641.98"
           case "the amount typed"     =>
-            findTextByCssSelector("div:nth-child(6) > dd.govuk-summary-list__value") shouldBe "£100.00"
+            findTextByCssSelector("div:nth-child(1) > dd.govuk-summary-list__value") shouldBe "£100.00"
           case _                      => throw new Exception(amount + " not found")
         }
       case "doesn't show" =>
-        !isPresent("//*[@id=\"main-content\"]/div/div/dl/div[5]/dt")
+        !isPresent("//*[@id=\"main-content\"]/div/div/dl/div[3]/dd[1]/text()[4]")
         amount match {
           case "the full amount"      =>
-            findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£987.65"
+            findTextByCssSelector("div:nth-child(1) > dd.govuk-summary-list__value") shouldBe "£987.65"
           case "the suggested amount" =>
-            findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£641.98"
+            findTextByCssSelector("div:nth-child(1) > dd.govuk-summary-list__value") shouldBe "£641.98"
           case "the amount typed"     =>
-            findTextByCssSelector("div:nth-child(5) > dd.govuk-summary-list__value") shouldBe "£100.00"
+            findTextByCssSelector("div:nth-child(1) > dd.govuk-summary-list__value") shouldBe "£100.00"
           case _                      => throw new Exception(amount + " not found")
         }
       case _              => throw new Exception(roll + " not found")
