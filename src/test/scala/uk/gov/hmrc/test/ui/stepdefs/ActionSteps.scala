@@ -28,17 +28,23 @@ class ActionSteps extends BaseSteps {
       MongoDriver.dropDatabases()
       driver.navigate().to(AuthWizardPage.url)
 
+      singleSel(name("confidenceLevel")).value = confidence
+      singleSel(name("affinityGroup")).value = userType
+      enterTextById("redirectionUrl", TestOnlyStartPage.url)
+
       userType match {
         case "Individual" | "Organisation" => enterTextById("nino", nino)
         case "Agent"                       =>
           enterTextById("enrolment[0].name", "HMRC-MTD-IT")
           enterTextById("input-0-0-name", "MTDITID")
-          enterTextById("input-0-0-value", "FJWF01635669298")
+          enterTextById("input-0-0-value", "123")
+          clickById("js-add-delegated-enrolment")
+          enterTextById("delegatedEnrolment[0].key", "HMRC-MTD-IT")
+          enterTextById("input-delegated-0-0-name", "MTDITID")
+          enterTextById("input-delegated-0-0-value", "123")
+          enterTextById("delegatedEnrolment[0].delegatedAuthRule", "mtd-it-auth")
         case _                             => throw new Exception(userType + " not found")
       }
-      singleSel(name("confidenceLevel")).value = confidence
-      singleSel(name("affinityGroup")).value = userType
-      enterTextById("redirectionUrl", TestOnlyStartPage.url)
       click on id("submit-top")
 
       if (isPresent("Gwneud cais am ad-daliad Hunanasesiad")) { clickByCssSelector("nav > ul > li:nth-child(1) > a") }
