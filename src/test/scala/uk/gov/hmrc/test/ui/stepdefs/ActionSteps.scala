@@ -107,7 +107,7 @@ class ActionSteps extends BaseSteps {
       case "English"               => clickByCssSelector("nav > ul > li:nth-child(1) > a")
       case "the feedback link"     => clickById("help-us-improve-our-services-link")
       case "the history tab"       => clickById("tab_history")
-      case "HMRC online account"   => clickByCssSelector("p:nth-child(6) > a")
+      case "check the status of your refund"   => clickByCssSelector("p:nth-child(7) > a")
       case "lockout return button" => clickById("return-to")
       case "sign out"              => clickByCssSelector("a.govuk-link.hmrc-sign-out-nav__link")
       case "view approved"         => clickByCssSelector("tr:nth-child(2) > td:nth-child(4) > a")
