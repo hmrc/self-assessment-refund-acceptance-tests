@@ -46,7 +46,7 @@ Feature: Page Features
     Examples:
       | URL          | page              |
       | provided     | ReturnUrlPage     |
-      | not provided | RefundHistoryPage |
+      | not provided | RefundTrackerPage |
 
   Scenario Outline: User clicks return link on lockout page
     Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls <URL>

@@ -47,7 +47,9 @@ class ActionSteps extends BaseSteps {
       }
       click on id("submit-top")
 
-      if (isPresent("Gwneud cais am ad-daliad Hunanasesiad")) { clickByCssSelector("nav > ul > li:nth-child(1) > a") }
+      if (isPresent("A yw’r dudalen hon yn gweithio’n iawn? (yn agor tab newydd)")) {
+        clickByCssSelector("nav > ul > li:nth-child(1) > a")
+      }
       journey match {
         case "refund"  =>
           nino match {
@@ -55,7 +57,7 @@ class ActionSteps extends BaseSteps {
             case "AB200111C" => click on id("0")
             case _           => click on id("0") // to populate the rest of fields, nino will be changed in next step
           }
-        case "history" =>
+        case "tracker" =>
           nino match {
             case "AB111111C" => click on id("2")
             case _           => throw new Exception(nino + " not expected")
@@ -99,23 +101,23 @@ class ActionSteps extends BaseSteps {
 
   When("""^the user clicks (.*)$""") { (element: String) =>
     element match {
-      case "back"                  => clickByCssSelector("a.govuk-back-link")
-      case "back to tax account"   => clickByCssSelector("a.govuk-button")
-      case "contact HMRC"          => clickByCssSelector("p:nth-child(4) > a")
-      case "continue"              => continue()
-      case "Cymraeg"               => clickByCssSelector("nav > ul > li:nth-child(2) > a")
-      case "English"               => clickByCssSelector("nav > ul > li:nth-child(1) > a")
-      case "the feedback link"     => clickById("help-us-improve-our-services-link")
-      case "the history tab"       => clickById("tab_history")
-      case "HMRC online account"   => clickByCssSelector("p:nth-child(6) > a")
-      case "lockout return button" => clickById("return-to")
-      case "sign out"              => clickByCssSelector("a.govuk-link.hmrc-sign-out-nav__link")
-      case "view approved"         => clickByCssSelector("tr:nth-child(2) > td:nth-child(4) > a")
-      case "view paid"             => clickByCssSelector("tr:nth-child(1) > td:nth-child(5) > a")
-      case "view processing"       => clickByCssSelector("tr:nth-child(1) > td:nth-child(4) > a")
-      case "view rejected"         => clickByCssSelector("tr:nth-child(2) > td:nth-child(5) > a")
-      case "change amount"         => clickByCssSelector("div:nth-child(1) > dd.govuk-summary-list__actions > a")
-      case _                       => throw new Exception(element + " not found")
+      case "back"                    => clickByCssSelector("a.govuk-back-link")
+      case "back to tax account"     => clickByCssSelector("a.govuk-button")
+      case "contact HMRC"            => clickByCssSelector("p:nth-child(4) > a")
+      case "continue"                => continue()
+      case "Cymraeg"                 => clickByCssSelector("nav > ul > li:nth-child(2) > a")
+      case "English"                 => clickByCssSelector("nav > ul > li:nth-child(1) > a")
+      case "the feedback link"       => clickById("help-us-improve-our-services-link")
+      case "the history tab"         => clickById("tab_history")
+      case "HMRC online account"     => clickByCssSelector("p:nth-child(6) > a")
+      case "lockout return button"   => clickById("return-to")
+      case "sign out"                => clickByCssSelector("a.govuk-link.hmrc-sign-out-nav__link")
+      case "view processing"         => clickByCssSelector("tr:nth-child(4) > td:nth-child(4) > a")
+      case "view approved"           => clickByCssSelector("tr:nth-child(1) > td:nth-child(4) > a")
+      case "view processing risking" => clickByCssSelector("tr:nth-child(2) > td:nth-child(4) > a")
+      case "view rejected"           => clickByCssSelector("tr:nth-child(3) > td:nth-child(4) > a")
+      case "change amount"           => clickByCssSelector("div:nth-child(1) > dd.govuk-summary-list__actions > a")
+      case _                         => throw new Exception(element + " not found")
     }
   }
 

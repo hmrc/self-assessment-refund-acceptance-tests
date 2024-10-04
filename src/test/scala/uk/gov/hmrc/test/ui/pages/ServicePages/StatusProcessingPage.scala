@@ -27,8 +27,8 @@ object StatusProcessingPage extends BasePage {
   override def assertCurrentUrl(): Assertion =
     currentUrl should fullyMatch regex s"""$url/[0-9]{3}""".r
 
-  def expectedPageTitle = s"Your refund of £3,000.00 is in progress - Request a Self Assessment refund - GOV.UK"
-
-  def expectedPageHeader = s"Your refund of £3,000.00 is in progress"
+  def expectedPageTitle            = s"Your refund of £1,000.00 has been approved - Track a Self Assessment refund - GOV.UK"
+  def expectedPageHeader           = s"Your refund of £1,000.00 has been approved"
+  override def expectedPageService = "Track a Self Assessment refund"
 
 }
