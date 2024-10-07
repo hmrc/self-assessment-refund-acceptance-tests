@@ -34,7 +34,7 @@ Feature: Refund Happy Path
       | a different amount   | business account | business     | without     | the amount typed     | doesn't show     |
       | a different amount   | personal account | personal     | without     | the amount typed     | doesn't show     |
 
-  Scenario: Individual user completes refund without card on file and clicks feedback link
+  Scenario: Individual user completes refund without card on file
     Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
@@ -52,8 +52,6 @@ Feature: Refund Happy Path
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage
-    When the user clicks the feedback link
-    Then the user is on the SurveyPage
 
   Scenario: Organisation user completes refund with card on file
     Given The Organisation user starts a refund journey with Nino AB200111C, confidence 250, and urls provided

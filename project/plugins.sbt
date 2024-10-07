@@ -7,6 +7,6 @@ addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.3")
 
 addSbtPlugin("uk.gov.hmrc" % "sbt-auto-build" % "3.22.0")
 
-addSbtPlugin("uk.gov.hmrc" % "sbt-test-report" % "0.24.0")
+addSbtPlugin("uk.gov.hmrc" % "sbt-test-report" % "0.26.0")
 
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.2")
