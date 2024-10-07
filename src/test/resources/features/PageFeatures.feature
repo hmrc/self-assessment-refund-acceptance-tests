@@ -45,7 +45,7 @@ Feature: Page Features
     Then the user is on the <page>
     Examples:
       | URL                                 | page              |
-      | check the status of your refund     | RefundHistoryPage |
+      | check the status of your refund     | RefundTrackerPage |
       | contact us                          | SaEnquiresPage    |
       | the feedback link                   | SurveyPage        |
 

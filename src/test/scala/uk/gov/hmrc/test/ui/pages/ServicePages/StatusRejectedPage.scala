@@ -27,7 +27,8 @@ object StatusRejectedPage extends BasePage {
   override def assertCurrentUrl(): Assertion =
     currentUrl should fullyMatch regex s"""$url/[0-9]{3}""".r
 
-  def expectedPageTitle  = s"Your refund of £2,000.00 has been rejected - Request a Self Assessment refund - GOV.UK"
-  def expectedPageHeader = s"Your refund of £2,000.00 has been rejected"
+  def expectedPageTitle            = s"Your refund of £2,000.00 has been rejected - Track a Self Assessment refund - GOV.UK"
+  def expectedPageHeader           = s"Your refund of £2,000.00 has been rejected"
+  override def expectedPageService = "Track a Self Assessment refund"
 
 }

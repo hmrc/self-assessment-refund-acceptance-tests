@@ -25,4 +25,10 @@ object TestOnlyStartPage extends BasePage {
   def expectedPageTitle: String  = ""
   def expectedPageHeader: String = ""
 
+  override def shouldBeLoaded(): Unit = {
+    assertCurrentUrl()
+    assertCurrentPageTitle()
+    assertCurrentPageHeader()
+  }
+
 }

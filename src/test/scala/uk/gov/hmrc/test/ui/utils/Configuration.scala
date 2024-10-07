@@ -23,7 +23,8 @@ case class TestConfig(
   ivStubUrl: String,
   basGateway: String,
   viewAndChange: String,
-  saRequestRefundJourneyFrontendUrl: String
+  saRequestRefundJourneyFrontendUrl: String,
+  saTrackRefundJourneyFrontendUrl: String
 )
 
 object Configuration {
@@ -38,7 +39,8 @@ object Configuration {
         ivStubUrl = "http://localhost:9948/iv-stub",
         basGateway = "http://localhost:9553/bas-gateway",
         viewAndChange = "http://localhost:9081",
-        saRequestRefundJourneyFrontendUrl = "http://localhost:9171/request-a-self-assessment-refund"
+        saRequestRefundJourneyFrontendUrl = "http://localhost:9171/request-a-self-assessment-refund",
+        saTrackRefundJourneyFrontendUrl = "http://localhost:9171/track-a-self-assessment-refund"
       )
 
     case "dev" =>
@@ -50,7 +52,8 @@ object Configuration {
         basGateway = "https://www.development.tax.service.gov.uk/bas-gateway",
         viewAndChange = "https://www.development.tax.service.gov.uk",
         saRequestRefundJourneyFrontendUrl =
-          "https://www.development.tax.service.gov.uk/request-a-self-assessment-refund"
+          "https://www.development.tax.service.gov.uk/request-a-self-assessment-refund",
+        saTrackRefundJourneyFrontendUrl = "https://www.development.tax.service.gov.uk/track-a-self-assessment-refund"
       )
 
     case "qa" =>
@@ -61,7 +64,8 @@ object Configuration {
         ivStubUrl = "https://www.qa.tax.service.gov.uk/iv-stub",
         basGateway = "https://www.qa.tax.service.gov.uk/bas-gateway",
         viewAndChange = "https://www.qa.tax.service.gov.uk",
-        saRequestRefundJourneyFrontendUrl = "https://www.qa.tax.service.gov.uk/request-a-self-assessment-refund"
+        saRequestRefundJourneyFrontendUrl = "https://www.qa.tax.service.gov.uk/request-a-self-assessment-refund",
+        saTrackRefundJourneyFrontendUrl = "https://www.qa.tax.service.gov.uk/track-a-self-assessment-refund"
       )
 
     case _ => throw new IllegalArgumentException(s"Environment '$environment' not known")

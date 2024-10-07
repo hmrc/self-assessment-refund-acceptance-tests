@@ -43,20 +43,20 @@ class AssertionSteps extends BaseSteps {
       case "RefundAmountPage"                 =>
         RefundAmountPage.shouldBeLoaded()
       case "RefundAmountPage in Welsh"        => RefundAmountPageWelsh.shouldBeLoaded()
-      case "RefundHistoryPage"                =>
-        RefundsHistoryPage.shouldBeLoaded()
+      case "RefundTrackerPage"                =>
+        RefundTrackerPage.shouldBeLoaded()
       case "RequestReceivedPage"              =>
         RequestReceivedPage.shouldBeLoaded()
         findTextByCssSelector("div.govuk-panel.govuk-panel--confirmation > div") should include regex """Your refund reference
             |[a-z0-9]{12}""".stripMargin.r
       case "ReturnUrlPage"                    => ReturnUrlPage.shouldBeLoaded()
       case "SaEnquiresPage"                   => SaEnquiresPage.shouldBeLoaded()
-      case "StatusApprovedPage"               =>
-        StatusApprovedPage.shouldBeLoaded()
-      case "StatusPaidPage"                   =>
-        StatusPaidPage.shouldBeLoaded()
       case "StatusProcessingPage"             =>
         StatusProcessingPage.shouldBeLoaded()
+      case "StatusApprovedPage"               =>
+        StatusApprovedPage.shouldBeLoaded()
+      case "StatusProcessingRiskingPage"      =>
+        StatusProcessingRiskingPage.shouldBeLoaded()
       case "StatusRejectedPage"               =>
         StatusRejectedPage.shouldBeLoaded()
       case "SurveyPage"                       =>
