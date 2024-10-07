@@ -64,7 +64,7 @@ class ActionSteps extends BaseSteps {
           }
         case _         => throw new Exception(journey + " not found")
       }
-      click on cssSelector("#main-content > form:nth-child(5) > button")
+      click on id("selectJourneyPresetSubmit")
 
       nino match {
         case "AB200111C" | "AB200111D" => ()
