@@ -47,7 +47,7 @@ class AssertionSteps extends BaseSteps {
         RefundsHistoryPage.shouldBeLoaded()
       case "RequestReceivedPage"              =>
         RequestReceivedPage.shouldBeLoaded()
-        findTextByCssSelector("div.govuk-panel.govuk-panel--confirmation > div") should include regex """Your refund reference is
+        findTextByCssSelector("div.govuk-panel.govuk-panel--confirmation > div") should include regex """Your refund reference
             |[a-z0-9]{12}""".stripMargin.r
       case "ReturnUrlPage"                    => ReturnUrlPage.shouldBeLoaded()
       case "SaEnquiresPage"                   => SaEnquiresPage.shouldBeLoaded()
