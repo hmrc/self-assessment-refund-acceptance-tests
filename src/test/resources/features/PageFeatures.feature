@@ -23,8 +23,8 @@ Feature: Page Features
       | provided     | BackUrlPage |
       | not provided | V&CPage     |
 
-  Scenario Outline: User clicks return link on confirmation page
-    Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls <URL>
+  Scenario Outline: User clicks various links on confirmation page
+    Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls provided
     Then the user is on the RefundAmountPage
     When the user selects a different amount and clicks continue
     Then the user is on the WeNeedYourBankDetailsPage
@@ -41,12 +41,13 @@ Feature: Page Features
     Then the user is on the DummyReauthenticationPage
     When the user clicks continue
     Then the user is on the RequestReceivedPage
-    When the user clicks HMRC online account
+    When the user clicks <URL>
     Then the user is on the <page>
     Examples:
-      | URL          | page              |
-      | provided     | ReturnUrlPage     |
-      | not provided | RefundTrackerPage |
+      | URL                                 | page              |
+      | check the status of your refund     | RefundHistoryPage |
+      | contact us                          | SaEnquiresPage    |
+      | the feedback link                   | SurveyPage        |
 
   Scenario Outline: User clicks return link on lockout page
     Given The Individual user starts a refund journey with Nino AB200111D, confidence 250, and urls <URL>
