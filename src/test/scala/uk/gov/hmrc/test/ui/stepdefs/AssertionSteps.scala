@@ -51,8 +51,8 @@ class AssertionSteps extends BaseSteps {
             |[a-z0-9]{12}""".stripMargin.r
       case "ReturnUrlPage"                    => ReturnUrlPage.shouldBeLoaded()
       case "SaEnquiresPage"                   => SaEnquiresPage.shouldBeLoaded()
-      case "StatusProcessingPage"             =>
-        StatusProcessingPage.shouldBeLoaded()
+      case "RefundProcessingPage"             =>
+        RefundProcessingPage.shouldBeLoaded()
       case "StatusApprovedPage"               =>
         StatusApprovedPage.shouldBeLoaded()
       case "StatusProcessingRiskingPage"      =>

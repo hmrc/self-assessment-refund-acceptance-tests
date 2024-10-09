@@ -23,7 +23,7 @@ object TechnicalDifficultiesPage extends BasePage {
 
   val url: String                = s"${testConfig.selfAssessmentRefundFrontendUrl}"
   def expectedPageTitle: String  =
-    "Sorry, there is a problem with the service - 500 - - GOV.UK"
+    "Sorry, there is a problem with the service - 500 - GOV.UK"
   def expectedPageHeader: String = "Sorry, there is a problem with the service"
 
   override def shouldBeLoaded(): Unit = {
