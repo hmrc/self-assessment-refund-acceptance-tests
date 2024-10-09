@@ -51,12 +51,8 @@ class AssertionSteps extends BaseSteps {
             |[a-z0-9]{12}""".stripMargin.r
       case "ReturnUrlPage"                    => ReturnUrlPage.shouldBeLoaded()
       case "SaEnquiresPage"                   => SaEnquiresPage.shouldBeLoaded()
-      case "RefundProcessingPage"             =>
-        RefundProcessingPage.shouldBeLoaded()
       case "StatusApprovedPage"               =>
         StatusApprovedPage.shouldBeLoaded()
-      case "StatusProcessingRiskingPage"      =>
-        StatusProcessingRiskingPage.shouldBeLoaded()
       case "StatusRejectedPage"               =>
         StatusRejectedPage.shouldBeLoaded()
       case "SurveyPage"                       =>
@@ -71,6 +67,10 @@ class AssertionSteps extends BaseSteps {
       case "YouNeedToSignInAgainPage"         => YouNeedToSignInAgainPage.shouldBeLoaded()
       case _                                  => throw new Exception(page + " not found")
     }
+  }
+
+  Then("""^the RefundProcessingPage is displayed with amount (.*)$""") { (amount: String) =>
+    new RefundProcessingPage(amount).shouldBeLoaded()
   }
 
   Then("""^the page shows (.*) and (.*) the roll number$""") { (amount: String, roll: String) =>

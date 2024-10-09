@@ -20,15 +20,14 @@ import org.scalatest.Assertion
 import uk.gov.hmrc.test.ui.pages.BasePage
 import uk.gov.hmrc.test.ui.utils.Configuration.testConfig
 
-object RefundProcessingPage extends BasePage {
+class RefundProcessingPage(amount: String) extends BasePage {
 
   val url: String = s"${testConfig.saTrackRefundJourneyFrontendUrl}/refund-being-processed"
 
   override def assertCurrentUrl(): Assertion =
     currentUrl should fullyMatch regex s"""$url/[0-9]{3}""".r
 
-  def expectedPageTitle            = s"Your refund of £1,000.00 is being processed - Track a Self Assessment refund - GOV.UK"
-  def expectedPageHeader           = s"Your refund of £1,000.00 is being processed"
+  def expectedPageTitle            = s"Your refund of $amount is being processed - Track a Self Assessment refund - GOV.UK"
+  def expectedPageHeader           = s"Your refund of $amount is being processed"
   override def expectedPageService = "Track a Self Assessment refund"
-
 }
