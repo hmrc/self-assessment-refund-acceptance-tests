@@ -106,6 +106,7 @@ class ActionSteps extends BaseSteps {
       case "check the status of your refund" => clickByCssSelector("p:nth-child(7) > a")
       case "contact HMRC"                    => clickByCssSelector("p:nth-child(4) > a")
       case "contact us"                      => clickByCssSelector("p:nth-child(8) > a")
+      case "contact us (processing)"         => clickByCssSelector("p:nth-child(5) > a")
       case "continue"                        => continue()
       case "Cymraeg"                         => clickByCssSelector("nav > ul > li:nth-child(2) > a")
       case "English"                         => clickByCssSelector("nav > ul > li:nth-child(1) > a")

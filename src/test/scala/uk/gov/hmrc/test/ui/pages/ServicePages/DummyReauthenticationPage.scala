@@ -24,7 +24,7 @@ object DummyReauthenticationPage extends BasePage {
   val url: String =
     s"${testConfig.selfAssessmentRefundFrontendUrl}/test-only/reauthentication?continue=/request-a-self-assessment-refund/reauthenticated-submit"
 
-  def expectedPageTitle  = s"Dummy Reauthentication - - GOV.UK"
+  def expectedPageTitle  = s"Dummy Reauthentication - GOV.UK"
   def expectedPageHeader = s"Dummy Reauthentication"
 
   override def shouldBeLoaded(): Unit = {
